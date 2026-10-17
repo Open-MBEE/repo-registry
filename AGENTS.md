@@ -20,6 +20,26 @@ from it being deterministic, legible and explainable, so these rules take preced
 4. **Smallest change that addresses the point.** Name the blast radius (files, callers, docs) before editing.
    Run every command you write into a doc or help text.
 
+## Work packages
+
+Work here runs in gated work packages, using the user-level skills in `~/.claude/skills` (read its `CLAUDE.md`,
+the decision loop, before asking the supervisor anything):
+
+1. `work-breakdown`: propose an ordered list of packages and get the supervisor's OK.
+2. `scope-of-work`: write `work-packages/WPn-scope-of-work.md` and stop at the approval gate.
+3. `work-execution`: build it autonomously on the work branch until good enough is met.
+4. `work-acceptance`: write `work-packages/WPn-review.md` and stop at the acceptance gate.
+
+- **Supervisor:** mzargham.
+- **This repo is local only** (no remote) until the first milestone, when it moves to Open-MBEE. Until then:
+  - **Approval** is mzargham's `git merge --no-ff` of the scope branch into `main`.
+  - **Acceptance** is his `git merge --no-ff` of the work branch into `main`.
+  - **Decision records** go in `work-packages/WPn-decisions.md`.
+- Never perform the approval or acceptance merge yourself. Verify that it exists before starting execution or
+  calling a package done.
+
+Where things stand: [docs/status.md](docs/status.md).
+
 ## Hard constraints
 
 - **No LLM in the loop.** Sensing, classifying, deciding and acting are deterministic code (X-1).
@@ -36,6 +56,7 @@ from it being deterministic, legible and explainable, so these rules take preced
 ## Map
 
 - [README.md](README.md): plain-language overview for everyone
+- [docs/status.md](docs/status.md): where things stand and the next step
 - [docs/design.md](docs/design.md): architecture, roles, cross-cutting requirements, decisions, evidence, parked items
 - [docs/roadmap.md](docs/roadmap.md): R1–R5 with exit tests
 - [docs/testing-and-demonstration.md](docs/testing-and-demonstration.md): the hypothetical case
