@@ -13,8 +13,9 @@ those controls with a deterministic control loop. The record and the loop serve 
    development, or trusted and maintained) and which are exploratory or historical.
 2. **Demonstrable oversight.** OpenMBEE can show regulated adopters that permissions and release
    approval follow written rules, aligned with CISA *OSS Security Principles and Practices* (2026-07-30).
-3. **Low friction where it matters.** Media and research stay easy to contribute to. Tools carry the
-   strictest controls.
+3. **Friction only where it is needed, and visibly so.** Media and research stay easy to contribute to. Tools carry the
+   strictest controls. For every repo it is clear which controls are in effect and which aren't, and that the prescribed
+   ones really are in effect (PO-10).
 
 **Success** is staged ([roadmap](roadmap.md)). The system has succeeded when it is **canonical** (R3), the
 source of truth for repo status, and shows the **desired steady-state behavior** (R4). High error at
@@ -110,6 +111,8 @@ Each requirement table has the columns ID · requirement · source · assessed b
 | Operator instructions land in the operator's own repo | Operators work where they already are. Closing the issue is the completion signal | IF-3, IF-6 |
 | An aggregating Project board for governors | Org-wide progress in one view, without moving issues out of their repos | IF-10 |
 | Governance friction rises at the first canonical release (R3), together with the self-class | Calibration needs fast iteration. A source of truth needs high-friction governance. The lifecycle resolves the apparent paradox | IF-9, X-9 |
+| Operators are CODEOWNERS where the class requires it | Strict oversight rests on GitHub-native review authority held by the named people, not on a parallel list | PO-9, X-8 |
+| Friction is explicit, not universal | Most repos stay low friction. Where friction exists, it is named, justified by the policy, and confirmed to be in effect | PO-10, PO-7 |
 | Test and demonstrate on a hypothetical case first | The live system starts with expected high error, and maintainers must agree on the rules before go-live | FM-11, [testing](testing-and-demonstration.md) |
 
 ### Scope answers (mzargham)

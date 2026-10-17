@@ -16,9 +16,10 @@ whether each repository follows those rules, and it tells the right people when 
 - **To show that we follow our own rules.** Many organizations that use OpenMBEE work in regulated
   industries. They need to see that who may change what, and who approves a release, follow written
   rules. We aim to line up with CISA's *Open Source Software: Security Principles and Practices* (2026).
-- **To keep things easy where they should be easy.** Tools get the strictest rules. Media (the
-  website, the wiki, educational material) and research get lighter ones, so they stay easy to
-  contribute to.
+- **To add friction only where it is needed, and to be clear about it.** Tools get the strictest rules. Media
+  (the website, the wiki, educational material) and research get lighter ones, so they stay easy to
+  contribute to. For every repository you can see which controls apply, which don't, and whether the
+  ones that apply are really in effect.
 
 ## What it is, and what it is not
 
@@ -46,8 +47,8 @@ You may hold more than one role. Each role has one place to go.
 Use the **wiki of this repository**. It is generated automatically and never edited by hand. It has:
 - an **index page** that lists the highlighted repositories first (under active development, or
   trusted and maintained), then every repository with its kind, owner and release officer;
-- **one page per kind of repository**, which says what puts a repository in that kind, what we promise
-  about it, and who is responsible;
+- **one page per kind of repository**, which says what puts a repository in that kind, which controls
+  apply to it and which deliberately don't, and who is responsible;
 - **one page per repository**, which shows which rules it meets, which it doesn't yet, and any
   accepted exceptions.
 
@@ -60,6 +61,9 @@ issue there. The issue says what to do, why (which rule, and what was seen), and
   reviews), make the change in your repository and close the issue. The next check confirms it.
 - If it asks you a **question** (a fact the system can't see for itself), the issue says exactly where
   to answer and in what form.
+
+For the more strictly overseen kinds of repository, the operators (owner and release officer) must also be
+listed in that repository's CODEOWNERS, so their review is required by GitHub itself.
 
 You never need to edit this repository to do your part.
 

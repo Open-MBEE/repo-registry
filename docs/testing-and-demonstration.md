@@ -20,6 +20,8 @@ publishes nothing. It exercises:
 - one accepted deviation (PO-8);
 - one archived repo, whose instructions must land in this repo (IF-4);
 - a mix of conforming and violating repos, including configurations present, absent and unreadable (PO-7);
+- a strictly overseen repo whose CODEOWNERS matches its operators, one where it differs, and one where it is missing (PO-9);
+- a low-friction repo whose page shows which controls deliberately don't apply (PO-10);
 - one failed run (X-10).
 
 ## Testing: did we build what we designed?
