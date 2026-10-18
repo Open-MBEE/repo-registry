@@ -107,6 +107,12 @@ tables:
     rows: data/taxonomy/kinds.yaml, signals
     key: [signal]
     columns: {signal: name, when: predicate}
+  signal_explanation:
+    role: model
+    rows: data/taxonomy/kinds.yaml, explain
+    key: [signal]
+    columns: {signal: fk(signal), explain: text}
+    rule: "every signal has exactly one explanation, in plain words, for the wiki (WP5d D-1)"
   flag:
     role: model
     rows: data/taxonomy/kinds.yaml, flags

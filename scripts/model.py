@@ -133,6 +133,8 @@ def rows(table, root=ROOT):
                 for s, r in m.items()]
     if table == "signal":
         return _keyed(kinds_doc["signals"], "signal", "when")
+    if table == "signal_explanation":
+        return _keyed(kinds_doc.get("explain"), "signal", "explain")
     if table == "flag":
         return _keyed(kinds_doc.get("flags"), "flag")
     if table == "unclassified_reason":
