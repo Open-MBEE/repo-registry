@@ -53,7 +53,9 @@ Verified code owners on the high tier are how OpenMBEE shows that.
 - Legal advice: what OFAC requires of an open-source project accepting code is unsettled (the spike); the policy states
   OpenMBEE's rule, and counsel's review is a candidate for later.
 - ISO/IEC/IEEE 12207 text: it is licensed, and stays clause numbers and titles only (WP2 R-12).
-- Changing any other policy, kind or the taxonomy. (Citing the memo's §3.H in `contributing` is a later candidate.)
+- Changing any other policy, kind or the taxonomy. *(Amended at the acceptance gate, by the supervisor: existing
+  policies may cite the new sources where they already ask for what a source says; and `contributing` changes, with his
+  explicit approval, to cite §3.H. See [WP5e-decisions.md](WP5e-decisions.md), "Observation 4".)*
 - Publishing any personal fact beyond a maintainer's legal name, country of residence and affiliation (OD2): no
   identity document, nationality, address or other detail is written to this public repository. Nationality is not a
   criterion (OD1).

@@ -41,6 +41,8 @@ cites:
   - SA-11(1)
   openssf:
   - OI-2
+  dodcio:
+  - 2.C(4)
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - Go to Settings, then Advanced Security, and set up Code scanning with the CodeQL default setup (or your own workflow).
 - Make sure it runs on pull requests and on the default branch.

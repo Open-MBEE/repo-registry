@@ -4,7 +4,7 @@
 |---|---|
 | **Scope of work** | [WP5e-scope-of-work.md](WP5e-scope-of-work.md) |
 | **Scope approval verified** | The supervisor's statement, recorded verbatim in [WP5e-decisions.md](WP5e-decisions.md) "Approval": "let's keep the scope of work approved locally and then merge it with the PR that implements it" |
-| **Work reviewed** | `wp5e-work` at 4f91f3f, with this report |
+| **Work reviewed** | `wp5e-work` at 4f91f3f, then the observation 3 fix (below), with this report |
 | **Supervisor (accepts)** | mzargham |
 | **Acceptance record** | mzargham's merge, with a merge commit, of the delivery pull request into `main` (which also brings the scope to `main`) |
 
@@ -76,8 +76,8 @@ by one pull request (the SOP's set-up steps).
    engine (WP6) will turn age into color.
 2. That a maintainer's facts were added by their own commit (consent) is checked in review until WP6 senses commit
    authors.
-3. The CISA PDF's text drops a hyphen in two words ("customdeveloped", "reevaluation"); the quotes keep the extracted
-   text.
+3. The CISA PDF's extracted text drops a hyphen where a line breaks inside a word. One quote had it
+   (CISA-C4-REEVAL, "immediate reevaluation"); the printed page 8 reads "re-evaluation", and the quote now does too.
 4. Three of the memo's sections, and SSDF PS.2 and PS.3, are cited by no policy; each states its context, and citing
    them in `release-integrity` or `contributing` is a later candidate.
 5. Matching the quotes found seven old CISA paraphrases that misstated their source (for example "OpenSSF Scorecard"
@@ -85,13 +85,18 @@ by one pull request (the SOP's set-up steps).
 
 ## Open decisions (for the supervisor)
 
-OPEN
+None. Every item was resolved through the decision loop: 3 decided (the observations, sorted by package at the
+supervisor's request; the uncited items addressed now; §3.H, after one follow-up), 0 deferred, 0 raised.
 
 ## Gap dispositions
 
 | Gap | Disposition | Reason or follow-up |
 |---|---|---|
-| Observations 1 to 5, as one item | DISPOSITION | |
+| Observation 3: a dropped hyphen in a verbatim quote | fix before acceptance | Supervisor: "fix some first. sort through what is this wp versus wp6. or later". Fixed against the printed page; the quote checks rerun |
+| Observations 1 and 2: the verification's age as a color; consent checked from the commit author | follow-up work package (WP6) | Both need the engine: a run against today's date, and the commit author's GitHub login from the API. Recorded in `docs/current-state.md` |
+| Observation 4: memo sections and SSDF practices cited by no policy | fix before acceptance | Supervisor: "i think we should address the cited by no policy gap now". A citation sweep: existing policies cite the new sources where they already ask for what a source says (memo §2.C(3) and §2.C(4) newly quoted for it); one policy change, with his explicit approval: `contributing` also asks how contributions are reviewed and tested, and cites §3.H. Every quoted item is now cited |
+| Observation 5: the old paraphrases replaced | accept as is | A result, not a gap |
+| The browser review's findings (F1, F2) | fixed in execution | Fixed in 30f526f |
 
 ## Recommendation
 

@@ -86,8 +86,11 @@
   WP5c: mirrors (forks with no changes of ours), live repositories with no type signal, and archived ones with no type.
   Code owners can classify theirs with an `openmbee-<type>` topic.
 - **Contributor sourcing (raised at WP5d, scoped as WP5e):** the `verified-code-owners` policy for the high tier.
-  Candidates for later: citing the DoD CIO memo's §2.C(5) in `release-integrity` and §3.H in `contributing`, and SSDF
-  PS.2 and PS.3 in `release-integrity`; counsel's review of the sanctions criterion; NIST SP 1326.
+  Every quoted item of the new sources is cited by a policy (a citation sweep; `contributing` also asks how
+  contributions are reviewed and tested, with the supervisor's approval). Candidates for later: counsel's review of
+  the sanctions criterion; NIST SP 1326. For WP6 (the
+  engine): turning a verification's age into its color (expired after 12 months), and checking that a maintainer's
+  facts were added by their own commit (their consent), from the commit author's GitHub login.
 - **Open for the maintainers:** the off-list and missing licenses (the license view); the should-be-archived
   repositories; maintenance of the heavily used `exec-*` tools.
 

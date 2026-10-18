@@ -47,6 +47,8 @@ cites:
   - TI-6
   iso12207:
   - 6.4.13
+  dodcio:
+  - 2.C(3)
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - Go to Settings, then Advanced Security (or Code security), and turn on Dependabot alerts.
 - 'Write a short dependency policy, in `CONTRIBUTING.md` or its own file: how new dependencies are chosen and how they are kept up to date.'

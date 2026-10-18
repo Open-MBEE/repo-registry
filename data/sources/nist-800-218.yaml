@@ -21,14 +21,12 @@ practices:
       PS.1.1: Store all forms of code – including source code, executable code, and configuration-as-code – based on the
         principle of least privilege so that only authorized personnel, tools, services, etc. have access.
   PS.2:
-    context: The producer-side practice behind release-integrity, which predates this source; citing it there is a candidate for a later package.
     page: '10'
     title: Provide a Mechanism for Verifying Software Release Integrity
     text: Help software acquirers ensure that the software they acquire is legitimate and has not been tampered with.
     tasks:
       PS.2.1: Make software integrity verification information available to software acquirers.
   PS.3:
-    context: The producer-side practice behind release-integrity, which predates this source; citing it there is a candidate for a later package.
     page: '10'
     title: Archive and Protect Each Software Release
     text: Preserve software releases in order to help identify, analyze, and eliminate vulnerabilities discovered in the

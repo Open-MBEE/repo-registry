@@ -31,6 +31,8 @@ cites:
   - AC-6
   openssf:
   - TI-3
+  ssdf:
+  - PS.1
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - 'First, make sure everyone who needs to write keeps that access: give each repository''s contributors write (or admin) through a team on that repository. Otherwise, lowering the base permission cuts them off.'
 - Then an organization owner opens Settings, then Member privileges.

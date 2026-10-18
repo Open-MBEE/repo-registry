@@ -41,6 +41,8 @@ cites:
   nist:
   - CM-3
   openssf: []
+  ssdf:
+  - PS.1
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - Go to Settings, then Rules, then Rulesets, and create a branch ruleset for the default branch, with enforcement Active. (An existing branch protection rule under Settings, then Branches, that does the same job also passes.)
 - 'Turn on Block force pushes and Restrict deletions (in a branch protection rule: leave Allow force pushes and Allow deletions off), and save.'

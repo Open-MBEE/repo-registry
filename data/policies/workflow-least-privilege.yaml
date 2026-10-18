@@ -41,6 +41,8 @@ cites:
   openssf:
   - TI-3
   - OI-1
+  ssdf:
+  - PS.1
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - Go to Settings, then Actions, then General.
 - Under Workflow permissions, choose Read repository contents and packages permissions.

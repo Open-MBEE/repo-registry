@@ -112,3 +112,33 @@ contributor sourcing".
 - **Outcome:** WP5e's scope (ead036d, with this record) is approved by this statement. There is no separate scope pull
   request; the scope and its records go to `main` in the delivery pull request, whose merge is also the acceptance
   record. Execution runs on `wp5e-work`.
+
+## The review's observations *(the acceptance gate)*
+
+- **Question:** How should the five observations of the WP5e review be disposed of, as one item? (Options: accept as
+  is / fix some first / follow-up package.)
+- **Answer (mzargham, typed by agent):** "fix some first. sort through what is this wp versus wp6. or later"
+- **Outcome (the agent's sort, as asked):** this package: observation 3 (a dropped hyphen in a verbatim quote), fixed;
+  WP6: observations 1 and 2 (a verification's age as a color; consent from the commit author); later: observation 4
+  (citing the uncited sections in other policies); observation 5 is a result, accepted as is.
+
+## Observation 4: the source items cited by no policy *(the acceptance gate)*
+
+- **Supervisor (mzargham, typed by agent):** "i think we should address the cited by no policy gap now"
+- **Supervisor, on the scope of that (typed by agent):** "we're not changing the policies we're sweeping for where our
+  existing policies can cite our new sources", then "wait we can make policy changes but only with explicit approval
+  like i just gave you.", then "solo you just add appropriate citaiton crossref"
+- **Question (on the memo's §3.H, which the contributing policy didn't ask for):** How should §3.H be handled?
+  (Options: add to contributing / stay uncited.)
+- **Answer (mzargham, typed by agent):** "Add to contributing"
+- **Follow-up (his later messages left it unclear):** For the memo's §3.H and the contributing policy, which do you
+  want? (Options: change + cite / cite only.)
+- **Answer (mzargham, typed by agent):** "Change + cite"
+- **Outcome:** The agent's standing authority is citations only: a sweep adds a citation where an existing policy
+  already asks for what the source says. A change to what a policy asks needs the supervisor's explicit approval, as
+  given here for `contributing` (its guide also says how contributions are reviewed and tested before merging; cites
+  §3.H). The sweep's citations: `change-review` (§2.C(6), SSDF PS.1), `history-protection`, `org-base-permission` and
+  `workflow-least-privilege` (SSDF PS.1), `dependency-management` (§2.C(3), newly quoted), `static-analysis`,
+  `vulnerability-remediation` and `security-policy` (§2.C(4), newly quoted), `release-integrity` (§2.C(5), SSDF PS.2
+  and PS.3, SP 800-161 SR-4), `verified-code-owners` (§2.C(1)). Every quoted item is now cited by a policy. This
+  amends WP5e's non-goal "changing any other policy" for these citations and the one approved change.

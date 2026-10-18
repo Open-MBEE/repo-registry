@@ -38,6 +38,10 @@ cites:
   - CM-3
   openssf:
   - TG-4
+  dodcio:
+  - 2.C(6)
+  ssdf:
+  - PS.1
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - In the default branch's ruleset or protection rule (see history-protection), turn on Require a pull request before merging.
 - Set Required approvals to at least 1, and turn on Require review from Code Owners.

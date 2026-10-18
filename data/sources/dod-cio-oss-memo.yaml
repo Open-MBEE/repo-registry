@@ -17,7 +17,6 @@ sections:
       OSS components. Program managers, in consultation with support engineers, Authorizing Officials, and agency Chief
       Information Officers (CIOs) must consider these challenges when determining suitability of OSS:'
   2.C(1):
-    context: "Context for verified-code-owners: a consumer asks who is contributing to the OSS. Read with 2.C, which the policy cites."
     page: '4'
     title: Long-Term Support
     text: 'Long-Term Support: Because of the wide array of business models for creating and maintaining OSS compared to
@@ -39,8 +38,15 @@ sections:
       continuous awareness of source compromises and be prepared to respond to sudden loss of trust in a repository. Testing
       should include dynamic code analysis and penetration testing after integration of the updated versions to ensure that
       updates do not expose DoD systems to new vulnerabilities.'
+  2.C(3):
+    page: '5'
+    title: Dependencies
+    text: "Dependencies: Because of its modular nature, software is often dependent on sub-components, (e.g., libraries, plug-ins, extensions, and other package modules) that may introduce additional risks. This is particularly true for OSS, which often reuses existing components. Software is higher risk, for example, if it relies on versions of sub-components that are out of date or have publicly known vulnerabilities. Assessment of a software component should also consider security risks of the sub-component dependencies, as well as any legal issues regarding the licenses of sub-components. A related concern is the availability of information related to component libraries, dependencies, and sub-components (such as a software bill-of-materials) that can be used to evaluate such risks."
+  2.C(4):
+    page: '5'
+    title: Component Security
+    text: "Component Security: Any software project that actively works to reduce security vulnerabilities is less risky. Because of the open development process used to develop OSS, it can be easier to assess evidence of this activity (or the lack of it) compared to closed development processes. Positive indicators include the use of tools, both out-of-band and in the OSS project's integration pipeline that look for security vulnerabilities (to detect and fix issues before deployment), transparent reporting of security vulnerabilities, history of security reviews, cyber testing (especially third-party audits, tests, or assessments), problems-addressed, and a history of timely vulnerability remediation. The NIST SSDF (reference (k)) includes additional guidance on component security."
   2.C(5):
-    context: "The consumer-side counterpart of release-integrity, which predates this source; citing it there is a candidate for a later package."
     page: '5'
     title: Component Integrity
     text: 'Component Integrity: Any software project that actively maintains cryptographically protected integrity verification
@@ -58,7 +64,6 @@ sections:
       the OSS project, and what external reviews or audits may be necessary to counteract the potential for malicious interference
       with the project.'
   3.H:
-    context: "Bears on the contributing policy, which predates this source; citing it there is a candidate for a later package."
     page: '8'
     title: '3. USE OF OPEN SOURCE DEVELOPMENT APPROACH, paragraph H (its heading; the paragraph has no title)'
     text: Projects releasing code as open source software to the public or mission partners should publish their intention

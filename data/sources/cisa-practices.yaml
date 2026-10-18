@@ -578,7 +578,7 @@ practices:
       text: Agencies should rigorously evaluate the trustworthiness of OSS components both before adoption and throughout
         the time the component is in use. Ongoing re-evaluations are essential to maintaining strong software security practices
         and ensuring vigilance against emerging risks. Agencies should determine a schedule for regular re-evaluation of
-        OSS already in use and identify events that trigger an immediate reevaluation, such as new version releases.
+        OSS already in use and identify events that trigger an immediate re-evaluation, such as new version releases.
     - page: '10'
       text: Lack of response to new vulnerability information from project maintainers should trigger a re-evaluation of
         OSS component use.
