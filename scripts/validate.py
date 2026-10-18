@@ -24,7 +24,7 @@ import yaml
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import org  # noqa: E402
 import policies as P  # noqa: E402
-from recommend import TaxonomyError, check_taxonomy  # noqa: E402
+from recommend import TaxonomyError, check_taxonomy, kind_of  # noqa: E402
 
 LOGIN = re.compile(r"^[A-Za-z0-9-]+$")
 OPS = {"eq", "in", "matches", "gt", "gte", "lt"}
@@ -119,10 +119,11 @@ def check(root):
     if extra or not {"status", "org", "repos"} <= set(registry):
         out.append(f"{R}: top-level keys must be status, org, repos and optionally snapshot, provisional_until")
     org_entry = registry.get("org") or {}
-    if not isinstance(org_entry, dict) or set(org_entry) != {"name", "kind"}:
-        out.append(f"{R}: org must have exactly name and kind")
-    elif org_entry["kind"] not in kinds:
-        out.append(f"{R}: org kind {org_entry['kind']!r} is not a kind")
+    if not isinstance(org_entry, dict) or set(org_entry) != {"name", "type", "stage"}:
+        out.append(f"{R}: org must have exactly name, type and stage")
+        org_entry = {}
+    elif kind_of(org_entry) not in kinds:
+        out.append(f"{R}: org: type {org_entry['type']!r} and stage {org_entry['stage']!r} name no kind")
     repos = registry.get("repos") or {}
     if not isinstance(repos, dict):
         out.append(f"{R}: repos must map each repo's name to its entry")
@@ -134,15 +135,13 @@ def check(root):
     if names != sorted(names, key=str.lower):
         out.append(f"{R}: entries must be sorted by name, ignoring case")
     for n, e in repos.items():
-        if not isinstance(e, dict) or "kind" not in e:
-            out.append(f"{R}: {n}: needs a kind")
+        if not isinstance(e, dict) or set(e) not in ({"type", "stage"}, {"reason"}):
+            out.append(f"{R}: {n}: needs type and stage, or a reason alone, and no other fields (WP4e OD2)")
             continue
-        if set(e) - {"kind", "reason"}:
-            out.append(f"{R}: {n}: no fields other than kind and reason ({', '.join(sorted(set(e) - {'kind', 'reason'}))})")
-        if e["kind"] not in kinds and e["kind"] != "unclassified":
-            out.append(f"{R}: {n}: kind {e['kind']!r} is not a kind")
-        if ("reason" in e) != (e["kind"] == "unclassified") or ("reason" in e and not str(e["reason"]).strip()):
-            out.append(f"{R}: {n}: a non-empty reason is needed exactly when the kind is unclassified")
+        if "reason" in e and not str(e["reason"]).strip():
+            out.append(f"{R}: {n}: the reason must not be empty")
+        if "type" in e and kind_of(e) not in kinds:
+            out.append(f"{R}: {n}: type {e['type']!r} and stage {e['stage']!r} name no kind")
     snapshot = registry.get("snapshot")
     if snapshot:
         try:
@@ -157,16 +156,17 @@ def check(root):
     # Assigned kinds.
     A = "data/assignments.yaml"
     a_org = assignments.get("org") or {}
-    if a_org.get("kind") not in kinds or not str(a_org.get("decision") or "").strip():
-        out.append(f"{A}: org needs a defined kind and the decision it comes from")
-    elif a_org["kind"] != org_entry.get("kind"):
-        out.append(f"{A}: org kind {a_org['kind']} differs from registry.yaml's {org_entry.get('kind')}")
+    if set(a_org) != {"type", "stage", "decision"} or kind_of(a_org) not in kinds \
+            or not str(a_org.get("decision") or "").strip():
+        out.append(f"{A}: org needs a type and stage that name a kind, and the decision it comes from")
+    elif kind_of(a_org) != kind_of(org_entry):
+        out.append(f"{A}: org is {kind_of(a_org)}, but registry.yaml says {kind_of(org_entry)}")
     for n, e in (assignments.get("repos") or {}).items():
-        if not isinstance(e, dict) or set(e) != {"kind", "decision"} or e["kind"] not in kinds \
+        if not isinstance(e, dict) or set(e) != {"type", "stage", "decision"} or kind_of(e) not in kinds \
                 or not str(e["decision"]).strip():
-            out.append(f"{A}: {n}: needs exactly a defined kind and the decision it comes from")
-        elif (repos.get(n) or {}).get("kind") != e["kind"]:
-            out.append(f"{A}: {n}: assigned {e['kind']}, but registry.yaml says {(repos.get(n) or {}).get('kind')}")
+            out.append(f"{A}: {n}: needs exactly a type and stage that name a kind, and the decision it comes from")
+        elif kind_of(repos.get(n) or {}) != kind_of(e):
+            out.append(f"{A}: {n}: assigned {kind_of(e)}, but registry.yaml says {kind_of(repos.get(n) or {})}")
 
     # The policies (docs/policy-format.md, meta-rules 1-13), with the checks scripts/policies.py makes.
     try:
@@ -262,8 +262,8 @@ def check(root):
             continue
         if n not in repos:
             out.append(f"data/pilot.yaml: {n} is not in registry.yaml")
-        elif e["kind"] != repos[n].get("kind"):
-            out.append(f"data/pilot.yaml: {n}: kind {e['kind']} differs from registry.yaml's {repos[n].get('kind')}")
+        elif e["kind"] != kind_of(repos[n]):
+            out.append(f"data/pilot.yaml: {n}: kind {e['kind']} differs from registry.yaml's {kind_of(repos[n])}")
         if e["category"] not in ids and e["category"] != "must-include":
             out.append(f"data/pilot.yaml: {n}: category {e['category']!r} is not in the pilot rule")
     for n, why in excluded.items():

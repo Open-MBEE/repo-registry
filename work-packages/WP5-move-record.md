@@ -24,9 +24,9 @@ commands below (OD4). The agent writes nothing to the org; it only reads (`gh` G
 
 ## The trials (D-5, R-5)
 
-- **`wp5-trial-invalid`:** one change on top of the WP5 work. `registry.yaml` gives OpenSysML the kind `tool/beta`,
-  which is not a kind. Expected: the check fails, naming the problem, and the PR can't be merged.
-- **`wp5-trial-out-of-compliance`:** one kind change on top of the WP5 work. `arch_model` becomes `governance/sandbox`,
+- **`wp5-trial-invalid`:** one change on top of the WP5 work. `registry.yaml` gives OpenSysML the stage `beta`, so
+  its type and stage name no kind. Expected: the check fails, naming the problem, and the PR can't be merged.
+- **`wp5-trial-out-of-compliance`:** one kind change on top of the WP5 work. `arch_model` becomes type `governance`, stage `sandbox`,
   and the files built from the kind list are regenerated. Its MIT license isn't allowed for governance, so the
   license report shows it red. Expected: the check passes.
 

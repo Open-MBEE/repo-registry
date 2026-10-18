@@ -51,11 +51,11 @@ def regenerate(root, *scripts):
 INVALID = [
     ("data/taxonomy/kinds.yaml", "status: provisional", "status: draft", "status must be"),
     ("data/taxonomy/tiers.yaml", "# PROVISIONAL", "# Draft", "first line"),
-    ("registry.yaml", '  "OpenSysML":\n    kind: tool/sandbox', '  "OpenSysML":\n    kind: tool/beta',
-     "OpenSysML: kind 'tool/beta' is not a kind"),
-    ("registry.yaml", '  "OpenSysML":\n    kind: tool/sandbox', '  "OpenSysML":\n    kind: tool/sandbox\n    tier: low',
-     "no fields other than kind and reason"),
-    ("data/assignments.yaml", "    kind: governance/sandbox", "    kind: governance/graduated",
+    ("registry.yaml", '  "OpenSysML":\n    type: tool\n    stage: sandbox', '  "OpenSysML":\n    type: tool\n    stage: beta',
+     "OpenSysML: type 'tool' and stage 'beta' name no kind"),
+    ("registry.yaml", '  "OpenSysML":\n    type: tool\n    stage: sandbox',
+     '  "OpenSysML":\n    type: tool\n    stage: sandbox\n    tier: low', "needs type and stage, or a reason alone"),
+    ("data/assignments.yaml", "    type: governance\n    stage: sandbox", "    type: governance\n    stage: graduated",
      "repo-registry: assigned governance/graduated"),
     ("data/policies/codeowners.yaml", "\nsop:", "\nsop_moved:", "data/policies"),
     ("data/maintainers.yaml", "  rkarban:", "  rkarban!:", "is not a GitHub login"),
@@ -94,7 +94,7 @@ class InvalidTests(unittest.TestCase):
             run = subprocess.run([sys.executable, "scripts/validate.py", "--no-replay"], cwd=tmp, capture_output=True,
                                  text=True)
             self.assertNotEqual(run.returncode, 0)
-            self.assertIn("tool/beta", run.stderr)
+            self.assertIn("stage 'beta'", run.stderr)
 
     def test_R3_hand_edit_to_a_generated_file_fails(self):
         """R-3: a hand edit to a generated file fails the replay."""
@@ -110,8 +110,8 @@ class ComplianceTests(unittest.TestCase):
         with copy_repo() as tmp:
             report = lambda: yaml.safe_load((pathlib.Path(tmp) / "data/reports/license-report.yaml").read_text())  # noqa: E731
             self.assertEqual(report()["repos"]["arch_model"]["status"], "green")
-            edit(tmp, "registry.yaml", '  "arch_model":\n    kind: media/incubating',
-                 '  "arch_model":\n    kind: governance/sandbox')
+            edit(tmp, "registry.yaml", '  "arch_model":\n    type: media\n    stage: incubating',
+                 '  "arch_model":\n    type: governance\n    stage: sandbox')
             regenerate(tmp, "licenses.py", "pilot.py", "briefing.py")
             self.assertEqual(report()["repos"]["arch_model"]["status"], "red")
             self.assertEqual(validate.check(pathlib.Path(tmp)), [])
@@ -120,8 +120,8 @@ class ComplianceTests(unittest.TestCase):
     def test_R2_kind_change_without_regenerating_names_the_files(self):
         """R-2, R-3: a kind change whose derived files weren't regenerated fails, and says which files to regenerate."""
         with copy_repo() as tmp:
-            edit(tmp, "registry.yaml", '  "arch_model":\n    kind: media/incubating',
-                 '  "arch_model":\n    kind: tool/sandbox')
+            edit(tmp, "registry.yaml", '  "arch_model":\n    type: media\n    stage: incubating',
+                 '  "arch_model":\n    type: tool\n    stage: sandbox')
             self.assertEqual(validate.check(pathlib.Path(tmp)), [])
             stale = {p.split(":")[0] for p in validate.replay(pathlib.Path(tmp))}
             self.assertIn("data/reports/license-report.yaml", stale)
