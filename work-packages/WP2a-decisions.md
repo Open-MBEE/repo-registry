@@ -32,3 +32,9 @@ mzargham's.
 ## Summary
 
 The open list is empty: 3 decided, 0 deferred.
+
+# Acceptance review (WP2a-review.md)
+
+## G-1 — Three SOP items
+
+- **Answer (mzargham, typed by agent):** "Fix all three"
