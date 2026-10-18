@@ -53,16 +53,18 @@ def select(rule, repos, registry, kinds, report, usage):
                 return cat["id"]
         return None
 
-    for name in rule["must_include"]:
+    for name in rule["must_include"] + rule.get("self_registered", []):
         if name not in attrs:
             raise SystemExit(f"must-include {name} is not in registry.yaml")
-        chosen[name] = {"category": category_of(attrs[name]) or "must-include", "why": "must-include (supervisor)"}
+        why = ("registers itself (X-9)" if name in rule.get("self_registered", []) else "must-include (supervisor)")
+        chosen[name] = {"category": category_of(attrs[name]) or "must-include", "why": why}
     for cat in rule["categories"]:
         have = sum(1 for c in chosen.values() if c["category"] == cat["id"])
         candidates = sorted((n for n, a in attrs.items() if n not in chosen and evaluate(cat["where"], a, {})),
                             key=lambda n: (-attrs[n][cat["sort_by"]], n.lower()))
         for name in candidates[: max(0, cat["quota"] - have)]:
-            chosen[name] = {"category": cat["id"], "why": f"{cat['id']}: {cat['meaning'].split('.')[0].lower()}"}
+            first = " ".join(cat["meaning"].split()).split(". ")[0].rstrip(".")
+            chosen[name] = {"category": cat["id"], "why": f"{cat['id']}: {first[0].lower() + first[1:]}"}
     return chosen, attrs
 
 

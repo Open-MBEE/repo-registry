@@ -1,7 +1,8 @@
 # repo-registry
 
-> **Status: DRAFT design.** Nothing here is in effect yet. This repository currently holds only the
-> design, and the design is still being agreed. See [Roadmap](docs/roadmap.md).
+> **Status: PROVISIONAL.** Nothing here is in effect yet. This repository holds the design and provisional data
+> (kinds, policies with their SOPs, a proposed pilot), plus the scripts and tests that check them, all waiting for
+> the OpenMBEE maintainers' approval. Start with [docs/current-state.md](docs/current-state.md).
 
 `repo-registry` keeps one record of every repository in the
 [Open-MBEE](https://github.com/Open-MBEE) GitHub organization. For each one it records what kind of
@@ -10,17 +11,17 @@ whether each repository follows those rules, and it tells the right people when 
 
 ## Why it exists
 
-- **To help people find their way.** OpenMBEE has a lot of repositories. Some are under active
-  development, some are well maintained and trusted, some are experiments, and some are kept only for
-  history. Newcomers, contributors and our community manager need to see which is which at a glance.
+- **To help people find their way.** OpenMBEE has a lot of repositories. Some are experiments (Sandbox), some
+  are established and versioned (Incubating), some are mature and widely relied on (Graduated), and some are kept
+  only for history (Archived). Newcomers, contributors and our community manager need to see which is which at a glance.
 - **To show that we follow our own rules.** Many organizations that use OpenMBEE work in regulated
   industries. They need to see that who may change what, and who approves a release, follow written
   rules. We aim to line up with CISA's guidance and NIST's Risk Management Framework (see
   [The guidance we follow](#the-guidance-we-follow)).
-- **To add friction only where it is needed, and to be clear about it.** Tools get the strictest rules. Media
-  (the website, the wiki, educational material) and research get lighter ones, so they stay easy to
-  contribute to. For every repository you can see which controls apply, which don't, and whether the
-  ones that apply are really in effect.
+- **To add friction only where it is needed, and to be clear about it.** Graduated tools and the governance of
+  the organization get the strictest rules. Sandbox tools, media (the website, the wiki, educational material) and
+  research get lighter ones, so they stay easy to contribute to. For every repository you can see which controls
+  apply, which don't, and whether the ones that apply are really in effect.
 
 ## The guidance we follow
 
@@ -48,10 +49,17 @@ It does this through **minimum viable policy making and controls**:
 
 ## What it is, and what it is not
 
-**It is** a small, predictable program plus the rules it applies, all kept in this repository. It
-runs in GitHub Actions. It looks at the repositories, reads the decisions people have recorded, works
-out which kind of repository each one is, checks the rules, and opens GitHub issues when something
-needs doing.
+**It is** a small, predictable program plus the rules it applies, all kept in this repository. It looks at the
+repositories, reads the decisions people have recorded, works out which kind of repository each one is, checks the
+rules, and says what needs doing. It is meant to run in GitHub Actions and open GitHub issues. For now (R1) it runs
+read-only on stored snapshots, and its issue texts are local files that are not posted.
+
+How it decides which rules apply: measurements of a repository, and attestations by its code owners, give it three
+attributes: its **type** (tool, media, research or governance), its **lifecycle stage** (Sandbox, Incubating,
+Graduated or Archived) and its **tier** (high, medium, low or none, set by type and stage). Each policy says which
+of those it applies to, so the three together decide which policies are in effect. A **kind** is a named
+combination of the three, such as tool/incubating. In short: repo → kind → tier → policies (a summary only, since a
+policy can attach to the type or stage as well as the tier).
 
 **It is not:**
 - an AI agent. No language model takes part in any decision.
@@ -73,7 +81,8 @@ Use the **wiki of this repository**. It is generated automatically and never edi
 - an **index page** that lists the highlighted repositories first (incubating or graduated), then every
   repository with its kind and its CODEOWNERS;
 - **one page per kind of repository**, which says what puts a repository in that kind and which tier it is in;
-- **one page per tier**, which says which policies are in effect for it and which deliberately aren't;
+- **one page per tier**, which says which kinds are in it (policies can attach to type, stage or tier, so the kind
+  page is where to see every policy in effect for a repository);
 - **one page per policy**, which holds the policy and its standard operating procedure;
 - **views of the registry by kind, by tier and by policy**. Each repository is shown with a red, yellow or green
   status (out of compliance, can't tell, in compliance), a link to the repository, and a link to its open issues
@@ -86,26 +95,29 @@ issue there. The issue says what to do, why (which rule, and what was seen), and
 
 - If it asks you to **change something** (for example, add a `SECURITY.md` or turn on required
   reviews), make the change in your repository and close the issue. The next check confirms it.
-- If it asks you a **question** (a fact the system can't see for itself), the issue says exactly where
-  to answer and in what form.
+- If it asks you a **question** (a fact the system can't see for itself), answer it in an attestation block in
+  your repository's `README.md`, committed by a code owner. The policy's SOP shows the form. An attestation is out
+  of date once it is older than your latest release.
 
-For the more strictly overseen kinds of repository, the operators (owner and release officer) must also be
-listed in that repository's CODEOWNERS, so their review is required by GitHub itself.
+A repository's operators **are** its CODEOWNERS. Every repository in a tier that needs an owner (high, medium or
+low) must have a CODEOWNERS file, and only a code owner's attestation counts.
 
 The only thing you ever do in this repository is propose a change to your repository's kind, by a pull
-request that the governors review.
+request that any maintainer may merge.
 
 ### Governor: you set the rules
 
 Governors are the OpenMBEE maintainers. They work **in this repository**:
 - Changes to the kinds of repository, the rules, which kind each repository is, accepted exceptions,
-  and the program itself all go through pull requests here.
+  and the program itself all go through pull requests here. A change of a repository's kind is merged by any
+  maintainer. Changes to the list of maintainers or their powers, and accepted exceptions, are merged by an owner
+  (one of the two or three maintainers who hold the organization's owner role).
 - Questions that need a decision (for example, a repository that fits no kind) come up as issues here.
 - Every pull request shows what its change would do to the organization before anyone approves it.
 
 While the design is being built and tested, changes here are deliberately easy to make. From the
 first release that makes this the official source of truth, only the OpenMBEE maintainers (as
-CODEOWNERS) may approve changes, and several approvals are needed.
+CODEOWNERS) may approve changes. How many approvals are needed is not decided yet.
 
 ## Expect a lot of open items at first
 
@@ -115,8 +127,9 @@ and has a clear next step.
 
 ## Roadmap in brief
 
-1. **Demonstrate:** run on a made-up example organization, so the maintainers can see what proposed
-   rules would do and agree on them.
+1. **Demonstrate:** run read-only on a pilot of real OpenMBEE repositories (32 proposed), so the maintainers can
+   see what the proposed rules would do. It ends with five maintainer approvals: the taxonomy, the policies, the
+   pilot subset, each pilot repository's kind, and the named maintainers.
 2. **Switch on and calibrate:** run against the real organization, marked "calibrating, not yet the
    source of truth," and fix what it gets wrong.
 3. **Make it official:** once ratified, the first release makes it the source of truth, and its own
@@ -126,7 +139,18 @@ and has a clear next step.
 
 Details: [docs/roadmap.md](docs/roadmap.md).
 
-## Design documents
+## Where to read more
+
+- [Current state](docs/current-state.md): **the place to start.** What is decided, where it is recorded, and what
+  is next
+- [Status](docs/status.md): where the work packages stand
+- [Policy applicability](docs/policy-applicability.md): which policies are in effect for each kind, with links to
+  each policy's SOP
+- [Pilot briefing](docs/pilot-briefing.md): the proposed pilot repositories and their kinds
+
+The scope of record is [WP0](work-packages/WP0-scope-of-work.md) and the later work-package scopes and decision
+records in [work-packages/](work-packages/). The early design documents below are DRAFT inputs; where they disagree
+with those records, the records win.
 
 - [Design overview](docs/design.md): architecture, roles, decisions, evidence
 - [Roadmap](docs/roadmap.md)

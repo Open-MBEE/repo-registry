@@ -1,7 +1,8 @@
 # Lifecycle stages: adopting the CNCF and OpenSSF model
 
-> **PROVISIONAL.** It goes into WP1 through amendment 2, which needs the supervisor's approval. It was written from
-> the source documents listed below, not from memory.
+> **PROVISIONAL** until the maintainers approve the taxonomy (WP0, maintainer approval 1). It went into WP1 through
+> amendment 2, approved by the supervisor (3edae32; [WP1-amendment-2.md](../work-packages/WP1-amendment-2.md)). It
+> was written from the source documents listed below, not from memory.
 
 ## Sources
 
@@ -52,16 +53,24 @@ follows paraphrases them. See the sources for the exact wording.
 
 | Our earlier lifecycle | Adopted stage | Recommendation rule (guidance only; maintainers assign) |
 |---|---|---|
-| experimental (research; tools with no release; 0.x tools) | **Sandbox** | Not archived, and no semver release at or above 1.0.0 (for tools). Research and media with no other evidence |
-| active development / maintained (1.0 or later tools) | **Incubating** | Not archived, and a tool with a semver release at 1.0.0 or later |
+| experimental (research; tools with no release; 0.x tools) | **Sandbox** | Not archived, and no semver release at or above 1.0.0 (for tools). Live research. Never recommended for media (assigned only) |
+| active development / maintained (1.0 or later tools) | **Incubating** | Not archived, and a tool with a semver release at 1.0.0 or later. Live media |
 | — | **Graduated** | Never recommended. The maintainers assign it on adoption and governance evidence |
 | archived | **Archived** | Archived on GitHub |
 
-The `unreleased` departure goes away: tools with no release are Sandbox. Media keeps the activity guide, Sandbox
-versus Incubating, because media has no versions.
+The `unreleased` departure goes away: tools with no release are Sandbox. Media has no versions, so there is no
+activity rule for it: live media is recommended Incubating, and media/sandbox is assigned only. Research is
+recommended Sandbox; research/incubating and research/graduated are assigned only (WP1 amendment 2, Agent's
+defaults).
 
-## Decisions this map needs (not settled here)
+## Decisions on this map (settled in WP1 amendment 2)
 
-- **Tier for tool/sandbox.** Sandbox now holds both tools with no release (low before) and 0.x tools (medium before).
-  One kind has one tier.
-- **Tier for tool/incubating.** It holds every 1.0 tool (high before). Graduated tools stay high.
+- **Tier for tool/sandbox: low.** Sandbox holds both tools with no release (low before) and 0.x tools (medium
+  before), and one kind has one tier. The supervisor chose low.
+- **Tier for tool/incubating: medium.** It holds every tool at 1.0 or later (high before). The supervisor chose
+  medium. Graduated tools stay high.
+- **Media and research (Agent's defaults, approved).** Live media is recommended Incubating (medium); media tops out
+  at medium. Live research is recommended Sandbox, and every research kind is low.
+
+The records are in [WP1-amendment-2.md](../work-packages/WP1-amendment-2.md); the tiers are in
+[kinds.yaml](../data/taxonomy/kinds.yaml).

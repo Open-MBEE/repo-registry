@@ -210,7 +210,7 @@ omitted:
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:
   - when: {signal: fork}
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
   - when: {all: [{signal: media_words}, {signal: research_words}]}
     reason: Its name or description reads as both media and research.
   - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}

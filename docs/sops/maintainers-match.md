@@ -8,7 +8,7 @@ The named maintainers (data/maintainers.yaml) are exactly this repository's code
 
 ## Set up
 
-1. Keep data/maintainers.yaml up to date through pull requests to this repository, which the maintainers merge.
+1. Keep data/maintainers.yaml up to date through pull requests to this repository, which an owner merges.
 2. Make this repository's CODEOWNERS list the same people.
 3. Make sure every owner of the organization is a named maintainer. Owners are only two or three of them (see org-few-owners).
 4. Declare any other admin powers under `other_powers` in data/maintainers.yaml, by a pull request that an owner merges (see below).

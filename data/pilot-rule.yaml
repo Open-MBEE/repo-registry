@@ -9,9 +9,11 @@
 status: provisional
 provisional_until: "WP0 maintainer approval 3: the initial subset of repos in the registry"
 
-# Supervisor's must-includes (WP4 OD1). repo-registry registers itself (WP0 X-9), though it isn't in the org yet.
+# Supervisor's must-includes (WP4 OD1).
 must_include: [sysml-toolkit, OpenSysML, flexo-mms-layer1-service, flexo-mms-deployment, flexo-mms.openmbee.org,
-               flexo-mms-sysmlv2, repo-registry]
+               flexo-mms-sysmlv2]
+# This repository registers itself (design.md X-9), though it isn't in the org yet. Added by the agent, not the supervisor.
+self_registered: [repo-registry]
 
 # "Heavily used" (WP4 default): release downloads, clone visitors where readable (push access, last 14 days), stars
 # and forks. An unreadable clone count adds nothing; it is never treated as zero use in the briefing.

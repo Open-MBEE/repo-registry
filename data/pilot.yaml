@@ -11,23 +11,28 @@ repos:
   exec-cameo-mdk:
     kind: tool/incubating
     category: tools-heavily-used
-    why: 'tools-heavily-used: tools at 1'
+    why: 'tools-heavily-used: tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least
+      20 clone visitors in 14 days), ranked by use'
   exec-mdk-systems-reasoner:
     kind: tool/incubating
     category: tools-heavily-used
-    why: 'tools-heavily-used: tools at 1'
+    why: 'tools-heavily-used: tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least
+      20 clone visitors in 14 days), ranked by use'
   exec-mms:
     kind: tool/incubating
     category: tools-heavily-used
-    why: 'tools-heavily-used: tools at 1'
+    why: 'tools-heavily-used: tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least
+      20 clone visitors in 14 days), ranked by use'
   exec-mmsri:
     kind: tool/incubating
     category: tools-heavily-used
-    why: 'tools-heavily-used: tools at 1'
+    why: 'tools-heavily-used: tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least
+      20 clone visitors in 14 days), ranked by use'
   exec-ve:
     kind: tool/incubating
     category: tools-heavily-used
-    why: 'tools-heavily-used: tools at 1'
+    why: 'tools-heavily-used: tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least
+      20 clone visitors in 14 days), ranked by use'
   flexo-conflict-resolution-policy-research:
     kind: research/sandbox
     category: research
@@ -55,7 +60,7 @@ repos:
   K:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+    why: 'should-be-archived: live repositories with no changes in a year (WP1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   lunar-lander-simulation:
     kind: research/sandbox
@@ -64,16 +69,16 @@ repos:
   mcf:
     kind: tool/incubating
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+    why: 'should-be-archived: live repositories with no changes in a year (WP1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   mtip-cameo:
     kind: tool/incubating
     category: tools-actively-developed
-    why: 'tools-actively-developed: tools changed in the last three months, including busy tools still below 1'
+    why: 'tools-actively-developed: tools changed in the last three months, including busy tools still below 1.0'
   mtip-sparx:
     kind: tool/incubating
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+    why: 'should-be-archived: live repositories with no changes in a year (WP1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   open-mbee.github.io:
     kind: media/incubating
@@ -82,7 +87,7 @@ repos:
   openapi-graph-extractor:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+    why: 'should-be-archived: live repositories with no changes in a year (WP1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   openmbee-graphic-assets:
     kind: media/incubating
@@ -99,11 +104,11 @@ repos:
   repo-registry:
     kind: governance/sandbox
     category: must-include
-    why: must-include (supervisor)
+    why: registers itself (X-9)
   staged-recipes-opensysml:
     kind: unclassified
     category: forks
-    why: 'forks: forks related to sysml, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
+    why: 'forks: forks related to SysML, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
       for forks'
   sysml-toolkit:
     kind: tool/sandbox
@@ -112,16 +117,16 @@ repos:
   sysmlv2-python-client:
     kind: tool/sandbox
     category: tools-actively-developed
-    why: 'tools-actively-developed: tools changed in the last three months, including busy tools still below 1'
+    why: 'tools-actively-developed: tools changed in the last three months, including busy tools still below 1.0'
   sysmlv2-rdf-ontology:
     kind: unclassified
     category: forks
-    why: 'forks: forks related to sysml, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
+    why: 'forks: forks related to SysML, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
       for forks'
   sysmlv2-web-modeler:
     kind: tool/sandbox
     category: tools-actively-developed
-    why: 'tools-actively-developed: tools changed in the last three months, including busy tools still below 1'
+    why: 'tools-actively-developed: tools changed in the last three months, including busy tools still below 1.0'
   TMT-SysML-Model:
     kind: media/incubating
     category: media
@@ -133,10 +138,10 @@ repos:
   util:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+    why: 'should-be-archived: live repositories with no changes in a year (WP1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   ve-confluence:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+    why: 'should-be-archived: live repositories with no changes in a year (WP1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'

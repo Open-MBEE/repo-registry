@@ -22,9 +22,10 @@
 ## How maintainers are added and removed
 
 5. **Adding:** any maintainer proposes a new maintainer by a pull request to `data/maintainers.yaml` that also updates
-   CODEOWNERS. An owner approves and merges it, and so does any change to a maintainer's powers. Once this registry
-   becomes the official source of truth (its first official release), GitHub enforces that approval through
-   code-owner review.
+   CODEOWNERS. An owner approves and merges it, and so does any change to a maintainer's powers (WP4b OD3). Once
+   this registry becomes the official source of truth (its first official release), GitHub's code-owner review
+   requires a maintainer's approval. Code-owner review can't tell an owner from another maintainer, so the owners
+   keep the owner-merges rule themselves; GitHub doesn't enforce it.
 6. **Stepping down:** a maintainer may step down at any time, by the same kind of pull request, and becomes emeritus.
    Emeritus maintainers are thanked in the list but hold no powers.
 7. **Inactivity:** long inactivity is a reason to *ask* a maintainer whether they want to continue, never to remove

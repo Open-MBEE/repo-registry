@@ -83,7 +83,8 @@ def main():
                 "none (forks have no kind)"
             l = lic.get(n)
             licence = (f"{l['license'] or 'none'} ({l['status']})" if l else "not covered")
-            must = " (must-include)" if pilot[n]["why"].startswith("must-include") else ""
+            must = (" (must-include)" if pilot[n]["why"].startswith("must-include")
+                    else " (registers itself)" if pilot[n]["why"].startswith("registers itself") else "")
             L.append(f"| `{n}`{must} | {kind} | {tier} | {pol} | {licence} | {use(n)} |")
         L.append("")
     kinds_count = collections.Counter(p["kind"] for p in pilot.values())
