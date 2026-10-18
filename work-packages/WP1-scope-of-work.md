@@ -18,22 +18,31 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
 
 ### Direction decided while scoping
 
+- **Lifecycle stages are adopted, not invented (amended A4).** The lifecycle is the CNCF and OpenSSF project-lifecycle
+  stage set: Sandbox, Incubating, Graduated, Archived. The map from their documents is in
+  [lifecycle-stage-map.md](../docs/lifecycle-stage-map.md). This replaces experimental, active development, maintained
+  and archived, and the `unreleased` departure. A stage is a signal of maturity. The 1.0.0 seam is the step from
+  Sandbox to Incubating, following semantic versioning. Graduated is never recommended by rule: the maintainers assign
+  it on evidence of adoption and governance. Maintenance duties attach to stages as policies (WP2, following the
+  OpenSSF security baseline by stage).
 - **Starting point for the kinds: type × lifecycle.** Kinds are trending toward the cross product of a type (tool,
-  media, research, and governance, *amended A2*) and a lifecycle (experimental, active development, maintained, archived), with archived as the
+  media, research, and governance, *amended A2*) and a lifecycle, with archived as the
   terminal state. That gives 12 kinds. It is not a final decision, but it roughly matches the intuition in the Slack
   post, and it should give an interpretable mapping to tiered policy sets that is simple for a person to follow. The
   taxonomy may change in the future.
 - **Kind and tier stay separate concepts.** A repo has a kind. A kind maps to a tier. A tier maps to policies. Nothing
   skips a link in that chain. This factoring keeps policy making legible and the code simple.
-- **Fixed parts of the kind → tier map.** Tools in active development or maintained map to **high**. Anything archived
+- **Fixed parts of the kind → tier map.** *(Amended A4.)* tool/graduated → **high**, tool/incubating → **medium**,
+  tool/sandbox → **low**. Anything archived
   maps to **none**: it is read-only, so it should be inert. Every governance kind maps to high: `repo-registry` is
-  governance/experimental, and the administration of the org itself is governance/maintained (carried to WP3).
+  governance/sandbox, and the administration of the org itself is governance/graduated (carried to WP3).
   Governance kinds are assigned, not recommended, and only these two are needed. Any other governance kind is omitted,
   with that reason. *(Amended, A2.)* Everything else maps to **low** or **medium**, as
   sparsely as possible. WP1 drafts which.
 
-- **The `0.x` → `1.0.0` seam is the step from experimental to active development.** A tool with only `0.x` releases
-  is an experimental tool. At `1.0.0` it becomes a tool in active development, a kind that maps to the high tier. One tier per kind
+- **The `0.x` → `1.0.0` seam is the step from Sandbox to Incubating** *(amended A4; it was experimental → active
+  development, high)*. A tool with no release, or only `0.x` releases, is a sandbox tool. At `1.0.0` it becomes an
+  incubating tool, a kind that maps to the medium tier. One tier per kind
   still holds (WP0 R-17), so reaching `1.0.0` is a change of kind. The system recommends that change, and it lands
   through the usual governed kind-change PR *(default)*.
 - **Provisional data, clearly marked.** Our approach needs data before the maintainers have approved it. So we always
@@ -45,8 +54,8 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
   Other policies, and the `1.0.0` rule above, depend on it to be checkable.
 - **Recommendations are guidance; governors assign.** The recommendation rules, activity included, are guidance for
   how governors set a repo's kind. For example, OpenSysML and sysml-toolkit are busy but still `0.x`, so they stay
-  experimental. That keeps their rapid development unblocked. When they cross `1.0.0`, they move to active
-  development and their controls tighten. *(Amended, A3.)* WP2 must define it. WP1 only reads versions from the snapshot. A tool can be in the low tier, or archived,
+  in Sandbox. That keeps their rapid development unblocked. When they cross `1.0.0`, they move to
+  Incubating and their controls tighten. *(Amended, A3.)* WP2 must define it. WP1 only reads versions from the snapshot. A tool can be in the low tier, or archived,
   without semantic versioning, and media and research aren't assumed to need it.
 
 ## Goals
@@ -78,7 +87,7 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
 | ID | Deliverable | Serves |
 |---|---|---|
 | D-1 | The inventory snapshot: a dated, read-only snapshot of all of the org's public repos (private repos are left out entirely, recorded only as a count), committed under `data/snapshots/` *(default)*, together with the `gh` script that produced it | G1 |
-| D-2 | The kinds: for each kind, its name, its plain-language meaning, its recommendation rule over snapshot attributes, and its tier. It covers forks, archived repos, `repo-registry` itself (governance/experimental) and the org's administration (governance/maintained). It starts from type × lifecycle (12 kinds) and states the reason for any departure *(default)*. The `0.x` → `1.0.0` seam separates experimental tools from tools in active development | G2, G3 |
+| D-2 | The kinds: for each kind, its name, its plain-language meaning, its recommendation rule over snapshot attributes, and its tier. It covers forks, archived repos, `repo-registry` itself (governance/sandbox) and the org's administration (governance/graduated). It starts from type × lifecycle (the adopted stages, amended A4) and states the reason for any departure *(default)*. The `0.x` → `1.0.0` seam separates sandbox tools from incubating tools | G2, G3 |
 | D-3 | The tiers: the four tiers, with WP0's meanings, as data the kinds refer to | G3 |
 | D-4 | The canonical kind list format: a schema, the meta-rules it must satisfy, and a few example entries. YAML is the starting point (WP0), not a decision | G4 |
 | D-5 | The provisional kind list: every repo in the snapshot with its recommended kind (or unclassified, with a reason), in the D-4 format, marked provisional throughout and naming the maintainer approval that would lift that mark | G2, G4 |
@@ -89,13 +98,13 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
 |---|---|---|
 | R-1 | The snapshot is read-only. The script uses only `gh` reads (WP0 R-8, R-9). Private repos are left out, recorded only as a count. | Code review of the script; no private repo's name appears in any committed file |
 | R-2 | The snapshot is replayable: the rules applied to the stored snapshot give the same recommendations every time (WP0 R-2). | Run twice; diff |
-| R-3 | The kinds start from type × lifecycle (tool, media, research, governance × experimental, active development, maintained, archived). Any departure from it, a kind added or a kind omitted, is stated with a reason *(default)*. Each kind's meaning fits on one screen. | Compare D-2 with the cross product; every difference has a reason; read |
+| R-3 | The kinds start from type × lifecycle (tool, media, research, governance × Sandbox, Incubating, Graduated, Archived; amended A4). Any departure from it, a kind added or a kind omitted, is stated with a reason *(default)*. Each kind's meaning fits on one screen. | Compare D-2 with the cross product; every difference has a reason; read |
 | R-4 | Every kind's meaning is plain language (WP0 R-4). | Cold read by a non-specialist |
 | R-5 | The recommendation rules are deterministic, involve no language model, and are mutually exclusive: on the snapshot, no repo is recommended two kinds (TX-3). A repo that fits none is shown as unclassified, not forced into a kind (TX-4). | Apply the rules to the snapshot; no repo has two kinds; unclassified repos are listed with a reason |
-| R-6 | Every kind maps to exactly one tier (WP0 R-17). Tools in active development or maintained map to high, archived kinds map to none, every governance kind maps to high (`repo-registry` is governance/experimental), and every other kind maps to low or medium. Every tier is used by at least one kind *(default)*. | Inspect the map; no data file or text gives a repo a tier directly |
+| R-6 | Every kind maps to exactly one tier (WP0 R-17). tool/graduated maps to high, tool/incubating to medium, tool/sandbox to low, archived kinds to none, every governance kind to high (`repo-registry` is governance/sandbox) *(amended A4)*, and every other kind maps to low or medium. Every tier is used by at least one kind *(default)*. | Inspect the map; no data file or text gives a repo a tier directly |
 | R-7 | Kinds, tiers and rules are data, not code: the rule engine names no kind (WP0 R-6, FM-2). | Swap in a toy set of kinds; zero code change |
 | R-8 | In the kind list format, changing a repo's kind is a one-entry edit (WP0 R-12), and the format's meta-rules are stated precisely enough for WP5 to enforce them. | A sample reclassification diff touches one entry; the meta-rules read as checkable statements |
-| R-9 | The release-maturity rule applies only to tools with semantic-versioned releases: below `1.0.0` recommends experimental, and `1.0.0` or later recommends active development (or maintained, by the lifecycle rule). A tool without semantic versioning can still be recommended a low-tier kind, or archived. Semantic versioning is not assumed for media or research kinds. | On the snapshot, sample tools on each side of `1.0.0`, a tool without semver, and an archived tool get the expected result |
+| R-9 | The release-maturity rule applies only to tools with semantic-versioned releases: below `1.0.0`, or no release, recommends Sandbox, and `1.0.0` or later recommends Incubating. Graduated is never recommended by rule *(amended A4)*. Semantic versioning is not assumed for media or research kinds. | On the snapshot, sample tools on each side of `1.0.0`, a tool without semver, and an archived tool get the expected result |
 | R-10 | Provisional data can't be mistaken for approved data. The provisional kind list is marked provisional in a way the program can check, and it names the maintainer approval that lifts the mark *(default: a file-level field naming the approval, plus the word PROVISIONAL in its header)*. | Inspect the file; the D-4 meta-rules include the provisional mark |
 
 ## Definition of good
