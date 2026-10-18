@@ -69,7 +69,12 @@ kinds:
   - static-analysis
   - vulnerability-remediation
   - workflow-least-privilege
-  governance/graduated: []
+  governance/graduated:
+  - governance-roles-named
+  - maintainers-match
+  - org-base-permission
+  - org-few-owners
+  - org-two-factor
 policies:
   archive-notice:
   - tool/archived
@@ -99,10 +104,20 @@ policies:
   - tool/incubating
   - tool/graduated
   - governance/sandbox
+  governance-roles-named:
+  - governance/graduated
   history-protection:
   - tool/incubating
   - tool/graduated
   - governance/sandbox
+  maintainers-match:
+  - governance/graduated
+  org-base-permission:
+  - governance/graduated
+  org-few-owners:
+  - governance/graduated
+  org-two-factor:
+  - governance/graduated
   project-files:
   - tool/sandbox
   - tool/incubating

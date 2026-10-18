@@ -65,3 +65,27 @@ The open list is empty: 3 decided, 0 deferred, 1 raised.
   publicly named governance-role holders, as a hint only.
 - **Question:** Approve the new default (last public activity, recorded as a hint)?
 - **Answer (mzargham, typed by agent):** "Approve"
+
+# During execution
+
+## Chris Delp added *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "you lost chris delp from your list. he was in your original pull and he
+  was the cofounder with robert"
+- **Agent's check:** `aftimg` is Chris Delp (public profile name "Chris Delp", linking his Caltech educator page). He
+  is one of the two org owners with public membership. The agent had not checked the public owners' profile names.
+- **Outcome:** `aftimg` was added to `data/maintainers.yaml` and the proposed CODEOWNERS (4 of the target 5).
+
+## Owners are a subset of the maintainers (agent's reading, flagged for acceptance)
+
+- OpenSSF baseline TI-3 asks for two or three org owners. The supervisor set a target of five maintainers. Both hold if
+  every org owner is a named maintainer but not every maintainer is an owner. The match check and the maintainer
+  policy use that reading. Flagged for the supervisor at the acceptance review.
+
+## Cross-check of the maintainer policy *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "make sure that we cross check our maintainer policies and priviledges
+  with the openSSF framework backbone and other sources were using as out references"
+- **Outcome:** `docs/maintainer-policy.md` ends with a cross-check of every provision against OpenSSF (lifecycle at
+  d019efe, baseline at 098faba), CNCF (lifecycle at d815451, graduation criteria at 6119a69), CISA, NIST SP 800-53 and
+  ISO/IEC/IEEE 12207 clauses.

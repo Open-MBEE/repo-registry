@@ -1,0 +1,26 @@
+# PROVISIONAL until the maintainers approve the named maintainers (WP0, maintainer approval 5). WP3 D-3.
+#
+# Provenance: drawn from a mix of current public GitHub data and the supervisor's experience as part of the org's
+# current leadership (WP3 decisions, "Provenance of the list"). Neither is verified. This whole list is provisional.
+#
+# Who may be named here (WP3 OD1, OD2, R-8): people whose Open-MBEE membership is public, or people the supervisor
+# names as already publicly known as maintainers elsewhere. No concealed org role is ever revealed: for a listed
+# person whose membership isn't public, the match check reports "membership not public" (yellow), never their role.
+status: provisional
+provisional_until: "WP0 maintainer approval 5: the named maintainers"
+target_size: 5            # supervisor: "5 is a good number"
+
+maintainers:
+  aftimg:
+    name: Chris Delp
+    basis: Co-founder with Robert Karban; an org owner with public membership (supervisor).
+  mzargham:
+    name: Michael Zargham
+    basis: Part of the org's current leadership; liaison with NumFOCUS, the fiscal sponsor (supervisor).
+  rkarban:
+    name: Robert Karban
+    basis: A founder, publicly named as an admin elsewhere (supervisor).
+  HuiJun:
+    name: Jason Han
+    basis: Publicly named as a maintainer elsewhere; release authority for OpenSysML, credentialing under way (supervisor).
+    release_authority: [OpenSysML]

@@ -1,0 +1,129 @@
+{
+  "app_installations_count": {
+    "readable": false,
+    "reason": "[{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization\",\"status\":\"404\"}]",
+    "value": null
+  },
+  "credential": {
+    "login": "mzargham",
+    "org_role": "member"
+  },
+  "listed_maintainers": {
+    "HuiJun": {
+      "last_public_commit_in_org": "2026-10-17",
+      "membership_public": false
+    },
+    "aftimg": {
+      "last_public_commit_in_org": "2026-10-03",
+      "membership_public": true
+    },
+    "mzargham": {
+      "last_public_commit_in_org": "2026-10-05",
+      "membership_public": true
+    },
+    "rkarban": {
+      "last_public_commit_in_org": null,
+      "membership_public": false
+    }
+  },
+  "org": "Open-MBEE",
+  "org_rulesets_count": {
+    "readable": false,
+    "reason": "[{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets\",\"status\":\"404\"}]",
+    "value": null
+  },
+  "organization_roles_count": {
+    "readable": false,
+    "reason": "[{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization\",\"status\":\"404\"}]",
+    "value": null
+  },
+  "outside_collaborators_count": {
+    "readable": false,
+    "reason": "[{\"message\":\"You must be an owner of this organization to list outside collaborators.\",\"documentation_url\":\"https://docs.github.com/rest/orgs/outside-collaborators#list-outside-collaborators-for-an-or",
+    "value": null
+  },
+  "owners": {
+    "readable": true,
+    "value": {
+      "concealed_count": 16,
+      "count": 18,
+      "public_logins": [
+        "ablack-jpl",
+        "aftimg"
+      ]
+    }
+  },
+  "public_members": {
+    "readable": true,
+    "value": [
+      "ablack-jpl",
+      "aftimg",
+      "mzargham",
+      "rororowyourboat",
+      "thomas-bc"
+    ]
+  },
+  "public_owner_activity": {
+    "ablack-jpl": "2017-09-25",
+    "aftimg": "2026-10-03"
+  },
+  "security_configurations_count": {
+    "readable": false,
+    "reason": "[{\"message\":\"You are not authorized to perform this operation.\",\"documentation_url\":\"https://docs.github.com/rest/code-security/configurations#get-code-security-configurations-for-an-organization\",\"st",
+    "value": null
+  },
+  "settings": {
+    "default_repository_permission": {
+      "readable": false,
+      "reason": "not returned to this credential (owner-only, or not set)",
+      "value": null
+    },
+    "members_can_change_repo_visibility": {
+      "readable": true,
+      "value": true
+    },
+    "members_can_create_private_repositories": {
+      "readable": true,
+      "value": true
+    },
+    "members_can_create_public_repositories": {
+      "readable": true,
+      "value": true
+    },
+    "members_can_create_repositories": {
+      "readable": true,
+      "value": true
+    },
+    "members_can_create_teams": {
+      "readable": true,
+      "value": true
+    },
+    "members_can_delete_repositories": {
+      "readable": true,
+      "value": false
+    },
+    "members_can_fork_private_repositories": {
+      "readable": true,
+      "value": false
+    },
+    "members_can_invite_outside_collaborators": {
+      "readable": true,
+      "value": true
+    },
+    "two_factor_requirement_enabled": {
+      "readable": false,
+      "reason": "not returned to this credential (owner-only, or not set)",
+      "value": null
+    },
+    "web_commit_signoff_required": {
+      "readable": true,
+      "value": false
+    }
+  },
+  "taken_at": "2026-10-18T04:33:23+00:00",
+  "teams_count": {
+    "readable": true,
+    "value": 9
+  },
+  "tool": "scripts/org_snapshot.py (gh api GET only)"
+}

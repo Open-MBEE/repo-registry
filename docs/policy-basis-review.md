@@ -80,7 +80,7 @@ example signing, provenance and no built executables in `release-integrity`.
 | Item | Stage | Baseline item (paraphrased) | Adopted by | Or departed because |
 |---|---|---|---|---|
 | SB-1 | sandbox (once) | New projects or components use a memory-safe language (or C/C++ compiler hardening) |  | A language is a design choice for each tool, not a repository setting that GitHub can carry. Most OpenMBEE code is already in memory-safe languages (Java, Kotlin, Python, TypeScript, Go, Rust). Revisit if new C or C++ components appear. |
-| SB-2 | sandbox (once) | Two-factor authentication for interactive repository access |  | Two-factor authentication is an organization-wide setting. It belongs to the org policy's common controls (WP3), not to a per-repository policy. |
+| SB-2 | sandbox (once) | Two-factor authentication for interactive repository access | org-two-factor | (adopted in WP3, as an org-wide common control) |
 | TI-1 | incubating (to-become) | Onboard to OpenSSF Scorecard (Scorecard GitHub Action) |  | Scorecard is OpenSSF's measuring tool. The registry measures the controls we adopted directly, and anyone can run Scorecard against a public repository without the repository adding a workflow. Requiring the Scorecard Action on every repository would add a workflow with extra write permissions and duplicate this registry's job. |
 | TI-2 | incubating (to-become) | No hard-coded active secrets in the repository | secret-protection |  |
 | TI-3 | incubating (to-become) | Credentials have minimal permissions (least privilege, workflow tokens, few owners and admins) | workflow-least-privilege |  |
