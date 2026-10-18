@@ -23,3 +23,19 @@ mzargham's.
 ## Summary
 
 The open list is empty: 2 decided, 0 deferred.
+
+# Acceptance review (WP2-review.md)
+
+## G-1 — R-5 not met (six SOP problems)
+
+- **Answer (mzargham, typed by agent):** "Fix all six"
+
+## G-2 — Observations
+
+- **Answer (mzargham, typed by agent):** "we can tolerate explicit xfail for work forthcoming in later WPs. you should
+  probe the ISO-text more thoroughly"
+- **Follow-up:** Are (a) data/sources/ outside the named deliverables and (b) the 14-day critical-fix deadline
+  accepted as is?
+- **Answer (mzargham, typed by agent):** "Accept a and b"
+- **Outcome:** (c) and (d) are recorded as explicit expected failures (data/expected-gaps.yaml,
+  tests/test_forthcoming.py). (e): R-12 now checks hashed 8-word passages of the whole standard.

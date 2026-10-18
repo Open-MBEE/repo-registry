@@ -4,9 +4,11 @@
 
 High-tier repositories keep a short design document that describes the security controls of what they build, and keep it current.
 
+**Applies to:** tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
-1. Write a short design document (for example `docs/design.md`) that describes the security controls of what the repository builds.
+1. Write a short design document (for example `docs/design.md`) that describes the security controls of what the repository builds: the measures that protect it and its users, such as who can sign in, how data is protected, and how input is checked.
 2. Update it whenever those controls change.
 3. Record the attestation below.
 
@@ -16,7 +18,7 @@ None. This policy is checked by attestation only.
 
 ## Attested checks
 
-- **design-current**: A design document describes the security controls and is updated when they change.
+- **design-current**: A design document describes the security controls (the measures that protect the software and its users, such as who can sign in, how data is protected, and how input is checked) and is updated when they change.
 
 How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
 release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it

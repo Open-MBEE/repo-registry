@@ -27,7 +27,8 @@ checks:
     permission: 'Contents: read'
   attested:
   - id: signed-with-provenance
-    statement: Release artifacts are signed, and SLSA build provenance (Build Level 3) is published with them.
+    statement: 'Release artifacts are signed, and a build record (provenance) is published with them that meets SLSA Build
+      Level 3: built by GitHub Actions on GitHub-hosted runners through a reusable workflow, with GitHub artifact attestations.'
   - id: no-built-executables
     statement: The source repository holds no built executables, except test fixtures that are documented as such.
 cites:

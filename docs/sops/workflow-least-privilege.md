@@ -4,12 +4,14 @@
 
 Tools from version 1.0, and the registry, give their GitHub Actions workflows read-only access by default, and set up workflows following GitHub's hardening guidance.
 
+**Applies to:** tool at incubating, tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Go to Settings, then Actions, then General.
 2. Under Workflow permissions, choose Read repository contents and packages permissions.
 3. In each workflow, give each job only the permissions it needs, using the `permissions:` key.
-4. Follow GitHub's security hardening guide for Actions, then record the attestation below.
+4. Follow GitHub's security hardening guide for Actions (https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), then record the attestation below.
 
 ## Automated checks
 
@@ -19,7 +21,7 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 
 ## Attested checks
 
-- **workflows-hardened**: Workflows follow GitHub's hardening guidance: no untrusted input in run steps, no checkout of untrusted pull request code in privileged triggers, and only the permissions each job needs.
+- **workflows-hardened**: Workflows follow GitHub's security hardening guide for Actions: text that outside contributors control (such as pull request titles) is never run as a command, code from outside contributors' pull requests is never run with write access or secrets, and each job asks only for the permissions it needs.
 
 How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
 release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it

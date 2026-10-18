@@ -4,6 +4,8 @@
 
 Tools from version 1.0, and the registry, run code scanning on every change and fix critical findings promptly.
 
+**Applies to:** tool at incubating, tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Go to Settings, then Advanced Security, and set up Code scanning with the CodeQL default setup (or your own workflow).

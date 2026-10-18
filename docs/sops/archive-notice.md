@@ -4,11 +4,14 @@
 
 Before a repository is archived, its README says that support has ended and points to any known active forks. Repositories archived before this policy existed count as compliant as they are.
 
+**Applies to:** tool at archived, media at archived, research at archived. Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Before archiving, add a note at the top of the README saying that support has ended, with the date, and naming any known active forks.
-2. Then archive the repository (Settings, then General, then Archive this repository).
-3. Repositories archived before this policy existed need nothing more.
+2. In the same commit, add the attestation block below to the end of the README. Once a repository is archived, nobody can commit to it, so this has to come first.
+3. Then archive the repository (Settings, then General, then Archive this repository).
+4. Repositories archived before this policy existed need nothing more.
 
 ## Automated checks
 

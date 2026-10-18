@@ -4,6 +4,8 @@
 
 Tools from version 1.0, and the registry, turn on push protection, so that GitHub blocks a push that contains a password, key or token.
 
+**Applies to:** tool at incubating, tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Go to the repository's Settings, then Advanced Security (or Code security).

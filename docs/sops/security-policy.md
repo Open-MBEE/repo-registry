@@ -4,6 +4,8 @@
 
 Tools from version 1.0, and the registry, publish a security policy that says how to report a vulnerability and who responds, and turn on GitHub's private vulnerability reporting.
 
+**Applies to:** tool at incubating, tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Add `SECURITY.md` (at the root, in `.github/` or in `docs/`) saying how to report a vulnerability and who responds.

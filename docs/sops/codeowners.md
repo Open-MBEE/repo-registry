@@ -4,6 +4,8 @@
 
 Every live repository names the people who look after it, in a CODEOWNERS file. That file is the authoritative list of the repository's operators.
 
+**Applies to:** tool at sandbox, tool at incubating, tool at graduated, media at sandbox, media at incubating, media at graduated, research at sandbox, research at incubating, research at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Create `.github/CODEOWNERS` (or `CODEOWNERS` at the root, or `docs/CODEOWNERS`).

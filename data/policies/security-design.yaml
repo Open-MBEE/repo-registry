@@ -23,7 +23,8 @@ checks:
   automated: []
   attested:
   - id: design-current
-    statement: A design document describes the security controls and is updated when they change.
+    statement: A design document describes the security controls (the measures that protect the software and its users, such
+      as who can sign in, how data is protected, and how input is checked) and is updated when they change.
 cites:
   cisa:
   - CISA-C4-CONFIG

@@ -4,10 +4,12 @@
 
 Tools from version 1.0 number their releases with semantic versioning, so that the version says whether an update is a fix, a feature or a breaking change. Graduated tools also say which releases get fixes, and for how long.
 
+**Applies to:** tool at incubating, tool at graduated. Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Tag each release as `vMAJOR.MINOR.PATCH` (semver.org): raise PATCH for fixes, MINOR for new features, and MAJOR for breaking changes.
-2. For graduated tools, publish a short policy saying which releases are supported and how fixes are backported, then record the attestation below.
+2. For graduated tools, publish a short policy saying which releases are supported and how fixes are backported (copied into those older supported releases), then record the attestation below.
 
 ## Automated checks
 
@@ -17,7 +19,7 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 
 ## Attested checks
 
-- **stable-release-policy**: For graduated tools: a published policy says which releases are supported and how fixes are backported.
+- **stable-release-policy**: For graduated tools: a published policy says which releases are supported, and how fixes are backported (copied into those older supported releases).
 
 How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
 release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it

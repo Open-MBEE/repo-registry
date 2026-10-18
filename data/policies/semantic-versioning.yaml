@@ -25,7 +25,8 @@ checks:
     permission: 'Contents: read'
   attested:
   - id: stable-release-policy
-    statement: 'For graduated tools: a published policy says which releases are supported and how fixes are backported.'
+    statement: 'For graduated tools: a published policy says which releases are supported, and how fixes are backported (copied
+      into those older supported releases).'
 cites:
   cisa:
   - CISA-P-RELEASE-MARK

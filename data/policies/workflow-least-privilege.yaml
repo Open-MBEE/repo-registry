@@ -31,8 +31,9 @@ checks:
     permission: 'Administration: read'
   attested:
   - id: workflows-hardened
-    statement: 'Workflows follow GitHub''s hardening guidance: no untrusted input in run steps, no checkout of untrusted pull
-      request code in privileged triggers, and only the permissions each job needs.'
+    statement: 'Workflows follow GitHub''s security hardening guide for Actions: text that outside contributors control (such
+      as pull request titles) is never run as a command, code from outside contributors'' pull requests is never run with
+      write access or secrets, and each job asks only for the permissions it needs.'
 cites:
   cisa:
   - CISA-P-SSDF

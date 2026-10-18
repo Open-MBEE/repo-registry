@@ -4,6 +4,8 @@
 
 High-tier repositories (graduated tools, and the registry) need at least one approving review from a code owner, and passing checks, before a change is merged to the default branch.
 
+**Applies to:** tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. In the default branch's ruleset (see history-protection), turn on Require a pull request before merging.

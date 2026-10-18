@@ -4,6 +4,8 @@
 
 Tools from version 1.0, media in use, and the registry itself publish a contribution guide that keeps demands on contributors small, says what kinds of contribution are welcome, and asks for tests with code.
 
+**Applies to:** tool at incubating, tool at graduated, media at incubating, media at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+
 ## Set up
 
 1. Add `CONTRIBUTING.md` at the root (or in `.github/`).

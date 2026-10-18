@@ -3,7 +3,10 @@
 Each test names the WP2 requirement it checks (work-packages/WP2-scope-of-work.md).
 """
 import copy
+import gzip
+import hashlib
 import pathlib
+import re
 import subprocess
 import sys
 import tempfile
@@ -104,15 +107,32 @@ class MetaRuleTests(unittest.TestCase):
         self.assertIn("PROVISIONAL", (ROOT / "docs/policy-applicability.md").read_text())
 
     def test_R12_iso_text_not_committed(self):
-        """R-12: ISO/IEC/IEEE 12207 is cited by clause number only; distinctive passages are absent from the repo."""
+        """R-12: ISO/IEC/IEEE 12207 is cited by clause number only, and no 8-word passage of it is in the repo.
+
+        tests/fixtures/iso12207-2026-shingles.txt.gz holds truncated SHA-256 hashes of every 8-word sequence of the
+        standard's text (lower-cased, letters and digits only), built once from the supervisor's licensed copy. It
+        holds no text. Every tracked or untracked text file is hashed the same way and must share no hash with it.
+        """
         for p in real()["policies"].values():
             for clause in p["cites"].get("iso12207") or []:
                 self.assertRegex(str(clause), r"^\d+(\.\d+)*$")
-        probes = ["segmented by stages to facilitate planning", "invites failure",
-                  "A common set of stages for a software system"]
-        out = subprocess.run(["git", "grep", "--untracked", "-n", "-i", "-e", probes[0], "-e", probes[1], "-e", probes[2], "--",
-                              ".", ":!tests/test_wp2.py"], cwd=ROOT, capture_output=True, text=True)
-        self.assertEqual(out.stdout, "")
+        hashes = set(gzip.open(ROOT / "tests/fixtures/iso12207-2026-shingles.txt.gz", "rt").read().split())
+        self.assertGreater(len(hashes), 60000)
+        files = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"], cwd=ROOT,
+                               capture_output=True, text=True).stdout.split()
+        hits = {}
+        for name in files:
+            if name.endswith(".gz"):
+                continue
+            try:
+                words = re.findall(r"[a-z0-9]+", (ROOT / name).read_text(encoding="utf-8").lower())
+            except (UnicodeDecodeError, FileNotFoundError):
+                continue
+            for i in range(len(words) - 7):
+                if hashlib.sha256(" ".join(words[i:i + 8]).encode()).hexdigest()[:16] in hashes:
+                    hits.setdefault(name, 0)
+                    hits[name] += 1
+        self.assertEqual(hits, {})
 
 
 class ApplicabilityTests(unittest.TestCase):

@@ -62,6 +62,7 @@ registry (governance/sandbox) gets 12. The org's administration gets none here, 
 
 ## Checks
 
-`python3 -m unittest discover -s tests` runs 28 checks (16 for WP1, 12 for WP2). All pass. `python3
+`python3 -m unittest discover -s tests` runs 31 checks (16 for WP1, 12 for WP2, and 3 for forthcoming work, 2 of which are expected failures tied to
+`data/expected-gaps.yaml`). All pass. `python3
 scripts/policies.py` re-checks every meta-rule and regenerates the table. Needs a person: R-5, the cold read of the
 SOPs.

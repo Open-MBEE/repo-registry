@@ -34,7 +34,8 @@ checks:
   - id: dependency-policy
     statement: A dependency policy is published (in CONTRIBUTING or its own file) and followed.
   - id: service-pins
-    statement: If the project provides an internet or infrastructure service, its direct dependencies are pinned.
+    statement: 'If the project provides an internet or infrastructure service, its direct dependencies are pinned: each one
+      names an exact version (for example 2.4.1, not 2.x).'
 cites:
   cisa:
   - CISA-P-DEP-SCAN
