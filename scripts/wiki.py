@@ -43,10 +43,19 @@ SOURCES = [
      "read": "ossf/tac commit d019efe", "doc": "docs/lifecycle-stage-map.md"},
     {"id": "cncf-lifecycle", "role": "Secondary", "name": "CNCF project lifecycle (the stages)",
      "read": "cncf/toc commit d815451", "doc": "docs/lifecycle-stage-map.md"},
+    {"id": "dodcio", "short": "DoD CIO OSS memo", "file": "data/sources/dod-cio-oss-memo.yaml", "items": "sections",
+     "role": "Core", "name": "DoD CIO, Software Development and Open Source Software (2022), Attachment 2"},
+    {"id": "ofac", "short": "OFAC sanctions", "file": "data/sources/ofac.yaml", "items": "items", "role": "Secondary",
+     "name": "OFAC sanctions: the SDN list and 31 CFR Chapter V"},
+    {"id": "ssdf", "short": "NIST SP 800-218 (SSDF)", "file": "data/sources/nist-800-218.yaml", "items": "practices",
+     "role": "Secondary", "name": "NIST SP 800-218, the Secure Software Development Framework (SSDF) v1.1"},
+    {"id": "c_scrm", "short": "NIST SP 800-161r1", "file": "data/sources/nist-800-161.yaml", "items": "controls",
+     "role": "Secondary", "name": "NIST SP 800-161 Rev. 1, Cybersecurity Supply Chain Risk Management"},
     {"id": "iso12207", "short": "ISO/IEC/IEEE 12207", "file": "data/sources/iso12207-clauses.yaml", "items": "clauses", "role": "Secondary",
      "name": "ISO/IEC/IEEE 12207:2026, by clause number and title only (no text of the standard is committed)"},
 ]
-ITEM_WORD = {"cisa": "practice", "nist": "control", "openssf": "item", "iso12207": "clause"}
+ITEM_WORD = {"cisa": "practice", "nist": "control", "openssf": "item", "iso12207": "clause", "dodcio": "section",
+             "ofac": "item", "ssdf": "practice", "c_scrm": "control"}
 
 
 def anchor(heading):
@@ -353,7 +362,7 @@ class Pack:
             rule = rule_words(p["applies_if"])
             rows.append(f"| [{cell(p['name'])}](#{anchor(p['name'])}) | {cell(p['meaning'])} | {cell(rule)} | {tiers} |")
             cites = []
-            for s in ("cisa", "nist", "openssf", "iso12207"):
+            for s in ("cisa", "nist", "openssf", "iso12207", "dodcio", "ofac", "ssdf", "c_scrm"):
                 refs = p["cites"].get(s)
                 if isinstance(refs, list) and refs:
                     cites.append(f"- {self.sources[s]['short']}: " + ", ".join(self.cite(s, str(r)) for r in refs))
@@ -407,7 +416,13 @@ class Pack:
                     f"(https://github.com/{head['repo']}/blob/{head['commit']}/{head['path']})")
         if s["id"] == "openssf":
             return f"[{head['repo']} {head['commit']}](https://github.com/{head['repo']}/blob/{head['commit']}/{head['path']})"
-        return f"{head.get('standard')}, edition {head.get('edition')}"
+        if s["id"] == "iso12207":
+            return f"{head.get('standard')}, edition {head.get('edition')}"
+        if s["id"] == "dodcio":
+            return f"[{head['date']}]({head['url']}), cleared {head['cleared']}"
+        if s["id"] == "ofac":
+            return f"{head['regulations']}; [the SDN list]({head['sdn_list'].split(',')[0]})"
+        return f"{head['document']}, {head['date']}, [{head['url'].split('/')[-1]}]({head['url']})"
 
     def source_page(self, sid):
         s, items = self.sources[sid], self.items[sid]
@@ -427,7 +442,7 @@ class Pack:
             L.append(f"| [{ref}](#{anchor(ref)}) | {cell(what)} | {by} |")
         L.append("")
         for ref, row in items.items():
-            pat = re.compile(rf'^  "?{re.escape(ref)}"?:')
+            pat = re.compile(rf"^  [\"']?{re.escape(ref)}[\"']?:")
             line = next(i + 1 for i, ln in enumerate((self.root / s["file"]).read_text().splitlines()) if pat.match(ln))
             L += [f"### {ref}", "", self.describe(sid, row), "", f"Held in: {held_in(s['file'], line)}", ""]
             if ref in adopted:
@@ -447,6 +462,10 @@ class Pack:
             return f"{cell(row['title'])} (stage {row['stage']}, {row['when']})"
         if sid == "nist":
             return cell(row["title"]) + (f" (an enhancement of {row['parent']})" if row.get("parent") else "")
+        if sid in ("dodcio", "ofac", "ssdf", "c_scrm"):  # quoted verbatim (WP5e OD6)
+            where = f"page {row['page']}" if row.get("page") else f"[source]({row['where']})"
+            quote = [f"> {cell(row['text'])}"] + [f">\n> **{t}:** {cell(x)}" for t, x in (row.get("tasks") or {}).items()]
+            return f"**{cell(row['title'])}** ({where}), verbatim:\n\n" + "\n".join(quote)
         return cell(row["title"])
 
     def sidebar(self):

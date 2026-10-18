@@ -17,6 +17,7 @@ sections:
       OSS components. Program managers, in consultation with support engineers, Authorizing Officials, and agency Chief
       Information Officers (CIOs) must consider these challenges when determining suitability of OSS:'
   2.C(1):
+    context: "Context for verified-code-owners: a consumer asks who is contributing to the OSS. Read with 2.C, which the policy cites."
     page: '4'
     title: Long-Term Support
     text: 'Long-Term Support: Because of the wide array of business models for creating and maintaining OSS compared to
@@ -39,6 +40,7 @@ sections:
       should include dynamic code analysis and penetration testing after integration of the updated versions to ensure that
       updates do not expose DoD systems to new vulnerabilities.'
   2.C(5):
+    context: "The consumer-side counterpart of release-integrity, which predates this source; citing it there is a candidate for a later package."
     page: '5'
     title: Component Integrity
     text: 'Component Integrity: Any software project that actively maintains cryptographically protected integrity verification
@@ -56,6 +58,7 @@ sections:
       the OSS project, and what external reviews or audits may be necessary to counteract the potential for malicious interference
       with the project.'
   3.H:
+    context: "Bears on the contributing policy, which predates this source; citing it there is a candidate for a later package."
     page: '8'
     title: 'Use of open source development approach: accepting submissions'
     text: Projects releasing code as open source software to the public or mission partners should publish their intention

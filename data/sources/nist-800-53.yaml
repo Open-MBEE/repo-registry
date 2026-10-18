@@ -86,6 +86,8 @@ controls:
     title: Review of User Privileges
     parent: AC-6
     context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 8: the annual review."
+  PS-3:
+    title: Personnel Screening
   PS-9:
     title: Position Descriptions
     context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 13: credentialed before exercised."
