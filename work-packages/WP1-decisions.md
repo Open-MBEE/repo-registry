@@ -82,3 +82,66 @@ mzargham's.
 ## Summary
 
 The open list is empty: 8 decided, 0 deferred, 2 raised.
+
+# Acceptance review (WP1-review.md)
+
+## G-3 — R-4 not met (plain language)
+
+- **Answer (mzargham, typed by agent):** "Fix before acceptance"
+
+## G-1 — tiers.yaml names a policy (semantic versioning)
+
+- **Answer (mzargham, typed by agent):** "fix before acceptance. semantic versioning policies only apply to tools. this
+  brings into question whether policies can actually be fully specified by tier or whether we need to know whether its
+  research, media or tool in order to uniquely determine which policies apply"
+- **Follow-up:** Whether policies follow from the tier alone, or from the tier plus the type, changes WP0's approved
+  chain. Where should that be decided?
+- **Answer (mzargham, typed by agent):** "the decision i want is that policies can be attached to type, lifecycle or
+  tier (even if tier is derived from type x lifecycle) each of this provides a well defined scope that reduces to this
+  policy applies if predicate that is human interpretable. i am open to some minor redesign to support this change.
+  keeping the top level goal in tact of plan language explainability a minimizing dimensionality of the policy making.
+  its still a small collection of policies, and simple low dimensional rules about which policies are in effect. this
+  is a dimensionality reduction that connects repos (many) to policies (few) according to human interpretable,
+  deterministically replayable rules. we're essentially doing categorical feature engineering so we can get from repos
+  to 3 categorical attributes, then determine which polices are in effect from just those attributes."
+- **Outcome:** Fix: remove the policy statement from tiers.yaml. The chain decision changes the approved WP0 and WP1, so
+  it goes to an amendment (scope-of-work section 6), approved by a new merge.
+
+## G-2 — repo-registry's own kind isn't in the data
+
+- **Answer (mzargham, typed by agent):** "let's create a type governance and the only two things governed as governance
+  (as opposed to tool, research or media) are this repo and the administration of the github org itself. this one is
+  experimental but the governance of the org itself is in maintained (on the lifecycle axis) and anything with
+  governance type is tier high. best practices say the governance level controls need to be as strict or stricter than
+  anything they govern"
+- **Outcome:** Fix, after the amendment: a governance type, with repo-registry as governance/experimental and the
+  org's administration as governance/maintained, every governance kind mapping to high. This changes WP1's type list,
+  so it goes into the same amendment.
+
+## G-4 — Remaining observations and out-of-scope files
+
+- **Answer (mzargham, typed by agent):** "Accept as is"
+
+## 0.x tools in active development *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "active development should include at least opensysml and sysml-toolkit"
+- **Follow-up:** OpenSysML and sysml-toolkit are 0.x, tool/active-development maps to high, and the approved seam says
+  0.x stays medium. How should these fit?
+- **Answer (mzargham, typed by agent):** "governor assigns them but activity goes into guidance for how to set them. and
+  now i am realizing i may have contradicted my own rule since both of the repos i named as active development are pre
+  1.0 making them experimental. which is probably good because i don't want to stop the rapid development occurring
+  right now but we do want those repos to cross a line into 1.0 state at which point we'll need to tighten controls"
+- **Outcome (agent's reading, stated to the supervisor):** both stay tool/experimental. Recommendations, activity
+  included, are guidance for governors, who assign. At 1.0.0 they move to active development and their controls
+  tighten. Recorded as amendment A3.
+
+# Amendment 1 to WP1 (with WP0 amendment 1)
+
+The WP1 scope is approved (merge 3bb8ee8). These changes need a new approval by merge.
+
+- **A1.** Semantic versioning is a policy for tools (it was "for medium and high"). Policies can attach to type,
+  lifecycle or tier.
+- **A2.** The governance type: repo-registry is governance/experimental, the org's administration is
+  governance/maintained, every governance kind maps to high, and the other governance kinds are omitted with a reason.
+  R-3 now allows omitted kinds, with a reason. R-6 and D-2 were updated.
+- **A3.** Recommendations are guidance and governors assign. OpenSysML and sysml-toolkit stay experimental until 1.0.0.

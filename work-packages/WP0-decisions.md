@@ -404,3 +404,15 @@ The open list is empty: 55 decided, 0 deferred. Raised items are marked *raised*
 - A small fix made without a decision. The README's reader section no longer promises a page per repository. It
   lists pages per kind, tier and policy, plus the views and their red / yellow / green status and links. The index
   shows each repo's CODEOWNERS rather than "owner and release officer".
+
+# Amendment 1 (raised in the WP1 acceptance review)
+
+The scope is approved (merge 1dccb62). These changes need a new approval by merge. The verbatim answers are in
+[WP1-decisions.md](WP1-decisions.md), under "Acceptance review".
+
+- **A1. Policies attach to type, lifecycle or tier.** Each policy has a plain "applies if" rule on a repo's three
+  categorical attributes. This replaces "policies in effect for tiers". It changes the Direction, the D-1, D-4 and R-16
+  wording, a non-goal and a grid cell.
+- **A2. A governance type.** Its only members are this repo (governance/experimental) and the administration of the
+  GitHub org (governance/maintained). Every governance kind maps to high. It adds a Direction item, and high now
+  mentions governance.

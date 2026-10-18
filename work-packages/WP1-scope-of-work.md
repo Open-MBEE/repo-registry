@@ -19,15 +19,17 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
 ### Direction decided while scoping
 
 - **Starting point for the kinds: type × lifecycle.** Kinds are trending toward the cross product of a type (tool,
-  media, research) and a lifecycle (experimental, active development, maintained, archived), with archived as the
+  media, research, and governance, *amended A2*) and a lifecycle (experimental, active development, maintained, archived), with archived as the
   terminal state. That gives 12 kinds. It is not a final decision, but it roughly matches the intuition in the Slack
   post, and it should give an interpretable mapping to tiered policy sets that is simple for a person to follow. The
   taxonomy may change in the future.
 - **Kind and tier stay separate concepts.** A repo has a kind. A kind maps to a tier. A tier maps to policies. Nothing
   skips a link in that chain. This factoring keeps policy making legible and the code simple.
 - **Fixed parts of the kind → tier map.** Tools in active development or maintained map to **high**. Anything archived
-  maps to **none**: it is read-only, so it should be inert. `repo-registry`'s own kind maps to the high tier, and the
-  org policy's controls over the organization itself are high-tier controls too (carried to WP3). Everything else maps to **low** or **medium**, as
+  maps to **none**: it is read-only, so it should be inert. Every governance kind maps to high: `repo-registry` is
+  governance/experimental, and the administration of the org itself is governance/maintained (carried to WP3).
+  Governance kinds are assigned, not recommended, and only these two are needed. Any other governance kind is omitted,
+  with that reason. *(Amended, A2.)* Everything else maps to **low** or **medium**, as
   sparsely as possible. WP1 drafts which.
 
 - **The `0.x` → `1.0.0` seam is the step from experimental to active development.** A tool with only `0.x` releases
@@ -38,8 +40,13 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
   draft provisional data, but mark it clearly as provisional until we pass the maintainer acceptance milestone for
   that data. Here, WP1 drafts every repo's recommended kind into a first kind list. It is provisional: the authority to
   initialize the kind list belongs with the maintainers (WP0's fourth approval).
-- **Semantic versioning is a policy for medium and high (carried to WP2).** Other policies, and the `1.0.0` rule
-  above, depend on it to be checkable. WP2 must define it. WP1 only reads versions from the snapshot. A tool can be in the low tier, or archived,
+- **Semantic versioning is a policy for tools (carried to WP2).** *(Amended, A1: it was "for medium and high".)*
+  Policies can attach to a type, a lifecycle or a tier (WP0 A1), and semantic versioning attaches to the tool type.
+  Other policies, and the `1.0.0` rule above, depend on it to be checkable.
+- **Recommendations are guidance; governors assign.** The recommendation rules, activity included, are guidance for
+  how governors set a repo's kind. For example, OpenSysML and sysml-toolkit are busy but still `0.x`, so they stay
+  experimental. That keeps their rapid development unblocked. When they cross `1.0.0`, they move to active
+  development and their controls tighten. *(Amended, A3.)* WP2 must define it. WP1 only reads versions from the snapshot. A tool can be in the low tier, or archived,
   without semantic versioning, and media and research aren't assumed to need it.
 
 ## Goals
@@ -71,7 +78,7 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
 | ID | Deliverable | Serves |
 |---|---|---|
 | D-1 | The inventory snapshot: a dated, read-only snapshot of all of the org's public repos (private repos are left out entirely, recorded only as a count), committed under `data/snapshots/` *(default)*, together with the `gh` script that produced it | G1 |
-| D-2 | The kinds: for each kind, its name, its plain-language meaning, its recommendation rule over snapshot attributes, and its tier. It covers forks, archived repos, and `repo-registry` itself (WP0 X-9: an exploratory kind while it is built). It starts from type × lifecycle (12 kinds) and states the reason for any departure *(default)*. The `0.x` → `1.0.0` seam separates experimental tools from tools in active development | G2, G3 |
+| D-2 | The kinds: for each kind, its name, its plain-language meaning, its recommendation rule over snapshot attributes, and its tier. It covers forks, archived repos, `repo-registry` itself (governance/experimental) and the org's administration (governance/maintained). It starts from type × lifecycle (12 kinds) and states the reason for any departure *(default)*. The `0.x` → `1.0.0` seam separates experimental tools from tools in active development | G2, G3 |
 | D-3 | The tiers: the four tiers, with WP0's meanings, as data the kinds refer to | G3 |
 | D-4 | The canonical kind list format: a schema, the meta-rules it must satisfy, and a few example entries. YAML is the starting point (WP0), not a decision | G4 |
 | D-5 | The provisional kind list: every repo in the snapshot with its recommended kind (or unclassified, with a reason), in the D-4 format, marked provisional throughout and naming the maintainer approval that would lift that mark | G2, G4 |
@@ -82,10 +89,10 @@ org governance (WP3), and the fit analysis and pilot (WP4) come later.
 |---|---|---|
 | R-1 | The snapshot is read-only. The script uses only `gh` reads (WP0 R-8, R-9). Private repos are left out, recorded only as a count. | Code review of the script; no private repo's name appears in any committed file |
 | R-2 | The snapshot is replayable: the rules applied to the stored snapshot give the same recommendations every time (WP0 R-2). | Run twice; diff |
-| R-3 | The kinds start from type × lifecycle (tool, media, research × experimental, active development, maintained, archived). Any departure from it is stated with a reason *(default)*. Each kind's meaning fits on one screen. | Compare D-2 with the cross product; every difference has a reason; read |
+| R-3 | The kinds start from type × lifecycle (tool, media, research, governance × experimental, active development, maintained, archived). Any departure from it, a kind added or a kind omitted, is stated with a reason *(default)*. Each kind's meaning fits on one screen. | Compare D-2 with the cross product; every difference has a reason; read |
 | R-4 | Every kind's meaning is plain language (WP0 R-4). | Cold read by a non-specialist |
 | R-5 | The recommendation rules are deterministic, involve no language model, and are mutually exclusive: on the snapshot, no repo is recommended two kinds (TX-3). A repo that fits none is shown as unclassified, not forced into a kind (TX-4). | Apply the rules to the snapshot; no repo has two kinds; unclassified repos are listed with a reason |
-| R-6 | Every kind maps to exactly one tier (WP0 R-17). Tools in active development or maintained map to high, archived kinds map to none, `repo-registry`'s kind maps to high, and every other kind maps to low or medium. Every tier is used by at least one kind *(default)*. | Inspect the map; no data file or text gives a repo a tier directly |
+| R-6 | Every kind maps to exactly one tier (WP0 R-17). Tools in active development or maintained map to high, archived kinds map to none, every governance kind maps to high (`repo-registry` is governance/experimental), and every other kind maps to low or medium. Every tier is used by at least one kind *(default)*. | Inspect the map; no data file or text gives a repo a tier directly |
 | R-7 | Kinds, tiers and rules are data, not code: the rule engine names no kind (WP0 R-6, FM-2). | Swap in a toy set of kinds; zero code change |
 | R-8 | In the kind list format, changing a repo's kind is a one-entry edit (WP0 R-12), and the format's meta-rules are stated precisely enough for WP5 to enforce them. | A sample reclassification diff touches one entry; the meta-rules read as checkable statements |
 | R-9 | The release-maturity rule applies only to tools with semantic-versioned releases: below `1.0.0` recommends experimental, and `1.0.0` or later recommends active development (or maintained, by the lifecycle rule). A tool without semantic versioning can still be recommended a low-tier kind, or archived. Semantic versioning is not assumed for media or research kinds. | On the snapshot, sample tools on each side of `1.0.0`, a tool without semver, and an archived tool get the expected result |
