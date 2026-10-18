@@ -4,4 +4,5 @@
 # until removed. None are recorded yet: any off-list license is red until the maintainers decide.
 status: provisional
 provisional_until: "WP0 maintainer approval 2: the policies"
-deviations: []
+deviations:
+  - {repo_id: 1318945311, name: "OpenSysML", policy: license-by-type, reason: "WP5b trial: a broken join", approved_by: nobody-here}
