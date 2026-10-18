@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, with the WP5d scope (status updates ride with each package's PRs). Update this at each acceptance gate.*
+*Updated 2026-10-18, after WP5d's and WP5e's acceptance and the wiki's first publish (status updates ride with each package's PRs). Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -39,10 +39,12 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     Review: [WP5c-review.md](../work-packages/WP5c-review.md). The change is recorded in [WP1-amendment-6.md](../work-packages/WP1-amendment-6.md).
   - **WP5d** (the maintainer review pack, published to the wiki): accepted by mzargham's merge of
     [#11](https://github.com/Open-MBEE/repo-registry/pull/11), c0d8979
-    ([WP5d-scope-of-work.md](../work-packages/WP5d-scope-of-work.md)). Review: [WP5d-review.md](../work-packages/WP5d-review.md).
-  - **WP5e** (verified code owners for high-tier repositories; every source quoted verbatim): scope approved by the
-    supervisor's statement ([WP5e-decisions.md](../work-packages/WP5e-decisions.md) "Approval"); the scope and the
-    work reach `main` together, in its delivery pull request ([WP5e-scope-of-work.md](../work-packages/WP5e-scope-of-work.md)).
+    ([WP5d-scope-of-work.md](../work-packages/WP5d-scope-of-work.md)), and the wiki's first publish from `main` at 5bb4b61.
+    Review: [WP5d-review.md](../work-packages/WP5d-review.md).
+  - **WP5e** (verified code owners for high-tier repositories; every source quoted verbatim): accepted by mzargham's
+    merge of [#12](https://github.com/Open-MBEE/repo-registry/pull/12), 5bb4b61, which also brought its scope to `main`
+    ([WP5e-scope-of-work.md](../work-packages/WP5e-scope-of-work.md); approved by his statement,
+    [WP5e-decisions.md](../work-packages/WP5e-decisions.md) "Approval"). Review: [WP5e-review.md](../work-packages/WP5e-review.md).
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
   [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
@@ -77,7 +79,8 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
    WP4e, type and stage in the kind list: **accepted**.
 5. WP5, meta-rule checks in CI, and the move to Open-MBEE: **accepted**. WP5b, the model and views: **accepted** by
    the merge of its delivery pull request. WP5c, the taxonomy refinements: **accepted** by the merge of its delivery pull request. **WP5d, the maintainer
-   review pack: accepted ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)). WP5e, verified code owners: in delivery.**
+   review pack: accepted ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)) and published. WP5e, verified code owners: accepted
+   ([#12](https://github.com/Open-MBEE/repo-registry/pull/12)).**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the compliance dashboard: the wiki that WP5d publishes, extended with status, aware of each repository's
    state against the controls (from WP6's sensing), and how to come into demonstrable compliance. WP5d gives the
@@ -87,7 +90,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Publish the wiki (WP5d's acceptance record): create its first page once in the web app, then run
-`uv run python scripts/render.py --mode live` from the validated `main`. Review and accept **WP5e** by merging its
-delivery pull request (its scope rides with it), then republish. After that, the owners record the first
-verifications (XF-3), and WP6 (the engine) follows.
+The review pack is live on the [wiki](https://github.com/Open-MBEE/repo-registry/wiki): the maintainers review it and
+propose changes by pull request. After each merge, an owner republishes it from `main`
+(`python3.10 scripts/render.py --mode live`, or with `uv run` once uv is upgraded); publishing from CI waits for WP7.
+The owners record the first maintainer verifications (XF-3). WP6 (the engine) follows, to be scoped.
