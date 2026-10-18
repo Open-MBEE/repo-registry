@@ -263,6 +263,9 @@ repos:
   171956804:
     name: "staged-recipes"
     reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
+  1187592523:
+    name: "staged-recipes-opensysml"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1326912794:
     name: "starkit"
   1345195457:

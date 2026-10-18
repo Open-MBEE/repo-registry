@@ -33,4 +33,5 @@ The refresh (`scripts/refresh_kind_list.py`) applied the new rules to the candid
 kind (`IAlf` research/sandbox; `sysmlv2-rdf-ontology`, `md-cst-rabbitmq`, `mms-autocref`, `mms-rdf`, `starkit`
 media/incubating), the 23 mirrors and 10 live repositories with no type signal got their new reasons, and `.github`
 became governance/graduated by decision. Unclassified: 45 before, 39 after (the fit report view gives them by reason).
-The kept pilot list is unchanged.
+The kept pilot list changed in one row, at the review (G-1): the mirror `staged-recipes-opensysml` moved to the
+exclude list, as OD2 says.

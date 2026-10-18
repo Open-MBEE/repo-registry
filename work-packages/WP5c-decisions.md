@@ -60,3 +60,14 @@ early, while WP5b was being scoped.
   `forks.json`; Python's patch release pinned; one PR per step with its status) as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## Acceptance review — G-1, a mirror in the kept pilot
+
+- **Question:** `staged-recipes-opensysml` (in the kept pilot's forks category) has no commits of ours on its default
+  branch, so the rule reads it as a mirror. OD2 says mirrors are excluded from the pilot, but a non-goal says WP5c
+  doesn't change the kept pilot list. Its real work may be on another branch (the fork read checks the default branch
+  only). How should this be handled? (Options: fix before acceptance, moving it to the exclude list, an amendment to
+  the non-goal / accept as is / follow-up package.)
+- **Answer (mzargham, typed by agent):** "Fix before acceptance"
+- **Outcome:** The non-goal is amended for this one repository: `staged-recipes-opensysml` moves from the pilot to the
+  exclude list with the mirror reason. The review is rerun.
