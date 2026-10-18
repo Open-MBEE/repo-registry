@@ -1,0 +1,223 @@
+# PROVISIONAL. WP5b D-1, PROPOSED for the supervisor's check-in (WP5b OD1): the declared data model.
+#
+# The repository's records are the tables of a database (WP5b; the supervisor: "let's treat it like a database").
+# Each table names where its rows live, its primary key, its columns and its foreign keys. This is the TARGET model:
+# work-packages/WP5b-audit.md lists where today's files depart from it. scripts/validate.py reads this file once the
+# check-in has disposed the findings (WP5b D-5).
+#
+# Roles (MVC, WP5b): `source` tables are read-only facts sensed or fetched from outside; `model` tables are what
+# people decide, changed only by a governed pull request; `view` entries are rendered by the controller and never
+# committed (WP5b OD4), except the pilot list, which is a model table (OD6).
+#
+# Column types: id (an integer key), name, text, int, bool, date, enum(...), list(...), predicate (the kinds.yaml
+# predicate language), path (a file in this repository), and fk(table) / fk(table.column) for a foreign key.
+
+version: 1
+
+enums:
+  plan: [free, team, enterprise]                      # GitHub plans (data/sources/github-plan.yaml)
+  color: [green, yellow, red]                         # WP0 R-13
+  status: [provisional, approved]                     # AGENTS.md rule 3
+
+tables:
+
+  # --- sources: read-only, from GitHub or a cited document -----------------------------------------------------------
+  repo:
+    role: source
+    rows: data/snapshots/<snapshot>/repos.json, with data/snapshots/<snapshot>/ids.json
+    key: [repo_id]                                    # GitHub's numeric repository ID (WP5b OD3)
+    unique: [[name]]                                  # within one snapshot
+    columns:
+      repo_id: id
+      name: name                                      # a column, not the key; GitHub keeps case, compares without it
+      archived: bool
+      fork: bool
+      parent: text                                    # the upstream's full name, outside the org (not a foreign key)
+      topics: list(text)
+      (sensed attributes): see scripts/snapshot.py    # the columns the taxonomy's predicates read
+  repo_usage:
+    role: source
+    rows: data/snapshots/<snapshot>/usage.json
+    key: [repo_id]
+    foreign: {repo_id: fk(repo)}
+  org_snapshot:
+    role: source
+    rows: data/snapshots/<snapshot>/org.json          # one row
+    key: []
+  cisa_practice:
+    role: source
+    rows: data/sources/cisa-practices.yaml#practices
+    key: [practice_id]
+  nist_control:
+    role: source
+    rows: data/sources/nist-800-53.yaml#controls
+    key: [control_id]
+  openssf_item:
+    role: source
+    rows: data/sources/openssf-security-baseline.yaml#items
+    key: [item_id]
+    foreign: {stage: fk(stage)}                       # the baseline's stage, mapped in docs/lifecycle-stage-map.md
+  github_plan:
+    role: source
+    rows: data/sources/github-plan.yaml               # one row
+    columns: {plan: enum(plan)}
+
+  # --- the taxonomy -----------------------------------------------------------------------------------------------
+  type:
+    role: model
+    rows: data/taxonomy/kinds.yaml#types
+    key: [type]
+    columns: {type: name, meaning: text}
+  stage:
+    role: model
+    rows: data/taxonomy/kinds.yaml#stages
+    key: [stage]
+    columns: {stage: name, meaning: text}
+  tier:
+    role: model
+    rows: data/taxonomy/tiers.yaml#tiers
+    key: [tier]
+    unique: [[order]]
+    columns: {tier: name, order: int, meaning: text}
+  kind:
+    role: model
+    rows: data/taxonomy/kinds.yaml#kinds
+    key: [type, stage]                                # a composite key; the name "type/stage" is derived (OD2)
+    foreign: {type: fk(type), stage: fk(stage), tier: fk(tier)}
+    columns: {meaning: text, recommend_when: predicate}
+  omitted_kind:
+    role: model
+    rows: data/taxonomy/kinds.yaml#omitted
+    key: [type, stage]
+    foreign: {type: fk(type), stage: fk(stage)}
+    disjoint_from: kind                               # a kind is defined or omitted, never both (WP1 R-3)
+    columns: {reason: text}
+  signal:
+    role: model
+    rows: data/taxonomy/kinds.yaml#signals
+    key: [signal]
+    columns: {when: predicate}                        # reads repo columns, or other signals (no cycles)
+  flag:
+    role: model
+    rows: data/taxonomy/kinds.yaml#flags
+    key: [flag]
+    columns: {meaning: text, when: predicate}
+  unclassified_reason:
+    role: model
+    rows: data/taxonomy/kinds.yaml#unclassified_reasons
+    key: [position]                                   # ordered: the first that holds gives the reason
+    columns: {when: predicate, reason: text}
+
+  # --- the kind list and assignments ------------------------------------------------------------------------------
+  registry_entry:
+    role: model
+    rows: registry.yaml#repos
+    key: [repo_id]
+    foreign: {repo_id: fk(repo), "(type, stage)": fk(kind)}
+    columns: {name: name, type: name, stage: name, reason: text}
+    rule: type and stage together, or reason alone (WP4e OD2)
+  org_entry:
+    role: model
+    rows: registry.yaml#org                           # one row
+    foreign: {"(type, stage)": fk(kind)}
+  assignment:
+    role: model
+    rows: data/assignments.yaml#repos
+    key: [repo_id]
+    foreign: {repo_id: fk(repo), "(type, stage)": fk(kind)}
+    columns: {decision: text}
+    rule: the kind list agrees with every assignment
+
+  # --- policies ---------------------------------------------------------------------------------------------------
+  policy:
+    role: model
+    rows: data/policies/<policy_id>.yaml              # one file per row; the file name is the key
+    key: [policy_id]
+    foreign: {sop: path}
+    columns: {name: text, meaning: text, applies_if: predicate, available_on: list(enum(plan))}
+  policy_check:
+    role: model
+    rows: data/policies/<policy_id>.yaml#checks
+    key: [policy_id, check_id]
+    foreign: {policy_id: fk(policy)}
+    columns: {mode: enum(automated, attested), reads: text, permission: text, statement: text}
+  policy_cites:
+    role: model
+    rows: data/policies/<policy_id>.yaml#cites
+    key: [policy_id, source, ref]
+    foreign: {policy_id: fk(policy), "ref (cisa)": fk(cisa_practice), "ref (nist)": fk(nist_control),
+              "ref (openssf)": fk(openssf_item)}
+  departure:
+    role: model
+    rows: data/policies/_departures.yaml
+    key: [source, ref]
+    foreign: {"ref (openssf)": fk(openssf_item), "ref (cisa)": fk(cisa_practice)}
+    disjoint_from: policy_cites                       # adopted or departed, never both (policy meta-rules 8, 9)
+  future_feature:
+    role: model
+    rows: data/policies/_future.yaml#features
+    key: [feature]
+    columns: {why: text, strengthens: list(fk(policy))}
+  deviation:
+    role: model
+    rows: data/deviations.yaml#deviations
+    key: [repo_id, policy_id]
+    foreign: {repo_id: fk(repo), policy_id: fk(policy), approved_by: fk(maintainer)}
+    columns: {reason: text}
+
+  # --- org governance ---------------------------------------------------------------------------------------------
+  maintainer:
+    role: model
+    rows: data/maintainers.yaml#maintainers
+    key: [user_id]                                    # GitHub's numeric user ID, with the login as a column (OD3's
+    columns: {login: name, name: text, basis: text}   #   reasoning; proposed in the audit)
+  release_authority:
+    role: model
+    rows: data/maintainers.yaml#maintainers.*.release_authority
+    key: [user_id, repo_id]
+    foreign: {user_id: fk(maintainer), repo_id: fk(repo)}
+  proposed_codeowner:
+    role: model
+    rows: data/proposed-codeowners                    # text; each @login
+    key: [login]
+    foreign: {login: fk(maintainer.login)}
+    rule: exactly the maintainers
+
+  # --- the pilot (a model table, OD6) -----------------------------------------------------------------------------
+  pilot_category:
+    role: model
+    rows: data/pilot-rule.yaml#categories
+    key: [category]
+    columns: {quota: int, meaning: text, where: predicate, sort_by: text}
+  pilot_member:
+    role: model
+    rows: data/pilot.yaml#repos
+    key: [repo_id]
+    foreign: {repo_id: fk(repo), category: fk(pilot_category)}
+    columns: {why: text}                              # no kind: it is derived from the kind list
+  excluded:
+    role: model
+    rows: data/exclude.yaml#repos
+    key: [repo_id]
+    foreign: {repo_id: fk(repo)}
+    disjoint_from: pilot_member
+    columns: {reason: text}
+    rule: every repository in the kind list is in the pilot or excluded (TX-5)
+
+  expected_gap:
+    role: model
+    rows: data/expected-gaps.yaml#gaps
+    key: [gap_id]
+    columns: {gap: text, closes_in: text, evidence_when_closed: text}
+
+# Views: rendered by scripts/render.py, never committed (OD4); demo mode writes them to build/demo/ (OD5).
+views:
+  kind_recommendation: from repo, kind, signal, flag, unclassified_reason, assignment
+  policy_applicability: from kind, policy
+  license_report: from repo, registry_entry, kind, policy, deviation
+  maintainers_match: from org_snapshot, maintainer, proposed_codeowner
+  pilot_proposal: from repo, repo_usage, registry_entry, pilot_category   # what the rule would propose today
+  pilot_briefing: from pilot_member, registry_entry, kind, policy_applicability, license_report, repo_usage
+  sop_generated_parts: from policy, policy_check, policy_cites, policy_applicability
+  policy_basis_tables: from policy, policy_cites, departure, cisa_practice, nist_control, openssf_item
+  data_model_doc: from this file
