@@ -105,3 +105,16 @@ settled by earlier answers (OD2, OD3, OD4, answer 6, OD6, R-2).
   F-06, F-10, F-11, F-13, F-14, F-15 as proposed and F-16 as revised?
 - **Answer (mzargham, typed by agent):** "Yes, as revised"
 - **Outcome:** Every finding is to be fixed: F-05 by user ID; F-16 as revised. No finding is accepted as is or moved.
+
+## Acceptance review — observations
+
+- **Question:** Seven observations, none affecting good enough or a non-goal (names checked against the snapshot;
+  fit-analysis as a dated record; the .pyc, ISO title and privacy checks fixed on the way; the suite's time; the view
+  diff before main has render.py; trial branches and the Python patch pin to WP5c; #6's first CI failure on the review
+  link). Accept these as is, or pick any to act on?
+- **Supervisor, meanwhile (mzargham, typed by agent):** "did you address ci fail?" and "i need you to got to green
+  before i will merge it. if its xfail mark it as such". The failure was the missing review report, not an expected
+  failure; the report was added, and #6 went green (run 39149449242).
+- **Answer (mzargham, typed by agent):** "Accept the seven WP5b observations as is. Record it, write the
+  recommendation, and confirm #6 is green."
+- **Outcome:** All seven accepted as is. See [WP5b-review.md](WP5b-review.md).
