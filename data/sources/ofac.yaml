@@ -1,0 +1,29 @@
+# OFAC (U.S. Treasury, Office of Foreign Assets Control): the sanctions the verified-code-owners policy applies,
+# quoted verbatim (WP5e D-2, OD4, OD6). U.S. government works. Policies cite these IDs in cites.ofac.
+source:
+  issuer: U.S. Department of the Treasury, Office of Foreign Assets Control
+  regulations: 31 CFR Chapter V (Office of Foreign Assets Control regulations), from the eCFR, as of 2026-10-01
+  sdn_list: https://sanctionslist.ofac.treas.gov/Home/SdnList, read 2026-10-18
+  note: OFAC's sanctions attach to designated parties (the SDN list) and to sanctioned jurisdictions; each comprehensively
+    sanctioned jurisdiction has its own part of 31 CFR Chapter V. 560.204 (Iran) is quoted as the archetype.
+items:
+  SDN:
+    title: Specially Designated Nationals and Blocked Persons List
+    where: https://sanctionslist.ofac.treas.gov/Home/SdnList
+    text: As part of its enforcement efforts, OFAC publishes a list of individuals and companies owned or controlled by,
+      or acting for or on behalf of, targeted countries. It also lists individuals, groups, and entities, such as terrorists
+      and narcotics traffickers designated under programs that are not country-specific. Collectively, such individuals
+      and companies are called "Specially Designated Nationals" or "SDNs." Their assets are blocked, and U.S. persons are
+      generally prohibited from dealing with them.
+  '560.204':
+    title: Prohibited exportation, reexportation, sale, or supply of goods, technology, or services to Iran.
+    where: https://www.ecfr.gov/current/title-31/section-560.204
+    text: 'Except as otherwise authorized pursuant to this part, and notwithstanding any contract entered into or any license
+      or permit granted prior to May 7, 1995, the exportation, reexportation, sale, or supply, directly or indirectly, from
+      the United States, or by a United States person, wherever located, of any goods, technology, or services to Iran or
+      the Government of Iran is prohibited, including the exportation, reexportation, sale, or supply of any goods, technology,
+      or services to a person in a third country undertaken with knowledge or reason to know that: (a) Such goods, technology,
+      or services are intended specifically for supply, transshipment, or reexportation, directly or indirectly, to Iran
+      or the Government of Iran; or (b) Such goods, technology, or services are intended specifically for use in the production
+      of, for commingling with, or for incorporation into goods, technology, or services to be directly or indirectly supplied,
+      transshipped, or reexported exclusively or predominantly to Iran or the Government of Iran.'
