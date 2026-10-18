@@ -49,12 +49,8 @@
 ## The five maintainer approvals (WP8)
 
 1. The taxonomy (`data/taxonomy/`). 2. The policies (`data/policies/`). 3. The pilot subset (`data/pilot.yaml`).
-4. Each pilot repository's kind (`registry.yaml`). 5. The named maintainers
+4. Each pilot repository's kind (`registry.yaml`, `data/assignments.yaml`). 5. The named maintainers
 (`data/maintainers.yaml`), who become this repository's CODEOWNERS (`data/proposed-codeowners`, not live yet).
-
-Proposed order (raised by the supervisor after WP5e): **the fifth comes first.** The owners and maintainers govern
-every other policy, so the policies that determine who they are, and the group itself, are settled before the other
-four approvals (the next package, to be scoped).
 
 ## Packages
 
@@ -75,7 +71,6 @@ four approvals (the next package, to be scoped).
 | WP5c | Taxonomy refinements from WP4's fit analysis | accepted 42ecec0 ([#9](https://github.com/Open-MBEE/repo-registry/pull/9)) |
 | WP5d | The maintainer review pack, published to the wiki: the what and why of compliance | accepted c0d8979 ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)); first published from 5bb4b61 |
 | WP5e | Verified code owners for high-tier repositories; every source quoted verbatim | accepted 5bb4b61 ([#12](https://github.com/Open-MBEE/repo-registry/pull/12)) |
-| *next, proposed* | Owners and maintainers first: agree the policies that determine who the owners and maintainers are, and seat them by those policies (verifications recorded, XF-3), before the other approvals, since that group governs every other policy | to be scoped (raised by the supervisor) |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | The compliance dashboard: the wiki extended with each repository's status against the controls, and how to come into compliance (builds on WP5d and WP6); and publishing the wiki automatically from CI after each merge (until then an owner runs live mode by hand) | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
