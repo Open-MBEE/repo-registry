@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, with the WP5c scope (status updates ride with each package's PRs). Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP5c delivery (status updates ride with each package's PRs). Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -34,8 +34,11 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     [WP5-review.md](../work-packages/WP5-review.md); the move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
   - **WP5b** (the model, its integrity, and views out of the model): accepted by mzargham's merge of
     [#6](https://github.com/Open-MBEE/repo-registry/pull/6), 9e14099 ([WP5b-scope-of-work.md](../work-packages/WP5b-scope-of-work.md)). Audit: [WP5b-audit.md](../work-packages/WP5b-audit.md); review: [WP5b-review.md](../work-packages/WP5b-review.md).
-  - **WP5c** (the taxonomy refinements from WP4's fit analysis): scope proposed in this pull request
-    ([WP5c-scope-of-work.md](../work-packages/WP5c-scope-of-work.md)); approved by its merge.
+  - **WP5c** (the taxonomy refinements from WP4's fit analysis): scope approved in 8197d77
+    ([WP5c-scope-of-work.md](../work-packages/WP5c-scope-of-work.md)); accepted by the merge of its delivery pull
+    request. The change is recorded in [WP1-amendment-6.md](../work-packages/WP1-amendment-6.md).
+  - **WP5d** (the maintainer review pack, published to the wiki): next; decisions in
+    [WP5d-decisions.md](../work-packages/WP5d-decisions.md).
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
   [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
@@ -67,13 +70,15 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
    kinds: **accepted**. WP4d, the attestations file: **accepted**.
    WP4e, type and stage in the kind list: **accepted**.
 5. WP5, meta-rule checks in CI, and the move to Open-MBEE: **accepted**. WP5b, the model and views: **accepted** by
-   the merge of its delivery pull request. **WP5c, the taxonomy refinements: scoped.**
+   the merge of its delivery pull request. WP5c, the taxonomy refinements: **accepted** by the merge of its delivery pull request. **WP5d, the maintainer
+   review pack: next.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
 
-Approve **WP5c** by merging its scope pull request, then build it: the source of each kind (inferred, topic,
-maintainer), the type topics, the fork assessment, better signals, and `.github` as governance/graduated. WP6 (the
-engine) follows; the sensing credential is set up there (WP5 OD6).
+Scope **WP5d** (the maintainer review pack) from the decisions recorded in
+[WP5d-decisions.md](../work-packages/WP5d-decisions.md): the taxonomy, every repository with its kind and tier, and
+every policy with when it is in effect, as linked pages on this repository's wiki, published by the supervisor from a
+validated `main`. Then WP6 (the engine); the sensing credential is set up there (WP5 OD6).

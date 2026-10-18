@@ -10,6 +10,14 @@ repo its tier. Policies attach to the type, the stage or the tier (WP0 A1; WP4e)
 kind's tier is in [kinds.yaml](../data/taxonomy/kinds.yaml), and which policies are in effect for each kind is the
 applicability view (WP2 D-5). Evidence for a recommended kind is the recommendation view, never the kind list.
 
+Each entry also says where its kind came from, its **source** (WP5c OD1): `inferred` (the rules' candidate),
+`topic` (its code owners declared the type with exactly one `openmbee-<type>` GitHub topic; the rules still give the
+stage) or `maintainer` (a maintainer's merged decision, with a `decision` naming the record). Precedence rises in that
+order: a topic beats inference, and a maintainer's decision beats both; the rules and topics never change a
+`maintainer` entry. `uv run python scripts/render.py` renders a refresh view (`kind-list-refresh.yaml`) of the
+candidate entries the rules or topics would change today, and `scripts/refresh_kind_list.py` writes them, for an
+ordinary pull request.
+
 Each entry is keyed by **GitHub's numeric repository ID** (WP5b OD3), the strongest key GitHub offers: a repository
 can be renamed, its ID never changes. The name is a column, checked against the snapshot, so a rename shows up as an
 invalid entry rather than a silent broken join. The kind list's rows, and every other table, are declared in
@@ -25,18 +33,24 @@ org:
   name: Open-MBEE
   type: governance                          # the administration of the GitHub org itself (WP1 A2, A4, amendment 3)
   stage: graduated
+  source: maintainer
+  decision: "WP1-decisions.md, Acceptance review, G-2 (governance type) ..."
 repos:
   160235647:                                # GitHub's repository ID (WP5b OD3)
     name: "exec-mms"
     type: tool
     stage: incubating
+    source: inferred
   1424079165:
     name: "repo-registry"
-    type: governance                        # assigned by decision, see data/assignments.yaml (low until calibrated)
+    type: governance                        # a maintainer's decision (low until calibrated)
     stage: sandbox
+    source: maintainer
+    decision: "WP1-decisions.md, Acceptance review, G-2 ..."
   1422498382:
     name: "fprime"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; ..."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
 ```
 
 ## Meta-rules
@@ -58,7 +72,8 @@ is **invalid** and must not reach `main`. A repo being out of compliance with it
    from the type and stage.
 6. **Unclassified says why.** An entry the rules can't classify has a non-empty `reason` and neither `type` nor
    `stage` (WP4e OD2). Its kind is `unclassified`.
-7. **No other fields.** An entry has no keys other than `name`, `type`, `stage` and `reason`.
+7. **No other fields.** An entry has no keys other than `name`, `type`, `stage`, `reason`, `source` and `decision`.
+   It has a `decision` exactly when its source is `maintainer`.
 8. **Sorted.** Entries are sorted by repo name, ignoring case, so that every change is a small, local diff.
 9. **Public repos only.** No private repo appears (WP1 OD2): the snapshot holds public repositories only.
 10. **The taxonomy is complete.** Every kind in `kinds.yaml` names a tier in `data/taxonomy/tiers.yaml`, and every

@@ -141,7 +141,7 @@ class EnvironmentTests(unittest.TestCase):
         pyproject = (ROOT / "pyproject.toml").read_text()
         self.assertIn('requires-python = "==3.10.*"', pyproject)
         self.assertIn('dependencies = ["pyyaml==6.0.3"]', pyproject)
-        self.assertEqual((ROOT / ".python-version").read_text().strip(), "3.10")
+        self.assertRegex((ROOT / ".python-version").read_text().strip(), r"^3\.10\.\d+$")  # patch pinned (WP5c)
         lock = (ROOT / "uv.lock").read_text()
         self.assertRegex(lock, r'name = "pyyaml"\nversion = "6\.0\.3"')
         workflow = (ROOT / ".github/workflows/check.yml").read_text()
