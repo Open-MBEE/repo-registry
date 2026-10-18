@@ -71,3 +71,11 @@ early, while WP5b was being scoped.
 - **Answer (mzargham, typed by agent):** "Fix before acceptance"
 - **Outcome:** The non-goal is amended for this one repository: `staged-recipes-opensysml` moves from the pilot to the
   exclude list with the mirror reason. The review is rerun.
+
+## Acceptance review (rerun) — observations
+
+- **Question:** Six observations (notebook demos as media; `.github`'s 18 policies; the pilot rule's forks wording;
+  the default branch only; the local uv upgrade for 3.10.22; the license view's 6 new repositories). Accept these as
+  is, or pick any to act on?
+- **Answer (mzargham, typed by agent):** "Accept as is"
+- **Outcome:** All six accepted as is. See [WP5c-review.md](WP5c-review.md).
