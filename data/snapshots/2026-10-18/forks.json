@@ -1,0 +1,243 @@
+{
+ "note": "Each fork against its upstream (WP5c D-3): commits of ours ahead, commits behind, files changed, and how many are model files. Read with GET only.",
+ "read_at": "2026-10-18T19:04:48Z",
+ "model_suffixes": [
+  ".sysml",
+  ".kerml",
+  ".xmi",
+  ".uml",
+  ".mdzip",
+  ".mdxml",
+  ".ecore",
+  ".ttl",
+  ".owl",
+  ".rdf"
+ ],
+ "forks": {
+  "1422498382": {
+   "name": "fprime",
+   "upstream": "nasa/fprime",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 6,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375281693": {
+   "name": "helix",
+   "upstream": "helix-editor/helix",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 5,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "162639632": {
+   "name": "IAlf",
+   "upstream": "SpencerPark/IJava",
+   "readable": true,
+   "ahead_by": 1,
+   "behind_by": 18,
+   "files_changed": 3,
+   "model_files_changed": 0
+  },
+  "1423592451": {
+   "name": "L4YAML",
+   "upstream": "nasa-jpl/L4YAML",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 0,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375281058": {
+   "name": "langserver.github.io",
+   "upstream": "langserver/langserver.github.io",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 7,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375280929": {
+   "name": "language-server-protocol",
+   "upstream": "microsoft/language-server-protocol",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 12,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375281379": {
+   "name": "lsp-mode",
+   "upstream": "emacs-lsp/lsp-mode",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 5,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375281848": {
+   "name": "lsp4ij",
+   "upstream": "redhat-developer/lsp4ij",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 26,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375281560": {
+   "name": "mason-registry",
+   "upstream": "mason-org/mason-registry",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 481,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "232688190": {
+   "name": "mms-python-client-feedstock",
+   "upstream": "conda-forge/mms-python-client-feedstock",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 15,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375281201": {
+   "name": "nvim-lspconfig",
+   "upstream": "neovim/nvim-lspconfig",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 33,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "168441786": {
+   "name": "openapi-generator",
+   "upstream": "OpenAPITools/openapi-generator",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 11566,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1375280798": {
+   "name": "opencode",
+   "upstream": "anomalyco/opencode",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 4827,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1422497683": {
+   "name": "opentelemetry-demo",
+   "upstream": "open-telemetry/opentelemetry-demo",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 1,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1422497939": {
+   "name": "opentelemetry-proto",
+   "upstream": "open-telemetry/opentelemetry-proto",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 0,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1422497329": {
+   "name": "opentelemetry-specification",
+   "upstream": "open-telemetry/opentelemetry-specification",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 0,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1422654883": {
+   "name": "PropertyKindCalculus",
+   "upstream": "nasa-jpl/PropertyKindCalculus",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 0,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "29108554": {
+   "name": "sbt-license-plugin",
+   "upstream": "Banno/sbt-license-plugin",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 24,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "35046190": {
+   "name": "sbt-pack",
+   "upstream": "xerial/sbt-pack",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 610,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "171956804": {
+   "name": "staged-recipes",
+   "upstream": "conda-forge/staged-recipes",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 111430,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1187592523": {
+   "name": "staged-recipes-opensysml",
+   "upstream": "conda-forge/staged-recipes",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 13368,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "133737729": {
+   "name": "swagger-codegen",
+   "upstream": "swagger-api/swagger-codegen",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 1597,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "960074770": {
+   "name": "sysmlv2-rdf-ontology",
+   "upstream": "opencaesar/sandbox",
+   "readable": true,
+   "ahead_by": 2,
+   "behind_by": 0,
+   "files_changed": 6,
+   "model_files_changed": 4
+  },
+  "1380680226": {
+   "name": "syson",
+   "upstream": "eclipse-syson/syson",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 13,
+   "files_changed": 0,
+   "model_files_changed": 0
+  },
+  "1389553817": {
+   "name": "winget-pkgs",
+   "upstream": "microsoft/winget-pkgs",
+   "readable": true,
+   "ahead_by": 0,
+   "behind_by": 10097,
+   "files_changed": 0,
+   "model_files_changed": 0
+  }
+ }
+}

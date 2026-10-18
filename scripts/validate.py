@@ -4,8 +4,8 @@
 The repository's records are the tables of a database, declared in data/schema/model.yaml. This check enforces that
 declaration on every table: primary keys present and unique, every column declared and of its type, every foreign
 key resolving (single, composite and by source), disjoint tables kept apart. Then the rules that need more than one
-table: the kind list covers every repository, a repository's name agrees with its ID, assignments and the kind list
-agree, the pilot and exclude list cover the kind list, the proposed CODEOWNERS are exactly the maintainers, and every
+table: the kind list covers every repository, a repository's name agrees with its ID, a maintainer's decision is
+stated with it, the pilot and exclude list cover the kind list, the proposed CODEOWNERS are exactly the maintainers, and every
 predicate reads only declared columns. The taxonomy and policy meta-rules are the ones scripts/recommend.py and
 scripts/policies.py already make (reused, not copied). Last, every view renders, and renders the same twice (WP5b
 R-5): views are never stored, so the check is that the pipeline is deterministic.
@@ -30,10 +30,10 @@ import render as R  # noqa: E402
 from recommend import TaxonomyError, check_taxonomy  # noqa: E402
 
 OPS = {"eq", "in", "matches", "gt", "gte", "lt"}
-PROVISIONAL_FILES = ["registry.yaml", "data/assignments.yaml", "data/taxonomy/kinds.yaml", "data/taxonomy/tiers.yaml",
+PROVISIONAL_FILES = ["registry.yaml", "data/taxonomy/kinds.yaml", "data/taxonomy/tiers.yaml",
                      "data/maintainers.yaml", "data/deviations.yaml", "data/pilot-rule.yaml", "data/pilot.yaml",
                      "data/exclude.yaml", "data/policies/_set.yaml"]
-REPO_NAMED = ["registry_entry", "assignment", "pilot_member", "excluded", "pilot_named", "release_authority",
+REPO_NAMED = ["registry_entry", "pilot_member", "excluded", "pilot_named", "release_authority",
               "deviation", "measured_gap"]
 
 
@@ -203,14 +203,10 @@ def check_rules(tables):
     names = [str(r.get("name")) for r in tables.rows("registry_entry")]
     if names != sorted(names, key=str.lower):
         out.append("registry.yaml: entries must be sorted by name, ignoring case (kind-list meta-rule 8)")
-    for r in tables.rows("assignment"):
-        if model.kind_of(reg.get(r.get("repo_id"), {})) != model.kind_of(r):
-            out.append(f"data/assignments.yaml: {r.get('name')} is assigned {model.kind_of(r)}, but registry.yaml "
-                       f"says {model.kind_of(reg.get(r.get('repo_id'), {}))}")
-    org_a, org_e = (tables.rows("org_assignment") or [{}])[0], (tables.rows("org_entry") or [{}])[0]
-    if model.kind_of(org_a) != model.kind_of(org_e):
-        out.append(f"data/assignments.yaml: the org is {model.kind_of(org_a)}, but registry.yaml says "
-                   f"{model.kind_of(org_e)}")
+    for r in tables.rows("registry_entry") + tables.rows("org_entry"):
+        if (r.get("source") == "maintainer") != bool(str(r.get("decision") or "").strip()):
+            out.append(f"registry.yaml: {r.get('name')}: a decision is stated exactly when the source is maintainer "
+                       "(WP5c OD1)")
     covered = tables.keys("pilot_member") | tables.keys("excluded")
     for rid in sorted(set(reg) - covered):
         out.append(f"data/exclude.yaml: {reg[rid].get('name')} is neither in the pilot nor excluded (TX-5)")

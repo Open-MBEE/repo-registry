@@ -52,6 +52,16 @@ stages:
     stage as the open-source foundations CNCF and OpenSSF call "Archived".
 
 # Signals are named building blocks the kinds share. They are data, not code.
+# A repository's code owners can declare its type with one of these GitHub topics (WP5c). A topic declares the type
+# only; the stage still comes from the rules (for a tool, its releases) or a maintainer's decision. A repository can
+# carry up to 20 topics; exactly one of these declares its type, and none, or more than one, declares nothing.
+# Precedence (WP5c OD1): the rules' candidate, then the topic, then a maintainer's merged decision (registry.yaml).
+type_topics:
+  openmbee-tool: tool
+  openmbee-media: media
+  openmbee-research: research
+  openmbee-governance: governance
+
 signals:
   archived: {attr: archived, eq: true}
   fork: {attr: fork, eq: true}
@@ -62,7 +72,7 @@ signals:
   media_words:
     any:
       - attr: name
-        matches: '\.github\.io$|\.openmbee\.org$|^\.github$|^docs$|readthedocs|documentation|graphic-assets|user-forum|enhancement-proposals|specifications|cookbook|faq|examples|-model$|_model$|\.sysml$'
+        matches: '\.github\.io$|\.openmbee\.org$|^\.github$|^docs$|readthedocs|documentation|graphic-assets|user-forum|enhancement-proposals|specifications|cookbook|faq|-model$|_model$|\.sysml$'
       - attr: description
         matches: '\bwebsite\b|\bsite\b|documentation|\btutorial\b|\bfaq\b|\bmodel of\b|system model|\bassets\b|\bforum\b|\bproposals\b'
   research_words:
@@ -75,12 +85,41 @@ signals:
     all:
       - {attr: primary_language, matches: '.'}
       - not: {attr: primary_language, in: [HTML, CSS, Jupyter Notebook, TeX, Markdown]}
-  # Forks mirror an upstream project. The taxonomy has no kind for them yet (WP0 parked item), so no kind
-  # matches a fork and every fork is shown as unclassified with that reason (TX-4: no force fit).
+  # "example" alone decides no type: purpose does, "to learn for ourselves or communicate to others" (WP5c).
+  example_words:
+    any:
+      - {attr: name, matches: '(^|[-_.])examples?([-_.]|$)'}
+      - {attr: description, matches: '\bexamples?\b'}
+  # Notebook-only or model-only repositories are media, unless a research word applies (WP4 fit analysis 3).
+  notebook_or_model_only:
+    all:
+      - not: {signal: code_language}
+      - any:
+          - {attr: primary_language, eq: Jupyter Notebook}
+          - {attr: root_files, matches: '\.(ipynb|sysml|kerml|xmi|mdzip)$'}
+  # A fork is classified by our diff from its upstream (WP5c D-3, OD2): with changes of ours it is an exploration
+  # of how tools work together (research), or media where our changes are mostly models; a fork with no changes of
+  # ours on its default branch is a mirror, left unclassified (below).
+  fork_ours: {all: [{signal: fork}, {attr: fork_ahead_by, gt: 0}]}
+  fork_mirror: {all: [{signal: fork}, {not: {signal: fork_ours}}]}
+  fork_models: {all: [{signal: fork_ours}, {attr: fork_mostly_models, eq: true}]}
   owned_here: {not: {signal: fork}}
-  is_media: {all: [{signal: owned_here}, {signal: media_words}, {not: {signal: research_words}}]}
-  is_research: {all: [{signal: owned_here}, {signal: research_words}, {not: {signal: media_words}}]}
-  is_tool: {all: [{signal: owned_here}, {signal: code_language}, {not: {signal: media_words}}, {not: {signal: research_words}}]}
+  type_declared: {not: {attr: declared_type, eq: null}}
+  inferred_media:
+    all:
+      - not: {signal: research_words}
+      - any:
+          - all: [{signal: owned_here}, {signal: media_words}]
+          - all: [{signal: owned_here}, {signal: notebook_or_model_only}]
+          - {signal: fork_models}
+  inferred_research:
+    any:
+      - all: [{signal: owned_here}, {signal: research_words}, {not: {signal: media_words}}]
+      - all: [{signal: fork_ours}, {not: {signal: fork_models}}]
+  inferred_tool: {all: [{signal: owned_here}, {signal: code_language}, {not: {signal: media_words}}, {not: {signal: research_words}}]}
+  is_media: {any: [{attr: declared_type, eq: media}, {all: [{not: {signal: type_declared}}, {signal: inferred_media}]}]}
+  is_research: {any: [{attr: declared_type, eq: research}, {all: [{not: {signal: type_declared}}, {signal: inferred_research}]}]}
+  is_tool: {any: [{attr: declared_type, eq: tool}, {all: [{not: {signal: type_declared}}, {signal: inferred_tool}]}]}
   live: {not: {signal: archived}}
 
 kinds:                                 # keyed by type, then stage: the composite key (WP5b OD2); the name
@@ -195,14 +234,18 @@ omitted:
 
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:
-  - when: {signal: fork}
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
+  - when: {signal: fork_mirror}
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+  - when: {attr: declared_type, eq: governance}
+    reason: "Declares governance with a topic: governance kinds are assigned only, by a maintainer's decision."
+  - when: {all: [{signal: example_words}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}, {signal: notebook_or_model_only}]}}]}
+    reason: "An example: media if it is there to show others, research if it is there to learn for ourselves (WP5c). Its code owners can declare the type with an openmbee-<type> topic."
   - when: {all: [{signal: media_words}, {signal: research_words}]}
     reason: Its name or description reads as both media and research.
   - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}
     reason: Archived, with no type signal. Inert whatever its type.
-  - when: {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}
-    reason: No type signal. No media or research words, and no programming language.
+  - when: {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}, {signal: notebook_or_model_only}]}}
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
 
 # Flags are shown in the recommendation report, never in the kind list. They don't change a kind.
 flags:

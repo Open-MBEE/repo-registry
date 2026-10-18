@@ -56,12 +56,17 @@ def repos(root=ROOT):
     after the snapshot (F-04), which has an ID and a name but no sensed columns."""
     snap = snapshot_dir(root)
     rows = {r["name"]: r for r in json.loads((snap / "repos.json").read_text())}
+    forks = json.loads((snap / "forks.json").read_text())["forks"] if (snap / "forks.json").exists() else {}
     out = {}
     for i in json.loads((snap / "ids.json").read_text())["repos"]:
         row = dict(rows.get(i["name"], {"name": i["name"]}))
         row["repo_id"] = i["repo_id"]
         if i.get("after_snapshot"):
             row["after_snapshot"] = True
+        f = forks.get(str(i["repo_id"]))
+        if f and f.get("readable"):  # the fork read (WP5c D-3), joined by repository ID
+            row["fork_ahead_by"] = f["ahead_by"]
+            row["fork_mostly_models"] = f["files_changed"] > 0 and 2 * f["model_files_changed"] > f["files_changed"]
         out[i["repo_id"]] = row
     return out
 
@@ -136,10 +141,6 @@ def rows(table, root=ROOT):
         return _keyed(load("registry.yaml", root)["repos"], "repo_id")
     if table == "org_entry":
         return [load("registry.yaml", root)["org"]]
-    if table == "assignment":
-        return _keyed(load("data/assignments.yaml", root)["repos"], "repo_id")
-    if table == "org_assignment":
-        return [load("data/assignments.yaml", root)["org"]]
     if table == "policy_set":
         return [load("data/policies/_set.yaml", root)]
     if table == "policy":

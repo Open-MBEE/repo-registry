@@ -1,696 +1,889 @@
 # PROVISIONAL. NOT APPROVED. The kind list: each repository's type and stage in the lifecycle (WP1 D-4; WP4e).
 # Keyed by GitHub's repository ID (WP5b OD3), with the name as a column; sorted by name, ignoring case.
-# Drafted by the rules in data/taxonomy/kinds.yaml, plus kinds assigned by recorded decisions
-# (data/assignments.yaml); edited since by people, one entry at a time (WP0 R-12).
+# Each entry's source says where its kind came from (WP5c OD1): `inferred` (the rules' candidate), `topic` (its code
+# owners' openmbee-<type> topic) or `maintainer` (a maintainer's merged decision, with the decision it records).
+# Rules and topics never change a `maintainer` entry; precedence: inferred, then topic, then maintainer.
 # Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).
-# Format: docs/kind-list-format.md. An entry has a type and a stage, or only a reason.
+# Format: docs/kind-list-format.md. An entry has a type and a stage, or only a reason, and a source.
 status: provisional
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
 org:
   name: Open-MBEE
   type: governance
   stage: graduated
+  source: maintainer
+  decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md"
 repos:
   713039071:
     name: ".github"
-    type: media
-    stage: incubating
+    type: governance
+    stage: graduated
+    source: maintainer
+    decision: "WP5c OD4 (mzargham): the org's .github repository, its profile and default community files, is part of the org's administration, so governance/graduated."
   72783104:
     name: "_OpenMBEE-Documentation"
     type: media
     stage: incubating
+    source: inferred
   1328104210:
     name: "aircraftengine-simulation"
     type: research
     stage: sandbox
+    source: inferred
   1408254042:
     name: "airflow-provider-opensysml"
     type: tool
     stage: sandbox
+    source: inferred
   29001550:
     name: "amazonaws"
     reason: "Archived, with no type signal. Inert whatever its type."
+    source: inferred
   331055772:
     name: "apv"
     type: tool
     stage: sandbox
+    source: inferred
   331056160:
     name: "apv-mdk"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   246386068:
     name: "arch_model"
     type: media
     stage: incubating
+    source: inferred
   775398107:
     name: "architecture-based-risk-analysis"
     type: tool
     stage: sandbox
+    source: inferred
   123620745:
     name: "bae"
     type: tool
     stage: sandbox
+    source: inferred
   22493646:
     name: "bae2_3_1"
     type: tool
     stage: sandbox
+    source: inferred
   740131856:
     name: "ChatGPT-Prompts"
     type: research
     stage: sandbox
+    source: inferred
   33291437:
     name: "Comodo"
     type: tool
     stage: sandbox
+    source: inferred
   1282740430:
     name: "concept-definition-stage"
     type: tool
     stage: sandbox
+    source: inferred
   615316016:
     name: "configuration-management-plugin"
     type: tool
     stage: sandbox
+    source: inferred
   320444571:
     name: "confluence-mdk"
     type: tool
     stage: sandbox
+    source: inferred
   648658385:
     name: "des-ex-toolset"
     type: tool
     stage: sandbox
+    source: inferred
   1099516002:
     name: "DesertKite.sysml"
     type: media
     stage: incubating
+    source: inferred
   335716606:
     name: "dis"
     type: tool
     stage: incubating
+    source: inferred
   25658289:
     name: "docbook"
     type: tool
     stage: archived
+    source: inferred
   25657744:
     name: "docbookgen"
     type: tool
     stage: archived
+    source: inferred
   19901827:
     name: "DocGenServer"
     type: tool
     stage: archived
+    source: inferred
   635409809:
     name: "docs"
     type: media
     stage: incubating
+    source: inferred
   191248509:
     name: "docweb-service"
     type: tool
     stage: archived
+    source: inferred
   63885622:
     name: "doors-ng-client"
     type: tool
     stage: archived
+    source: inferred
   300696744:
     name: "doors-ng-mdk"
     type: tool
     stage: sandbox
+    source: inferred
   1088906123:
     name: "Dragon-Architecture-Model"
     type: media
     stage: incubating
+    source: inferred
   63198090:
     name: "ems-config"
     reason: "Archived, with no type signal. Inert whatever its type."
+    source: inferred
   22351057:
     name: "EMS-Repo"
     type: tool
     stage: archived
+    source: inferred
   22351360:
     name: "EMS-Share"
     type: tool
     stage: archived
+    source: inferred
   276168716:
     name: "enhancement-proposals"
     type: media
     stage: incubating
+    source: inferred
   19891439:
     name: "exec-cameo-mdk"
     type: tool
     stage: incubating
+    source: inferred
   233664723:
     name: "exec-mdk-systems-reasoner"
     type: tool
     stage: incubating
+    source: inferred
   160235647:
     name: "exec-mms"
     type: tool
     stage: incubating
+    source: inferred
   638690300:
     name: "exec-mms-migration-cameo2022x"
     type: tool
     stage: sandbox
+    source: inferred
   528163521:
     name: "exec-mms-python-client-example"
     type: tool
     stage: sandbox
+    source: inferred
   298034356:
     name: "exec-mmsri"
     type: tool
     stage: incubating
+    source: inferred
   22362113:
     name: "exec-ve"
     type: tool
     stage: incubating
+    source: inferred
   1129288675:
     name: "flexo-cli-client"
     type: tool
     stage: sandbox
+    source: inferred
   1129318438:
     name: "flexo-cli-sysmlv2-plugin"
     type: tool
     stage: sandbox
+    source: inferred
   1155663499:
     name: "flexo-conflict-resolution-policy-research"
     type: research
     stage: sandbox
+    source: inferred
   682792341:
     name: "flexo-graphql"
     type: tool
     stage: sandbox
+    source: inferred
   446899447:
     name: "flexo-mms-auth-service"
     type: tool
     stage: sandbox
+    source: inferred
   530816056:
     name: "flexo-mms-deployment"
     type: tool
     stage: sandbox
+    source: inferred
   617194194:
     name: "flexo-mms-jama-sdk"
     type: tool
     stage: sandbox
+    source: inferred
   493919608:
     name: "flexo-mms-layer0-dashboard"
     type: tool
     stage: sandbox
+    source: inferred
   1157483938:
     name: "flexo-mms-layer1-mcp"
     type: tool
     stage: sandbox
+    source: inferred
   653379981:
     name: "flexo-mms-layer1-openapi"
     type: tool
     stage: sandbox
+    source: inferred
   441051412:
     name: "flexo-mms-layer1-service"
     type: tool
     stage: sandbox
+    source: inferred
   389755606:
     name: "flexo-mms-ontology"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   1054433017:
     name: "flexo-mms-sso-auth-service"
     type: tool
     stage: sandbox
+    source: inferred
   478195880:
     name: "flexo-mms-store-service"
     type: tool
     stage: sandbox
+    source: inferred
   884000666:
     name: "flexo-mms-sysmlv2"
     type: tool
     stage: sandbox
+    source: inferred
   1160248104:
     name: "flexo-mms-sysmlv2-mcp"
     type: tool
     stage: sandbox
+    source: inferred
   1370327789:
     name: "flexo-mms.openmbee.org"
     type: media
     stage: incubating
+    source: inferred
   1100754364:
     name: "flexo-performance-test"
     type: tool
     stage: sandbox
+    source: inferred
   1266635894:
     name: "flexo-pr-manager"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   852675122:
     name: "flexo-sysml2-adapter-experiment"
     type: research
     stage: sandbox
+    source: inferred
   1086081622:
     name: "flexo-sysmlv2-swagger"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   1030606827:
     name: "flexo_syside"
     type: tool
     stage: sandbox
+    source: inferred
   1422498382:
     name: "fprime"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1375281693:
     name: "helix"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1325979711:
     name: "homebrew-tap"
     type: tool
     stage: sandbox
+    source: inferred
   162639632:
     name: "IAlf"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    type: research
+    stage: sandbox
+    source: inferred
   962923820:
     name: "jl_scxml"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   215427828:
     name: "jsonPath2"
     type: tool
     stage: archived
+    source: inferred
   93498572:
     name: "junit-xml-parser"
     type: tool
     stage: sandbox
+    source: inferred
   225493115:
     name: "jupyter-mdk"
     type: tool
     stage: archived
+    source: inferred
   292200099:
     name: "jupyterlab-mms"
     type: tool
     stage: archived
+    source: inferred
   42898017:
     name: "K"
     type: tool
     stage: sandbox
+    source: inferred
   146928526:
     name: "k2mms"
     type: tool
     stage: sandbox
+    source: inferred
   121803632:
     name: "k_webeditor"
     type: tool
     stage: sandbox
+    source: inferred
   122302709:
     name: "klang"
     type: tool
     stage: sandbox
+    source: inferred
   110161193:
     name: "kservices"
     type: tool
     stage: sandbox
+    source: inferred
   1423592451:
     name: "L4YAML"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1375281058:
     name: "langserver.github.io"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1375280929:
     name: "language-server-protocol"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   33291237:
     name: "Livingstone"
     type: tool
     stage: sandbox
+    source: inferred
   1375281379:
     name: "lsp-mode"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1375281848:
     name: "lsp4ij"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1324538016:
     name: "lunar-lander-simulation"
     type: research
     stage: sandbox
+    source: inferred
   1375281560:
     name: "mason-registry"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   248101450:
     name: "mathematica-mdk"
     type: tool
     stage: archived
+    source: inferred
   100315040:
     name: "mathematica-mdk-core"
     reason: "Archived, with no type signal. Inert whatever its type."
+    source: inferred
   80399735:
     name: "matlab-mdk"
     type: tool
     stage: archived
+    source: inferred
   1161945031:
     name: "mbple-featureide"
     type: tool
     stage: sandbox
+    source: inferred
   33291873:
     name: "MBSEPlugin"
     type: tool
     stage: sandbox
+    source: inferred
   160264154:
     name: "mcf"
     type: tool
     stage: incubating
+    source: inferred
   385645515:
     name: "mcf-model-import-export"
     type: tool
     stage: sandbox
+    source: inferred
   90200986:
     name: "md-cst-montecarlo"
     type: tool
     stage: sandbox
+    source: inferred
   129968100:
     name: "md-cst-rabbitmq"
-    reason: "No type signal. No media or research words, and no programming language."
+    type: media
+    stage: incubating
+    source: inferred
   71959049:
     name: "mdk-expression"
     type: tool
     stage: incubating
+    source: inferred
   270805640:
     name: "mms-adapter-plugin"
     type: tool
     stage: incubating
+    source: inferred
   83372310:
     name: "mms-alfresco"
     type: tool
     stage: archived
+    source: inferred
   267168167:
     name: "mms-autocref"
-    reason: "No type signal. No media or research words, and no programming language."
+    type: media
+    stage: incubating
+    source: inferred
   236633719:
     name: "mms-doc-convert"
     type: tool
     stage: incubating
+    source: inferred
   188277615:
     name: "mms-extensions"
     type: tool
     stage: archived
+    source: inferred
   397375860:
     name: "mms-helm-chart"
     type: tool
     stage: sandbox
+    source: inferred
   118530308:
     name: "mms-mathematica-client"
     reason: "Archived, with no type signal. Inert whatever its type."
+    source: inferred
   271618011:
     name: "mms-migration"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   233674535:
     name: "MMS-Python-Adapter"
     type: tool
     stage: archived
+    source: inferred
   232688190:
     name: "mms-python-client-feedstock"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   144634994:
     name: "mms-rdf"
-    reason: "No type signal. No media or research words, and no programming language."
+    type: media
+    stage: incubating
+    source: inferred
   219587644:
     name: "mms-sparql-service"
     type: tool
     stage: archived
+    source: inferred
   511627698:
     name: "mms3-to-mms4-json"
     type: tool
     stage: sandbox
+    source: inferred
   465132497:
     name: "mms5-consul"
     type: tool
     stage: archived
+    source: inferred
   169655815:
     name: "mpspi"
     type: tool
     stage: sandbox
+    source: inferred
   165913955:
     name: "MSE"
     type: tool
     stage: sandbox
+    source: inferred
   493342457:
     name: "mtip-cameo"
     type: tool
     stage: incubating
+    source: inferred
   493342360:
     name: "mtip-sparx"
     type: tool
     stage: incubating
+    source: inferred
   26829384:
     name: "mvn-repo"
     reason: "Archived, with no type signal. Inert whatever its type."
+    source: inferred
   1375281201:
     name: "nvim-lspconfig"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   83185538:
     name: "OMGSpecifications"
     type: media
     stage: incubating
+    source: inferred
   1349113785:
     name: "oosem.github.io"
     type: media
     stage: incubating
+    source: inferred
   80334620:
     name: "open-mbee.github.io"
     type: media
     stage: incubating
+    source: inferred
   168441786:
     name: "openapi-generator"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   587136215:
     name: "openapi-graph-extractor"
     type: tool
     stage: sandbox
+    source: inferred
   1375280798:
     name: "opencode"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1068122714:
     name: "openmbee-graphic-assets"
     type: media
     stage: incubating
+    source: inferred
   1373634798:
     name: "openmbee-workshops.github.io"
     type: media
     stage: incubating
+    source: inferred
   78896957:
     name: "OpenSE-Cookbook"
     type: media
     stage: incubating
+    source: inferred
   1318945311:
     name: "OpenSysML"
     type: tool
     stage: sandbox
+    source: inferred
   1403782601:
     name: "OpenSysML-Extensions-Library"
     type: tool
     stage: sandbox
+    source: inferred
   1074833406:
     name: "OpenSysML-FAQ"
     type: media
     stage: incubating
+    source: inferred
   1412449983:
     name: "OpenSysML-REDK-Skills"
     type: tool
     stage: sandbox
+    source: inferred
   1187583595:
     name: "opensysml.github.io"
     type: media
     stage: incubating
+    source: inferred
   1422497683:
     name: "opentelemetry-demo"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1422497939:
     name: "opentelemetry-proto"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1422497329:
     name: "opentelemetry-specification"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   354897889:
     name: "opl"
     type: tool
     stage: incubating
+    source: inferred
   495939642:
     name: "pane-layout"
     type: tool
     stage: sandbox
+    source: inferred
   458239966:
     name: "perseverance-modelica"
     type: media
     stage: incubating
+    source: inferred
   239544938:
     name: "pma"
     type: tool
     stage: archived
+    source: inferred
   643009265:
     name: "pmc-fdir"
     type: research
     stage: sandbox
+    source: inferred
   1422654883:
     name: "PropertyKindCalculus"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   104777007:
     name: "python-mdk"
     type: tool
     stage: archived
+    source: inferred
   305725041:
     name: "readthedocs"
     type: media
     stage: incubating
+    source: inferred
   1424079165:
     name: "repo-registry"
     type: governance
     stage: sandbox
+    source: maintainer
+    decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md (sandbox until the maintainers calibrate it). In the org since WP5."
   29108554:
     name: "sbt-license-plugin"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   35046190:
     name: "sbt-pack"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   952943191:
     name: "scxml4py"
     type: tool
     stage: sandbox
+    source: inferred
   171956804:
     name: "staged-recipes"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1187592523:
     name: "staged-recipes-opensysml"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   1326912794:
     name: "starkit"
-    reason: "No type signal. No media or research words, and no programming language."
+    type: media
+    stage: incubating
+    source: inferred
   1345195457:
     name: "structured-use-cases"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   1345211831:
     name: "structured-usecase-editor"
     type: tool
     stage: sandbox
+    source: inferred
   133737729:
     name: "swagger-codegen"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   118489913:
     name: "swagger-codegen-mathematica-client"
     type: tool
     stage: sandbox
+    source: inferred
   130741087:
     name: "swagger-codegen-matlab-client"
     type: tool
     stage: sandbox
+    source: inferred
   310330863:
     name: "sync-service"
     type: tool
     stage: sandbox
+    source: inferred
   22349765:
     name: "sysml"
     type: tool
     stage: sandbox
+    source: inferred
   1374820455:
     name: "SysML-LoRD"
     type: tool
     stage: sandbox
+    source: inferred
   1361507059:
     name: "sysml-sdk"
     type: tool
     stage: sandbox
+    source: inferred
   1361506514:
     name: "sysml-toolkit"
     type: tool
     stage: sandbox
+    source: inferred
   666063708:
     name: "SysML-v2-Applications-and-Examples"
     type: media
     stage: incubating
+    source: inferred
   962926800:
     name: "sysmlv2-python-client"
     type: tool
     stage: sandbox
+    source: inferred
   960074770:
     name: "sysmlv2-rdf-ontology"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    type: media
+    stage: incubating
+    source: inferred
   1367666757:
     name: "sysmlv2-testing"
     type: tool
     stage: sandbox
+    source: inferred
   1225845670:
     name: "sysmlv2-web-modeler"
     type: tool
     stage: sandbox
+    source: inferred
   1064338054:
     name: "sysmlv2_dls"
     type: tool
     stage: sandbox
+    source: inferred
   1087846032:
     name: "sysmlv2_excel"
     type: tool
     stage: sandbox
+    source: inferred
   1038270551:
     name: "sysmlv2x"
     type: tool
     stage: sandbox
+    source: inferred
   1163493124:
     name: "sysmod-sysmlv2-api"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   1380680226:
     name: "syson"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   93499228:
     name: "testrail-cli"
     type: tool
     stage: incubating
+    source: inferred
   93506137:
     name: "testrail-client-wrapper"
     type: tool
     stage: incubating
+    source: inferred
   215427233:
     name: "text2text"
     type: tool
     stage: sandbox
+    source: inferred
   53867665:
     name: "TMT-SysML-Model"
     type: media
     stage: incubating
+    source: inferred
   1388019168:
     name: "toaster"
     type: media
     stage: incubating
+    source: inferred
   1384282338:
     name: "trafo-v2-v1"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   1375320022:
     name: "tree-sitter-sysml"
     type: tool
     stage: sandbox
+    source: inferred
   97874979:
     name: "user-forum"
     type: media
     stage: incubating
+    source: inferred
   22349834:
     name: "util"
     type: tool
     stage: sandbox
+    source: inferred
   367212159:
     name: "ve-confluence"
     type: tool
     stage: sandbox
+    source: inferred
   569375555:
     name: "ve-confluence-app"
     type: tool
     stage: sandbox
+    source: inferred
   553248739:
     name: "ve-diagram-generator"
     type: tool
     stage: sandbox
+    source: inferred
   138130121:
     name: "ve-mobile"
     type: tool
     stage: archived
+    source: inferred
   340785297:
     name: "view-service"
     type: tool
     stage: sandbox
+    source: inferred
   19901840:
     name: "ViewEditor-Sesame"
     type: tool
     stage: archived
+    source: inferred
   1384250882:
     name: "websysml-core"
-    reason: "No type signal. No media or research words, and no programming language."
+    reason: "No type signal. No media or research words, no programming language, and no type topic. Its code owners can declare the type with an openmbee-<type> topic."
+    source: inferred
   1389553817:
     name: "winget-pkgs"
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    source: inferred
   34681989:
     name: "zzProjectWiki"
     reason: "Archived, with no type signal. Inert whatever its type."
+    source: inferred
