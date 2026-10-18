@@ -183,28 +183,38 @@ kinds:
     recommend_when:
       all: [{signal: is_research}, {signal: archived}]
 
-  # --- governance (WP0 A2, A4): always assigned, never recommended ---
+  # --- governance (WP0 A2, A4; WP1 amendment 3): always assigned, never recommended ---
+  # Two things have the governance type: the repo-registry repository, which holds the organization's rules for its
+  # repositories, and the administration of the GitHub organization itself. They differ only by stage. Friction
+  # rises with the stage, as for every other type (WP4c).
   governance/sandbox:
     type: governance
     lifecycle: sandbox
-    tier: high
+    tier: low
     meaning: >-
-      Governance for the organization that is still being set up. Only the repo-registry repository, which holds the
-      organization's rules for its repositories, has this kind. It gets the strictest controls, because whatever governs must be at least as strict as
-      what it governs.
+      Governance that is still being set up and tried out. Light controls, like a sandbox tool, so that it can change
+      quickly. repo-registry has this kind until the maintainers buy in and work together to calibrate it.
+    recommend_when: false
+  governance/incubating:
+    type: governance
+    lifecycle: incubating
+    tier: medium
+    meaning: >-
+      Governance that the maintainers have taken up and are calibrating together, before it becomes the canonical
+      source. Controls like an incubating tool. Nothing has this kind yet; repo-registry is expected to pass through it.
     recommend_when: false
   governance/graduated:
     type: governance
     lifecycle: graduated
     tier: high
     meaning: >-
-      The administration of the GitHub organization itself: who can do what across all its repositories. It gets the
-      strictest controls, because whatever governs must be at least as strict as what it governs.
+      Established governance: the administration of the GitHub organization itself, and repo-registry once it is
+      accepted as the canonical source. The strictest controls, because whatever governs must be at least as strict
+      as what it governs. It carries the organization's policies and the repository policies together.
     recommend_when: false
 
 # Kinds in the type x lifecycle cross product that are deliberately left out, each with its reason (WP1 R-3).
 omitted:
-  governance/incubating: Only two things have the governance type, and neither is at this stage.
   governance/archived: Only two things have the governance type, and neither is archived.
 
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.

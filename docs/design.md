@@ -19,10 +19,12 @@ three ends:
    graduated) and which are sandbox or archived *(updated: A4)*.
 2. **Demonstrable oversight.** OpenMBEE can show regulated adopters that permissions and release
    approval follow written rules, aligned with CISA *OSS Security Principles and Practices* (2026-07-30) and
-   NIST SP 800-37 Rev. 2 (the RMF) with SP 800-53 *(updated: WP0 "NIST RMF as a second core citation")*.
+   NIST SP 800-37 Rev. 2 (the RMF) with SP 800-53, and the OpenSSF project lifecycle and security baseline
+   *(updated: WP0 "NIST RMF as a second core citation"; WP1 amendment 3, OpenSSF core)*.
 3. **Friction only where it is needed, and visibly so.** Media and research stay easy to contribute to. Strictness
-   follows the tier: graduated tools and governance are high, incubating tools and media people rely on are medium,
-   sandbox tools and research are low, archived repos are none *(updated: A4)*. For every repo it is clear which
+   follows the tier: graduated tools and graduated governance are high, incubating tools, media people rely on and
+   incubating governance are medium, sandbox tools, sandbox governance and research are low, archived repos are none
+   *(updated: A4; WP1 amendment 3)*. For every repo it is clear which
    policies are in effect and which aren't, and that the prescribed ones really are in effect (PO-10).
 
 **Success** is staged ([roadmap](roadmap.md)). The system has succeeded when it is **canonical** (R3), the
@@ -75,7 +77,7 @@ interfaces are inside GitHub, so the system stays self-contained there.
 | Role (activity) | Plane | Interface | What happens there |
 |---|---|---|---|
 | **Reader**: finds and understands repos | — (read-only) | **Wiki** of this repo | Generated from controller state each run: an index page, one page per kind, per tier and per policy, and views of the registry by kind, tier and policy, with each repo's red / yellow / green status and links to the repo and its open registry issues. No page per repo *(updated: WP0 D-3, "Wiki downscope")*. Never hand-edited. |
-| **Operator**: brings a repo into conformance; the repo's CODEOWNERS *(updated: WP0 R-17)* | Operations | **Issues in their own repo**, plus **direct edits** to that repo | The system files change requests as issues in the repo they concern (in R1, sample issue texts only, not posted). Operators act in their own repo: they edit it (sensed on the next pass), answer attested checks in its README attestation block, and close the issue to assert the task is done *(updated: WP0 "Compliance", R-13)*. A kind-change PR is an operator's only action in this repo (WP0 OD3). |
+| **Operator**: brings a repo into conformance; the repo's CODEOWNERS *(updated: WP0 R-17)* | Operations | **Issues in their own repo**, plus **direct edits** to that repo | The system files change requests as issues in the repo they concern (in R1, sample issue texts only, not posted). Operators act in their own repo: they edit it (sensed on the next pass), answer attested checks in its `ATTESTATIONS.yaml`, and close the issue to assert the task is done *(updated: WP0 "Compliance", R-13; WP0 amendment 3)*. A kind-change PR is an operator's only action in this repo (WP0 OD3). |
 | **Governor**: sets and tunes the rules; the named maintainers, and the owners among them | Policy (controller tuning) | **This repo**: PR → review → merge, its own issues, and *ideally* an org **Project board** aggregating every issue the system has written across the org | Changes to taxonomy, policy and implementation; the exclude list. Any maintainer merges a kind change; an owner merges changes to the maintainer list and accepted exceptions *(updated: WP4b OD3)*. Items needing a policy decision (`unclassified`, taxonomy review) are issues here. Low friction before canonical (R1–R2): in R1 the only restriction is the valid-`main` check (WP0 R-14). From its first canonical release (R3): CODEOWNERS (OpenMBEE maintainers) approval to merge to `main`; the number of reviews is parked (IF-9). |
 
 ### Stakeholders → roles (draft, for iteration)
@@ -94,10 +96,10 @@ interfaces are inside GitHub, so the system stays self-contained there.
 
 Each requirement table has the columns ID · requirement · source · assessed by. Sources:
 **M** = mzargham (design sessions), **S** = the Slack post that started this, **E** = org evidence
-(below), **C** = CISA guidance (below). Policies now cite two core sources, CISA and the NIST RMF with SP 800-53,
-plus secondary ones: the OpenSSF security baseline (the backbone for policies) and lifecycle, the CNCF lifecycle, and
-ISO/IEC/IEEE 12207 by clause *(updated: WP0 "NIST RMF as a second core citation"; WP1-decisions "Secondary
-citations")*.
+(below), **C** = CISA guidance (below). Policies now cite three core sources, CISA, the NIST RMF with SP 800-53, and
+OpenSSF (its lifecycle, and its security baseline, the backbone for policies), plus secondary ones: the CNCF
+lifecycle, and ISO/IEC/IEEE 12207 by clause *(updated: WP0 "NIST RMF as a second core citation"; WP1-decisions
+"Secondary citations"; WP1 amendment 3, OpenSSF core)*.
 
 ## Cross-cutting requirements
 
@@ -111,7 +113,7 @@ citations")*.
 | X-6 | A policy-plane PR shows a consequence preview before merge: which kinds and policies in effect change and which actions would follow *(updated: WP0 A1)*. | M | Preview appears on a test PR |
 | X-7 | Every actor is a known, named actor identified by a GitHub username: operators (each repo's CODEOWNERS), maintainers and owners (governors), holders of release authority, and the system itself (a named bot or App identity). Roles are assigned to usernames *(updated: WP0 R-17; maintainer-policy)*. | M | Every role assignment resolves to an existing GitHub user |
 | X-8 | Every permission and authority mechanism (who can do what) is git or GitHub native. The org maintains its permissioned groups (org and repo roles, teams) separately. This system **assumes** they are in use, **may prescribe** how they're used (for example, policy can require CODEOWNERS, required reviews or a given team's access), and **never reimplements** anything git or GitHub already provides. | M | Inventory of mechanisms used: every one is native, and none is duplicated in this repo |
-| X-9 | `repo-registry` is a registered repo under its own policy. It is governance/sandbox, which is high tier now. Only its review friction waits: from its first canonical release (R3), merging to `main` needs CODEOWNERS approval (expected gap XF-2) *(updated: WP1-decisions G-2; A4)*. | M | Its entry in the kind list, and its status in the wiki views |
+| X-9 | `repo-registry` is a registered repo under its own policy. It is governance/sandbox, which is low tier while it is set up; it moves to governance/incubating (medium) when the maintainers calibrate it together, and to governance/graduated (high) when it is accepted as the canonical source (R3), when merging to `main` needs CODEOWNERS approval (expected gap XF-2) *(updated: WP1-decisions G-2; A4; WP1 amendment 3)*. | M | Its entry in the kind list, and its status in the wiki views |
 | X-10 | **Fail safe.** If a run fails or can't trust its inputs (expired credential, rate limit, partial sensing), it takes no actions. It keeps the last good wiki, marked stale with the reason, and notifies the maintainers through GitHub-native means (an issue in this repo addressed to them). | M | Fixture run with a sensing failure: no actions, stale banner, one notification |
 
 ## Design decisions and their justification
@@ -147,9 +149,10 @@ citations")*.
 - **Accepted deviations.** Approved and standing: recorded in this repo per repo and policy, with a reason and the
   approver, by a PR that an owner merges *(updated: WP4b OD3)*, with no expiry, and reviewable at any time. Its status
   is green, marked as an accepted exception (WP0 R-13). → PO-8, FM-5.
-- **Self-governance.** `repo-registry` is itself a registered repo. It is governance/sandbox, which maps to high, while
-  it is being built and calibrated (R1–R2). At its first canonical release (R3) its review friction rises to
-  CODEOWNERS approval *(updated: WP1-decisions G-2; A4; XF-2)*. → X-9.
+- **Self-governance.** `repo-registry` is itself a registered repo. It is governance/sandbox (low) while it is being built,
+  governance/incubating (medium) while the maintainers calibrate it (R2), and governance/graduated (high) once it is
+  canonical (R3), when its review friction rises to CODEOWNERS approval *(updated: WP1-decisions G-2; A4; XF-2; WP1
+  amendment 3)*. → X-9.
 - **Controller failure.** Fail safe: take no actions, mark the wiki as stale, and notify the maintainers. → X-10.
 
 ## Evidence (snapshot 2026-10-17, read-only `gh api graphql`)
@@ -187,10 +190,11 @@ citations")*.
 
 ## Parked (content; for later design sessions)
 
-- ~~Where attested facts land and in what format.~~ Resolved: in a README attestation block in the repo, committed by
-  a code owner, out of date once older than the latest release *(WP0 "Compliance", R-13, R-17)*.
+- ~~Where attested facts land and in what format.~~ Resolved: in one `ATTESTATIONS.yaml` at the repo's root,
+  committed by a code owner, read at the latest release's commit, each entry naming the release it was made for
+  ([attestations-format](attestations-format.md)) *(WP0 "Compliance", R-13, R-17; WP0 amendment 3)*.
 - The number of required reviews from R3 on.
-- ~~The class set.~~ Resolved: the kinds in `data/taxonomy/kinds.yaml` (14 defined, 2 omitted with reasons);
+- ~~The class set.~~ Resolved: the kinds in `data/taxonomy/kinds.yaml` (15 defined, 1 omitted with a reason; WP1 amendment 3);
   `repo-registry` is governance/sandbox *(WP1; A2, A4)*. Y and Z for R1: the measurements in the stored snapshot and
   the attestations named in each policy's SOP.
 - Calibration targets for the R2 exit.

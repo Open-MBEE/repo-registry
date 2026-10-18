@@ -27,7 +27,7 @@ github:
 checks:
   automated:                             # what the registry reads, and the permission it needs
     - {id: push-protection-on, reads: "GET /repos/{owner}/{repo} -> ...", permission: "Administration: read"}
-  attested:                              # what a code owner states, in the README attestation block
+  attested:                              # what a code owner states, in the repository's ATTESTATIONS.yaml
     - {id: ..., statement: ...}
 cites:
   cisa: [CISA-P-SECRET-DETECT]           # or "none"
@@ -57,7 +57,8 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
 6. **Checks.** There is at least one check. Each automated check has an `id`, the exact `reads` (endpoint and field)
    and the `permission` it needs. Each attested check has an `id` and a `statement`.
 7. **Core citations.** `cites.cisa` and `cites.nist` are present: either a list of IDs that exist in
-   `data/sources/cisa-practices.yaml` and `data/sources/nist-800-53.yaml`, or `"none"`.
+   `data/sources/cisa-practices.yaml` and `data/sources/nist-800-53.yaml`, or `"none"`. `cites.openssf` is present
+   too, the third core citation (WP4c): a list of OpenSSF security-baseline items, empty when the policy adopts none.
 8. **OpenSSF baseline coverage.** Every item in `data/sources/openssf-security-baseline.yaml` is adopted by at least
    one policy (`cites.openssf`) or listed in `data/policies/_departures.yaml` with a reason, but not both.
 9. **CISA coverage.** Every practice in `data/sources/cisa-practices.yaml` is cited by at least one policy or listed in
@@ -76,5 +77,17 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
 
 - An automated check that the registry's credential can't read is **yellow** (can't tell), never "off". Several GitHub
   endpoints return 404 both for "off" and for "you may not see this", so the checker needs *Administration: read*.
-- An attested check is green only when a code owner's attestation is present and newer than the latest release.
+- An attested check is answered in the repository's `ATTESTATIONS.yaml` ([attestations-format.md](attestations-format.md);
+  WP4d). The registry reads the file at one commit: the commit of the latest release's tag (published, not a draft or
+  pre-release), or, for a repository with no release, the latest commit on the default branch. An archived
+  repository is read at its final commit on the default branch, whatever its releases, since its last attestation
+  is made just before it is archived (WP4d review, G-1). Then:
+  - **green:** the file has one entry for the policy and check, its `release` names that release (or is `none` when
+    there is no release; for an archived repository, any value), and the last commit that changed the file, up to that commit, was made by a code owner of
+    the repository at that commit. With no release, the entry doesn't go out of date.
+  - **red:** there is a release but its commit has no such entry, or the entry names another release; the entry is
+    missing; the file doesn't meet its schema; or the last change to the file wasn't made by a code owner. A
+    required attestation that is missing or out of date is non-conformant (WP0 R-13).
+  - **yellow:** the file, the release, the commit history or the CODEOWNERS can't be read, so the registry can't tell.
+  - An accepted exception (`data/deviations.yaml`) is green, marked as an exception, as for any check.
 - A repository archived before the archive policy existed passes `archive-notice` as it is.

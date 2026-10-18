@@ -66,7 +66,10 @@ kinds:
   research/archived:
   - archive-notice
   governance/sandbox:
-  - change-review
+  - codeowners
+  - license-by-type
+  - project-files
+  governance/incubating:
   - codeowners
   - contributing
   - dependency-management
@@ -74,17 +77,28 @@ kinds:
   - license-by-type
   - project-files
   - secret-protection
+  - security-policy
+  - static-analysis
+  - workflow-least-privilege
+  governance/graduated:
+  - change-review
+  - codeowners
+  - contributing
+  - dependency-management
+  - governance-roles-named
+  - history-protection
+  - license-by-type
+  - maintainers-match
+  - org-base-permission
+  - org-few-owners
+  - org-two-factor
+  - project-files
+  - secret-protection
   - security-design
   - security-policy
   - static-analysis
   - vulnerability-remediation
   - workflow-least-privilege
-  governance/graduated:
-  - governance-roles-named
-  - maintainers-match
-  - org-base-permission
-  - org-few-owners
-  - org-two-factor
 policies:
   archive-notice:
   - tool/archived
@@ -92,7 +106,7 @@ policies:
   - research/archived
   change-review:
   - tool/graduated
-  - governance/sandbox
+  - governance/graduated
   codeowners:
   - tool/sandbox
   - tool/incubating
@@ -104,22 +118,27 @@ policies:
   - research/incubating
   - research/graduated
   - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   contributing:
   - tool/incubating
   - tool/graduated
   - media/incubating
   - media/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   dependency-management:
   - tool/incubating
   - tool/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   governance-roles-named:
   - governance/graduated
   history-protection:
   - tool/incubating
   - tool/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   license-by-type:
   - tool/sandbox
   - tool/incubating
@@ -131,6 +150,8 @@ policies:
   - research/incubating
   - research/graduated
   - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   maintainers-match:
   - governance/graduated
   org-base-permission:
@@ -150,30 +171,36 @@ policies:
   - research/incubating
   - research/graduated
   - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   release-integrity:
   - tool/graduated
   secret-protection:
   - tool/incubating
   - tool/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   security-design:
   - tool/graduated
-  - governance/sandbox
+  - governance/graduated
   security-policy:
   - tool/incubating
   - tool/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   semantic-versioning:
   - tool/incubating
   - tool/graduated
   static-analysis:
   - tool/incubating
   - tool/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated
   vulnerability-remediation:
   - tool/graduated
-  - governance/sandbox
+  - governance/graduated
   workflow-least-privilege:
   - tool/incubating
   - tool/graduated
-  - governance/sandbox
+  - governance/incubating
+  - governance/graduated

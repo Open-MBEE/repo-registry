@@ -32,6 +32,8 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
   (2026) and NIST [SP 800-37 Rev. 2](https://csrc.nist.gov/pubs/sp/800/37/r2/final), the *Risk Management Framework*
   (RMF, December 2018). The README links both and states the design intent: minimum viable policy making and controls. RMF is cited for the process, through the map below.
   Each policy also names the CISA practice and the RMF task or SP 800-53 control it serves, or says "none".
+  *(amended, WP1 amendment 3: OpenSSF is a third core citation, for its project lifecycle, from which the stages are
+  adopted, and its security baseline, the backbone of the policies. Each policy names the baseline items it adopts.)*
 
   | RMF step | In this system |
   |---|---|
@@ -78,7 +80,8 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
   operator, the party accountable for the repo. A required attestation that is missing or out of date is
   non-conformant, so red. A repo whose kind requires no attestations can be green with none, which we expect for some
   kinds. Attestations live in the operator's own repo, for example as a trailer in its README filled from a template,
-  so they keep up with releases.
+  so they keep up with releases. *(amended, WP0 amendment 3: they live in one `ATTESTATIONS.yaml` at the repo's
+  root, read at the commit of the latest release, and each entry names the release it was made for; WP4d.)*
 - **Low friction where it fits:** exploratory research repos are lax by design. Some are a single committer exploring
   ideas in public, and we don't want to stop that. They are often archived when they go stale. An archived repo is
   read-only, so it is compliant by definition once it has been archived. Archiving follows a named **archive policy**
@@ -275,7 +278,7 @@ Every default was decided by the supervisor (see [WP0-decisions.md](WP0-decision
 - Each maintainer approval is recorded by a merged PR in this repo.
 - The org policy (D-8) is approved as part of "the policies", not as a separate approval.
 - The org gets its own wiki page and a row on the index, with its status.
-- R-13: an attestation is out of date once it is older than the repo's latest release.
+- R-13: an attestation is out of date once it is older than the repo's latest release. *(amended, WP0 amendment 3: one `ATTESTATIONS.yaml` per repository, read at the release's commit; WP4d)* An entry counts for a release only if it is in the file at the release's commit and names that release; with no release, the file on the default branch counts and doesn't go out of date.
 - R-17: where a tier needs an owner, the owner is the repo's CODEOWNERS, and only a CODEOWNER's attestation counts.
 - Repos archived before the archive policy existed are compliant as they are, because they can't be edited.
 - D-4: each issue carries a registry label plus one label per policy, which the wiki's issue links filter on.

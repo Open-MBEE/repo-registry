@@ -4,7 +4,7 @@
 
 Tools from version 1.0, and the registry, publish a security policy that says how to report a vulnerability and who responds, and turn on GitHub's private vulnerability reporting.
 
-**Applies to:** tool at incubating, tool at graduated, the registry (repo-registry). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+**Applies to:** tool at incubating, tool at graduated, governance at incubating (nothing yet), governance at graduated (the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 
@@ -24,18 +24,18 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 
 - **disclosure-followed**: Reports are answered following the published process, which also says what to expect for automated or AI-assisted reports.
 
-How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
-release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it
-is older than the repository's latest release.
+How to attest: add this entry to your repository's `ATTESTATIONS.yaml`, at its root, and renew it for each release
+([attestations-format.md](../attestations-format.md)). An entry counts only if its `release` names the release being
+checked (or `none` before the first release), and the last change to the file was committed by a code owner of the repository. Point to
+the file from the README: "Attestations: see `ATTESTATIONS.yaml`."
 
-```markdown
-<!-- repo-registry attestation
-policy: security-policy
-check: disclosure-followed
-attested-by: @your-github-username
-date: YYYY-MM-DD
-release: vX.Y.Z (or none)
--->
+```yaml
+attestations:
+  - policy: security-policy
+    check: disclosure-followed
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
 ```
 
 

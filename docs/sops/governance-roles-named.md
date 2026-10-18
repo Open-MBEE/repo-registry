@@ -4,7 +4,7 @@
 
 Everyone who holds governance power over the organization, its owners and its named maintainers, makes their organization membership public, so that who governs OpenMBEE is visible. Until this policy is ratified, nobody is named against their choice, and anyone may step down instead.
 
-**Applies to:** the administration of the Open-MBEE GitHub organization (kind governance/graduated). See [policy-applicability.md](../policy-applicability.md).
+**Applies to:** governance at graduated: the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source. See [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

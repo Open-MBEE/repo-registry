@@ -6,21 +6,16 @@ name: Contribution guide
 meaning: Tools from version 1.0, media in use, and the registry itself publish a contribution guide that keeps demands on
   contributors small, says what kinds of contribution are welcome, and asks for tests with code.
 applies_if:
-  any:
-  - all:
-    - attr: type
-      in:
-      - tool
-      - media
-    - attr: lifecycle
-      in:
-      - incubating
-      - graduated
-  - all:
-    - attr: type
-      eq: governance
-    - attr: lifecycle
-      eq: sandbox
+  all:
+  - attr: type
+    in:
+    - tool
+    - media
+    - governance
+  - attr: lifecycle
+    in:
+    - incubating
+    - graduated
 github:
   mechanism: CONTRIBUTING file, detected by GitHub's community profile
   docs:

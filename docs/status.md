@@ -22,6 +22,11 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP4b** (docs sweep and checkpoint): accepted in 3f2c557. Review:
     [WP4b-review.md](../work-packages/WP4b-review.md); drift report:
     [WP4b-drift-report.md](../work-packages/WP4b-drift-report.md).
+  - **WP4c** (the governance kinds, and OpenSSF as a core citation): accepted in 4cad812. Review:
+    [WP4c-review.md](../work-packages/WP4c-review.md); the change is recorded in
+    [WP1-amendment-3.md](../work-packages/WP1-amendment-3.md).
+  - **WP4d** (the attestations file): accepted in caaca38. Review:
+    [WP4d-review.md](../work-packages/WP4d-review.md); the change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
   - **WP5** (meta-rule checks in CI, and the move to Open-MBEE): scope approved in 0cbe887
     ([WP5-scope-of-work.md](../work-packages/WP5-scope-of-work.md)); delivered as a pull request, waiting for
     acceptance. The move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
@@ -34,7 +39,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - the provisional kind list (`registry.yaml`);
   - 16 repository policies (including `license-by-type`) with SOPs (`data/policies/`, `docs/sops/`). Each has an
     applies-if rule on type, stage or tier, and is grounded in [policy-basis-review.md](policy-basis-review.md)
-    (CISA and NIST core; the OpenSSF baseline as backbone; CNCF and ISO/IEC/IEEE 12207 secondary);
+    (CISA, NIST and OpenSSF core, with the OpenSSF baseline as backbone; CNCF and ISO/IEC/IEEE 12207 secondary);
   - five org policies, a provisional named-maintainer list (`data/maintainers.yaml`: Chris Delp, Michael Zargham,
     Robert Karban, Jason Han), a proposed CODEOWNERS, and the maintainer policy
     ([maintainer-policy.md](maintainer-policy.md)); concealed org members are counted, never named;
@@ -56,7 +61,8 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 1. WP1, kinds and tiers: **accepted**.
 2. WP2, policies: **accepted**. WP2a, license by type: **accepted**.
 3. WP3, org governance: **accepted**.
-4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**.
+4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
+   kinds: **accepted**. WP4d, the attestations file: **accepted**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE: delivered, waiting for acceptance.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.

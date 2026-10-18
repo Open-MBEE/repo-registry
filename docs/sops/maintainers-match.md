@@ -4,7 +4,7 @@
 
 The named maintainers (data/maintainers.yaml) are exactly this repository's code owners, and every owner of the organization is a named maintainer. Owners are a small subset of the maintainers.
 
-**Applies to:** the administration of the Open-MBEE GitHub organization (kind governance/graduated). See [policy-applicability.md](../policy-applicability.md).
+**Applies to:** governance at graduated: the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source. See [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 
@@ -22,6 +22,21 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 ## Attested checks
 
 - **other-powers-declared**: Anyone else who holds admin power over the organization or its repositories outside GitHub's owner role (for example through installed apps or other platforms) is declared under `other_powers` in data/maintainers.yaml, by a pull request that an owner merges. The merge is the record.
+
+How to attest: add this entry to the `ATTESTATIONS.yaml` of this repository, `repo-registry`, where the org is governed (the org has no repository of its own), and renew it for each release
+([attestations-format.md](../attestations-format.md)). An entry counts only if its `release` names the release being
+checked (or `none` before the first release), and the last change to the file was committed by a code owner of `repo-registry`. Point to
+the file from the README: "Attestations: see `ATTESTATIONS.yaml`."
+
+```yaml
+attestations:
+  - policy: maintainers-match
+    check: other-powers-declared
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
+```
+
 
 ## Why
 

@@ -21,5 +21,5 @@ stage) *(updated: WP0-decisions "The model, stated precisely")*. It defines no c
 
 **Draft starting point (from the Slack post), now decided:** type ∈ {tool, media, research} × lifecycle ∈
 {active development, maintained, exploratory, archived}. *(updated: WP0 A2, A4; WP1 D-2)* The types are now tool,
-media, research and governance; the stages are Sandbox, Incubating, Graduated and Archived; 14 kinds are defined and
-2 omitted with reasons, in `data/taxonomy/kinds.yaml`. `repo-registry` itself is governance/sandbox (X-9).
+media, research and governance; the stages are Sandbox, Incubating, Graduated and Archived; 15 kinds are defined and
+1 omitted with a reason *(WP1 amendment 3)*, in `data/taxonomy/kinds.yaml`. `repo-registry` itself is governance/sandbox (X-9).

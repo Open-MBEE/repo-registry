@@ -6,19 +6,15 @@ name: Vulnerability reporting
 meaning: Tools from version 1.0, and the registry, publish a security policy that says how to report a vulnerability and who
   responds, and turn on GitHub's private vulnerability reporting.
 applies_if:
-  any:
-  - all:
-    - attr: type
-      eq: tool
-    - attr: lifecycle
-      in:
-      - incubating
-      - graduated
-  - all:
-    - attr: type
-      eq: governance
-    - attr: lifecycle
-      eq: sandbox
+  all:
+  - attr: type
+    in:
+    - tool
+    - governance
+  - attr: lifecycle
+    in:
+    - incubating
+    - graduated
 github:
   mechanism: SECURITY.md security policy and private vulnerability reporting
   docs:
