@@ -204,3 +204,13 @@ The WP1 scope is approved (merge 3bb8ee8). These changes need a new approval by 
   Archived: CNCF (https://contribute.cncf.io/projects/lifecycle/) and OpenSSF
   (https://github.com/ossf/tac/blob/main/process/project-lifecycle.md). Default for WP2: cite the OpenSSF lifecycle,
   because OpenSSF is the security-focused foundation and aligns with the CISA guidance. No WP0 amendment.
+
+### Follow-up — Which open-source maturity model
+
+- **Question:** Which open-source maturity model matches better? The agent's analysis: CNCF and OpenSSF have the same
+  stages, and neither has a stage matching *maintained* (LF Networking's Maintenance/LTS does, unverified). The agent
+  recommended OpenSSF.
+- **Answer (mzargham, typed by agent):** "oh they have the same one, you can put both in citations since its secondary"
+- **Outcome:** WP2 (D-9) cites both the CNCF and the OpenSSF project lifecycles as secondary citations, for their stage
+  definitions (Sandbox as legitimate experimental work, Archived as the end state), not their graduation criteria.
+  This replaces the OpenSSF-only default above.
