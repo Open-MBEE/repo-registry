@@ -39,10 +39,10 @@ def real():
 
 
 def run(tmp, *extra):
-    table, report = pathlib.Path(tmp) / "table.md", pathlib.Path(tmp) / "report.yaml"
-    out = subprocess.run([sys.executable, str(ROOT / "scripts/policies.py"), "--table", str(table), "--report",
-                          str(report), *extra], cwd=ROOT, capture_output=True, text=True)
-    return out, table, report
+    """policies.py renders its views into tmp (WP5b OD4)."""
+    out = subprocess.run([sys.executable, str(ROOT / "scripts/policies.py"), "--out", str(tmp), *extra], cwd=ROOT,
+                         capture_output=True, text=True)
+    return out, pathlib.Path(tmp) / "policy-applicability.md", pathlib.Path(tmp) / "reports/policy-applicability.yaml"
 
 
 class MetaRuleTests(unittest.TestCase):
@@ -72,11 +72,21 @@ class MetaRuleTests(unittest.TestCase):
         self.assertTrue(any("CISA-P-NOT-REAL" in p for p in problems))
 
     def test_R4_sop_sections_required(self):
-        """R-4: every SOP has Set up, Automated checks and Attested checks."""
-        for pid, p in real()["policies"].items():
-            text = (ROOT / p["sop"]).read_text()
-            for heading in P.SOP_HEADINGS:
-                self.assertIn(heading, text, pid)
+        """R-4: every SOP has Set up, Automated checks and Attested checks. SOPs are rendered from each policy's data
+        (WP5b), so every rendered SOP is checked, and a policy without set-up steps is rejected."""
+        with tempfile.TemporaryDirectory() as t:
+            run(t)
+            subprocess.run([sys.executable, str(ROOT / "scripts/sops.py"), "--out", t], cwd=ROOT, check=True,
+                           capture_output=True)
+            for pid in real()["policies"]:
+                text = (pathlib.Path(t) / "sops" / f"{pid}.md").read_text()
+                for heading in ("## Set up", "## Automated checks", "## Attested checks"):
+                    self.assertIn(heading, text, pid)
+        args = real()
+        bad = copy.deepcopy(args["policies"]["codeowners"])
+        bad["setup"] = []
+        args["policies"] = {"codeowners": bad}
+        self.assertTrue(any("setup must list" in p for p in P.check(**args)))
 
     def test_R13_every_baseline_item_accounted_for(self):
         """R-13: each OpenSSF baseline item is adopted by a policy or departed with a reason, never both."""
@@ -103,10 +113,14 @@ class MetaRuleTests(unittest.TestCase):
                 self.assertTrue(c["permission"].strip(), pid)
 
     def test_R11_provisional(self):
-        """R-11: every policy, and the generated table, is marked PROVISIONAL."""
+        """R-11: the policy set, and the rendered table, are marked PROVISIONAL (the set's status is stored once,
+        WP5b F-13)."""
+        self.assertEqual(load(ROOT / "data/policies/_set.yaml")["status"], "provisional")
         for pid, p in real()["policies"].items():
-            self.assertEqual(p["status"], "provisional", pid)
-        self.assertIn("PROVISIONAL", (ROOT / "docs/policy-applicability.md").read_text())
+            self.assertNotIn("status", p, pid)
+        with tempfile.TemporaryDirectory() as t:
+            _, table, _ = run(t)
+            self.assertIn("PROVISIONAL", table.read_text())
 
     def test_R12_iso_text_not_committed(self):
         """R-12: ISO/IEC/IEEE 12207 is cited by clause number only, and no 8-word passage of it is in the repo.
@@ -152,15 +166,13 @@ class ApplicabilityTests(unittest.TestCase):
         self.assertLessEqual(max(n[k] for k in n if k.startswith("research/")), 3)
 
     def test_R9_applicability_replays(self):
-        """R-9: the same taxonomy and policies always give the same table, matching the committed one."""
+        """R-9: the same taxonomy and policies always give the same table (views are never committed, WP5b OD4)."""
         with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
             out_a, table_a, rep_a = run(a)
             out_b, table_b, rep_b = run(b)
             self.assertEqual(out_a.returncode, 0, out_a.stderr)
             self.assertEqual(table_a.read_text(), table_b.read_text())
             self.assertEqual(rep_a.read_text(), rep_b.read_text())
-            self.assertEqual(table_a.read_text(), (ROOT / "docs/policy-applicability.md").read_text())
-            self.assertEqual(rep_a.read_text(), (ROOT / "data/reports/policy-applicability.yaml").read_text())
 
     def test_R10_toy_policy_swap_needs_no_code_change(self):
         """R-10: a different policy set and taxonomy run through the same code."""

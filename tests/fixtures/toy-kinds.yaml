@@ -9,15 +9,12 @@ stages:
 signals:
   recent: {attr: commits_last_12_months, gt: 0}
 kinds:
-  thing/busy:
-    type: thing
-    stage: busy
-    tier: strict
-    meaning: Busy things.
-    recommend_when: {signal: recent}
-  thing/quiet:
-    type: thing
-    stage: quiet
-    tier: loose
-    meaning: Quiet things.
-    recommend_when: {not: {signal: recent}}
+  thing:
+    busy:
+      tier: strict
+      meaning: Busy things.
+      recommend_when: {signal: recent}
+    quiet:
+      tier: loose
+      meaning: Quiet things.
+      recommend_when: {not: {signal: recent}}

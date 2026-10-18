@@ -1,0 +1,56 @@
+# Construction controls (WP5b F-16, revised by the supervisor): the rules a correctly constructed model meets. A
+# violation is a construction error: invalid, and CI rejects it (WP0 R-14). Each control names the test that fails
+# when it is broken. Compliance controls (the policies' checks) are not here: a non-pass of one is the controller's
+# error signal, kept in data/measured-gaps.yaml once known, and remediated, never a CI failure.
+controls:
+  C-01:
+    statement: Every table in data/schema/model.yaml has a key, and every row's key is unique.
+    test: tests/test_wp5b.py::ModelTests::test_primary_key_is_unique
+  C-02:
+    statement: Every foreign key names a row of its table; a broken join is invalid.
+    test: tests/test_wp5b.py::ModelTests::test_foreign_key_resolves
+  C-03:
+    statement: A composite foreign key (type and stage) names a defined kind.
+    test: tests/test_wp5b.py::ModelTests::test_composite_foreign_key_resolves
+  C-04:
+    statement: A kind-list entry has type and stage, or a reason alone.
+    test: tests/test_wp5b.py::ModelTests::test_one_of
+  C-05:
+    statement: A row has only the columns its table declares, each of its declared type.
+    test: tests/test_wp5b.py::ModelTests::test_undeclared_column
+  C-06:
+    statement: A repository's name, where a table states it, is its name in the snapshot (renames are caught).
+    test: tests/test_wp5b.py::ModelTests::test_name_agrees_with_the_id
+  C-07:
+    statement: Disjoint tables share no key (pilot and exclude list; kinds and omitted kinds).
+    test: tests/test_wp5b.py::ModelTests::test_disjoint_tables
+  C-08:
+    statement: Every repository has a kind-list entry, and is in the pilot or excluded (TX-5).
+    test: tests/test_wp5b.py::ModelTests::test_coverage
+  C-09:
+    statement: A predicate reads only stored or declared derived columns (WP5b F-15).
+    test: tests/test_wp5b.py::ModelTests::test_predicates_read_declared_columns
+  C-10:
+    statement: Provisional data is marked, and each model file meets its own meta-rules.
+    test: tests/test_wp5.py::InvalidTests::test_R1_each_invalid_file_fails_with_a_named_problem
+  C-11:
+    statement: The taxonomy is complete over type and stage, and every tier is used (kind-list meta-rule 10).
+    test: tests/test_wp1.py::TaxonomyTests::test_R3_type_x_stage_with_stated_departures
+  C-12:
+    statement: Every policy meets the policy meta-rules (docs/policy-format.md).
+    test: tests/test_wp2.py::MetaRuleTests::test_D4_meta_rules_hold_on_the_policies
+  C-13:
+    statement: Every view renders from the model alone, the same twice, in demo mode only (WP5b R-5).
+    test: tests/test_wp5b.py::ViewTests::test_R5_views_render_deterministically_and_demo_mode_writes_nowhere_else
+  C-14:
+    statement: No model table stores a derived value, such as the kind name (WP5b R-6).
+    test: tests/test_wp5b.py::ViewTests::test_R6_no_stored_value_is_derivable
+  C-15:
+    statement: No passage of the licensed ISO/IEC/IEEE 12207 text is committed (WP2 R-12).
+    test: tests/test_wp2.py::MetaRuleTests::test_R12_iso_text_not_committed
+  C-16:
+    statement: Every relative link resolves, and every cited commit resolves.
+    test: tests/test_links.py::LinkTests::test_relative_links_resolve
+  C-17:
+    statement: The environment is locked (uv.lock), and CI runs the locked set.
+    test: tests/test_wp5.py::EnvironmentTests::test_R4_environment_is_locked

@@ -10,13 +10,13 @@
    [`data/maintainers.yaml`](../data/maintainers.yaml), and this repository's CODEOWNERS lists the same people.
 2. **Owners are the root authority, and a small subset of the maintainers.** Every organization owner is a
    maintainer, but not every maintainer is an owner. Two or three maintainers hold the owner role
-   ([org-few-owners](sops/org-few-owners.md)). The others hold the narrower powers they need, and **the owners check
+   ([org-few-owners](../data/policies/org-few-owners.yaml)). The others hold the narrower powers they need, and **the owners check
    those powers**.
 3. **Five maintainers to start, and more as needed.** OpenMBEE maintains many pieces of software, so the number of
    maintainers can grow with them. Maintainers come from more than one organization, so that governance survives any
    one person or employer leaving.
 4. **Governance is held openly.** Each maintainer makes their organization membership public
-   ([governance-roles-named](sops/governance-roles-named.md)). Until this policy is ratified, nobody is named against
+   ([governance-roles-named](../data/policies/governance-roles-named.yaml)). Until this policy is ratified, nobody is named against
    their choice, and anyone may step down instead.
 
 ## How maintainers are added and removed
@@ -36,11 +36,11 @@
 ## What powers maintainers get
 
 9. **Least privilege.** Each maintainer gets only the powers their responsibilities need, granted through GitHub teams
-   and repository roles rather than the owner role ([org-base-permission](sops/org-base-permission.md)).
-10. **Two-factor authentication** is required for everyone in the organization ([org-two-factor](sops/org-two-factor.md)).
+   and repository roles rather than the owner role ([org-base-permission](../data/policies/org-base-permission.yaml)).
+10. **Two-factor authentication** is required for everyone in the organization ([org-two-factor](../data/policies/org-two-factor.yaml)).
 11. **Other powers are declared.** Any admin power over OpenMBEE held outside GitHub's owner role (installed apps,
     other platforms, the fiscal sponsor relationship) is declared in `data/maintainers.yaml`
-    ([maintainers-match](sops/maintainers-match.md)).
+    ([maintainers-match](../data/policies/maintainers-match.yaml)).
 
 ## Release authority
 
@@ -51,7 +51,7 @@
     approval to publish releases) is recorded as an attestation in the tool's repository. Jason Han's release
     authority for OpenSysML is the first case, with credentialing under way.
 14. **Security response.** For graduated tools, the security policy names who triages and responds to vulnerability
-    reports ([security-policy](sops/security-policy.md)).
+    reports ([security-policy](../data/policies/security-policy.yaml)).
 
 ## Cross-check against our references
 

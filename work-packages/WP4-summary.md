@@ -3,7 +3,7 @@
 > Everything here is **PROVISIONAL** until the maintainers approve the pilot and the kinds (WP0 approvals 3 and 4).
 > This summary meets WP4's Definition of good enough.
 
-## The pilot ([pilot-briefing.md](../docs/pilot-briefing.md))
+## The pilot ([pilot-briefing.md](https://github.com/Open-MBEE/repo-registry/blob/6938aa5/docs/pilot-briefing.md))
 
 **32 repositories**, chosen by `data/pilot-rule.yaml` around your six must-includes:
 

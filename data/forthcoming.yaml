@@ -1,0 +1,9 @@
+# Capabilities not built yet (WP5b F-16, revised by the supervisor). Each names the test that starts passing when it
+# is built: an expected failure in tests/test_forthcoming.py until then. A capability that isn't built is a gap in the
+# software, tracked here. It is not a compliance error: a measured non-pass of a policy goes in data/measured-gaps.yaml.
+forthcoming:
+  XF-1:
+    capability: 'The sensing credential has "Administration: read", so settings-level checks are not yellow.'
+    closes_in: "WP6 (the engine's read-only sensing; the credential is set up there, WP5 OD6)"
+    evidence_when_closed: "config/sensing.yaml declares the credential and its permissions."
+    test: tests/test_forthcoming.py::ForthcomingTests::test_XF1_sensing_credential_has_administration_read

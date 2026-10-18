@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: security-policy
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: Vulnerability reporting
 meaning: Tools from version 1.0, and the registry, publish a security policy that says how to report a vulnerability and who
   responds, and turn on GitHub's private vulnerability reporting.
@@ -46,4 +45,8 @@ cites:
   - RA-5(11)
   openssf:
   - OI-3
-sop: docs/sops/security-policy.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- Add `SECURITY.md` (at the root, in `.github/` or in `docs/`) saying how to report a vulnerability and who responds.
+- Go to Settings, then Advanced Security, and turn on Private vulnerability reporting.
+- Say in the policy what reporters can expect, including for automated or AI-assisted reports.
+- Record the attestation below.

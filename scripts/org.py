@@ -9,9 +9,10 @@ Privacy (WP3 OD1, R-8): it never reports the org role of anyone whose membership
 "membership not public". It reports only the total count of owners with concealed membership, never "concealed owners
 not on the list", because subtracting the listed people would reveal whether they are owners.
 
-Usage: python3 scripts/org.py --snapshot data/snapshots/2026-10-18/org.json \
-          [--maintainers data/maintainers.yaml] [--codeowners data/proposed-codeowners] \
-          [--report data/reports/maintainers-match.yaml]
+Usage: python3 scripts/org.py [--out build/demo]   (a view, rendered, never committed: WP5b OD4)
+
+Maintainers are keyed by GitHub user ID (WP5b F-05); CODEOWNERS and the org snapshot name people by login, so they
+join to the maintainers' `login` column. A check result is a `color` (WP5b F-11).
 """
 import argparse
 import json
@@ -20,6 +21,9 @@ import re
 import sys
 
 import yaml
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import model  # noqa: E402
 
 RANK = {"green": 0, "yellow": 1, "red": 2}
 
@@ -34,11 +38,11 @@ def codeowners_logins(text):
 
 
 def check(snapshot, maint_doc, codeowners):
-    listed = maint_doc["maintainers"]
+    listed = {e["login"]: uid for uid, e in maint_doc["maintainers"].items()}
     rows = []
 
-    def row(subject, check_id, status, detail):
-        rows.append({"subject": subject, "check": check_id, "status": status, "detail": detail})
+    def row(subject, check_id, color, detail):
+        rows.append({"subject": subject, "check": check_id, "color": color, "detail": detail})
 
     owners = snapshot["owners"]
     public_owners = set(owners["value"]["public_logins"]) if owners["readable"] else None
@@ -68,25 +72,25 @@ def check(snapshot, maint_doc, codeowners):
     size, target = len(listed), maint_doc.get("target_size")
     if target:
         row("list", "target-size", "green" if size >= target else "yellow", f"{size} named of a target of {target}")
-    overall = max((r["status"] for r in rows), key=RANK.get, default="green")
+    overall = max((r["color"] for r in rows), key=RANK.get, default="green")
     return {"status": "provisional", "overall": overall, "rows": rows}
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--snapshot", required=True)
-    ap.add_argument("--maintainers", default="data/maintainers.yaml")
-    ap.add_argument("--codeowners", default="data/proposed-codeowners")
-    ap.add_argument("--report", default="data/reports/maintainers-match.yaml")
+    ap.add_argument("--out", default="build/demo")
+    ap.add_argument("--root", default=".")
     args = ap.parse_args()
-    snapshot = json.loads(pathlib.Path(args.snapshot).read_text())
-    maint = yaml.safe_load(pathlib.Path(args.maintainers).read_text())
-    owners_file = codeowners_logins(pathlib.Path(args.codeowners).read_text())
+    root = pathlib.Path(args.root)
+    snapshot = json.loads((model.snapshot_dir(root) / "org.json").read_text())
+    maint = model.load("data/maintainers.yaml", root)
+    owners_file = codeowners_logins((root / "data/proposed-codeowners").read_text())
     result = check(snapshot, maint, owners_file)
-    result["snapshot"] = args.snapshot
-    pathlib.Path(args.report).write_text(yaml.safe_dump(result, sort_keys=False, width=120))
+    out = pathlib.Path(args.out) / "reports/maintainers-match.yaml"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(yaml.safe_dump(result, sort_keys=False, width=120))
     for r in result["rows"]:
-        print(f"  {r['status']:6} {r['subject']:12} {r['check']:22} {r['detail']}")
+        print(f"  {r['color']:6} {r['subject']:12} {r['check']:22} {r['detail']}")
     print(f"overall: {result['overall']}")
     return 0
 

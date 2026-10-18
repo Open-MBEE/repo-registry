@@ -26,8 +26,9 @@ def main():
     ap.add_argument("refs", nargs="*", default=["main"])
     args = ap.parse_args()
     concealed = logins(f"orgs/{args.org}/members?per_page=100") - logins(f"orgs/{args.org}/public_members?per_page=100")
-    allowed = set(yaml.safe_load(subprocess.run(["git", "show", f"{args.refs[0]}:data/maintainers.yaml"],
-                                                capture_output=True, text=True, check=True).stdout)["maintainers"])
+    maint = yaml.safe_load(subprocess.run(["git", "show", f"{args.refs[0]}:data/maintainers.yaml"],
+                                         capture_output=True, text=True, check=True).stdout)["maintainers"]
+    allowed = {m["login"] if isinstance(m, dict) and "login" in m else k for k, m in maint.items()}
     concealed -= allowed
     listing = subprocess.run(["git", "rev-list", "--objects", *args.refs], capture_output=True, text=True,
                              check=True).stdout.splitlines()

@@ -1,0 +1,8 @@
+# ISO/IEC/IEEE 12207:2026, the clauses the policies cite: number and title only, from the standard's table of
+# contents. No text from the standard is committed (WP2 R-12).
+source: {standard: "ISO/IEC/IEEE 12207:2026", edition: 2026-04}
+clauses:
+  "6.3.5": {title: Configuration management process}
+  "6.4.4": {title: System architecture definition process}
+  "6.4.13": {title: Maintenance process}
+  "6.4.14": {title: Disposal process}

@@ -2,23 +2,24 @@
 
 > **PROVISIONAL** until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-4.
 
-Each policy is one YAML file in `data/policies/`, named after its id, with a plain-language SOP in `docs/sops/`.
-`scripts/policies.py` checks every meta-rule below, then generates the applicability table
-([policy-applicability.md](policy-applicability.md)). WP5 runs the same check in CI, so an invalid policy can't reach
-`main`. A repository being out of compliance with a policy is still a **valid** state.
+Each policy is one YAML file in `data/policies/`, named after its id: a row of the policy table (WP5b). Its
+plain-language SOP is a view, rendered from the file by `scripts/sops.py`; nothing in an SOP is written by hand.
+`scripts/policies.py` checks every meta-rule below, then renders the applicability view. CI runs the same check
+(`scripts/validate.py`, against `data/schema/model.yaml`), so an invalid policy can't reach `main`. A repository
+being out of compliance with a policy is still a **valid** state. The policy set's status is stored once, in
+`data/policies/_set.yaml` (WP5b F-13).
 
 ## Shape
 
 ```yaml
-status: provisional                      # provisional | approved
-provisional_until: "WP0 maintainer approval 2: the policies"
 id: secret-protection                    # equals the file name
+scope: repository                        # repository | org: what the policy governs
 name: Block secrets from being pushed    # short, plain
 meaning: >-                              # one or two plain sentences, for anyone
   ...
 applies_if:                              # a rule on type, stage and tier only (WP0 A1)
   any:
-    - all: [{attr: type, eq: tool}, {attr: lifecycle, in: [incubating, graduated]}]
+    - all: [{attr: type, in: [tool, governance]}, {attr: stage, in: [incubating, graduated]}]
 github:
   mechanism: Secret scanning push protection (repository security settings)
   docs: [https://docs.github.com/...]
@@ -35,10 +36,12 @@ cites:
   openssf: [TI-2]                        # OpenSSF security-baseline items this policy adopts
   iso12207: ["6.4.13"]                   # clause numbers only, never text
 secondary_notes: ...                     # optional: CNCF or OpenSSF lifecycle expectations
-sop: docs/sops/secret-protection.md
+setup:                                   # the SOP's set-up steps, in order
+  - Go to Settings, then Advanced Security, and turn on push protection.
 ```
 
-One policy, `license-by-type`, also carries `allowed_licenses`: for each type, the SPDX identifiers it accepts.
+One policy, `license-by-type`, also carries `allowed_licenses` (for each type, the SPDX identifiers it accepts),
+`license_guidance` (the SOP's table) and `applies_note` (a line after the SOP's "Applies to").
 `scripts/licenses.py` reads it, and `tests/test_wp2a.py` checks that it has an entry for every type in the taxonomy
 (WP2a R-3).
 
@@ -48,8 +51,10 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
 ## Meta-rules
 
 1. **One file per policy.** `id` equals the file name and is lower-case words joined by hyphens.
-2. **Every field is present:** `status`, `id`, `name`, `meaning`, `applies_if`, `github`, `checks`, `cites`, `sop`.
-3. **Provisional is marked.** `provisional_until` is present exactly when `status` is `provisional`.
+2. **Every field is present:** `id`, `scope`, `name`, `meaning`, `applies_if`, `github`, `checks`, `cites`, `setup`;
+   and no field the model doesn't declare (`data/schema/model.yaml`).
+3. **Provisional is marked, once.** `data/policies/_set.yaml` holds the set's `status`, and `provisional_until`
+   exactly when the status is `provisional`. No policy file repeats them (WP5b F-13).
 4. **Applies-if reads only type, stage and tier,** and names only values that exist in the taxonomy. It uses no
    signals.
 5. **GitHub-native.** `github` names the mechanism (or says it is attested because GitHub has no setting for it) and
@@ -64,8 +69,9 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
 9. **CISA coverage.** Every practice in `data/sources/cisa-practices.yaml` is cited by at least one policy or listed in
    `_departures.yaml` with a reason, but not both.
 10. **ISO by reference only.** `cites.iso12207` holds clause numbers only. No text from the standard is committed.
-11. **SOP.** The file at `sop` exists and has the three sections `## Set up`, `## Automated checks` and
-    `## Attested checks`.
+11. **SOP.** `setup` lists the SOP's set-up steps. The SOP itself is rendered from the policy (its meaning, what it
+    applies to, its set-up steps, its checks, its attestation entries and its citations), with the three sections
+    `## Set up`, `## Automated checks` and `## Attested checks` (WP5b).
 12. **The org's plan.** `github.available_on` includes the org's plan (`plan` in `data/sources/github-plan.yaml`,
     today `free`). A feature the plan lacks belongs in `data/policies/_future.yaml` `features`, never in a policy
     (WP3 G-3).

@@ -50,45 +50,24 @@ and the permission needed for some GraphQL fields. The dependency-graph SBOM end
 
 ## The proposed policy set
 
-21 policies: 16 repository policies (WP2, and `license-by-type` from WP2a) and 5 org policies (WP3).
+Repository policies (WP2, and `license-by-type` from WP2a) and org policies (WP3), each stating its scope.
 The org policies apply to governance/graduated: the administration of the GitHub org itself, and `repo-registry`
 once it is accepted as the canonical source (WP4c).
 
-| Policy | Scope | In effect for | GitHub mechanism | Automated / attested checks |
-|---|---|---|---|---|
-| [archive-notice](sops/archive-notice.md) | repository | tool/archived, media/archived, research/archived | Repository archiving, with an end-of-support note in the README | 1 / 1 |
-| [change-review](sops/change-review.md) | repository | tool/graduated, governance/graduated | A ruleset (preferred) or a branch protection rule requiring an approving code-owner review and passing status checks | 2 / 0 |
-| [codeowners](sops/codeowners.md) | repository | every live kind | CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS | 2 / 0 |
-| [contributing](sops/contributing.md) | repository | tool/incubating, tool/graduated, media/incubating, media/graduated, governance/incubating, governance/graduated | CONTRIBUTING file, detected by GitHub's community profile | 1 / 1 |
-| [dependency-management](sops/dependency-management.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Dependabot alerts (with the dependency graph, always on for public repos) | 1 / 2 |
-| [governance-roles-named](sops/governance-roles-named.md) | org | governance/graduated | Public organization membership | 2 / 0 |
-| [history-protection](sops/history-protection.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | A ruleset (preferred) or a branch protection rule that blocks force pushes and deletion on the default branch | 2 / 0 |
-| [license-by-type](sops/license-by-type.md) | repository | every live kind | A LICENSE file, detected by GitHub's license detection (SPDX identifier) | 1 / 0 |
-| [maintainers-match](sops/maintainers-match.md) | org | governance/graduated | Organization owner role and this repository's CODEOWNERS | 1 / 1 |
-| [org-base-permission](sops/org-base-permission.md) | org | governance/graduated | Organization setting: base permissions for members | 1 / 0 |
-| [org-few-owners](sops/org-few-owners.md) | org | governance/graduated | Organization owner role | 1 / 0 |
-| [org-two-factor](sops/org-two-factor.md) | org | governance/graduated | Organization setting: require two-factor authentication | 1 / 0 |
-| [project-files](sops/project-files.md) | repository | every live kind | A README file, detected by GitHub's community profile | 1 / 0 |
-| [release-integrity](sops/release-integrity.md) | repository | tool/graduated | Release assets, immutable releases and artifact attestations | 2 / 2 |
-| [secret-protection](sops/secret-protection.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Secret scanning push protection (repository security settings) | 1 / 0 |
-| [security-design](sops/security-design.md) | repository | tool/graduated, governance/graduated | None: a document in the repository, attested by its code owners | 0 / 1 |
-| [security-policy](sops/security-policy.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | SECURITY.md security policy and private vulnerability reporting | 2 / 1 |
-| [semantic-versioning](sops/semantic-versioning.md) | repository | tool/incubating, tool/graduated | Release tags | 1 / 1 |
-| [static-analysis](sops/static-analysis.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Code scanning (CodeQL default or advanced setup) | 2 / 0 |
-| [vulnerability-remediation](sops/vulnerability-remediation.md) | repository | tool/graduated, governance/graduated | Dependabot alerts and code scanning alerts, with their ages | 2 / 1 |
-| [workflow-least-privilege](sops/workflow-least-privilege.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Actions default workflow permissions set to read | 1 / 1 |
+The table is a view, rendered from the policies and `data/sources/` (WP5b F-08): run `uv run python scripts/render.py` and read `build/demo/policy-basis-tables.md`.
 
 **Friction follows the tiers (WP2 R-7).** Sandbox kinds carry only `project-files` (a README), `codeowners` and
 `license-by-type` (added in WP2a). Those come from the OpenSSF and CNCF lifecycle entry expectations (license and IP
 clearance, at least one maintainer), not from the Sandbox security baseline, whose two items are departed or moved
-(two-factor authentication is an org policy since WP3). Incubating tools carry 11 policies, graduated tools 15,
-archived repositories 1. Media carries 3 or 4, and research 3.
+(two-factor authentication is an org policy since WP3). Friction then rises with the stage: incubating tools carry
+more, graduated tools the most, and archived repositories only the archive notice (the applicability view gives the
+exact sets).
 Governance friction rises with the stage, as for tools (WP4c). `repo-registry` (governance/sandbox, low) carries
-the 3 policies of a sandbox tool while it is being set up. governance/incubating (medium), for when the maintainers
-calibrate it together, carries an incubating tool's policies except `semantic-versioning`: 10. governance/graduated
-(high) carries the 5 org policies and the strict repository set, 18 in all: the org's administration has it today,
+the policies of a sandbox tool while it is being set up. governance/incubating (medium), for when the maintainers
+calibrate it together, carries an incubating tool's policies except `semantic-versioning`. governance/graduated
+(high) carries the org policies and the strict repository set: the org's administration has it today,
 and `repo-registry` takes it on when it is accepted as the canonical source. Its review friction rises only then
-(XF-2 in `data/expected-gaps.yaml`).
+(XF-2 in `data/measured-gaps.yaml`).
 
 **Simplest set (WP2 R-6).** Each policy carries one job. No two automated checks read the same thing (a test checks
 this). Items that GitHub can't check and that serve the same goal are folded into one policy's attested checks, for
@@ -96,122 +75,15 @@ example signing, provenance and no built executables in `release-integrity`.
 
 ## Trace: OpenSSF security baseline (backbone, WP2 R-13)
 
-| Item | Stage | Baseline item (paraphrased) | Adopted by | Or departed because |
-|---|---|---|---|---|
-| SB-1 | sandbox (once) | New projects or components use a memory-safe language (or C/C++ compiler hardening) |  | A language is a design choice for each tool, not a repository setting that GitHub can carry. Most OpenMBEE code is already in memory-safe languages (Java, Kotlin, Python, TypeScript, Go, Rust). Revisit if new C or C++ components appear. |
-| SB-2 | sandbox (once) | Two-factor authentication for interactive repository access | org-two-factor |  |
-| TI-1 | incubating (to-become) | Onboard to OpenSSF Scorecard (Scorecard GitHub Action) |  | Scorecard is OpenSSF's measuring tool. The registry measures the controls we adopted directly, and anyone can run Scorecard against a public repository without the repository adding a workflow. Requiring the Scorecard Action on every repository would add a workflow with extra write permissions and duplicate this registry's job. |
-| TI-2 | incubating (to-become) | No hard-coded active secrets in the repository | secret-protection |  |
-| TI-3 | incubating (to-become) | Credentials have minimal permissions (least privilege, workflow tokens, few owners and admins) | org-base-permission, org-few-owners, workflow-least-privilege |  |
-| TI-4 | incubating (to-become) | Security insights metadata file (SECURITY_INSIGHTS.yml) |  | A SECURITY_INSIGHTS.yml file in each repository would duplicate the record this registry already keeps, and add overhead to every repository. Revisit if adopters ask for it in that format. |
-| TI-5 | incubating (to-become) | A dependencies policy is published, maintained and followed | dependency-management |  |
-| TI-6 | incubating (to-become) | Direct dependencies are pinned in services the project provides | dependency-management |  |
-| OI-1 | incubating (once) | GitHub Actions workflows are set up securely | workflow-least-privilege |  |
-| OI-2 | incubating (once) | Static code analysis runs in CI and critical exploitable findings are fixed promptly | static-analysis |  |
-| OI-3 | incubating (once) | A security policy for vulnerability disclosure and response is published and followed; private vulnerability reporting enabled | security-policy |  |
-| OI-4 | incubating (once) | Data in transit is protected cryptographically |  | It is about services the foundation runs. OpenMBEE repositories hold software that others deploy, and encryption in transit is a property of a deployment, not of a repository setting. |
-| TG-1 | graduated (to-become) | An architecture design with up-to-date security controls is maintained | security-design |  |
-| TG-2 | graduated (to-become) | No medium or higher severity findings from static analysis | vulnerability-remediation |  |
-| TG-3 | graduated (to-become) | Known vulnerabilities fixed: critical promptly, medium or high within 60 days | vulnerability-remediation |  |
-| TG-4 | graduated (to-become) | Merging to the main branch needs at least one maintainer approval and passing status checks | change-review |  |
-| TG-5 | graduated (to-become) | No generated executable artifacts in the source repository | release-integrity |  |
-| TG-6 | graduated (to-become) | An SBOM is generated and published with each release | release-integrity |  |
-| TG-7 | graduated (to-become) | Release artifacts are cryptographically signed | release-integrity |  |
-| TG-8 | graduated (to-become) | SLSA v1.0 Build Level 3 provenance is published with releases | release-integrity |  |
-| TG-9 | graduated (to-become) | Security events are logged (for internet or infrastructure services run for the foundation) |  | It is for internet or infrastructure services run on behalf of the foundation. OpenMBEE repositories don't run such services, so there is nothing in a repository to log. |
-| TG-10 | graduated (to-become) | Security events are monitored (for internet or infrastructure services run for the foundation) |  | It is for internet or infrastructure services run on behalf of the foundation. OpenMBEE repositories don't run such services, so there is nothing in a repository to monitor. |
-| TG-11 | graduated (to-become) | An initial third-party security audit, with findings addressed (for services run for the foundation) |  | It is a foundation-funded audit of services the foundation runs. OpenMBEE has no such services or funding process. A tool's security design is covered by the security-design policy. |
-| OG-1 | graduated (once) | Known vulnerabilities are fixed and released in coordination with consumers, within the same deadlines | vulnerability-remediation |  |
-| OG-2 | graduated (once) | Security audits as needed after the initial one (for services run for the foundation) |  | It follows from TG-11, which is left out for the same reason. |
+The table is a view, rendered from the policies and `data/sources/` (WP5b F-08): run `uv run python scripts/render.py` and read `build/demo/policy-basis-tables.md`.
 
 ## Trace: CISA practices (WP2 R-6)
 
-| Practice | p. | Carried by | Or left out because |
-|---|---|---|---|
-| CISA-P-DEFAULT-OPEN | 13 |  | Federal agency policy on deciding to publish code. OpenMBEE repositories are open by default. |
-| CISA-P-OPEN-PRACTICES | 12-13 |  | A development habit (work in the open from the start), not a repository control. |
-| CISA-P-HISTORY-ASSET | 12 | history-protection |  |
-| CISA-P-INVENTORY | 13 |  | A federal source-code inventory. This registry plays that role for OpenMBEE (a code.json export is an R5 candidate). |
-| CISA-P-USAGE-TYPE | 14 |  | Federal usage types (open source, reuse, exemptions). Every OpenMBEE repository is open source. |
-| CISA-P-USAGE-REVIEWS | 15 |  | Federal reviews per usage type. They don't apply to an open source foundation. |
-| CISA-P-METADATA | 15 |  | Federal inventory metadata. The registry's own data serves this purpose. |
-| CISA-P-METADATA-FILE | 15, 30 |  | The federal code.json file. An export in that shape is an R5 candidate, not a repository control. |
-| CISA-P-METADATA-FIELDS | 27-31 |  | Fields of the federal metadata schema. As for CISA-P-METADATA-FILE. |
-| CISA-P-PREPUB-REVIEW | 15-16 | secret-protection |  |
-| CISA-P-LIFECYCLE-RESOURCES | 16 |  | Planning resources for a project's life is a governance matter for the maintainers, not a repository control. The lifecycle stages make it visible. |
-| CISA-P-SECRET-DETECT | 16 | secret-protection |  |
-| CISA-P-DEP-SCAN | 16 | dependency-management |  |
-| CISA-P-SECURITY-REVIEW | 16 | static-analysis |  |
-| CISA-P-NO-SQUASH | 16 | history-protection |  |
-| CISA-P-LICENSE-PERMISSIVE | 16 | license-by-type |  |
-| CISA-P-PUBLIC-HOST | 16 |  | OpenMBEE already publishes on GitHub. |
-| CISA-P-STAFF-ACCOUNTS | 16 |  | Federal staff account naming. It doesn't apply to an open community. |
-| CISA-P-README | 16 | project-files |  |
-| CISA-P-LICENSE-FILE | 16 | license-by-type |  |
-| CISA-P-CONTRIBUTING | 16 | contributing |  |
-| CISA-P-SECURITY-MD | 16 | security-policy |  |
-| CISA-P-SBOM-RELEASE | 17 | release-integrity |  |
-| CISA-P-VDP-BOD | 17 | security-policy |  |
-| CISA-P-VDP-AI-REPORTS | 10-11 | security-policy |  |
-| CISA-P-SECURITY-CONTACT | 10 | security-policy |  |
-| CISA-P-CONTRIB-MINIMAL | 17 | contributing |  |
-| CISA-P-CONTRIB-TYPES | 17 | contributing |  |
-| CISA-P-CONTRIB-TESTS | 17 | contributing |  |
-| CISA-P-CODE-REVIEW | 17 | change-review |  |
-| CISA-P-RELEASE-MARK | 17 | release-integrity, semantic-versioning |  |
-| CISA-P-MAINT-SCANS | 17 | static-analysis, vulnerability-remediation |  |
-| CISA-P-ACTIVE-DEF | 17 | vulnerability-remediation |  |
-| CISA-P-EOS-MARK | 17 | archive-notice |  |
-| CISA-P-EOS-PUBLISH | 17 | archive-notice |  |
-| CISA-P-EOS-FORKS | 18 | archive-notice |  |
-| CISA-P-CONTRACT-RIGHTS | 18 |  | Federal contracting terms. |
-| CISA-P-SSDF | 18 | workflow-least-privilege |  |
-| CISA-P-CI-PATCH-AUTO | 10 | dependency-management |  |
-| CISA-P-DEV-GUIDES | 5, 13 |  | A pointer to other guides. Their content enters through the OpenSSF baseline (the backbone). |
-| CISA-C-UPSTREAM | 9, 11 |  | About contributing to other projects. It isn't a control on OpenMBEE's own repositories. |
-| CISA-C-INTERNAL-REVIEW | 11 |  | An agency's review of its staff's outside contributions. Not a repository control. |
-| CISA-C-LEGAL | 11-12 |  | An agency's legal review before contributing elsewhere. Not a repository control. |
-| CISA-C-PRIVACY | 12 |  | An agency's privacy review before contributing elsewhere. Secrets in OpenMBEE repositories are covered by secret-protection. |
-| CISA-C-INCENTIVES | 11 |  | An agency's incentives for staff contributions. Not a repository control. |
-| CISA-C4-CODEBASE | 24 |  | How consumers judge a codebase. It is served indirectly, by dependency-management and vulnerability-remediation, rather than being a control itself. |
-| CISA-C4-COMMUNITY | 24 | codeowners, governance-roles-named, maintainers-match |  |
-| CISA-C4-CONDUCT | 24 | change-review |  |
-| CISA-C4-CONFIG | 24 | security-design |  |
-| CISA-C4-HOLISTIC | 24-25 |  | Guidance on how consumers weigh criteria. Not a control. |
-| CISA-C4-S1-CRITERIA | 25 |  | A consumer's evaluation step. The registry is meant to make our repositories easy to evaluate, and its checks are measurable, as this step asks. |
-| CISA-C4-S2-TOLERANCE | 25 |  | A consumer's evaluation step. Not a producer control. |
-| CISA-C4-S3-OBSERVE | 25 |  | A consumer's evaluation step. Not a producer control. |
-| CISA-C4-S4-EVALUATE | 25-26 |  | A consumer's evaluation step. Not a producer control. |
-| CISA-C4-S5-COMPARE | 26 |  | A consumer's evaluation step. Not a producer control. |
-| CISA-C4-REEVAL | 7-8, 10 |  | How often consumers re-evaluate. The registry's scheduled runs serve this, from R2. |
+The table is a view, rendered from the policies and `data/sources/` (WP5b F-08): run `uv run python scripts/render.py` and read `build/demo/policy-basis-tables.md`.
 
 ## NIST SP 800-53 controls cited
 
-| Control | Title | Cited by |
-|---|---|---|
-| AC-6 | Least Privilege | org-base-permission, workflow-least-privilege |
-| CM-3 | Configuration Change Control | change-review, history-protection |
-| CM-5 | Access Restrictions for Change | codeowners |
-| CM-5(4) | Dual Authorization | change-review |
-| CM-8 | System Component Inventory | dependency-management |
-| IA-2(1) | Multi-factor Authentication to Privileged Accounts | org-two-factor |
-| IA-5(7) | No Embedded Unencrypted Static Authenticators | secret-protection |
-| PL-8 | Security and Privacy Architectures | security-design |
-| RA-5 | Vulnerability Monitoring and Scanning | dependency-management, vulnerability-remediation |
-| RA-5(11) | Public Disclosure Program | security-policy |
-| SA-8 | Security and Privacy Engineering Principles | security-design |
-| SA-10 | Developer Configuration Management | semantic-versioning |
-| SA-10(1) | Software and Firmware Integrity Verification | release-integrity |
-| SA-10(6) | Trusted Distribution | release-integrity |
-| SA-11 | Developer Testing and Evaluation | contributing |
-| SA-11(1) | Static Code Analysis | static-analysis |
-| SA-11(4) | Manual Code Reviews | change-review |
-| SA-17 | Developer Security and Privacy Architecture and Design | security-design |
-| SA-22 | Unsupported System Components | archive-notice |
-| SI-2 | Flaw Remediation | vulnerability-remediation |
-| SR-4 | Provenance | release-integrity |
-| AC-6(1) | Authorize Access to Security Functions | maintainers-match |
-| AC-6(5) | Privileged Accounts | org-few-owners |
+The table is a view, rendered from the policies and `data/sources/` (WP5b F-08): run `uv run python scripts/render.py` and read `build/demo/policy-basis-tables.md`.
 
 Also in the sources file, but cited by no policy: `CM-10(1)`, `CM-14`, `SI-7`, `AC-2`, `AC-2(3)`, `AC-2(7)`,
 `AC-5`, `AC-6(7)`, `IR-7`, `PS-9`.
@@ -221,12 +93,7 @@ is the consumer-side counterpart of `project-files`. The others are cited by ite
 
 ## ISO/IEC/IEEE 12207:2026, by clause
 
-| Clause (title from the table of contents) | Used by |
-|---|---|
-| 6.3.5 Configuration management process | semantic-versioning |
-| 6.4.4 System architecture definition process | security-design |
-| 6.4.13 Maintenance process | dependency-management, vulnerability-remediation |
-| 6.4.14 Disposal process | archive-notice |
+The table is a view, rendered from the policies and `data/sources/` (WP5b F-08): run `uv run python scripts/render.py` and read `build/demo/policy-basis-tables.md`.
 
 §5.4 (life cycle stages) underlies the stage map in WP1 ([lifecycle-stage-map.md](lifecycle-stage-map.md)). No text
 from the standard is committed (WP2 R-12).
@@ -267,6 +134,7 @@ as policies on incubating and graduated kinds, not as a lifecycle stage. No CNCF
   `data/deviations.yaml`, with the reason and who approved it, by a pull request that an owner merges (WP4b OD3;
   the design ID is PO-8 in [requirements/policy.md](requirements/policy.md)).
 - **Forks** have no kind, so the policy doesn't apply to them, and they keep their upstream license.
-- **Today** (`data/reports/license-report.yaml`): of 115 live, classified repositories, 77 are green and 38 red. The red
-  ones are 32 with no license, 3 with a license GitHub can't recognize, and 3 with an off-list license
-  (`architecture-based-risk-analysis` MPL-2.0, `enhancement-proposals` BSD-3-Clause, `oosem.github.io` CC0-1.0).
+- **Today:** the license view (`build/demo/reports/license-report.yaml`, rendered by `uv run python
+  scripts/render.py`) gives each live, classified repository's color; at WP2a most red ones had no license, a few a
+  license GitHub can't recognize, and three an off-list license (`architecture-based-risk-analysis` MPL-2.0,
+  `enhancement-proposals` BSD-3-Clause, `oosem.github.io` CC0-1.0).

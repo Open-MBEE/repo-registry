@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: semantic-versioning
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: Version numbers that mean something
 meaning: Tools from version 1.0 number their releases with semantic versioning, so that the version says whether an update
   is a fix, a feature or a breaking change. Graduated tools also say which releases get fixes, and for how long.
@@ -41,4 +40,6 @@ cites:
   - 6.3.5
 secondary_notes: OpenSSF asks Incubating projects to follow a version schema and Graduated projects to adhere to semantic
   versioning with a stable-release policy (project lifecycle).
-sop: docs/sops/semantic-versioning.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- 'Tag each release as `vMAJOR.MINOR.PATCH` (semver.org): raise PATCH for fixes, MINOR for new features, and MAJOR for breaking changes.'
+- For graduated tools, publish a short policy saying which releases are supported and how fixes are backported (copied into those older supported releases), then record the attestation below.

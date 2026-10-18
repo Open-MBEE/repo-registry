@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: change-review
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: Reviewed changes
 meaning: High-tier repositories (graduated tools, and the registry) need at least one approving review from a code owner,
   and passing checks, before a change is merged to the default branch.
@@ -39,4 +38,7 @@ cites:
   - CM-3
   openssf:
   - TG-4
-sop: docs/sops/change-review.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- In the default branch's ruleset or protection rule (see history-protection), turn on Require a pull request before merging.
+- Set Required approvals to at least 1, and turn on Require review from Code Owners.
+- Turn on Require status checks to pass, and pick the checks that must pass.

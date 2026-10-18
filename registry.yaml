@@ -1,514 +1,696 @@
-# PROVISIONAL. NOT APPROVED. Kinds recommended by rule, plus kinds assigned by recorded decisions
-# (data/assignments.yaml). Drafted by scripts/recommend.py (WP1 D-5).
+# PROVISIONAL. NOT APPROVED. The kind list: each repository's type and stage in the lifecycle (WP1 D-4; WP4e).
+# Keyed by GitHub's repository ID (WP5b OD3), with the name as a column; sorted by name, ignoring case.
+# Drafted by the rules in data/taxonomy/kinds.yaml, plus kinds assigned by recorded decisions
+# (data/assignments.yaml); edited since by people, one entry at a time (WP0 R-12).
 # Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).
-# Format: docs/kind-list-format.md. One entry per repo: its type and stage, or only a reason. Changing a
-# repo's stage (or type) is a one-line edit.
+# Format: docs/kind-list-format.md. An entry has a type and a stage, or only a reason.
 status: provisional
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
 org:
   name: Open-MBEE
   type: governance
   stage: graduated
-snapshot: data/snapshots/2026-10-18
 repos:
-  ".github":
+  713039071:
+    name: ".github"
     type: media
     stage: incubating
-  "_OpenMBEE-Documentation":
+  72783104:
+    name: "_OpenMBEE-Documentation"
     type: media
     stage: incubating
-  "aircraftengine-simulation":
+  1328104210:
+    name: "aircraftengine-simulation"
     type: research
     stage: sandbox
-  "airflow-provider-opensysml":
+  1408254042:
+    name: "airflow-provider-opensysml"
     type: tool
     stage: sandbox
-  "amazonaws":
+  29001550:
+    name: "amazonaws"
     reason: "Archived, with no type signal. Inert whatever its type."
-  "apv":
+  331055772:
+    name: "apv"
     type: tool
     stage: sandbox
-  "apv-mdk":
+  331056160:
+    name: "apv-mdk"
     reason: "No type signal. No media or research words, and no programming language."
-  "arch_model":
+  246386068:
+    name: "arch_model"
     type: media
     stage: incubating
-  "architecture-based-risk-analysis":
+  775398107:
+    name: "architecture-based-risk-analysis"
     type: tool
     stage: sandbox
-  "bae":
+  123620745:
+    name: "bae"
     type: tool
     stage: sandbox
-  "bae2_3_1":
+  22493646:
+    name: "bae2_3_1"
     type: tool
     stage: sandbox
-  "ChatGPT-Prompts":
+  740131856:
+    name: "ChatGPT-Prompts"
     type: research
     stage: sandbox
-  "Comodo":
+  33291437:
+    name: "Comodo"
     type: tool
     stage: sandbox
-  "concept-definition-stage":
+  1282740430:
+    name: "concept-definition-stage"
     type: tool
     stage: sandbox
-  "configuration-management-plugin":
+  615316016:
+    name: "configuration-management-plugin"
     type: tool
     stage: sandbox
-  "confluence-mdk":
+  320444571:
+    name: "confluence-mdk"
     type: tool
     stage: sandbox
-  "des-ex-toolset":
+  648658385:
+    name: "des-ex-toolset"
     type: tool
     stage: sandbox
-  "DesertKite.sysml":
+  1099516002:
+    name: "DesertKite.sysml"
     type: media
     stage: incubating
-  "dis":
+  335716606:
+    name: "dis"
     type: tool
     stage: incubating
-  "docbook":
+  25658289:
+    name: "docbook"
     type: tool
     stage: archived
-  "docbookgen":
+  25657744:
+    name: "docbookgen"
     type: tool
     stage: archived
-  "DocGenServer":
+  19901827:
+    name: "DocGenServer"
     type: tool
     stage: archived
-  "docs":
+  635409809:
+    name: "docs"
     type: media
     stage: incubating
-  "docweb-service":
+  191248509:
+    name: "docweb-service"
     type: tool
     stage: archived
-  "doors-ng-client":
+  63885622:
+    name: "doors-ng-client"
     type: tool
     stage: archived
-  "doors-ng-mdk":
+  300696744:
+    name: "doors-ng-mdk"
     type: tool
     stage: sandbox
-  "Dragon-Architecture-Model":
+  1088906123:
+    name: "Dragon-Architecture-Model"
     type: media
     stage: incubating
-  "ems-config":
+  63198090:
+    name: "ems-config"
     reason: "Archived, with no type signal. Inert whatever its type."
-  "EMS-Repo":
+  22351057:
+    name: "EMS-Repo"
     type: tool
     stage: archived
-  "EMS-Share":
+  22351360:
+    name: "EMS-Share"
     type: tool
     stage: archived
-  "enhancement-proposals":
+  276168716:
+    name: "enhancement-proposals"
     type: media
     stage: incubating
-  "exec-cameo-mdk":
+  19891439:
+    name: "exec-cameo-mdk"
     type: tool
     stage: incubating
-  "exec-mdk-systems-reasoner":
+  233664723:
+    name: "exec-mdk-systems-reasoner"
     type: tool
     stage: incubating
-  "exec-mms":
+  160235647:
+    name: "exec-mms"
     type: tool
     stage: incubating
-  "exec-mms-migration-cameo2022x":
+  638690300:
+    name: "exec-mms-migration-cameo2022x"
     type: tool
     stage: sandbox
-  "exec-mms-python-client-example":
+  528163521:
+    name: "exec-mms-python-client-example"
     type: tool
     stage: sandbox
-  "exec-mmsri":
+  298034356:
+    name: "exec-mmsri"
     type: tool
     stage: incubating
-  "exec-ve":
+  22362113:
+    name: "exec-ve"
     type: tool
     stage: incubating
-  "flexo-cli-client":
+  1129288675:
+    name: "flexo-cli-client"
     type: tool
     stage: sandbox
-  "flexo-cli-sysmlv2-plugin":
+  1129318438:
+    name: "flexo-cli-sysmlv2-plugin"
     type: tool
     stage: sandbox
-  "flexo-conflict-resolution-policy-research":
+  1155663499:
+    name: "flexo-conflict-resolution-policy-research"
     type: research
     stage: sandbox
-  "flexo-graphql":
+  682792341:
+    name: "flexo-graphql"
     type: tool
     stage: sandbox
-  "flexo-mms-auth-service":
+  446899447:
+    name: "flexo-mms-auth-service"
     type: tool
     stage: sandbox
-  "flexo-mms-deployment":
+  530816056:
+    name: "flexo-mms-deployment"
     type: tool
     stage: sandbox
-  "flexo-mms-jama-sdk":
+  617194194:
+    name: "flexo-mms-jama-sdk"
     type: tool
     stage: sandbox
-  "flexo-mms-layer0-dashboard":
+  493919608:
+    name: "flexo-mms-layer0-dashboard"
     type: tool
     stage: sandbox
-  "flexo-mms-layer1-mcp":
+  1157483938:
+    name: "flexo-mms-layer1-mcp"
     type: tool
     stage: sandbox
-  "flexo-mms-layer1-openapi":
+  653379981:
+    name: "flexo-mms-layer1-openapi"
     type: tool
     stage: sandbox
-  "flexo-mms-layer1-service":
+  441051412:
+    name: "flexo-mms-layer1-service"
     type: tool
     stage: sandbox
-  "flexo-mms-ontology":
+  389755606:
+    name: "flexo-mms-ontology"
     reason: "No type signal. No media or research words, and no programming language."
-  "flexo-mms-sso-auth-service":
+  1054433017:
+    name: "flexo-mms-sso-auth-service"
     type: tool
     stage: sandbox
-  "flexo-mms-store-service":
+  478195880:
+    name: "flexo-mms-store-service"
     type: tool
     stage: sandbox
-  "flexo-mms-sysmlv2":
+  884000666:
+    name: "flexo-mms-sysmlv2"
     type: tool
     stage: sandbox
-  "flexo-mms-sysmlv2-mcp":
+  1160248104:
+    name: "flexo-mms-sysmlv2-mcp"
     type: tool
     stage: sandbox
-  "flexo-mms.openmbee.org":
+  1370327789:
+    name: "flexo-mms.openmbee.org"
     type: media
     stage: incubating
-  "flexo-performance-test":
+  1100754364:
+    name: "flexo-performance-test"
     type: tool
     stage: sandbox
-  "flexo-pr-manager":
+  1266635894:
+    name: "flexo-pr-manager"
     reason: "No type signal. No media or research words, and no programming language."
-  "flexo-sysml2-adapter-experiment":
+  852675122:
+    name: "flexo-sysml2-adapter-experiment"
     type: research
     stage: sandbox
-  "flexo-sysmlv2-swagger":
+  1086081622:
+    name: "flexo-sysmlv2-swagger"
     reason: "No type signal. No media or research words, and no programming language."
-  "flexo_syside":
+  1030606827:
+    name: "flexo_syside"
     type: tool
     stage: sandbox
-  "fprime":
+  1422498382:
+    name: "fprime"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "helix":
+  1375281693:
+    name: "helix"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "homebrew-tap":
+  1325979711:
+    name: "homebrew-tap"
     type: tool
     stage: sandbox
-  "IAlf":
+  162639632:
+    name: "IAlf"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "jl_scxml":
+  962923820:
+    name: "jl_scxml"
     reason: "No type signal. No media or research words, and no programming language."
-  "jsonPath2":
+  215427828:
+    name: "jsonPath2"
     type: tool
     stage: archived
-  "junit-xml-parser":
+  93498572:
+    name: "junit-xml-parser"
     type: tool
     stage: sandbox
-  "jupyter-mdk":
+  225493115:
+    name: "jupyter-mdk"
     type: tool
     stage: archived
-  "jupyterlab-mms":
+  292200099:
+    name: "jupyterlab-mms"
     type: tool
     stage: archived
-  "K":
+  42898017:
+    name: "K"
     type: tool
     stage: sandbox
-  "k2mms":
+  146928526:
+    name: "k2mms"
     type: tool
     stage: sandbox
-  "k_webeditor":
+  121803632:
+    name: "k_webeditor"
     type: tool
     stage: sandbox
-  "klang":
+  122302709:
+    name: "klang"
     type: tool
     stage: sandbox
-  "kservices":
+  110161193:
+    name: "kservices"
     type: tool
     stage: sandbox
-  "L4YAML":
+  1423592451:
+    name: "L4YAML"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "langserver.github.io":
+  1375281058:
+    name: "langserver.github.io"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "language-server-protocol":
+  1375280929:
+    name: "language-server-protocol"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "Livingstone":
+  33291237:
+    name: "Livingstone"
     type: tool
     stage: sandbox
-  "lsp-mode":
+  1375281379:
+    name: "lsp-mode"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "lsp4ij":
+  1375281848:
+    name: "lsp4ij"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "lunar-lander-simulation":
+  1324538016:
+    name: "lunar-lander-simulation"
     type: research
     stage: sandbox
-  "mason-registry":
+  1375281560:
+    name: "mason-registry"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "mathematica-mdk":
+  248101450:
+    name: "mathematica-mdk"
     type: tool
     stage: archived
-  "mathematica-mdk-core":
+  100315040:
+    name: "mathematica-mdk-core"
     reason: "Archived, with no type signal. Inert whatever its type."
-  "matlab-mdk":
+  80399735:
+    name: "matlab-mdk"
     type: tool
     stage: archived
-  "mbple-featureide":
+  1161945031:
+    name: "mbple-featureide"
     type: tool
     stage: sandbox
-  "MBSEPlugin":
+  33291873:
+    name: "MBSEPlugin"
     type: tool
     stage: sandbox
-  "mcf":
+  160264154:
+    name: "mcf"
     type: tool
     stage: incubating
-  "mcf-model-import-export":
+  385645515:
+    name: "mcf-model-import-export"
     type: tool
     stage: sandbox
-  "md-cst-montecarlo":
+  90200986:
+    name: "md-cst-montecarlo"
     type: tool
     stage: sandbox
-  "md-cst-rabbitmq":
+  129968100:
+    name: "md-cst-rabbitmq"
     reason: "No type signal. No media or research words, and no programming language."
-  "mdk-expression":
+  71959049:
+    name: "mdk-expression"
     type: tool
     stage: incubating
-  "mms-adapter-plugin":
+  270805640:
+    name: "mms-adapter-plugin"
     type: tool
     stage: incubating
-  "mms-alfresco":
+  83372310:
+    name: "mms-alfresco"
     type: tool
     stage: archived
-  "mms-autocref":
+  267168167:
+    name: "mms-autocref"
     reason: "No type signal. No media or research words, and no programming language."
-  "mms-doc-convert":
+  236633719:
+    name: "mms-doc-convert"
     type: tool
     stage: incubating
-  "mms-extensions":
+  188277615:
+    name: "mms-extensions"
     type: tool
     stage: archived
-  "mms-helm-chart":
+  397375860:
+    name: "mms-helm-chart"
     type: tool
     stage: sandbox
-  "mms-mathematica-client":
+  118530308:
+    name: "mms-mathematica-client"
     reason: "Archived, with no type signal. Inert whatever its type."
-  "mms-migration":
+  271618011:
+    name: "mms-migration"
     reason: "No type signal. No media or research words, and no programming language."
-  "MMS-Python-Adapter":
+  233674535:
+    name: "MMS-Python-Adapter"
     type: tool
     stage: archived
-  "mms-python-client-feedstock":
+  232688190:
+    name: "mms-python-client-feedstock"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "mms-rdf":
+  144634994:
+    name: "mms-rdf"
     reason: "No type signal. No media or research words, and no programming language."
-  "mms-sparql-service":
+  219587644:
+    name: "mms-sparql-service"
     type: tool
     stage: archived
-  "mms3-to-mms4-json":
+  511627698:
+    name: "mms3-to-mms4-json"
     type: tool
     stage: sandbox
-  "mms5-consul":
+  465132497:
+    name: "mms5-consul"
     type: tool
     stage: archived
-  "mpspi":
+  169655815:
+    name: "mpspi"
     type: tool
     stage: sandbox
-  "MSE":
+  165913955:
+    name: "MSE"
     type: tool
     stage: sandbox
-  "mtip-cameo":
+  493342457:
+    name: "mtip-cameo"
     type: tool
     stage: incubating
-  "mtip-sparx":
+  493342360:
+    name: "mtip-sparx"
     type: tool
     stage: incubating
-  "mvn-repo":
+  26829384:
+    name: "mvn-repo"
     reason: "Archived, with no type signal. Inert whatever its type."
-  "nvim-lspconfig":
+  1375281201:
+    name: "nvim-lspconfig"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "OMGSpecifications":
+  83185538:
+    name: "OMGSpecifications"
     type: media
     stage: incubating
-  "oosem.github.io":
+  1349113785:
+    name: "oosem.github.io"
     type: media
     stage: incubating
-  "open-mbee.github.io":
+  80334620:
+    name: "open-mbee.github.io"
     type: media
     stage: incubating
-  "openapi-generator":
+  168441786:
+    name: "openapi-generator"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "openapi-graph-extractor":
+  587136215:
+    name: "openapi-graph-extractor"
     type: tool
     stage: sandbox
-  "opencode":
+  1375280798:
+    name: "opencode"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "openmbee-graphic-assets":
+  1068122714:
+    name: "openmbee-graphic-assets"
     type: media
     stage: incubating
-  "openmbee-workshops.github.io":
+  1373634798:
+    name: "openmbee-workshops.github.io"
     type: media
     stage: incubating
-  "OpenSE-Cookbook":
+  78896957:
+    name: "OpenSE-Cookbook"
     type: media
     stage: incubating
-  "OpenSysML":
+  1318945311:
+    name: "OpenSysML"
     type: tool
     stage: sandbox
-  "OpenSysML-Extensions-Library":
+  1403782601:
+    name: "OpenSysML-Extensions-Library"
     type: tool
     stage: sandbox
-  "OpenSysML-FAQ":
+  1074833406:
+    name: "OpenSysML-FAQ"
     type: media
     stage: incubating
-  "OpenSysML-REDK-Skills":
+  1412449983:
+    name: "OpenSysML-REDK-Skills"
     type: tool
     stage: sandbox
-  "opensysml.github.io":
+  1187583595:
+    name: "opensysml.github.io"
     type: media
     stage: incubating
-  "opentelemetry-demo":
+  1422497683:
+    name: "opentelemetry-demo"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "opentelemetry-proto":
+  1422497939:
+    name: "opentelemetry-proto"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "opentelemetry-specification":
+  1422497329:
+    name: "opentelemetry-specification"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "opl":
+  354897889:
+    name: "opl"
     type: tool
     stage: incubating
-  "pane-layout":
+  495939642:
+    name: "pane-layout"
     type: tool
     stage: sandbox
-  "perseverance-modelica":
+  458239966:
+    name: "perseverance-modelica"
     type: media
     stage: incubating
-  "pma":
+  239544938:
+    name: "pma"
     type: tool
     stage: archived
-  "pmc-fdir":
+  643009265:
+    name: "pmc-fdir"
     type: research
     stage: sandbox
-  "PropertyKindCalculus":
+  1422654883:
+    name: "PropertyKindCalculus"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "python-mdk":
+  104777007:
+    name: "python-mdk"
     type: tool
     stage: archived
-  "readthedocs":
+  305725041:
+    name: "readthedocs"
     type: media
     stage: incubating
-  "repo-registry":
+  1424079165:
+    name: "repo-registry"
     type: governance
     stage: sandbox
-  "sbt-license-plugin":
+  29108554:
+    name: "sbt-license-plugin"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "sbt-pack":
+  35046190:
+    name: "sbt-pack"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "scxml4py":
+  952943191:
+    name: "scxml4py"
     type: tool
     stage: sandbox
-  "staged-recipes":
+  171956804:
+    name: "staged-recipes"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "staged-recipes-opensysml":
+  1187592523:
+    name: "staged-recipes-opensysml"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "starkit":
+  1326912794:
+    name: "starkit"
     reason: "No type signal. No media or research words, and no programming language."
-  "structured-use-cases":
+  1345195457:
+    name: "structured-use-cases"
     reason: "No type signal. No media or research words, and no programming language."
-  "structured-usecase-editor":
+  1345211831:
+    name: "structured-usecase-editor"
     type: tool
     stage: sandbox
-  "swagger-codegen":
+  133737729:
+    name: "swagger-codegen"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "swagger-codegen-mathematica-client":
+  118489913:
+    name: "swagger-codegen-mathematica-client"
     type: tool
     stage: sandbox
-  "swagger-codegen-matlab-client":
+  130741087:
+    name: "swagger-codegen-matlab-client"
     type: tool
     stage: sandbox
-  "sync-service":
+  310330863:
+    name: "sync-service"
     type: tool
     stage: sandbox
-  "sysml":
+  22349765:
+    name: "sysml"
     type: tool
     stage: sandbox
-  "SysML-LoRD":
+  1374820455:
+    name: "SysML-LoRD"
     type: tool
     stage: sandbox
-  "sysml-sdk":
+  1361507059:
+    name: "sysml-sdk"
     type: tool
     stage: sandbox
-  "sysml-toolkit":
+  1361506514:
+    name: "sysml-toolkit"
     type: tool
     stage: sandbox
-  "SysML-v2-Applications-and-Examples":
+  666063708:
+    name: "SysML-v2-Applications-and-Examples"
     type: media
     stage: incubating
-  "sysmlv2-python-client":
+  962926800:
+    name: "sysmlv2-python-client"
     type: tool
     stage: sandbox
-  "sysmlv2-rdf-ontology":
+  960074770:
+    name: "sysmlv2-rdf-ontology"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "sysmlv2-testing":
+  1367666757:
+    name: "sysmlv2-testing"
     type: tool
     stage: sandbox
-  "sysmlv2-web-modeler":
+  1225845670:
+    name: "sysmlv2-web-modeler"
     type: tool
     stage: sandbox
-  "sysmlv2_dls":
+  1064338054:
+    name: "sysmlv2_dls"
     type: tool
     stage: sandbox
-  "sysmlv2_excel":
+  1087846032:
+    name: "sysmlv2_excel"
     type: tool
     stage: sandbox
-  "sysmlv2x":
+  1038270551:
+    name: "sysmlv2x"
     type: tool
     stage: sandbox
-  "sysmod-sysmlv2-api":
+  1163493124:
+    name: "sysmod-sysmlv2-api"
     reason: "No type signal. No media or research words, and no programming language."
-  "syson":
+  1380680226:
+    name: "syson"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "testrail-cli":
+  93499228:
+    name: "testrail-cli"
     type: tool
     stage: incubating
-  "testrail-client-wrapper":
+  93506137:
+    name: "testrail-client-wrapper"
     type: tool
     stage: incubating
-  "text2text":
+  215427233:
+    name: "text2text"
     type: tool
     stage: sandbox
-  "TMT-SysML-Model":
+  53867665:
+    name: "TMT-SysML-Model"
     type: media
     stage: incubating
-  "toaster":
+  1388019168:
+    name: "toaster"
     type: media
     stage: incubating
-  "trafo-v2-v1":
+  1384282338:
+    name: "trafo-v2-v1"
     reason: "No type signal. No media or research words, and no programming language."
-  "tree-sitter-sysml":
+  1375320022:
+    name: "tree-sitter-sysml"
     type: tool
     stage: sandbox
-  "user-forum":
+  97874979:
+    name: "user-forum"
     type: media
     stage: incubating
-  "util":
+  22349834:
+    name: "util"
     type: tool
     stage: sandbox
-  "ve-confluence":
+  367212159:
+    name: "ve-confluence"
     type: tool
     stage: sandbox
-  "ve-confluence-app":
+  569375555:
+    name: "ve-confluence-app"
     type: tool
     stage: sandbox
-  "ve-diagram-generator":
+  553248739:
+    name: "ve-diagram-generator"
     type: tool
     stage: sandbox
-  "ve-mobile":
+  138130121:
+    name: "ve-mobile"
     type: tool
     stage: archived
-  "view-service":
+  340785297:
+    name: "view-service"
     type: tool
     stage: sandbox
-  "ViewEditor-Sesame":
+  19901840:
+    name: "ViewEditor-Sesame"
     type: tool
     stage: archived
-  "websysml-core":
+  1384250882:
+    name: "websysml-core"
     reason: "No type signal. No media or research words, and no programming language."
-  "winget-pkgs":
+  1389553817:
+    name: "winget-pkgs"
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
-  "zzProjectWiki":
+  34681989:
+    name: "zzProjectWiki"
     reason: "Archived, with no type signal. Inert whatever its type."

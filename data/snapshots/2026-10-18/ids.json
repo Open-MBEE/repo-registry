@@ -1,0 +1,735 @@
+{
+ "note": "GitHub's numeric repository ID for each repository (WP5b OD3), read with GET /repos/Open-MBEE/{name} after the snapshot was taken. after_snapshot marks a repository created after the snapshot (not in repos.json).",
+ "read_at": "2026-10-18T16:26:28Z",
+ "repos": [
+  {
+   "repo_id": 713039071,
+   "name": ".github"
+  },
+  {
+   "repo_id": 72783104,
+   "name": "_OpenMBEE-Documentation"
+  },
+  {
+   "repo_id": 1328104210,
+   "name": "aircraftengine-simulation"
+  },
+  {
+   "repo_id": 1408254042,
+   "name": "airflow-provider-opensysml"
+  },
+  {
+   "repo_id": 29001550,
+   "name": "amazonaws"
+  },
+  {
+   "repo_id": 331055772,
+   "name": "apv"
+  },
+  {
+   "repo_id": 331056160,
+   "name": "apv-mdk"
+  },
+  {
+   "repo_id": 246386068,
+   "name": "arch_model"
+  },
+  {
+   "repo_id": 775398107,
+   "name": "architecture-based-risk-analysis"
+  },
+  {
+   "repo_id": 123620745,
+   "name": "bae"
+  },
+  {
+   "repo_id": 22493646,
+   "name": "bae2_3_1"
+  },
+  {
+   "repo_id": 740131856,
+   "name": "ChatGPT-Prompts"
+  },
+  {
+   "repo_id": 33291437,
+   "name": "Comodo"
+  },
+  {
+   "repo_id": 1282740430,
+   "name": "concept-definition-stage"
+  },
+  {
+   "repo_id": 615316016,
+   "name": "configuration-management-plugin"
+  },
+  {
+   "repo_id": 320444571,
+   "name": "confluence-mdk"
+  },
+  {
+   "repo_id": 648658385,
+   "name": "des-ex-toolset"
+  },
+  {
+   "repo_id": 1099516002,
+   "name": "DesertKite.sysml"
+  },
+  {
+   "repo_id": 335716606,
+   "name": "dis"
+  },
+  {
+   "repo_id": 25658289,
+   "name": "docbook"
+  },
+  {
+   "repo_id": 25657744,
+   "name": "docbookgen"
+  },
+  {
+   "repo_id": 19901827,
+   "name": "DocGenServer"
+  },
+  {
+   "repo_id": 635409809,
+   "name": "docs"
+  },
+  {
+   "repo_id": 191248509,
+   "name": "docweb-service"
+  },
+  {
+   "repo_id": 63885622,
+   "name": "doors-ng-client"
+  },
+  {
+   "repo_id": 300696744,
+   "name": "doors-ng-mdk"
+  },
+  {
+   "repo_id": 1088906123,
+   "name": "Dragon-Architecture-Model"
+  },
+  {
+   "repo_id": 63198090,
+   "name": "ems-config"
+  },
+  {
+   "repo_id": 22351057,
+   "name": "EMS-Repo"
+  },
+  {
+   "repo_id": 22351360,
+   "name": "EMS-Share"
+  },
+  {
+   "repo_id": 276168716,
+   "name": "enhancement-proposals"
+  },
+  {
+   "repo_id": 19891439,
+   "name": "exec-cameo-mdk"
+  },
+  {
+   "repo_id": 233664723,
+   "name": "exec-mdk-systems-reasoner"
+  },
+  {
+   "repo_id": 160235647,
+   "name": "exec-mms"
+  },
+  {
+   "repo_id": 638690300,
+   "name": "exec-mms-migration-cameo2022x"
+  },
+  {
+   "repo_id": 528163521,
+   "name": "exec-mms-python-client-example"
+  },
+  {
+   "repo_id": 298034356,
+   "name": "exec-mmsri"
+  },
+  {
+   "repo_id": 22362113,
+   "name": "exec-ve"
+  },
+  {
+   "repo_id": 1129288675,
+   "name": "flexo-cli-client"
+  },
+  {
+   "repo_id": 1129318438,
+   "name": "flexo-cli-sysmlv2-plugin"
+  },
+  {
+   "repo_id": 1155663499,
+   "name": "flexo-conflict-resolution-policy-research"
+  },
+  {
+   "repo_id": 682792341,
+   "name": "flexo-graphql"
+  },
+  {
+   "repo_id": 446899447,
+   "name": "flexo-mms-auth-service"
+  },
+  {
+   "repo_id": 530816056,
+   "name": "flexo-mms-deployment"
+  },
+  {
+   "repo_id": 617194194,
+   "name": "flexo-mms-jama-sdk"
+  },
+  {
+   "repo_id": 493919608,
+   "name": "flexo-mms-layer0-dashboard"
+  },
+  {
+   "repo_id": 1157483938,
+   "name": "flexo-mms-layer1-mcp"
+  },
+  {
+   "repo_id": 653379981,
+   "name": "flexo-mms-layer1-openapi"
+  },
+  {
+   "repo_id": 441051412,
+   "name": "flexo-mms-layer1-service"
+  },
+  {
+   "repo_id": 389755606,
+   "name": "flexo-mms-ontology"
+  },
+  {
+   "repo_id": 1054433017,
+   "name": "flexo-mms-sso-auth-service"
+  },
+  {
+   "repo_id": 478195880,
+   "name": "flexo-mms-store-service"
+  },
+  {
+   "repo_id": 884000666,
+   "name": "flexo-mms-sysmlv2"
+  },
+  {
+   "repo_id": 1160248104,
+   "name": "flexo-mms-sysmlv2-mcp"
+  },
+  {
+   "repo_id": 1370327789,
+   "name": "flexo-mms.openmbee.org"
+  },
+  {
+   "repo_id": 1100754364,
+   "name": "flexo-performance-test"
+  },
+  {
+   "repo_id": 1266635894,
+   "name": "flexo-pr-manager"
+  },
+  {
+   "repo_id": 852675122,
+   "name": "flexo-sysml2-adapter-experiment"
+  },
+  {
+   "repo_id": 1086081622,
+   "name": "flexo-sysmlv2-swagger"
+  },
+  {
+   "repo_id": 1030606827,
+   "name": "flexo_syside"
+  },
+  {
+   "repo_id": 1422498382,
+   "name": "fprime"
+  },
+  {
+   "repo_id": 1375281693,
+   "name": "helix"
+  },
+  {
+   "repo_id": 1325979711,
+   "name": "homebrew-tap"
+  },
+  {
+   "repo_id": 162639632,
+   "name": "IAlf"
+  },
+  {
+   "repo_id": 962923820,
+   "name": "jl_scxml"
+  },
+  {
+   "repo_id": 215427828,
+   "name": "jsonPath2"
+  },
+  {
+   "repo_id": 93498572,
+   "name": "junit-xml-parser"
+  },
+  {
+   "repo_id": 225493115,
+   "name": "jupyter-mdk"
+  },
+  {
+   "repo_id": 292200099,
+   "name": "jupyterlab-mms"
+  },
+  {
+   "repo_id": 42898017,
+   "name": "K"
+  },
+  {
+   "repo_id": 146928526,
+   "name": "k2mms"
+  },
+  {
+   "repo_id": 121803632,
+   "name": "k_webeditor"
+  },
+  {
+   "repo_id": 122302709,
+   "name": "klang"
+  },
+  {
+   "repo_id": 110161193,
+   "name": "kservices"
+  },
+  {
+   "repo_id": 1423592451,
+   "name": "L4YAML"
+  },
+  {
+   "repo_id": 1375281058,
+   "name": "langserver.github.io"
+  },
+  {
+   "repo_id": 1375280929,
+   "name": "language-server-protocol"
+  },
+  {
+   "repo_id": 33291237,
+   "name": "Livingstone"
+  },
+  {
+   "repo_id": 1375281379,
+   "name": "lsp-mode"
+  },
+  {
+   "repo_id": 1375281848,
+   "name": "lsp4ij"
+  },
+  {
+   "repo_id": 1324538016,
+   "name": "lunar-lander-simulation"
+  },
+  {
+   "repo_id": 1375281560,
+   "name": "mason-registry"
+  },
+  {
+   "repo_id": 248101450,
+   "name": "mathematica-mdk"
+  },
+  {
+   "repo_id": 100315040,
+   "name": "mathematica-mdk-core"
+  },
+  {
+   "repo_id": 80399735,
+   "name": "matlab-mdk"
+  },
+  {
+   "repo_id": 1161945031,
+   "name": "mbple-featureide"
+  },
+  {
+   "repo_id": 33291873,
+   "name": "MBSEPlugin"
+  },
+  {
+   "repo_id": 160264154,
+   "name": "mcf"
+  },
+  {
+   "repo_id": 385645515,
+   "name": "mcf-model-import-export"
+  },
+  {
+   "repo_id": 90200986,
+   "name": "md-cst-montecarlo"
+  },
+  {
+   "repo_id": 129968100,
+   "name": "md-cst-rabbitmq"
+  },
+  {
+   "repo_id": 71959049,
+   "name": "mdk-expression"
+  },
+  {
+   "repo_id": 270805640,
+   "name": "mms-adapter-plugin"
+  },
+  {
+   "repo_id": 83372310,
+   "name": "mms-alfresco"
+  },
+  {
+   "repo_id": 267168167,
+   "name": "mms-autocref"
+  },
+  {
+   "repo_id": 236633719,
+   "name": "mms-doc-convert"
+  },
+  {
+   "repo_id": 188277615,
+   "name": "mms-extensions"
+  },
+  {
+   "repo_id": 397375860,
+   "name": "mms-helm-chart"
+  },
+  {
+   "repo_id": 118530308,
+   "name": "mms-mathematica-client"
+  },
+  {
+   "repo_id": 271618011,
+   "name": "mms-migration"
+  },
+  {
+   "repo_id": 233674535,
+   "name": "MMS-Python-Adapter"
+  },
+  {
+   "repo_id": 232688190,
+   "name": "mms-python-client-feedstock"
+  },
+  {
+   "repo_id": 144634994,
+   "name": "mms-rdf"
+  },
+  {
+   "repo_id": 219587644,
+   "name": "mms-sparql-service"
+  },
+  {
+   "repo_id": 511627698,
+   "name": "mms3-to-mms4-json"
+  },
+  {
+   "repo_id": 465132497,
+   "name": "mms5-consul"
+  },
+  {
+   "repo_id": 169655815,
+   "name": "mpspi"
+  },
+  {
+   "repo_id": 165913955,
+   "name": "MSE"
+  },
+  {
+   "repo_id": 493342457,
+   "name": "mtip-cameo"
+  },
+  {
+   "repo_id": 493342360,
+   "name": "mtip-sparx"
+  },
+  {
+   "repo_id": 26829384,
+   "name": "mvn-repo"
+  },
+  {
+   "repo_id": 1375281201,
+   "name": "nvim-lspconfig"
+  },
+  {
+   "repo_id": 83185538,
+   "name": "OMGSpecifications"
+  },
+  {
+   "repo_id": 1349113785,
+   "name": "oosem.github.io"
+  },
+  {
+   "repo_id": 80334620,
+   "name": "open-mbee.github.io"
+  },
+  {
+   "repo_id": 168441786,
+   "name": "openapi-generator"
+  },
+  {
+   "repo_id": 587136215,
+   "name": "openapi-graph-extractor"
+  },
+  {
+   "repo_id": 1375280798,
+   "name": "opencode"
+  },
+  {
+   "repo_id": 1068122714,
+   "name": "openmbee-graphic-assets"
+  },
+  {
+   "repo_id": 1373634798,
+   "name": "openmbee-workshops.github.io"
+  },
+  {
+   "repo_id": 78896957,
+   "name": "OpenSE-Cookbook"
+  },
+  {
+   "repo_id": 1318945311,
+   "name": "OpenSysML"
+  },
+  {
+   "repo_id": 1403782601,
+   "name": "OpenSysML-Extensions-Library"
+  },
+  {
+   "repo_id": 1074833406,
+   "name": "OpenSysML-FAQ"
+  },
+  {
+   "repo_id": 1412449983,
+   "name": "OpenSysML-REDK-Skills"
+  },
+  {
+   "repo_id": 1187583595,
+   "name": "opensysml.github.io"
+  },
+  {
+   "repo_id": 1422497683,
+   "name": "opentelemetry-demo"
+  },
+  {
+   "repo_id": 1422497939,
+   "name": "opentelemetry-proto"
+  },
+  {
+   "repo_id": 1422497329,
+   "name": "opentelemetry-specification"
+  },
+  {
+   "repo_id": 354897889,
+   "name": "opl"
+  },
+  {
+   "repo_id": 495939642,
+   "name": "pane-layout"
+  },
+  {
+   "repo_id": 458239966,
+   "name": "perseverance-modelica"
+  },
+  {
+   "repo_id": 239544938,
+   "name": "pma"
+  },
+  {
+   "repo_id": 643009265,
+   "name": "pmc-fdir"
+  },
+  {
+   "repo_id": 1422654883,
+   "name": "PropertyKindCalculus"
+  },
+  {
+   "repo_id": 104777007,
+   "name": "python-mdk"
+  },
+  {
+   "repo_id": 305725041,
+   "name": "readthedocs"
+  },
+  {
+   "repo_id": 1424079165,
+   "name": "repo-registry",
+   "after_snapshot": true
+  },
+  {
+   "repo_id": 29108554,
+   "name": "sbt-license-plugin"
+  },
+  {
+   "repo_id": 35046190,
+   "name": "sbt-pack"
+  },
+  {
+   "repo_id": 952943191,
+   "name": "scxml4py"
+  },
+  {
+   "repo_id": 171956804,
+   "name": "staged-recipes"
+  },
+  {
+   "repo_id": 1187592523,
+   "name": "staged-recipes-opensysml"
+  },
+  {
+   "repo_id": 1326912794,
+   "name": "starkit"
+  },
+  {
+   "repo_id": 1345195457,
+   "name": "structured-use-cases"
+  },
+  {
+   "repo_id": 1345211831,
+   "name": "structured-usecase-editor"
+  },
+  {
+   "repo_id": 133737729,
+   "name": "swagger-codegen"
+  },
+  {
+   "repo_id": 118489913,
+   "name": "swagger-codegen-mathematica-client"
+  },
+  {
+   "repo_id": 130741087,
+   "name": "swagger-codegen-matlab-client"
+  },
+  {
+   "repo_id": 310330863,
+   "name": "sync-service"
+  },
+  {
+   "repo_id": 22349765,
+   "name": "sysml"
+  },
+  {
+   "repo_id": 1374820455,
+   "name": "SysML-LoRD"
+  },
+  {
+   "repo_id": 1361507059,
+   "name": "sysml-sdk"
+  },
+  {
+   "repo_id": 1361506514,
+   "name": "sysml-toolkit"
+  },
+  {
+   "repo_id": 666063708,
+   "name": "SysML-v2-Applications-and-Examples"
+  },
+  {
+   "repo_id": 962926800,
+   "name": "sysmlv2-python-client"
+  },
+  {
+   "repo_id": 960074770,
+   "name": "sysmlv2-rdf-ontology"
+  },
+  {
+   "repo_id": 1367666757,
+   "name": "sysmlv2-testing"
+  },
+  {
+   "repo_id": 1225845670,
+   "name": "sysmlv2-web-modeler"
+  },
+  {
+   "repo_id": 1064338054,
+   "name": "sysmlv2_dls"
+  },
+  {
+   "repo_id": 1087846032,
+   "name": "sysmlv2_excel"
+  },
+  {
+   "repo_id": 1038270551,
+   "name": "sysmlv2x"
+  },
+  {
+   "repo_id": 1163493124,
+   "name": "sysmod-sysmlv2-api"
+  },
+  {
+   "repo_id": 1380680226,
+   "name": "syson"
+  },
+  {
+   "repo_id": 93499228,
+   "name": "testrail-cli"
+  },
+  {
+   "repo_id": 93506137,
+   "name": "testrail-client-wrapper"
+  },
+  {
+   "repo_id": 215427233,
+   "name": "text2text"
+  },
+  {
+   "repo_id": 53867665,
+   "name": "TMT-SysML-Model"
+  },
+  {
+   "repo_id": 1388019168,
+   "name": "toaster"
+  },
+  {
+   "repo_id": 1384282338,
+   "name": "trafo-v2-v1"
+  },
+  {
+   "repo_id": 1375320022,
+   "name": "tree-sitter-sysml"
+  },
+  {
+   "repo_id": 97874979,
+   "name": "user-forum"
+  },
+  {
+   "repo_id": 22349834,
+   "name": "util"
+  },
+  {
+   "repo_id": 367212159,
+   "name": "ve-confluence"
+  },
+  {
+   "repo_id": 569375555,
+   "name": "ve-confluence-app"
+  },
+  {
+   "repo_id": 553248739,
+   "name": "ve-diagram-generator"
+  },
+  {
+   "repo_id": 138130121,
+   "name": "ve-mobile"
+  },
+  {
+   "repo_id": 340785297,
+   "name": "view-service"
+  },
+  {
+   "repo_id": 19901840,
+   "name": "ViewEditor-Sesame"
+  },
+  {
+   "repo_id": 1384250882,
+   "name": "websysml-core"
+  },
+  {
+   "repo_id": 1389553817,
+   "name": "winget-pkgs"
+  },
+  {
+   "repo_id": 34681989,
+   "name": "zzProjectWiki"
+  }
+ ]
+}

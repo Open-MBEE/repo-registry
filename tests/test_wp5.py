@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import history_privacy_check  # noqa: E402
 import validate  # noqa: E402
 
-SNAPSHOT = "data/snapshots/2026-10-18"
+OPENSYSML = '    name: "OpenSysML"\n    type: tool\n    stage: sandbox'
 
 
 def copy_repo():
@@ -40,46 +40,44 @@ def edit(root, rel, old, new):
     path.write_text(text.replace(old, new, 1))
 
 
-def regenerate(root, *scripts):
-    args = {"licenses.py": ["--snapshot", SNAPSHOT], "pilot.py": ["--snapshot", SNAPSHOT],
-            "briefing.py": ["--snapshot", SNAPSHOT], "policies.py": []}
-    for s in scripts:
-        subprocess.run([sys.executable, f"scripts/{s}", *args[s]], cwd=root, check=True, capture_output=True)
-
-
-# One deliberately invalid change per data file: (file, text to replace, replacement, words the problem names).
+# One deliberately invalid change per table: (file, text to replace, replacement, words the problem names). Each is
+# a construction error: the model's rules (data/schema/model.yaml) reject it (WP0 R-14; WP5b D-5).
 INVALID = [
     ("data/taxonomy/kinds.yaml", "status: provisional", "status: draft", "status must be"),
     ("data/taxonomy/tiers.yaml", "# PROVISIONAL", "# Draft", "first line"),
-    ("registry.yaml", '  "OpenSysML":\n    type: tool\n    stage: sandbox', '  "OpenSysML":\n    type: tool\n    stage: beta',
-     "OpenSysML: type 'tool' and stage 'beta' name no kind"),
-    ("registry.yaml", '  "OpenSysML":\n    type: tool\n    stage: sandbox',
-     '  "OpenSysML":\n    type: tool\n    stage: sandbox\n    tier: low', "needs type and stage, or a reason alone"),
+    ("registry.yaml", OPENSYSML, OPENSYSML.replace("sandbox", "beta"), "stage: 'beta' is not a stage"),
+    ("registry.yaml", OPENSYSML, OPENSYSML + "\n    tier: low", "column 'tier' is not declared"),
+    ("registry.yaml", OPENSYSML, OPENSYSML.replace('"OpenSysML"', '"OpenSysML2"'), "renamed?"),
     ("data/assignments.yaml", "    type: governance\n    stage: sandbox", "    type: governance\n    stage: graduated",
-     "repo-registry: assigned governance/graduated"),
-    ("data/policies/codeowners.yaml", "\nsop:", "\nsop_moved:", "data/policies"),
-    ("data/maintainers.yaml", "  rkarban:", "  rkarban!:", "is not a GitHub login"),
+     "repo-registry is assigned governance/graduated"),
+    ("data/policies/codeowners.yaml", "\nsetup:", "\nset_up:", "column 'set_up' is not declared"),
+    ("data/maintainers.yaml", "  60184290:", "  rkarban:", "user_id: 'rkarban' is not a id"),
     ("data/proposed-codeowners", " @HuiJun", "", "must list exactly the maintainers"),
     ("data/deviations.yaml", "deviations: []",
-     "deviations:\n  - {repo: OpenSysML, policy: license-by-type, reason: test, approved_by: someone-else}",
-     "someone-else is not a maintainer"),
+     "deviations:\n  - {repo_id: 1318945311, name: OpenSysML, policy: license-by-type, reason: test, approved_by: x}",
+     "approved_by: 'x' is not a maintainer.login"),
     ("data/pilot-rule.yaml", "{attr: type, eq: tool}", "{attr: type, equals: tool}", "exactly one operator"),
-    ("data/pilot.yaml", "  aircraftengine-simulation:", "  no-such-repo:", "no-such-repo is not in registry.yaml"),
-    ("data/exclude.yaml", "  apv: ", "  apv-renamed: ", "apv is neither in the pilot nor excluded"),
-    ("data/expected-gaps.yaml", "    closes_in: \"R3", "    closes: \"R3", "XF-2: needs"),
+    ("data/pilot-rule.yaml", "{attr: archived, eq: false}", "{attr: nosuch, eq: false}", "which no table stores"),
+    ("data/pilot.yaml", "  1318945311:", "  1:", "repo_id: 1 is not a repo"),
+    ("data/exclude.yaml", '    name: "apv"\n', '    name: "apv"\n    note: x\n', "column 'note' is not declared"),
+    ("data/policies/_future.yaml", "strengthens: [org-two-factor]", "strengthens: [org-three-factor]",
+     "'org-three-factor' is not a policy"),
+    ("data/forthcoming.yaml", "    closes_in:", "    closes:", "closes_in: missing"),
+    ("data/measured-gaps.yaml", "check: review-required", "check: no-such-check", "is not a policy_check"),
+    ("data/controls.yaml", "test: tests/", "test: nowhere/", "is not a test"),
 ]
 
 
 class ValidTests(unittest.TestCase):
-    def test_D1_real_data_is_valid_and_replays(self):
-        """D-1, R-1, R-3: the data on this branch meets every meta-rule, and every generated file replays."""
+    def test_D1_real_data_is_valid_and_renders(self):
+        """D-1, R-1, R-3: the data on this branch meets the declared model, and every view renders, the same twice."""
         self.assertEqual(validate.check(ROOT), [])
-        self.assertEqual(validate.replay(ROOT), [])
+        self.assertEqual(validate.renders(ROOT), [])
 
 
 class InvalidTests(unittest.TestCase):
     def test_R1_each_invalid_file_fails_with_a_named_problem(self):
-        """R-1: for each data file, a deliberately invalid copy fails, and the problem names what is wrong."""
+        """R-1: for each table, a deliberately invalid copy fails, and the problem names what is wrong."""
         for rel, old, new, named in INVALID:
             with self.subTest(file=rel, named=named):
                 with copy_repo() as tmp:
@@ -91,53 +89,50 @@ class InvalidTests(unittest.TestCase):
         """R-1: the command a pull request runs exits non-zero on invalid data, and names the problem."""
         with copy_repo() as tmp:
             edit(tmp, *INVALID[2][:3])
-            run = subprocess.run([sys.executable, "scripts/validate.py", "--no-replay"], cwd=tmp, capture_output=True,
+            run = subprocess.run([sys.executable, "scripts/validate.py", "--no-render"], cwd=tmp, capture_output=True,
                                  text=True)
             self.assertNotEqual(run.returncode, 0)
-            self.assertIn("stage 'beta'", run.stderr)
+            self.assertIn("stage: 'beta' is not a stage", run.stderr)
 
-    def test_R3_hand_edit_to_a_generated_file_fails(self):
-        """R-3: a hand edit to a generated file fails the replay."""
+    def test_R3_broken_view_software_fails(self):
+        """R-3 (now WP5b R-5): views aren't stored, so a hand edit can't drift; a render step that breaks fails."""
         with copy_repo() as tmp:
-            edit(tmp, "docs/pilot-briefing.md", "# Pilot briefing", "# Pilot briefing (edited)")
+            edit(tmp, "scripts/briefing.py", "def main():", "def main():\n    raise RuntimeError('broken')")
             self.assertEqual(validate.check(pathlib.Path(tmp)), [])
-            self.assertTrue(any(p.startswith("docs/pilot-briefing.md:") for p in validate.replay(pathlib.Path(tmp))))
+            self.assertTrue(any("briefing.py failed" in p for p in validate.renders(pathlib.Path(tmp))))
 
 
 def green_non_apache(root):
     """A classified repository whose license is green but not Apache-2.0, so that making it governance (which allows
-    only Apache-2.0) turns it red. Chosen from the data, so the test holds after any kind change."""
-    report = yaml.safe_load((pathlib.Path(root) / "data/reports/license-report.yaml").read_text())["repos"]
+    only Apache-2.0) turns it red. Chosen from the rendered license view, so the test holds after any kind change."""
+    with tempfile.TemporaryDirectory() as t:
+        subprocess.run([sys.executable, "scripts/licenses.py", "--out", t, "--root", str(root)], cwd=root, check=True,
+                       capture_output=True)
+        report = yaml.safe_load((pathlib.Path(t) / "reports/license-report.yaml").read_text())["repos"]
     entries = yaml.safe_load((pathlib.Path(root) / "registry.yaml").read_text())["repos"]
-    name = next(n for n, r in sorted(report.items()) if r["status"] == "green" and r["license"] != "Apache-2.0"
-                and "type" in entries.get(n, {}))
-    return name, entries[name]
+    rid = next(r for r, row in sorted(report.items()) if row["color"] == "green" and row["license"] != "Apache-2.0"
+               and "type" in entries.get(r, {}))
+    return rid, entries[rid]
 
 
-def to_governance_sandbox(root, name, entry):
-    edit(root, "registry.yaml", f'  "{name}":\n    type: {entry["type"]}\n    stage: {entry["stage"]}\n',
-         f'  "{name}":\n    type: governance\n    stage: sandbox\n')
+def to_governance_sandbox(root, entry):
+    edit(root, "registry.yaml", f'    name: "{entry["name"]}"\n    type: {entry["type"]}\n    stage: {entry["stage"]}\n',
+         f'    name: "{entry["name"]}"\n    type: governance\n    stage: sandbox\n')
 
 
 class ComplianceTests(unittest.TestCase):
     def test_R2_out_of_compliance_is_valid(self):
-        """R-2: a kind change that leaves a repository red (its license isn't allowed for governance) is valid."""
+        """R-2: a kind change that leaves a repository red (its license isn't allowed for governance) is valid, as one
+        edit: nothing is regenerated, because views aren't stored (WP5b OD4); the rendered view shows it red."""
         with copy_repo() as tmp:
-            report = lambda: yaml.safe_load((pathlib.Path(tmp) / "data/reports/license-report.yaml").read_text())  # noqa: E731
-            name, entry = green_non_apache(tmp)
-            to_governance_sandbox(tmp, name, entry)
-            regenerate(tmp, "licenses.py", "pilot.py", "briefing.py")
-            self.assertEqual(report()["repos"][name]["status"], "red")
+            rid, entry = green_non_apache(tmp)
+            to_governance_sandbox(tmp, entry)
             self.assertEqual(validate.check(pathlib.Path(tmp)), [])
-            self.assertEqual(validate.replay(pathlib.Path(tmp)), [])
-
-    def test_R2_kind_change_without_regenerating_names_the_files(self):
-        """R-2, R-3: a kind change whose derived files weren't regenerated fails, and says which files to regenerate."""
-        with copy_repo() as tmp:
-            to_governance_sandbox(tmp, *green_non_apache(tmp))
-            self.assertEqual(validate.check(pathlib.Path(tmp)), [])
-            stale = {p.split(":")[0] for p in validate.replay(pathlib.Path(tmp))}
-            self.assertIn("data/reports/license-report.yaml", stale)
+            with tempfile.TemporaryDirectory() as t:
+                subprocess.run([sys.executable, "scripts/licenses.py", "--out", t, "--root", tmp], cwd=tmp, check=True,
+                               capture_output=True)
+                report = yaml.safe_load((pathlib.Path(t) / "reports/license-report.yaml").read_text())["repos"]
+            self.assertEqual(report[rid]["color"], "red")
 
 
 class EnvironmentTests(unittest.TestCase):
@@ -151,7 +146,7 @@ class EnvironmentTests(unittest.TestCase):
         self.assertRegex(lock, r'name = "pyyaml"\nversion = "6\.0\.3"')
         workflow = (ROOT / ".github/workflows/check.yml").read_text()
         self.assertIn("uv sync --frozen", workflow)
-        self.assertEqual(len(re.findall(r"uv run --frozen python", workflow)), 2)
+        self.assertGreaterEqual(len(re.findall(r"uv run --frozen python", workflow)), 2)
         self.assertNotIn("pip install", workflow)
 
 

@@ -154,9 +154,9 @@ Details: [docs/roadmap.md](docs/roadmap.md).
 - [Current state](docs/current-state.md): **the place to start.** What is decided, where it is recorded, and what
   is next
 - [Status](docs/status.md): where the work packages stand
-- [Policy applicability](docs/policy-applicability.md): which policies are in effect for each kind, with links to
-  each policy's SOP
-- [Pilot briefing](docs/pilot-briefing.md): the proposed pilot repositories and their kinds
+- The views: which policies are in effect for each kind, each policy's SOP, and the proposed pilot. They are
+  rendered from the data, never stored here: run `uv run python scripts/render.py` and open `build/demo/` (until the
+  wiki publishes them, WP7). Each pull request's check also shows how its change would alter them.
 
 The scope of record is [WP0](work-packages/WP0-scope-of-work.md) and the later work-package scopes and decision
 records in [work-packages/](work-packages/). The early design documents below are DRAFT inputs; where they disagree

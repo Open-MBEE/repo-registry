@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: history-protection
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: Keep the history
 meaning: Tools from version 1.0, and the registry, protect the default branch from force pushes and deletion, so that its
   history stays complete for review and audit.
@@ -42,4 +41,7 @@ cites:
   nist:
   - CM-3
   openssf: []
-sop: docs/sops/history-protection.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- Go to Settings, then Rules, then Rulesets, and create a branch ruleset for the default branch, with enforcement Active. (An existing branch protection rule under Settings, then Branches, that does the same job also passes.)
+- 'Turn on Block force pushes and Restrict deletions (in a branch protection rule: leave Allow force pushes and Allow deletions off), and save.'
+- 'That is all this policy asks. Squash-merging pull requests is fine: what it prevents is rewriting or deleting the default branch''s published history.'
