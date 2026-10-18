@@ -122,9 +122,26 @@ explained (tiers.yaml:11, 16, 21, 25).
 
 Each fresh stand-in pass finds a new, smaller layer, so R-4's stopping point was taken to the supervisor a level up.
 
+## Final pass (7b33da9)
+
+The supervisor set R-4's stopping point: "Fix 1-5, then stop". So the third pass's five items were checked directly,
+not by another stand-in read. During the fixes, the supervisor also refined three design points, each recorded in
+[WP1-decisions.md](WP1-decisions.md): maintenance is active, a kind is a category and not a compliance verdict, and
+active development means new features (read from feature releases, x.y.0).
+
+| Item | Verdict | Evidence |
+|---|---|---|
+| R-4 third-pass items 1-5 | met | A regex scan of every reader-facing text finds no "main tools", "Only the OpenMBEE maintainers give", "moves on to active development when", "WP"/"OD" codes, "governor" or "this repository". The governance type now says the org's administration isn't a repository. "Maintained" no longer means "no changes" |
+| R-4 minor items | accepted | Version numbers, each with a plain example, and "controls" (supervisor: "Fix 1-5, then stop") |
+| R-1 to R-10, D-1 to D-5 | met | `python3 -m unittest discover -s tests` → 17 tests OK. Replay identical (`cmp`). No registry entry names a tier |
+| Good enough | met | Every item above. Summary refreshed ([WP1-summary.md](WP1-summary.md)) |
+| Outside the scope | — | `data/assignments.yaml` (supports D-5 and the G-2 fix). Accepted with G-4's out-of-scope files |
+| Non-goals | not touched | No policies defined (semantic versioning, dependency and CVE upkeep are carried to WP2), nothing written outside this repo, no language model |
+
 ## Recommendation
 
-**Do not recommend acceptance yet.** After the second pass, G-1 and G-2 are fixed, but G-3 (R-4, plain language) is
-still not met. Five wording items remain (see Second pass).
+**Recommend acceptance with the listed gaps noted.** Every deliverable, requirement and good-enough item is met after
+the fixes. G-1, G-2 and G-3 were fixed. G-4 and the minor R-4 items are accepted as is, by the supervisor's decisions.
+The taxonomy and kind list stay PROVISIONAL until the maintainers approve them (WP0 approvals 1 and 4).
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.
