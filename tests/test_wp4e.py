@@ -51,11 +51,9 @@ class KindListTests(unittest.TestCase):
                                  (e["type"], e["stage"]), where)
 
     def test_R3_every_repository_keeps_its_kind(self):
-        """R-3: the computed kind of every repository equals the kind recorded before WP4e (the recommendation
-        report, which still shows kinds by name, and the pilot)."""
+        """R-3: the computed kind of every pilot repository is the kind the pilot shows. (The one-time comparison with
+        the kinds before WP4e is in WP4e-review.md; this lasting check must hold after any later kind change.)"""
         reg = load("registry.yaml")["repos"]
-        report = load("data/reports/kind-recommendations.yaml")["repos"]
-        self.assertEqual({n: recommend.kind_of(e) for n, e in reg.items()}, {n: r["kind"] for n, r in report.items()})
         for n, p in load("data/pilot.yaml")["repos"].items():
             self.assertEqual(recommend.kind_of(reg[n]), p["kind"], n)
 

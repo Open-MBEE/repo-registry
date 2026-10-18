@@ -104,24 +104,37 @@ class InvalidTests(unittest.TestCase):
             self.assertTrue(any(p.startswith("docs/pilot-briefing.md:") for p in validate.replay(pathlib.Path(tmp))))
 
 
+def green_non_apache(root):
+    """A classified repository whose license is green but not Apache-2.0, so that making it governance (which allows
+    only Apache-2.0) turns it red. Chosen from the data, so the test holds after any kind change."""
+    report = yaml.safe_load((pathlib.Path(root) / "data/reports/license-report.yaml").read_text())["repos"]
+    entries = yaml.safe_load((pathlib.Path(root) / "registry.yaml").read_text())["repos"]
+    name = next(n for n, r in sorted(report.items()) if r["status"] == "green" and r["license"] != "Apache-2.0"
+                and "type" in entries.get(n, {}))
+    return name, entries[name]
+
+
+def to_governance_sandbox(root, name, entry):
+    edit(root, "registry.yaml", f'  "{name}":\n    type: {entry["type"]}\n    stage: {entry["stage"]}\n',
+         f'  "{name}":\n    type: governance\n    stage: sandbox\n')
+
+
 class ComplianceTests(unittest.TestCase):
     def test_R2_out_of_compliance_is_valid(self):
-        """R-2: a kind change that leaves a repository red (its MIT license isn't allowed for governance) is valid."""
+        """R-2: a kind change that leaves a repository red (its license isn't allowed for governance) is valid."""
         with copy_repo() as tmp:
             report = lambda: yaml.safe_load((pathlib.Path(tmp) / "data/reports/license-report.yaml").read_text())  # noqa: E731
-            self.assertEqual(report()["repos"]["arch_model"]["status"], "green")
-            edit(tmp, "registry.yaml", '  "arch_model":\n    type: media\n    stage: incubating',
-                 '  "arch_model":\n    type: governance\n    stage: sandbox')
+            name, entry = green_non_apache(tmp)
+            to_governance_sandbox(tmp, name, entry)
             regenerate(tmp, "licenses.py", "pilot.py", "briefing.py")
-            self.assertEqual(report()["repos"]["arch_model"]["status"], "red")
+            self.assertEqual(report()["repos"][name]["status"], "red")
             self.assertEqual(validate.check(pathlib.Path(tmp)), [])
             self.assertEqual(validate.replay(pathlib.Path(tmp)), [])
 
     def test_R2_kind_change_without_regenerating_names_the_files(self):
         """R-2, R-3: a kind change whose derived files weren't regenerated fails, and says which files to regenerate."""
         with copy_repo() as tmp:
-            edit(tmp, "registry.yaml", '  "arch_model":\n    type: media\n    stage: incubating',
-                 '  "arch_model":\n    type: tool\n    stage: sandbox')
+            to_governance_sandbox(tmp, *green_non_apache(tmp))
             self.assertEqual(validate.check(pathlib.Path(tmp)), [])
             stale = {p.split(":")[0] for p in validate.replay(pathlib.Path(tmp))}
             self.assertIn("data/reports/license-report.yaml", stale)
