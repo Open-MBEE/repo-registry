@@ -1,0 +1,34 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: archive-notice
+name: Clear end of support
+meaning: Before a repository is archived, its README says that support has ended and points to any known active forks. Repositories
+  archived before this policy existed count as compliant as they are.
+applies_if:
+  attr: lifecycle
+  eq: archived
+github:
+  mechanism: Repository archiving, with an end-of-support note in the README
+  docs:
+  - https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories
+checks:
+  automated:
+  - id: archived
+    reads: GET /repos/{owner}/{repo} -> archived == true
+    permission: 'Metadata: read'
+  attested:
+  - id: end-of-support-note
+    statement: The README says that support has ended, and names any known active forks. (Repositories archived before this
+      policy existed are exempt.)
+cites:
+  cisa:
+  - CISA-P-EOS-MARK
+  - CISA-P-EOS-FORKS
+  - CISA-P-EOS-PUBLISH
+  nist:
+  - SA-22
+  openssf: []
+  iso12207:
+  - 6.4.14
+sop: docs/sops/archive-notice.md

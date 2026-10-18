@@ -1,0 +1,44 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: history-protection
+name: Keep the history
+meaning: Tools from version 1.0, and the registry, protect the default branch from force pushes and deletion, so that its
+  history stays complete for review and audit.
+applies_if:
+  any:
+  - all:
+    - attr: type
+      eq: tool
+    - attr: lifecycle
+      in:
+      - incubating
+      - graduated
+  - all:
+    - attr: type
+      eq: governance
+    - attr: lifecycle
+      eq: sandbox
+github:
+  mechanism: Ruleset or branch protection rules that block force pushes (non_fast_forward) and deletion on the default branch
+  docs:
+  - https://docs.github.com/en/rest/repos/rules
+  - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+checks:
+  automated:
+  - id: no-force-push
+    reads: 'GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> includes a rule of type non_fast_forward (classic
+      branch protection needs admin read: yellow if only that is set and unreadable)'
+    permission: 'Metadata: read'
+  - id: no-deletion
+    reads: GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> includes a rule of type deletion
+    permission: 'Metadata: read'
+  attested: []
+cites:
+  cisa:
+  - CISA-P-NO-SQUASH
+  - CISA-P-HISTORY-ASSET
+  nist:
+  - CM-3
+  openssf: []
+sop: docs/sops/history-protection.md

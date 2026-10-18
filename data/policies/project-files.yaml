@@ -1,0 +1,40 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: project-files
+name: README and license
+meaning: Every live repository has a README that says what it is, and a license file that says how it may be used.
+applies_if:
+  all:
+  - not:
+      attr: lifecycle
+      eq: archived
+  - not:
+      all:
+      - attr: type
+        eq: governance
+      - attr: lifecycle
+        eq: graduated
+github:
+  mechanism: Repository files README and LICENSE, detected by GitHub's community profile and license detection
+  docs:
+  - https://docs.github.com/en/rest/metrics/community
+  - https://docs.github.com/en/rest/licenses/licenses
+checks:
+  automated:
+  - id: readme-present
+    reads: GET /repos/{owner}/{repo}/community/profile -> files.readme is not null
+    permission: 'Contents: read'
+  - id: license-detected
+    reads: GET /repos/{owner}/{repo} -> license.spdx_id is not null
+    permission: 'Metadata: read'
+  attested: []
+cites:
+  cisa:
+  - CISA-P-README
+  - CISA-P-LICENSE-FILE
+  - CISA-P-LICENSE-PERMISSIVE
+  nist: none
+  openssf: []
+secondary_notes: OpenSSF and CNCF both require legal and license clearance from the Sandbox stage on (project lifecycles).
+sop: docs/sops/project-files.md
