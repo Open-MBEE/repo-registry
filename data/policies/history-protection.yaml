@@ -28,8 +28,6 @@ github:
   - free
   - team
   - enterprise
-  needs_research:
-  - rulesets
 checks:
   automated:
   - id: no-force-push

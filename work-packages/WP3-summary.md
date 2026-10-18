@@ -74,8 +74,8 @@ Each provision is cross-checked against OpenSSF (lifecycle and baseline), CNCF's
 
 ## Plans and features
 
-OpenMBEE is on GitHub Free. Every policy works on it. Immutable releases and rulesets are kept in the policies,
-flagged for research on whether Free offers them for public repositories (`data/policies/_future.yaml`).
+OpenMBEE is on GitHub Free. Every policy works on it. Immutable releases and rulesets are confirmed available in the
+Open-MBEE org (you checked independently), and recorded in `data/sources/github-plan.yaml`.
 Enterprise-only features are listed there for a future upgrade, and no policy requires them.
 
 ## Checks

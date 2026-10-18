@@ -6,3 +6,6 @@ source: >-
   GitHub's plans page (https://docs.github.com/en/get-started/learning-about-github/githubs-plans): GitHub Free for
   organizations gives public repositories the full feature set. Code owners, protected branches and required reviewers
   are listed as paid features for private repositories only.
+confirmed_in_org:
+  immutable-releases: "Confirmed available in the Open-MBEE org by the supervisor, 2026-10-18 (WP3 decisions)."
+  rulesets: "Confirmed available in the Open-MBEE org by the supervisor, 2026-10-18 (WP3 decisions)."

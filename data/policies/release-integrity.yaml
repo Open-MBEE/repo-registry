@@ -20,8 +20,6 @@ github:
   - free
   - team
   - enterprise
-  needs_research:
-  - immutable-releases
 checks:
   automated:
   - id: sbom-attached

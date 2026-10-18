@@ -8,7 +8,7 @@ Tools from version 1.0, and the registry, protect the default branch from force 
 
 ## Set up
 
-1. Go to Settings, then Rules, then Rulesets, and create a branch ruleset for the default branch, with enforcement Active. If rulesets aren't available to you, add a branch protection rule under Settings, then Branches, instead: it does the same job.
+1. Go to Settings, then Rules, then Rulesets, and create a branch ruleset for the default branch, with enforcement Active. (An existing branch protection rule under Settings, then Branches, that does the same job also passes.)
 2. Turn on Block force pushes and Restrict deletions (in a branch protection rule: leave Allow force pushes and Allow deletions off), and save.
 3. That is all this policy asks. Squash-merging pull requests is fine: what it prevents is rewriting or deleting the default branch's published history.
 

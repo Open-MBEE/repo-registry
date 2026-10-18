@@ -67,7 +67,9 @@ class PlanTests(unittest.TestCase):
         future = load(ROOT / "data/policies/_future.yaml")
         pols, _ = P.load_policies(ROOT / "data/policies")
         flagged = {f for p in pols.values() for f in (p["github"].get("needs_research") or [])}
-        self.assertEqual(flagged, {"immutable-releases", "rulesets"})
+        self.assertEqual(flagged, set())  # both were confirmed for the org (data/sources/github-plan.yaml)
+        confirmed = load(ROOT / "data/sources/github-plan.yaml")["confirmed_in_org"]
+        self.assertEqual(set(confirmed), {"immutable-releases", "rulesets"})
         self.assertLessEqual(flagged, set(future["needs_research"]))
         for fid, f in future["needs_research"].items():
             self.assertTrue(f["question"].strip(), fid)

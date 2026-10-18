@@ -132,3 +132,11 @@ The open list is empty: 3 decided, 0 deferred, 1 raised.
   policy names the feature under `github.needs_research`, and a meta-rule requires it to be listed in
   `_future.yaml`'s `needs_research` section, with the open question. Enterprise-only features stay under `features`,
   and no policy requires them.
+
+### Follow-up — immutable releases and rulesets confirmed *(supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "i have confirmed independently that github supports immutable releases
+  and rulesets in the openmbee org"
+- **Outcome:** Both are recorded as confirmed for the org in `data/sources/github-plan.yaml`. The `needs_research`
+  flags and the "being confirmed" notes in the SOPs are gone. Rulesets are the recommended mechanism, and a classic
+  branch-protection rule that does the same job still passes. `_future.yaml` keeps only Enterprise-only features.

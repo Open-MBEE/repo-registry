@@ -94,7 +94,7 @@ All tests: `python3 -m unittest discover -s tests` → 40, OK (2 expected failur
 ## Recommendation
 
 **Recommend acceptance with the listed gaps noted.** Every deliverable, requirement and good-enough item is met after
-the fixes. Two features (immutable releases, rulesets) are kept in the policies, flagged for research on plan
-availability. Everything stays PROVISIONAL until the maintainers approve it (WP0 approvals 2 and 5).
+the fixes. Immutable releases and rulesets are in the policies, and confirmed available in the Open-MBEE org by the
+supervisor. Everything stays PROVISIONAL until the maintainers approve it (WP0 approvals 2 and 5).
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.
