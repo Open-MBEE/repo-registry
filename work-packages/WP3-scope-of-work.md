@@ -38,6 +38,12 @@ org's admins. Naming them is WP0's fifth maintainer approval.
   elsewhere, so naming them in the list is fine. Their GitHub org membership isn't public, though, so the match check
   shows their rows as yellow ("membership not public") and never reveals their org role. Five is a good target size.
   No other names are revealed: others who hold admin powers are noted as a count.
+- **Provenance: the whole list is PROVISIONAL.** The maintainer list and the information about role holders come
+  from a mix of current public GitHub data and the supervisor's experience as part of the org's current leadership.
+  Neither is verified. For example, the supervisor hasn't worked with `ablack-jpl` (one of the two owners with public
+  membership) and doesn't know whether he is still active. D-1 records, for publicly named governance-role holders
+  only, the date of their last public activity in the org, as a hint for the maintainers, never as a verdict
+  *(default)*.
 - **Release authority.** Jason Han is the release authority for OpenSysML, and a credentialing process is under way so
   that he can fulfil that role. The maintainer policy (D-5) says how such authority is given and checked.
 - Checks are read-only. A setting the current credential can't read is **yellow**, never off. The sensing credential
@@ -110,9 +116,11 @@ record above.
 - The check extends `scripts/policies.py` or adds `scripts/org.py`, reusing the predicate engine (D-4).
 - The GitHub org-role and settings research reads docs.github.com, as WP2's did (D-1).
 - The summary for the supervisor (Definition of good enough).
+- For publicly named governance-role holders only, D-1 records the date of their last public activity in the org,
+  as a hint, never a verdict.
 
 ## Open decisions (for the supervisor)
 
-None. Every item was resolved through the decision loop: 3 decided (OD1 privacy, OD2 the list, OD3 the accounts and
-defaults), 0 deferred, 1 raised (the scope emphasis on GitHub's documentation). The records are in
+None. Every item was resolved through the decision loop: 4 decided (OD1 privacy, OD2 the list, OD3 the accounts and
+defaults, the activity-hint default), 0 deferred, 2 raised (the scope emphasis on GitHub's documentation; the list's provenance). The records are in
 [WP3-decisions.md](WP3-decisions.md).

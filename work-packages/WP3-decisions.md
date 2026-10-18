@@ -54,3 +54,14 @@ mzargham's.
 ## Summary
 
 The open list is empty: 3 decided, 0 deferred, 1 raised.
+
+## Provenance of the list *(raised by supervisor, before approval)*
+
+- **Supervisor (mzargham, typed by agent):** "i have not personally encountered aaron black and i am not sure if he is
+  still active may be worth flagging the hole list as provisional on the grounds that its sourced from a mix github
+  current public data and my own experiences working as part of the orgs current leadership"
+- **Outcome:** A direction item now states the list's provenance and that it is provisional as a whole, and names
+  `ablack-jpl`'s activity as unverified. New agent default: D-1 records the last public activity in the org of
+  publicly named governance-role holders, as a hint only.
+- **Question:** Approve the new default (last public activity, recorded as a hint)?
+- **Answer (mzargham, typed by agent):** "Approve"
