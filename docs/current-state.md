@@ -10,10 +10,13 @@
 
 - Work runs in gated work packages: `work-breakdown` → `scope-of-work` (approval) → `work-execution` →
   `work-acceptance` (acceptance). See [AGENTS.md](../AGENTS.md).
-- **Supervisor:** mzargham. Approval and acceptance are his `git merge --no-ff -m "<message>"` of the scope or work
-  branch into `main`. Decision records quote him verbatim in `work-packages/WPn-decisions.md`.
-- Commits carry no AI co-author trailer. The repository is local; it moves to Open-MBEE in WP5, only on the
-  supervisor's explicit go-ahead.
+- **Supervisor:** mzargham. Approval and acceptance are his merge, with a merge commit, of the scope or delivery
+  pull request into `main` (WP5 OD3). Up to WP5's approval they were his local `git merge --no-ff` commits. Decision
+  records quote him verbatim in `work-packages/WPn-decisions.md`.
+- Commits carry no AI co-author trailer. The repository is
+  [Open-MBEE/repo-registry](https://github.com/Open-MBEE/repo-registry) (public: on GitHub Free, only a public
+  repository can require a check). `main` requires the check `check`, with no bypass, so no invalid state reaches it
+  (WP0 R-14). Org writes are run by the supervisor from commands an agent hands him (WP5 OD4).
 
 ## What is decided, and where
 
@@ -55,14 +58,14 @@
 | WP3 | Org governance | accepted 3c0ba20 |
 | WP4 | Fit analysis and pilot | accepted 1408259 |
 | WP4b | Docs sweep and checkpoint | accepted 3f2c557 |
-| **WP5** | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | **next**, not yet scoped |
-| WP6 | Engine: sensing, status, status log, sample issues | planned |
+| **WP5** | Meta-rule checks in CI; move to Open-MBEE | **delivered**, waiting for acceptance (scope approved 0cbe887) |
+| WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | next |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
 
 ## Known gaps and candidates
 
-- **Expected failures** (`data/expected-gaps.yaml`): XF-1 sensing credential with *Administration: read* (WP6);
+- **Expected failures** (`data/expected-gaps.yaml`): XF-1 sensing credential with *Administration: read* (set up and closed in WP6);
   XF-2 `repo-registry` passes `change-review` (R3).
 - **Taxonomy candidates** ([fit-analysis](fit-analysis.md)): exclude forks by default; declare type with a GitHub
   topic; better word and file signals; a default for archived repositories with no type; `.github` as governance.
@@ -71,11 +74,28 @@
 
 ## How to check everything
 
+The required check on every pull request runs these two commands (`.github/workflows/check.yml`):
+
 ```bash
+python3 scripts/validate.py
 python3 -m unittest discover -s tests
 ```
 
-57 tests (including a check that every relative link resolves), 2 expected failures. Generators (each replays
-exactly from the stored snapshot): `scripts/recommend.py`, `scripts/policies.py`, `scripts/licenses.py`,
-`scripts/org.py`, `scripts/pilot.py`, `scripts/briefing.py`. Live, read-only: `scripts/snapshot.py`,
-`scripts/org_snapshot.py`, `scripts/usage_snapshot.py`, `scripts/privacy_check.py`.
+`validate.py` checks every data file against its meta-rules (invalid fails; out of compliance passes), then replays
+every generator from the stored snapshot and fails if a generated file differs. 64 tests (including a check that
+every relative link resolves, and that every cited commit resolves), 2 expected failures.
+
+After changing a kind in `registry.yaml` (or any data a generated file is built from), regenerate the files built
+from it, in this order:
+
+```bash
+python3 scripts/policies.py
+python3 scripts/licenses.py --snapshot data/snapshots/2026-10-18
+python3 scripts/org.py --snapshot data/snapshots/2026-10-18/org.json
+python3 scripts/pilot.py --snapshot data/snapshots/2026-10-18
+python3 scripts/briefing.py --snapshot data/snapshots/2026-10-18
+```
+
+`scripts/recommend.py` only drafts the kind list; the kind list itself is edited by hand, one entry at a time
+(WP0 R-12). Live, read-only: `scripts/snapshot.py`, `scripts/org_snapshot.py`, `scripts/usage_snapshot.py`,
+`scripts/privacy_check.py` (the working tree), `scripts/history_privacy_check.py` (everything a push would publish).

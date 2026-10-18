@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, at the WP4b acceptance gate. Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP5 delivery. Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -22,7 +22,10 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP4b** (docs sweep and checkpoint): accepted in 3f2c557. Review:
     [WP4b-review.md](../work-packages/WP4b-review.md); drift report:
     [WP4b-drift-report.md](../work-packages/WP4b-drift-report.md).
-  - **WP5 to WP8:** planned (see the breakdown below), not yet scoped.
+  - **WP5** (meta-rule checks in CI, and the move to Open-MBEE): scope approved in 0cbe887
+    ([WP5-scope-of-work.md](../work-packages/WP5-scope-of-work.md)); delivered as a pull request, waiting for
+    acceptance. The move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
+  - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
   - kinds as type × lifecycle stage, with stages adopted from CNCF and OpenSSF
@@ -42,9 +45,11 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 - **Code:** `scripts/snapshot.py` (read-only sensing), `scripts/recommend.py` (deterministic kind recommendations),
   `scripts/policies.py` (policy meta-rules and applicability), `scripts/licenses.py` (license report, WP2a),
   `scripts/org_snapshot.py`, `scripts/org.py` and `scripts/privacy_check.py` (org governance), and
-  `scripts/usage_snapshot.py`, `scripts/pilot.py` and `scripts/briefing.py` (usage, pilot and briefing, WP4).
-  Tests: `python3 -m unittest discover -s tests`.
-- **Remote:** none yet. The repo moves to Open-MBEE during R1, in WP5, on the supervisor's say-so.
+  `scripts/usage_snapshot.py`, `scripts/pilot.py` and `scripts/briefing.py` (usage, pilot and briefing, WP4), and
+  `scripts/validate.py` (the meta-rule check) and `scripts/history_privacy_check.py` (WP5).
+  The required check: `python3 scripts/validate.py` and `python3 -m unittest discover -s tests`.
+- **Remote:** [Open-MBEE/repo-registry](https://github.com/Open-MBEE/repo-registry), public. `main` takes changes
+  only through pull requests that pass the required check, with no bypass (WP5 OD3).
 
 ## Breakdown (agreed plan, revisited at each gate)
 
@@ -52,20 +57,15 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 2. WP2, policies: **accepted**. WP2a, license by type: **accepted**.
 3. WP3, org governance: **accepted**.
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**.
-5. **WP5, meta-rule checks in CI, and the move to Open-MBEE.**
+5. **WP5, meta-rule checks in CI, and the move to Open-MBEE: delivered, waiting for acceptance.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
 
-Scope **WP5 (meta-rule checks in CI, and the move to Open-MBEE)** with `scope-of-work`. It is the first package that writes to the org (creating
-this repository there), so the move happens only on the supervisor's explicit go-ahead.
-Inputs carried to it:
-- the meta-rules to enforce: the kind list (`docs/kind-list-format.md`), the policies (`docs/policy-format.md`), and
-  the data files that must stay valid (WP0 R-14: an invalid state never reaches `main`);
-- the tests to run in GitHub Actions on every pull request;
-- the proposed CODEOWNERS (`data/proposed-codeowners`) stays not live until the maintainers approve it, and review
-  friction rises only at R3;
-- expected gap XF-1 (the sensing credential) closes in WP6, and its setup may start with the move; expected gap
-  XF-2 (`repo-registry` passes `change-review`) closes at R3 (`data/expected-gaps.yaml`).
+Review **WP5** and take it to the acceptance gate: mzargham's merge of the delivery pull request. Then scope **WP6
+(the engine: compare, status, status log, sample issues)** with `scope-of-work`. Inputs carried to it:
+- the sensing credential with *Administration: read* is set up in WP6 (WP5 OD6), which closes expected gap XF-1;
+- the status log's meta-rules join `scripts/validate.py` (WP5 non-goals);
+- expected gap XF-2 (`repo-registry` passes `change-review`) closes at R3 (`data/expected-gaps.yaml`).

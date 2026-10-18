@@ -38,11 +38,16 @@ the decision loop, before asking the supervisor anything):
 4. `work-acceptance`: write `work-packages/WPn-review.md` and stop at the acceptance gate.
 
 - **Supervisor:** mzargham.
-- **This repo is local only** (no remote) until it moves to Open-MBEE during R1, in WP5. The move happens only when
-  mzargham says so. Until then:
-  - **Approval** is mzargham's `git merge --no-ff` of the scope branch into `main`.
-  - **Acceptance** is his `git merge --no-ff` of the work branch into `main`.
-  - **Decision records** go in `work-packages/WPn-decisions.md`.
+- **This repo lives at [Open-MBEE/repo-registry](https://github.com/Open-MBEE/repo-registry)** (moved in WP5).
+  `main` takes changes only through pull requests that pass the required check `check` (meta-rules and tests,
+  `.github/workflows/check.yml`; WP0 R-14), and nobody can bypass it (WP5 OD3; the ruleset is
+  `.github/rulesets/main.json`).
+  - **Approval** is mzargham's merge, with a merge commit, of the pull request that adds the scope of work.
+  - **Acceptance** is his merge, with a merge commit, of the delivery pull request.
+  - **Decision records** go in `work-packages/WPn-decisions.md`, in the package's pull request.
+  - Up to WP5's approval, the records are his local `git merge --no-ff` commits, kept in the pushed history.
+- Writes to the org (creating or configuring a repository, opening or merging a PR) are run by mzargham from exact
+  commands an agent hands him (WP5 OD4).
 - Never perform the approval or acceptance merge yourself. Verify that it exists before starting execution or
   calling a package done.
 
@@ -69,7 +74,7 @@ Start with [docs/current-state.md](docs/current-state.md). Where things stand: [
 - **Tools:** `gh` for sensing and actuation, plus `git` for publishing the wiki (FM-10). Nothing else touches GitHub.
 - **Fail safe.** If inputs can't be trusted, take no action (X-10).
 - **Ask before touching other repositories.** During design and R1, nothing writes to the live org, except to this
-  repo once it has moved there.
+  repo.
 
 ## Map
 
