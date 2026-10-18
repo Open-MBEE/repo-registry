@@ -81,3 +81,11 @@ mzargham's. The scope document carries only the outcomes ([WP4c-scope-of-work.md
 - **Question:** With OpenSSF core, policy meta-rule 7 also requires `cites.openssf`, and CNCF stays secondary. Approve
   this new default?
 - **Answer (mzargham, typed by agent):** "Approve"
+
+## Acceptance review — observations
+
+- **Question:** Every deliverable and requirement is met. Five observations, none affecting good enough or a
+  non-goal (D-5 not named in good enough; supporting changes; lifecycle-stage-map unchanged; the org carries
+  repository policies, read by WP6; a merge conflict for WP5). Accept these as is, or pick any to act on?
+- **Answer (mzargham, typed by agent):** "Accept as is"
+- **Outcome:** All five accepted as is. See [WP4c-review.md](WP4c-review.md).
