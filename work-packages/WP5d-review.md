@@ -4,7 +4,7 @@
 |---|---|
 | **Scope of work** | [WP5d-scope-of-work.md](WP5d-scope-of-work.md) |
 | **Scope approval verified** | The supervisor's verbal approval, recorded verbatim in [WP5d-decisions.md](WP5d-decisions.md) "Approval"; then mzargham's merge of [#10](https://github.com/Open-MBEE/repo-registry/pull/10), fa3cf16 |
-| **Work reviewed** | `wp5d-work` at 0d33a5e (rebased onto fa3cf16), with this report; reviewed at aedb4ca, then rerun in full after the fixes from the browser review below |
+| **Work reviewed** | `wp5d-work` at 525805d (rebased onto fa3cf16), with this report. Reviewed at aedb4ca; rerun after the browser review's fixes (0d33a5e); rerun in full after the six observations were fixed (525805d) |
 | **Supervisor (accepts)** | mzargham |
 | **Acceptance record** | mzargham's merge, with a merge commit, of the delivery pull request into `main`, and the first publish of the wiki, run by him |
 
@@ -26,10 +26,10 @@
 | R-1 | met | `test_R1_every_repository_once_with_kind_tier_source` passes: all 182 entries once, with kind, tier and source (or reason), linked to GitHub and the kind |
 | R-2 | met | `test_R2_every_policy_with_its_kinds_tiers_and_sop` passes, against the applicability view: one summary row per policy (what it asks, its rule in words, its tiers) and one section (its kinds, SOP link, file and edit link) |
 | R-3 | met | `test_R3_taxonomy_defines_everything_and_gives_the_heuristics` passes; wording inspected (sample: tool/sandbox reads "Its type is tool: its code owners declared it with the openmbee-tool topic, or, with no type topic, it started here, GitHub reports a programming language for it, and it has no media or research words. It is not archived. Not: its latest numbered release is version 1.0 or later.") |
-| R-4 | met | `test_R4_links_resolve_and_pages_name_their_commit` passes: every wiki link resolves to a page and anchor; every page names its commit and says PROVISIONAL; every model row has its edit link |
+| R-4 | met | `test_R4_links_resolve_and_pages_name_their_commit` passes: every wiki link resolves to a page and anchor; every page says PROVISIONAL, and the sidebar, shown on every page, names the commit (observation 3); every model row has its edit link |
 | R-5 | met for the refusals; the first publish is the supervisor's, at acceptance | `test_R5_refuses_off_main_dirty_ahead_or_invalid` and `test_R5_writes_only_to_this_repositorys_wiki` pass. The first publish is part of the acceptance record above |
-| R-6 | met | Against `origin/main`: `registry.yaml`, `data/policies/`, `data/sources/`, the pilot, exclude list, tiers and maintainers unchanged; `kinds.yaml` has 40 lines added (the `explain:` block, D-1) and none removed. On 0d33a5e: `scripts/validate.py` "valid: every table meets data/schema/model.yaml, and every view renders, the same twice"; 109 tests OK (expected failures=1); `scripts/audit.py`: all 16 findings return none; both privacy scans name no concealed member |
-| R-7 | met | `test_R7_citations_link_both_ways` passes: OpenSSF and CISA items are each adopted or departed from; NIST and ISO items are adopted, or shown as cited by no policy (Observation 2) |
+| R-6 | met, as amended | The supervisor's decision to fix observations 1 and 6 amends R-6 for two wording edits to the model: a link in `license-by-type`'s set-up step, and the record references in the unclassified reasons (`kinds.yaml`, `registry.yaml`); observation 2 adds a `context` column to the NIST source file. No kind, rule or policy's applicability changed. Against `origin/main`: the pilot, exclude list, tiers and maintainers unchanged; `kinds.yaml`: the `explain:` block added (D-1), and two reasons reworded (observation 6). On 525805d: `scripts/validate.py` "valid: every table meets data/schema/model.yaml, and every view renders, the same twice"; 109 tests OK (expected failures=1); `scripts/audit.py`: all 16 findings return none; both privacy scans name no concealed member |
+| R-7 | met | `test_R7_citations_link_both_ways` passes: OpenSSF and CISA items are each adopted or departed from; NIST and ISO items are adopted, or (NIST) cited by no policy with their context, required by `validate.py` (observation 2) |
 
 ## Definition of good enough
 
@@ -77,6 +77,8 @@ says how to propose a change, and every row has its edit link.
 
 ## Observations (not counted as failures)
 
+All six were fixed before acceptance, by the supervisor's decision (see Gap dispositions).
+
 1. The demo SOP for `license-by-type` has a broken relative link (`../../registry.yaml`, written relative to
    `data/policies/`). The wiki rewrites it to the GitHub link; the policy text is unchanged.
 2. Ten NIST controls in `data/sources/nist-800-53.yaml` are cited by no policy, only by `docs/maintainer-policy.md` or
@@ -90,17 +92,21 @@ says how to propose a change, and every row has its edit link.
 
 ## Open decisions (for the supervisor)
 
-- **The observations, as one item** (below): put to the supervisor; not yet answered. This report is updated with
-  the answer, and the recommendation is written then.
+None. Every item was resolved through the decision loop: 1 decided (the observations: fix all six, after one
+follow-up question), 0 deferred, 1 raised (the contributor-sourcing policy, recorded for WP5e).
 
 ## Gap dispositions
 
 | Gap | Disposition | Reason or follow-up |
 |---|---|---|
-| Observations 1 to 6, as one item | open | Asked; awaiting the supervisor's answer |
+| Observations 1 to 6 | fix before acceptance | Supervisor: "1, 2, 3, 6,4 and 5". Fixed in 525805d: (1) the link is absolute; (2) each uncited NIST control states its context, required by `validate.py` and shown on the wiki; (3) the commit is named once, in the sidebar; (4) the fetch is documented in `render.py` and `current-state.md`; (5) `design.md` and `roadmap.md` describe the two wiki layers; (6) the reasons cite no records. The review was rerun in full, with a browser pass over the changed pages |
+| The browser review's findings (H1 to SO1) | fixed in execution | Found and fixed before the report was first written (0d33a5e); a second pass found none |
 
 ## Recommendation
 
-Not yet written: one gap item is open (above).
+Recommend acceptance. Every deliverable and requirement is met with evidence (R-6 as the supervisor amended it). The
+browser review on a local deployment met the definition of good, and its findings were fixed. All six observations
+were fixed before acceptance, by the supervisor's decision, and the review was rerun in full. What remains is the
+acceptance act itself: the merge of #11, then the first publish of the wiki from `main`, run by the supervisor.
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.
