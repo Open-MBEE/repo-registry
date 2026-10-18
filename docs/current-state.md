@@ -111,7 +111,8 @@ uv run python scripts/render.py
 ```
 
 The wiki pages are in `build/demo/wiki/`. To publish them to the wiki (the supervisor runs it, from a clean `main`
-equal to `origin/main` that validates; anything else is refused):
+equal to `origin/main` that validates; anything else is refused; it fetches `origin/main` first, which writes
+nothing to GitHub):
 
 ```bash
 uv run python scripts/render.py --mode live

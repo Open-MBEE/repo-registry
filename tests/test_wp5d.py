@@ -101,12 +101,17 @@ class PageTests(unittest.TestCase):
 
     def test_R4_links_resolve_and_pages_name_their_commit(self):
         """R-4: every link between pages resolves to a page and an anchor on it; every page names the commit it was
-        rendered from and says PROVISIONAL; every table row of the model links to its file, with the edit link."""
+        rendered from (in the sidebar, shown on every page) and says PROVISIONAL; every table row of the model links to
+        its file, with the edit link."""
         sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
         for name, text in PAGES.items():
             with self.subTest(page=name):
                 self.assertIn("PROVISIONAL", text)
-                self.assertIn(f"/tree/{sha})", text)
+                if name == "_Sidebar":  # shown on every page: the one place the commit is named (observation 3)
+                    self.assertIn(f"/tree/{sha})", text)
+                else:
+                    self.assertIn("from the commit named in the sidebar", text)
+                    self.assertNotIn(sha, text)
                 for target in LINK.findall(text):
                     if "://" in target:
                         continue
@@ -127,7 +132,8 @@ class PageTests(unittest.TestCase):
 
     def test_R7_citations_link_both_ways(self):
         """R-7: every policy citation links to its item on the source's page; every item of each source appears there
-        with the policies that adopt it, or its departure reason; OpenSSF and CISA leave none out (meta-rules 8, 9)."""
+        with the policies that adopt it, its departure reason, or (NIST) the context of a control no policy cites;
+        OpenSSF and CISA leave none out (meta-rules 8, 9)."""
         pack = wiki.Pack(ROOT, pathlib.Path(OUT.name))
         for sid, items in pack.items.items():
             page = PAGES[f"Source-{sid}"]
@@ -142,7 +148,7 @@ class PageTests(unittest.TestCase):
                     elif sid in ("openssf", "cisa"):
                         self.assertIn("**Departed from:**", section)
                     else:
-                        self.assertIn("**Cited by no policy;**", section)
+                        self.assertIn(f"**Cited by no policy:** {wiki.cell(items[ref]['context'])}", section)
 
     def test_pages_render_the_same_twice(self):
         """D-4: the pages are deterministic."""

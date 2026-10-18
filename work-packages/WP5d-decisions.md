@@ -98,3 +98,14 @@ mzargham's.
 - **Outcome:** Not part of WP5d (its non-goals exclude changing policies). A research spike for canonical sources
   runs separately; a policy, if warranted, is its own package. Recorded as a candidate in `docs/current-state.md`.
   (The quote omits the links he read and one sentence about a specific past contribution.)
+
+## The review's observations *(the acceptance gate)*
+
+- **Supervisor (mzargham, typed by agent):** "it seems like we need to address of the the gaps you enumerated before me
+  push this current PR"
+- **Question (a follow-up, as the answer was unclear):** Which of the six observations should be fixed before #11 is
+  merged? (Options: 1, 2, 3, 6 / 4 and 5; more than one could be picked.)
+- **Answer (mzargham, typed by agent):** "1, 2, 3, 6,4 and 5"
+- **Outcome:** All six are fixed before acceptance, and the review is rerun in full. Fixes 1 and 6 edit model text
+  (a link in a policy's set-up step; the wording of unclassified reasons), which the supervisor's answer amends R-6
+  ("Nothing in the model changes") to allow; no kind, rule or policy's applicability changes.

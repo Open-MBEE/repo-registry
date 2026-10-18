@@ -276,11 +276,11 @@ omitted:
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:
   - when: {signal: fork_mirror}
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
   - when: {attr: declared_type, eq: governance}
     reason: "Declares governance with a topic: governance kinds are assigned only, by a maintainer's decision."
   - when: {all: [{signal: example_words}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}, {signal: notebook_or_model_only}]}}]}
-    reason: "An example: media if it is there to show others, research if it is there to learn for ourselves (WP5c). Its code owners can declare the type with an openmbee-<type> topic."
+    reason: "An example: media if it is there to show others, research if it is there to learn for ourselves. Its code owners can declare the type with an openmbee-<type> topic."
   - when: {all: [{signal: media_words}, {signal: research_words}]}
     reason: Its name or description reads as both media and research.
   - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}

@@ -32,7 +32,9 @@ Each stage has an exit test, written as what must be true. The stages are cumula
 *Turned on and calibrating. Not yet canonical.*
 
 - Runs on a schedule in Actions against the live org, with a read-only sensing credential.
-- The wiki is published, and every page says "calibrating, not yet the source of truth."
+- The wiki is published, and every page says "calibrating, not yet the source of truth." Its first layer, the review
+  pack (the what and why of compliance), is published from WP5d; the compliance dashboard (status per repository and
+  policy, and how to come into compliance) is WP7 *(updated: WP5d)*.
 - Every repo has an inferred initial kind; operators change it by a PR that any maintainer merges *(updated: WP0 OD3;
   WP4b OD3)*.
 - Actuation is limited to issues, capped per run, and enabled per kind by a governor (CL-5, CL-6). *(Draft.)*

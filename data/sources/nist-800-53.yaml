@@ -20,8 +20,10 @@ controls:
   CM-10(1):
     title: Open-source Software
     parent: CM-10
+    context: "The consumer-side counterpart of project-files: an adopter's control on using open-source software."
   CM-14:
     title: Signed Components
+    context: "The consumer-side counterpart of release-integrity: an adopter verifies signed components."
   IA-2(1):
     title: Multi-factor Authentication to Privileged Accounts
     parent: IA-2
@@ -61,6 +63,7 @@ controls:
     title: Flaw Remediation
   SI-7:
     title: Software, Firmware, and Information Integrity
+    context: "The consumer-side counterpart of release-integrity: an adopter checks software integrity."
   SR-4:
     title: Provenance
   AC-6(1):
@@ -71,18 +74,25 @@ controls:
     parent: AC-6
   AC-2:
     title: Account Management
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provisions 5-6, 11 and 13: adding, stepping down, other powers, credentialed before exercised."
   AC-2(7):
     title: Privileged User Accounts
     parent: AC-2
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 2: owners are 2 or 3 maintainers."
   AC-5:
     title: Separation of Duties
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provisions 9 and 12: least privilege through teams; a named release authority."
   AC-6(7):
     title: Review of User Privileges
     parent: AC-6
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 8: the annual review."
   PS-9:
     title: Position Descriptions
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 13: credentialed before exercised."
   IR-7:
     title: Incident Response Assistance
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 14: a named security response."
   AC-2(3):
     title: Disable Accounts
     parent: AC-2
+    context: "Cited by the maintainer policy (docs/maintainer-policy.md), provision 7, as not adopted: inactivity asks, never removes."

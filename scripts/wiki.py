@@ -5,7 +5,7 @@ A view (WP5b): rendered, never committed, never edited by hand. Demo mode writes
 mode (scripts/render.py --mode live) publishes the same pages to this repository's wiki. The pages: Home, Taxonomy,
 Repositories, Policies, one SOP-<policy> page per policy, Sources, one Source-<source> page per cited source, and
 _Sidebar. Every row links to the model file that holds it, with GitHub's edit link: a change is a pull request to
-that file (WP5d OD1). Every page names the commit it was rendered from, and says PROVISIONAL.
+that file (WP5d OD1). Every page says PROVISIONAL; the sidebar, shown on every page, names the commit rendered.
 
 Links between pages are wiki links, `[text](Page#anchor)`; anchors are GitHub's heading anchors (`anchor()`).
 
@@ -80,10 +80,12 @@ def held_in(rel, line=None, label=None):
     return f"[{label or rel.split('/')[-1]}]({where}) · [edit]({EDIT}/{rel})"
 
 
-def header(title, sha, what):
+def header(title, what):
+    """A page's title and banner. The commit a publish was rendered from is named once, in the sidebar, which GitHub
+    shows on every page, so a change to the commit alone alters one page (WP5d, observation 3)."""
     return [f"# {title}", "",
-            f"> **PROVISIONAL** until the OpenMBEE maintainers approve it. Rendered by `scripts/wiki.py` from commit "
-            f"[`{sha[:7]}`]({REPO}/tree/{sha}); never edit this wiki by hand: each publish replaces it. {what} To "
+            "> **PROVISIONAL** until the OpenMBEE maintainers approve it. Rendered by `scripts/wiki.py` from the commit "
+            f"named in the sidebar; never edit this wiki by hand: each publish replaces it. {what} To "
             "propose a change, open a pull request to the model file linked on each row "
             "([how](Home#how-to-propose-a-change)).", ""]
 
@@ -177,7 +179,7 @@ class Pack:
     # --- pages ---------------------------------------------------------------------------------------------------
     def home(self):
         n_repos = len(self.registry["repos"])
-        L = header("OpenMBEE repository registry: the review pack", self.sha,
+        L = header("OpenMBEE repository registry: the review pack",
                    "The model it shows is in [Open-MBEE/repo-registry](" + REPO + ").")
         L += ["This wiki summarizes the registry's model for the maintainers' review: what kinds and tiers mean, what "
               "each repository is and why, what each policy asks and of whom, and where each policy comes from.", "",
@@ -218,7 +220,7 @@ class Pack:
 
     def taxonomy(self):
         kd = self.kinds_doc
-        L = header("Taxonomy", self.sha, "From `data/taxonomy/kinds.yaml` and `data/taxonomy/tiers.yaml`.")
+        L = header("Taxonomy", "From `data/taxonomy/kinds.yaml` and `data/taxonomy/tiers.yaml`.")
         L += ["## Types", "", "| Type | Meaning | Held in |", "|---|---|---|"]
         L += [f"| {t} | {cell(m)} | {held_in('data/taxonomy/kinds.yaml', line_of(self.root, 'data/taxonomy/kinds.yaml', '^types:', f'^  {t}:'))} |"
               for t, m in kd["types"].items()]
@@ -296,7 +298,7 @@ class Pack:
         unclassified = []
         for rid, e in reg.items():
             (unclassified if "reason" in e else groups[model.kind_of(e)]).append((rid, e))
-        L = header("Repositories", self.sha, "From the kind list, `registry.yaml`, and the pilot, `data/pilot.yaml`.")
+        L = header("Repositories", "From the kind list, `registry.yaml`, and the pilot, `data/pilot.yaml`.")
         L += [f"Every repository of the organization ({len(reg)}), grouped by kind, with the unclassified ones last. "
               "**Source** says where the kind came from: `inferred` (the rules), `topic` (its code owners' "
               "`openmbee-<type>` topic) or `maintainer` (a maintainer's merged decision). **Pilot** marks the "
@@ -338,7 +340,7 @@ class Pack:
 
     def policies(self):
         order = {t: r["order"] for t, r in self.tiers.items()}
-        L = header("Policies", self.sha, "From `data/policies/`, and which kinds each is in effect for.")
+        L = header("Policies", "From `data/policies/`, and which kinds each is in effect for.")
         L += [f"The {len(self.pols)} policies. Each is in effect for the kinds its rule selects, over type, stage and "
               "tier only; its tiers are the tiers of those kinds. Below the summary, each policy has its kinds, its "
               "citations (linked to the [Sources](Sources)), its SOP (how to set it up and how it is checked) and the "
@@ -373,15 +375,14 @@ class Pack:
     def sop(self, pid):
         text = sops.render(self.pols[pid], self.by_policy.get(pid, []), table=("Policies", "Policies"), cite=self.cite,
                           banner=False)
-        text = re.sub(r"\]\((?:\.\./)+([^)#:]+)\)", rf"]({BLOB}/\1)", text)  # a policy's repo-relative link
         body = text.split("\n")
         body = body[1:] if body[0].startswith("# ") else body
-        return header(f"SOP: {self.pols[pid]['name']}", self.sha,
+        return header(f"SOP: {self.pols[pid]['name']}",
                       f"From [`data/policies/{pid}.yaml`]({BLOB}/data/policies/{pid}.yaml) "
                       f"([edit]({EDIT}/data/policies/{pid}.yaml)).") + body
 
     def sources_page(self):
-        L = header("Sources", self.sha, "From `data/sources/` and `data/policies/_departures.yaml`.")
+        L = header("Sources", "From `data/sources/` and `data/policies/_departures.yaml`.")
         L += ["Where the policies come from. Each core and secondary source, the version read, and, for those cited "
               "item by item, a page with each item and the policies that adopt it, or why we depart from it. The "
               f"narrative is [policy-basis-review.md]({BLOB}/docs/policy-basis-review.md).", "",
@@ -412,20 +413,19 @@ class Pack:
         s, items = self.sources[sid], self.items[sid]
         adopted, departed = self.cited_by(sid), self.departures.get(sid) or {}
         word = ITEM_WORD[sid]
-        L = header(f"Source: {s['name']}", self.sha, f"From `{s['file']}`.")
+        L = header(f"Source: {s['name']}", f"From `{s['file']}`.")
         L += [f"{s['role']} source. Version read: {self.version(s)}. Back to [Sources](Sources).", "",
               f"{len(items)} {word}s: {sum(1 for i in items if i in adopted)} adopted by a policy, "
               f"{sum(1 for i in items if i in departed)} departed from with a reason"
-              + (f", {sum(1 for i in items if i not in adopted and i not in departed)} cited elsewhere (below)"
+              + (f", {sum(1 for i in items if i not in adopted and i not in departed)} cited by no policy, each with its context"
                  if any(i not in adopted and i not in departed for i in items) else "") + ".", ""]
         L += [f"| {word.capitalize()} | {'Section' if sid == 'cisa' else 'Title'} | Adopted by, or departed |", "|---|---|---|"]
         for ref, row in items.items():
             what = row["section"] if sid == "cisa" else row["title"]
             by = (", ".join(f"[{cell(self.pols[q]['name'])}](SOP-{q})" for q in adopted[ref]) if ref in adopted
-                  else "departed from, with a reason" if ref in departed else "no policy; cited elsewhere")
+                  else "departed from, with a reason" if ref in departed else "no policy (context below)")
             L.append(f"| [{ref}](#{anchor(ref)}) | {cell(what)} | {by} |")
         L.append("")
-        docs = sorted((self.root / "docs").glob("*.md"))
         for ref, row in items.items():
             pat = re.compile(rf'^  "?{re.escape(ref)}"?:')
             line = next(i + 1 for i, ln in enumerate((self.root / s["file"]).read_text().splitlines()) if pat.match(ln))
@@ -436,9 +436,7 @@ class Pack:
                 dl = line_of(self.root, "data/policies/_departures.yaml", f"^{sid}:", rf"^  {re.escape(ref)}:")
                 L.append(f"**Departed from:** {cell(departed[ref])} ({held_in('data/policies/_departures.yaml', dl)})")
             else:
-                where = [d for d in docs if re.search(rf"(?<![\w(-]){re.escape(ref)}(?![\w(])", d.read_text())]
-                L.append("**Cited by no policy;** cited in " + (", ".join(
-                    f"[{d.name}]({BLOB}/docs/{d.name})" for d in where) or "no document") + ".")
+                L.append(f"**Cited by no policy:** {cell(row.get('context') or 'no context stated')}")
             L.append("")
         return L
 

@@ -9,7 +9,9 @@ test the controller before we turn the thing on").
 
 Live mode (WP5d D-3) publishes one view plane: the wiki pages (scripts/wiki.py) to this repository's wiki, and
 nothing else. The supervisor runs it, with his own git credentials ("You run it, today"). It refuses unless the tree
-is a clean `main`, equal to `origin/main`, and `scripts/validate.py` passes (WP5d R-5). It then renders every view,
+is a clean `main`, equal to `origin/main`, and `scripts/validate.py` passes (WP5d R-5). To compare with `origin/main`
+it first runs `git fetch origin main`, which updates only this clone's remote-tracking ref; nothing is written to
+GitHub until the publish. It then renders every view,
 replaces the wiki's pages with the rendered ones, and commits "Publish from <main commit>" and pushes. Writing issues
 waits for WP6, and publishing from CI for WP7.
 
@@ -62,7 +64,7 @@ def live_refusals(root, validate=None, fetch=True):
     code, status = git(root, "status", "--porcelain")
     if code or status:
         out.append("the working tree is not clean: commit or remove the changes first")
-    if fetch:
+    if fetch:  # a read: updates this clone's origin/main only, so the comparison below is with GitHub's main
         git(root, "fetch", "--quiet", "origin", "main")
     head, origin = git(root, "rev-parse", "HEAD"), git(root, "rev-parse", "--verify", "--quiet", "origin/main")
     if origin[0] or head[1] != origin[1]:
