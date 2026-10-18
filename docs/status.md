@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, with the WP4d delivery. Update this at each acceptance gate.*
+*Updated 2026-10-18, at the WP4d acceptance gate. Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -25,11 +25,10 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP4c** (the governance kinds, and OpenSSF as a core citation): accepted in 4cad812. Review:
     [WP4c-review.md](../work-packages/WP4c-review.md); the change is recorded in
     [WP1-amendment-3.md](../work-packages/WP1-amendment-3.md).
-  - **WP4d** (the attestations file): scope approved in e8d085e
-    ([WP4d-scope-of-work.md](../work-packages/WP4d-scope-of-work.md)); delivered on `wp4d-work`, waiting for
-    acceptance. The change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
-  - **WP5** (meta-rule checks in CI, and the move): in progress, paused on `wp5-work` until WP4c and WP4d are
-    accepted. Nothing has been written to the org.
+  - **WP4d** (the attestations file): accepted in caaca38. Review:
+    [WP4d-review.md](../work-packages/WP4d-review.md); the change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
+  - **WP5** (meta-rule checks in CI, and the move): in progress on `wp5-work`, resuming now that WP4c and WP4d
+    are accepted. Nothing has been written to the org.
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
@@ -60,7 +59,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 2. WP2, policies: **accepted**. WP2a, license by type: **accepted**.
 3. WP3, org governance: **accepted**.
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
-   kinds: **accepted**. WP4d, the attestations file: **delivered**.
+   kinds: **accepted**. WP4d, the attestations file: **accepted**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
@@ -68,6 +67,5 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Review **WP4d** (the attestations file) and take it to the acceptance gate. Then
-resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
+Resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
 supervisor the move commands (WP5 OD4).

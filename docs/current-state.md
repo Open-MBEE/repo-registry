@@ -57,8 +57,8 @@
 | WP4 | Fit analysis and pilot | accepted 1408259 |
 | WP4b | Docs sweep and checkpoint | accepted 3f2c557 |
 | WP4c | The governance kinds; OpenSSF as a core citation | accepted 4cad812 |
-| **WP4d** | The attestations file | **delivered** on `wp4d-work`, waiting for acceptance (scope approved e8d085e) |
-| WP5 | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | in progress, **paused** on `wp5-work` until WP4c and WP4d are accepted |
+| WP4d | The attestations file | accepted caaca38 |
+| **WP5** | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | **in progress** on `wp5-work`, resuming |
 | WP6 | Engine: sensing, status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
