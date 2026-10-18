@@ -8,9 +8,10 @@ Members of the organization get only read access to its repositories by default.
 
 ## Set up
 
-1. An organization owner opens Settings, then Member privileges.
-2. Set Base permissions to Read (or No permission).
-3. Grant write or admin to the people who need it through teams on the repositories they work on.
+1. First, make sure everyone who needs to write keeps that access: give each repository's contributors write (or
+   admin) through a team on that repository. Otherwise, lowering the base permission cuts them off.
+2. Then an organization owner opens Settings, then Member privileges.
+3. Set Base permissions to Read (or No permission).
 
 ## Automated checks
 

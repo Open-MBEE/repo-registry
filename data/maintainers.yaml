@@ -8,7 +8,7 @@
 # person whose membership isn't public, the match check reports "membership not public" (yellow), never their role.
 status: provisional
 provisional_until: "WP0 maintainer approval 5: the named maintainers"
-target_size: 5            # supervisor: "5 is a good number"
+target_size: 5            # a starting point (supervisor: "5 is a good number"; "maintainers can be more")
 
 maintainers:
   aftimg:
@@ -24,3 +24,7 @@ maintainers:
     name: Jason Han
     basis: Publicly named as a maintainer elsewhere; release authority for OpenSysML, credentialing under way (supervisor).
     release_authority: [OpenSysML]
+
+# Admin power over OpenMBEE held outside GitHub's owner role (installed apps, other platforms, the fiscal-sponsor
+# relationship), declared by a pull request that an owner merges (policy maintainers-match). None declared yet.
+other_powers: []

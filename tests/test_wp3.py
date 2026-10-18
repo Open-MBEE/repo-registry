@@ -54,6 +54,31 @@ class PolicyTests(unittest.TestCase):
         self.assertIn("SB-2", pols["org-two-factor"]["cites"]["openssf"])
 
 
+class PlanTests(unittest.TestCase):
+    """G-3: no policy requires a feature OpenMBEE's plan lacks; unconfirmed features are flagged for research."""
+
+    def test_every_policy_works_on_the_org_plan(self):
+        plan = load(ROOT / "data/sources/github-plan.yaml")["plan"]
+        pols, _ = P.load_policies(ROOT / "data/policies")
+        for pid, p in pols.items():
+            self.assertIn(plan, p["github"]["available_on"], pid)
+
+    def test_needs_research_is_flagged_and_listed(self):
+        future = load(ROOT / "data/policies/_future.yaml")
+        pols, _ = P.load_policies(ROOT / "data/policies")
+        flagged = {f for p in pols.values() for f in (p["github"].get("needs_research") or [])}
+        self.assertEqual(flagged, {"immutable-releases", "rulesets"})
+        self.assertLessEqual(flagged, set(future["needs_research"]))
+        for fid, f in future["needs_research"].items():
+            self.assertTrue(f["question"].strip(), fid)
+
+    def test_enterprise_only_features_are_not_required(self):
+        future = load(ROOT / "data/policies/_future.yaml")
+        pols, _ = P.load_policies(ROOT / "data/policies")
+        for pid, p in pols.items():
+            self.assertEqual(set(p["github"].get("needs_research") or []) & set(future["features"]), set(), pid)
+
+
 class MatchTests(unittest.TestCase):
     def run_check(self, snap=None, codeowners=None):
         maint = load(ROOT / "data/maintainers.yaml")

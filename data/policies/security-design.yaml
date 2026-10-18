@@ -19,6 +19,10 @@ github:
   mechanism: 'None: a document in the repository, attested by its code owners'
   docs:
   - https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated: []
   attested:

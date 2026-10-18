@@ -33,6 +33,8 @@ def real():
         baseline=load(ROOT / "data/sources/openssf-security-baseline.yaml"), root=ROOT,
         cisa=set(load(ROOT / "data/sources/cisa-practices.yaml")["practices"]),
         nist=set(load(ROOT / "data/sources/nist-800-53.yaml")["controls"]),
+        org_plan=load(ROOT / "data/sources/github-plan.yaml")["plan"],
+        future=load(ROOT / "data/policies/_future.yaml"),
     )
 
 

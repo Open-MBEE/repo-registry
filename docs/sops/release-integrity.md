@@ -10,7 +10,7 @@ Graduated tools publish each release with a software bill of materials (SBOM), s
 
 1. Build releases in CI (continuous integration: the automated build that runs on GitHub Actions). If you don't have a release workflow yet, start from GitHub's Actions guide for your language.
 2. In that workflow, generate an SBOM (a software bill of materials: a list of everything the release contains, in SPDX or CycloneDX format), and attach it to each release.
-3. Turn on Immutable releases (Settings, then General), so published releases can't be changed.
+3. Turn on Immutable releases (Settings, then General), so published releases can't be changed. (Whether GitHub Free offers this for public repositories is being confirmed; see `data/policies/_future.yaml`.)
 4. Sign release artifacts and publish their build record (provenance) with GitHub artifact attestations, built through a reusable workflow on GitHub-hosted runners. That combination meets SLSA Build Level 3. SLSA (Supply-chain Levels for Software Artifacts) is a standard for how far a build record can be trusted. See https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations
 5. Keep built executables out of the source repository. Build them from source in CI.
 6. Record the attestations below.

@@ -8,10 +8,13 @@
 
 1. **The maintainers are the people who govern OpenMBEE's GitHub organization.** They are named in
    [`data/maintainers.yaml`](../data/maintainers.yaml), and this repository's CODEOWNERS lists the same people.
-2. **Every organization owner is a maintainer, but not every maintainer is an owner.** The owner role is held by two or
-   three maintainers ([org-few-owners](sops/org-few-owners.md)). The others hold the narrower powers they need.
-3. **Target size: five maintainers,** from more than one organization, so that governance survives any one person or
-   employer leaving.
+2. **Owners are the root authority, and a small subset of the maintainers.** Every organization owner is a
+   maintainer, but not every maintainer is an owner. Two or three maintainers hold the owner role
+   ([org-few-owners](sops/org-few-owners.md)). The others hold the narrower powers they need, and **the owners check
+   those powers**.
+3. **Five maintainers to start, and more as needed.** OpenMBEE maintains many pieces of software, so the number of
+   maintainers can grow with them. Maintainers come from more than one organization, so that governance survives any
+   one person or employer leaving.
 4. **Governance is held openly.** Each maintainer makes their organization membership public
    ([governance-roles-named](sops/governance-roles-named.md)). Until this policy is ratified, nobody is named against
    their choice, and anyone may step down instead.
@@ -19,13 +22,15 @@
 ## How maintainers are added and removed
 
 5. **Adding:** any maintainer proposes a new maintainer by a pull request to `data/maintainers.yaml` that also updates
-   CODEOWNERS. The other maintainers review and merge it. From R3, code-owner review is required (WP0).
+   CODEOWNERS. An owner approves and merges it, and so does any change to a maintainer's powers. Once this registry
+   becomes the official source of truth (its first official release), GitHub enforces that approval through
+   code-owner review.
 6. **Stepping down:** a maintainer may step down at any time, by the same kind of pull request, and becomes emeritus.
    Emeritus maintainers are thanked in the list but hold no powers.
 7. **Inactivity:** long inactivity is a reason to *ask* a maintainer whether they want to continue, never to remove
    them automatically. The registry records each named holder's last public activity as a hint.
-8. **Review:** once a year, the maintainers review the list, who holds which powers, and how many organizations the
-   maintainers come from.
+8. **Review:** once a year, the owners review the list of maintainers, the powers each holds, and how many
+   organizations the maintainers come from.
 
 ## What powers maintainers get
 
@@ -52,8 +57,8 @@
 | Provision | OpenSSF (backbone) | CNCF | CISA | NIST SP 800-53 | ISO/IEC/IEEE 12207 (clause) |
 |---|---|---|---|---|---|
 | 1 Maintainers named, CODEOWNERS match | Lifecycle: document the current list of maintainers (Incubating) | Graduation: complete maintainer list; "code and doc ownership in GitHub and elsewhere matches documented governance roles" | C4 Community: number of maintainers | AC-2, PS-9 | 6.2.4 |
-| 2 Owners are 2 or 3 maintainers | Baseline TI-3: 2 to 3 organization owners, and the same for repository admins | — | — | AC-6(5), AC-2(7) | — |
-| 3 Five maintainers from more than one organization | Lifecycle: 3 maintainers from 2 organizations (Incubating); 5 from 3 (Graduated) | Graduation: maintainers from at least 2 organizations; an org-balance mechanism | C4 Community: maintainer affiliation | — | — |
+| 2 Owners are 2 or 3 maintainers, and check the maintainers' powers | Baseline TI-3: 2 to 3 organization owners, and the same for repository admins | — | — | AC-6(5), AC-2(7) | — |
+| 3 Five or more maintainers, from more than one organization | Lifecycle: 3 maintainers from 2 organizations (Incubating); 5 from 3 (Graduated) | Graduation: maintainers from at least 2 organizations; an org-balance mechanism | C4 Community: maintainer affiliation | — | — |
 | 4 Governance held openly | Lifecycle: documented governance (Incubating), shown in action (Graduated) | Graduation: clear, discoverable governance documentation | C4 Conduct | — | — |
 | 5–6 Adding, stepping down, emeritus | Lifecycle: contributor guide with a path to maintainership (Incubating) | Graduation: a complete maintainer lifecycle (onboarding, offboarding, emeritus), with evidence | — | AC-2 | 6.2.4 |
 | 7 Inactivity asks, never removes | Lifecycle (for projects): dormancy makes a candidate for review, decided by vote | Archiving (for projects): inactivity triggers review, decided by vote | C4 re-evaluation | AC-2(3) *(not adopted: no automatic disabling)* | — |

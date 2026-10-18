@@ -24,6 +24,10 @@ github:
   docs:
   - https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts
   - https://docs.github.com/en/rest/repos/repos
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: dependabot-alerts-on

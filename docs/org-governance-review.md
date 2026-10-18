@@ -42,8 +42,8 @@ Stored in `data/snapshots/2026-10-18/org.json`.
   Restricting outside-collaborator invites to owners is an Enterprise Cloud feature anyway.
 - **Much of the governance picture needs an owner's credential:** the two-factor requirement, the base permission,
   outside collaborators, installed apps, holders of the narrower org roles, security configurations and org rulesets.
-  These are yellow, never off. The supervisor can obtain the permissions, and the sensing credential is expected gap
-  XF-1 (WP6).
+  These are yellow, never off. The supervisor can obtain the permissions. The registry's own read-only credential will
+  need owner-level read access too. That is planned for later work, and recorded as a known gap.
 - **Activity hints** (last public commit in the org; a hint, never a verdict): `ablack-jpl` 2017-09-25, `aftimg` 2026-10-03; listed maintainers `HuiJun` 2026-10-17, `aftimg` 2026-10-03, `mzargham` 2026-10-05, `rkarban` none found.
 
 ## How power over a GitHub organization is held (from GitHub's documentation)

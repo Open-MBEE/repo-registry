@@ -15,6 +15,10 @@ github:
   docs:
   - https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-two-factor-authentication-for-your-organization/requiring-two-factor-authentication-in-your-organization
   - https://docs.github.com/en/rest/orgs/orgs
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: two-factor-required

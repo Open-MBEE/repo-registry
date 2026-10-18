@@ -58,7 +58,9 @@ def load_policies(directory):
     return policies, departures
 
 
-def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None, nist=None):
+def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None, nist=None, org_plan=None,
+          future=None):
+    future = future or {}
     """The policy meta-rules (docs/policy-format.md). Returns a list of problems."""
     problems = []
     values = {
@@ -94,6 +96,12 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
         gh = p["github"] or {}
         if not gh.get("mechanism") or not gh.get("docs"):
             problems.append(f"{where}: github needs a mechanism and at least one docs link")
+        for feature in gh.get("needs_research") or []:
+            if feature not in (future.get("needs_research") or {}):
+                problems.append(f"{where}: needs_research names {feature}, which isn't in _future.yaml needs_research")
+        if org_plan is not None and org_plan not in (gh.get("available_on") or []):
+            problems.append(f"{where}: github.available_on must include the org's plan ({org_plan}); "
+                            "features the plan lacks belong in _future.yaml")
         checks = p["checks"] or {}
         auto, att = checks.get("automated") or [], checks.get("attested") or []
         if not auto and not att:
@@ -220,6 +228,7 @@ def main():
     ap.add_argument("--root", default=".")
     ap.add_argument("--cisa", default="data/sources/cisa-practices.yaml")
     ap.add_argument("--nist", default="data/sources/nist-800-53.yaml")
+    ap.add_argument("--plan", default="data/sources/github-plan.yaml")
     args = ap.parse_args()
 
     kinds_doc = yaml.safe_load(pathlib.Path(args.kinds).read_text())
@@ -230,7 +239,12 @@ def main():
         check_taxonomy(kinds_doc, tiers_doc)
         cisa = set(yaml.safe_load(pathlib.Path(args.cisa).read_text())["practices"])
         nist = set(yaml.safe_load(pathlib.Path(args.nist).read_text())["controls"])
-        problems = check(policies, departures, kinds_doc, tiers_doc, baseline, pathlib.Path(args.root), cisa, nist)
+        plan_path = pathlib.Path(args.plan)
+        org_plan = yaml.safe_load(plan_path.read_text())["plan"] if plan_path.exists() else None
+        future_path = pathlib.Path(args.policies) / "_future.yaml"
+        future = yaml.safe_load(future_path.read_text()) if future_path.exists() else {}
+        problems = check(policies, departures, kinds_doc, tiers_doc, baseline, pathlib.Path(args.root), cisa, nist,
+                         org_plan, future)
     except TaxonomyError as e:
         problems = [str(e)]
     if problems:

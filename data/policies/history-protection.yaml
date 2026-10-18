@@ -20,19 +20,26 @@ applies_if:
     - attr: lifecycle
       eq: sandbox
 github:
-  mechanism: Ruleset or branch protection rules that block force pushes (non_fast_forward) and deletion on the default branch
+  mechanism: A ruleset (preferred) or a branch protection rule that blocks force pushes and deletion on the default branch
   docs:
   - https://docs.github.com/en/rest/repos/rules
   - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+  available_on:
+  - free
+  - team
+  - enterprise
+  needs_research:
+  - rulesets
 checks:
   automated:
   - id: no-force-push
-    reads: 'GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> includes a rule of type non_fast_forward (classic
-      branch protection needs admin read: yellow if only that is set and unreadable)'
-    permission: 'Metadata: read'
+    reads: GET /repos/{owner}/{repo}/branches/{default_branch}/protection -> allow_force_pushes.enabled == false, or GET .../rules/branches/{default_branch}
+      includes non_fast_forward
+    permission: 'Administration: read (classic protection); Metadata: read (rulesets)'
   - id: no-deletion
-    reads: GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> includes a rule of type deletion
-    permission: 'Metadata: read'
+    reads: GET /repos/{owner}/{repo}/branches/{default_branch}/protection -> allow_deletions.enabled == false, or GET .../rules/branches/{default_branch}
+      includes deletion
+    permission: 'Administration: read (classic protection); Metadata: read (rulesets)'
   attested: []
 cites:
   cisa:

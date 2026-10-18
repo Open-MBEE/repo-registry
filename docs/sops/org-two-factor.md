@@ -9,8 +9,12 @@ The organization requires two-factor authentication for every member and outside
 ## Set up
 
 1. An organization owner opens the organization's Settings, then Authentication security.
-2. Turn on Require two-factor authentication for everyone in the organization.
-3. GitHub removes members and outside collaborators who haven't set up two-factor authentication, so warn them first.
+2. Turn on Require two-factor authentication for everyone in the organization, after steps 3 and 4.
+3. Before turning it on, find who hasn't set it up yet: on the organization's People page (and the Outside
+   collaborators page), filter by "2FA" to list those without two-factor authentication. Owners can see this list.
+4. Ask each of them to turn it on (on GitHub: their profile picture, then Settings, then Password and authentication),
+   and give them a date. When the requirement starts, GitHub removes outside collaborators who still haven't, and
+   members without it lose access until they set it up.
 
 ## Automated checks
 

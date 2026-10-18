@@ -11,7 +11,7 @@ The named maintainers (data/maintainers.yaml) are exactly this repository's code
 1. Keep data/maintainers.yaml up to date through pull requests to this repository, which the maintainers merge.
 2. Make this repository's CODEOWNERS list the same people.
 3. Make sure every owner of the organization is a named maintainer. Owners are only two or three of them (see org-few-owners).
-4. Record the attestation below.
+4. Declare any other admin powers under `other_powers` in data/maintainers.yaml, by a pull request that an owner merges (see below).
 
 ## Automated checks
 
@@ -21,7 +21,7 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 
 ## Attested checks
 
-- **other-powers-declared**: The maintainers have declared, in data/maintainers.yaml, anyone else who holds admin power over the organization or its repositories outside GitHub's owner role (for example through apps or other platforms).
+- **other-powers-declared**: Anyone else who holds admin power over the organization or its repositories outside GitHub's owner role (for example through installed apps or other platforms) is declared under `other_powers` in data/maintainers.yaml, by a pull request that an owner merges. The merge is the record.
 
 ## Why
 

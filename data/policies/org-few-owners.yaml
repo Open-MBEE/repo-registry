@@ -16,6 +16,10 @@ github:
   docs:
   - https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
   - https://docs.github.com/en/rest/orgs/members
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: owner-count

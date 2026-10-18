@@ -1,0 +1,8 @@
+# The GitHub plan of the Open-MBEE organization (WP3 G-3: no policy may require a feature this plan lacks).
+org: Open-MBEE
+plan: free
+read: "GET /orgs/Open-MBEE -> plan.name == free, read 2026-10-18 with an org member's credential"
+source: >-
+  GitHub's plans page (https://docs.github.com/en/get-started/learning-about-github/githubs-plans): GitHub Free for
+  organizations gives public repositories the full feature set. Code owners, protected branches and required reviewers
+  are listed as paid features for private repositories only.

@@ -42,7 +42,7 @@ Two-factor authentication (OpenSSF SB-2) has moved from departed to adopted.
 ## Named maintainers and the match check (D-3, D-4)
 
 - **Provisional list:** `aftimg` (Chris Delp), `mzargham` (Michael Zargham), `rkarban` (Robert Karban), `HuiJun`
-  (Jason Han, release authority for OpenSysML). That is 4 of a target of 5. Its provenance is public GitHub data plus
+  (Jason Han, release authority for OpenSysML). That is 4, against a starting target of 5 that can grow. Its provenance is public GitHub data plus
   your experience, so it is provisional as a whole.
 - **Match result (overall red):**
   - *Green:* Chris is an owner and listed. You're a maintainer without the owner role, which is fine.
@@ -73,7 +73,13 @@ Each provision is cross-checked against OpenSSF (lifecycle and baseline), CNCF's
    match check never reveals the role of a listed person whose membership isn't public. A test shows its output
    doesn't change either way.
 
+## Plans and features
+
+OpenMBEE is on GitHub Free. Every policy works on it. Immutable releases and rulesets are kept in the policies,
+flagged for research on whether Free offers them for public repositories (`data/policies/_future.yaml`).
+Enterprise-only features are listed there for a future upgrade, and no policy requires them.
+
 ## Checks
 
-`python3 -m unittest discover -s tests` runs 40 tests, all OK (2 expected failures). `python3
+`python3 -m unittest discover -s tests` runs 43 tests, all OK (2 expected failures). `python3
 scripts/privacy_check.py` is the live, read-only privacy check.

@@ -24,6 +24,10 @@ github:
   docs:
   - https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository
   - https://docs.github.com/en/rest/repos/repos
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: security-policy-present

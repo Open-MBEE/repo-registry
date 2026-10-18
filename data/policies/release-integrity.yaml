@@ -16,6 +16,12 @@ github:
   docs:
   - https://docs.github.com/en/rest/releases/releases
   - https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds
+  available_on:
+  - free
+  - team
+  - enterprise
+  needs_research:
+  - immutable-releases
 checks:
   automated:
   - id: sbom-attached

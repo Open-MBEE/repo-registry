@@ -17,6 +17,10 @@ github:
   mechanism: Release tags
   docs:
   - https://docs.github.com/en/rest/releases/releases
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: semver-tags

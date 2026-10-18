@@ -10,7 +10,7 @@ The organization has two or three owners, no more. Owners can do anything to eve
 
 1. List the owners: organization People page, filtered by role Owner.
 2. Decide, under the maintainer policy, which two or three people keep the owner role.
-3. Give everyone else the power they actually need instead, for example admin on specific repositories through a team, or the security manager role.
+3. Give everyone else the power they actually need instead, for example admin on specific repositories through a team, or the security manager role (a GitHub organization role that can manage security settings and alerts on every repository without owning the organization; see https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
 4. An owner changes the others' role to Member.
 
 ## Automated checks
