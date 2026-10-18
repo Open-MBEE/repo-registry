@@ -7,9 +7,6 @@ openssf:
     A language is a design choice for each tool, not a repository setting that GitHub can carry. Most OpenMBEE code is
     already in memory-safe languages (Java, Kotlin, Python, TypeScript, Go, Rust). Revisit if new C or C++ components
     appear.
-  SB-2: >-
-    Two-factor authentication is an organization-wide setting. It belongs to the org policy's common controls (WP3),
-    not to a per-repository policy.
   TI-1: >-
     Scorecard is OpenSSF's measuring tool. The registry measures the controls we adopted directly, and anyone can run
     Scorecard against a public repository without the repository adding a workflow. Requiring the Scorecard Action on

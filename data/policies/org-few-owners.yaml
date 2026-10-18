@@ -1,0 +1,35 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP3 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: org-few-owners
+name: Few owners
+meaning: The organization has two or three owners, no more. Owners can do anything to every repository and to the organization
+  itself, so the role is kept small.
+applies_if:
+  all:
+  - attr: type
+    eq: governance
+  - attr: lifecycle
+    eq: graduated
+github:
+  mechanism: Organization owner role
+  docs:
+  - https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization
+  - https://docs.github.com/en/rest/orgs/members
+  available_on:
+  - free
+  - team
+  - enterprise
+checks:
+  automated:
+  - id: owner-count
+    reads: GET /orgs/{org}/members?role=admin -> between 2 and 3 members
+    permission: 'organization member (Members: read)'
+  attested: []
+cites:
+  cisa: none
+  nist:
+  - AC-6(5)
+  openssf:
+  - TI-3
+sop: docs/sops/org-few-owners.md

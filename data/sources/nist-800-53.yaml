@@ -63,3 +63,26 @@ controls:
     title: Software, Firmware, and Information Integrity
   SR-4:
     title: Provenance
+  AC-6(1):
+    title: Authorize Access to Security Functions
+    parent: AC-6
+  AC-6(5):
+    title: Privileged Accounts
+    parent: AC-6
+  AC-2:
+    title: Account Management
+  AC-2(7):
+    title: Privileged User Accounts
+    parent: AC-2
+  AC-5:
+    title: Separation of Duties
+  AC-6(7):
+    title: Review of User Privileges
+    parent: AC-6
+  PS-9:
+    title: Position Descriptions
+  IR-7:
+    title: Incident Response Assistance
+  AC-2(3):
+    title: Disable Accounts
+    parent: AC-2

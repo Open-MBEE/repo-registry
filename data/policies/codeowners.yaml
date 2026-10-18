@@ -20,6 +20,10 @@ github:
   mechanism: CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS
   docs:
   - https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: codeowners-present

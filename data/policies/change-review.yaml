@@ -16,20 +16,25 @@ applies_if:
       - attr: lifecycle
         eq: graduated
 github:
-  mechanism: 'Ruleset or branch protection: pull request rule with required approvals and code-owner review, plus required
-    status checks'
+  mechanism: A ruleset (preferred) or a branch protection rule requiring an approving code-owner review and passing status
+    checks
   docs:
   - https://docs.github.com/en/rest/repos/rules
   - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: review-required
-    reads: GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> a pull_request rule with required_approving_review_count
-      >= 1 and require_code_owner_review == true
-    permission: 'Metadata: read'
+    reads: GET /repos/{owner}/{repo}/branches/{default_branch}/protection -> required_pull_request_reviews.required_approving_review_count
+      >= 1 and .require_code_owner_reviews, or the same in a pull_request rule of GET .../rules/branches/{default_branch}
+    permission: 'Administration: read (classic protection); Metadata: read (rulesets)'
   - id: checks-required
-    reads: GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> a required_status_checks rule
-    permission: 'Metadata: read'
+    reads: GET /repos/{owner}/{repo}/branches/{default_branch}/protection -> required_status_checks is set, or GET .../rules/branches/{default_branch}
+      has a required_status_checks rule
+    permission: 'Administration: read (classic protection); Metadata: read (rulesets)'
   attested: []
 cites:
   cisa:

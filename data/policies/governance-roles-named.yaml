@@ -1,0 +1,39 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP3 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: governance-roles-named
+name: Governance roles are held openly
+meaning: Everyone who holds governance power over the organization, its owners and its named maintainers, makes their organization
+  membership public, so that who governs OpenMBEE is visible. Until this policy is ratified, nobody is named against their
+  choice, and anyone may step down instead.
+applies_if:
+  all:
+  - attr: type
+    eq: governance
+  - attr: lifecycle
+    eq: graduated
+github:
+  mechanism: Public organization membership
+  docs:
+  - https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership
+  - https://docs.github.com/en/rest/orgs/members
+  available_on:
+  - free
+  - team
+  - enterprise
+checks:
+  automated:
+  - id: owners-public
+    reads: GET /orgs/{org}/members?role=admin compared with GET /orgs/{org}/public_members -> no owner has concealed membership
+      (reported as a count only)
+    permission: 'organization member (Members: read)'
+  - id: maintainers-public
+    reads: GET /orgs/{org}/public_members -> every person named in data/maintainers.yaml is listed
+    permission: public (no credential needed)
+  attested: []
+cites:
+  cisa:
+  - CISA-C4-COMMUNITY
+  nist: none
+  openssf: []
+sop: docs/sops/governance-roles-named.md

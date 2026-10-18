@@ -1,0 +1,4 @@
+# PROVISIONAL, NOT LIVE (WP3 D-3). The CODEOWNERS this repo would have once the maintainers approve the named
+# maintainers (WP0 approval 5). It must match data/maintainers.yaml; scripts/org.py checks that. It becomes
+# .github/CODEOWNERS only by a later, approved change; code-owner review is enforced from R3 (WP0).
+* @aftimg @mzargham @rkarban @HuiJun

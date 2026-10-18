@@ -12,6 +12,10 @@ github:
   mechanism: Repository archiving, with an end-of-support note in the README
   docs:
   - https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories
+  available_on:
+  - free
+  - team
+  - enterprise
 checks:
   automated:
   - id: archived
