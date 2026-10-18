@@ -249,7 +249,7 @@ repos:
   "MSE":
     kind: tool/experimental
   "mtip-cameo":
-    kind: tool/active-development
+    kind: tool/maintained
   "mtip-sparx":
     kind: tool/maintained
   "mvn-repo":

@@ -16,6 +16,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   _OpenMBEE-Documentation:
@@ -32,6 +33,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   aircraftengine-simulation:
@@ -47,6 +49,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 7
       commits_last_3_months: 7
   airflow-provider-opensysml:
@@ -62,6 +65,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 16
       commits_last_3_months: 16
   amazonaws:
@@ -76,6 +80,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   apv:
@@ -92,6 +97,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   apv-mdk:
@@ -107,6 +113,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   arch_model:
@@ -123,6 +130,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   architecture-based-risk-analysis:
@@ -139,6 +147,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   bae:
@@ -155,6 +164,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   bae2_3_1:
@@ -171,6 +181,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   ChatGPT-Prompts:
@@ -187,6 +198,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   Comodo:
@@ -202,6 +214,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 20
       commits_last_3_months: 20
   concept-definition-stage:
@@ -217,6 +230,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 64
       commits_last_3_months: 23
   configuration-management-plugin:
@@ -233,6 +247,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   confluence-mdk:
@@ -249,6 +264,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   des-ex-toolset:
@@ -265,6 +281,7 @@ repos:
       fork: false
       primary_language: MATLAB
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   DesertKite.sysml:
@@ -280,6 +297,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 2
       commits_last_3_months: 0
   dis:
@@ -296,6 +314,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: v1.0.1
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   docbook:
@@ -311,6 +330,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   docbookgen:
@@ -326,6 +346,7 @@ repos:
       fork: false
       primary_language: XSLT
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   DocGenServer:
@@ -341,6 +362,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   docs:
@@ -357,6 +379,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   docweb-service:
@@ -372,6 +395,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   doors-ng-client:
@@ -387,6 +411,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   doors-ng-mdk:
@@ -403,6 +428,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   Dragon-Architecture-Model:
@@ -418,6 +444,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 2
       commits_last_3_months: 0
   ems-config:
@@ -432,6 +459,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   EMS-Repo:
@@ -447,6 +475,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 2.3.12
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   EMS-Share:
@@ -462,6 +491,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   enhancement-proposals:
@@ -478,6 +508,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-cameo-mdk:
@@ -494,6 +525,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 7.0.1
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mdk-systems-reasoner:
@@ -510,6 +542,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 3.0.0
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mms:
@@ -526,6 +559,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 4.0.20
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mms-migration-cameo2022x:
@@ -542,6 +576,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mms-python-client-example:
@@ -558,6 +593,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mmsri:
@@ -574,6 +610,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 4.0.20
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-ve:
@@ -590,6 +627,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: 5.0.0
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-cli-client:
@@ -605,6 +643,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 44
       commits_last_3_months: 0
   flexo-cli-sysmlv2-plugin:
@@ -620,6 +659,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 26
       commits_last_3_months: 0
   flexo-conflict-resolution-policy-research:
@@ -635,6 +675,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 74
       commits_last_3_months: 0
   flexo-graphql:
@@ -651,6 +692,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-auth-service:
@@ -667,6 +709,7 @@ repos:
       fork: false
       primary_language: Kotlin
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-deployment:
@@ -682,6 +725,7 @@ repos:
       fork: false
       primary_language: Bru
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 4
       commits_last_3_months: 0
   flexo-mms-jama-sdk:
@@ -698,6 +742,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-layer0-dashboard:
@@ -713,6 +758,7 @@ repos:
       fork: false
       primary_language: Svelte
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 19
       commits_last_3_months: 19
   flexo-mms-layer1-mcp:
@@ -728,6 +774,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 7
       commits_last_3_months: 0
   flexo-mms-layer1-openapi:
@@ -744,6 +791,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-layer1-service:
@@ -759,6 +807,7 @@ repos:
       fork: false
       primary_language: Kotlin
       latest_semver: v0.2.2
+      feature_release_last_12_months: false
       commits_last_12_months: 238
       commits_last_3_months: 42
   flexo-mms-ontology:
@@ -774,6 +823,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-sso-auth-service:
@@ -789,6 +839,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 12
       commits_last_3_months: 10
   flexo-mms-store-service:
@@ -804,6 +855,7 @@ repos:
       fork: false
       primary_language: Kotlin
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 4
       commits_last_3_months: 4
   flexo-mms-sysmlv2:
@@ -819,6 +871,7 @@ repos:
       fork: false
       primary_language: Bru
       latest_semver: v0.1.1
+      feature_release_last_12_months: false
       commits_last_12_months: 58
       commits_last_3_months: 0
   flexo-mms-sysmlv2-mcp:
@@ -834,6 +887,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 10
       commits_last_3_months: 0
   flexo-mms.openmbee.org:
@@ -849,6 +903,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 11
       commits_last_3_months: 11
   flexo-performance-test:
@@ -864,6 +919,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 7
       commits_last_3_months: 0
   flexo-pr-manager:
@@ -878,6 +934,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 2
       commits_last_3_months: 0
   flexo-sysml2-adapter-experiment:
@@ -894,6 +951,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-sysmlv2-swagger:
@@ -908,6 +966,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 3
       commits_last_3_months: 0
   flexo_syside:
@@ -923,6 +982,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: 0.3.0
+      feature_release_last_12_months: false
       commits_last_12_months: 98
       commits_last_3_months: 2
   fprime:
@@ -937,6 +997,7 @@ repos:
       fork: true
       primary_language: C++
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 777
       commits_last_3_months: 354
   helix:
@@ -951,6 +1012,7 @@ repos:
       fork: true
       primary_language: Rust
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 746
       commits_last_3_months: 11
   homebrew-tap:
@@ -966,6 +1028,7 @@ repos:
       fork: false
       primary_language: Ruby
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 38
       commits_last_3_months: 38
   IAlf:
@@ -980,6 +1043,7 @@ repos:
       fork: true
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   jl_scxml:
@@ -995,6 +1059,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   jsonPath2:
@@ -1010,6 +1075,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   junit-xml-parser:
@@ -1026,6 +1092,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   jupyter-mdk:
@@ -1041,6 +1108,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   jupyterlab-mms:
@@ -1056,6 +1124,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   K:
@@ -1072,6 +1141,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   k2mms:
@@ -1088,6 +1158,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   k_webeditor:
@@ -1104,6 +1175,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   klang:
@@ -1120,6 +1192,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   kservices:
@@ -1136,6 +1209,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   L4YAML:
@@ -1150,6 +1224,7 @@ repos:
       fork: true
       primary_language: Lean
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 1814
       commits_last_3_months: 16
   langserver.github.io:
@@ -1164,6 +1239,7 @@ repos:
       fork: true
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 16
       commits_last_3_months: 2
   language-server-protocol:
@@ -1178,6 +1254,7 @@ repos:
       fork: true
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 75
       commits_last_3_months: 19
   Livingstone:
@@ -1194,6 +1271,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   lsp-mode:
@@ -1208,6 +1286,7 @@ repos:
       fork: true
       primary_language: Emacs Lisp
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 147
       commits_last_3_months: 3
   lsp4ij:
@@ -1222,6 +1301,7 @@ repos:
       fork: true
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 234
       commits_last_3_months: 34
   lunar-lander-simulation:
@@ -1237,6 +1317,7 @@ repos:
       fork: false
       primary_language: Jupyter Notebook
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 7
       commits_last_3_months: 7
   mason-registry:
@@ -1251,6 +1332,7 @@ repos:
       fork: true
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 4975
       commits_last_3_months: 914
   mathematica-mdk:
@@ -1266,6 +1348,7 @@ repos:
       fork: false
       primary_language: Mathematica
       latest_semver: 3.4.2
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mathematica-mdk-core:
@@ -1280,6 +1363,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   matlab-mdk:
@@ -1295,6 +1379,7 @@ repos:
       fork: false
       primary_language: Shell
       latest_semver: 3.4.2
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mbple-featureide:
@@ -1310,6 +1395,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 5
       commits_last_3_months: 0
   MBSEPlugin:
@@ -1326,6 +1412,7 @@ repos:
       fork: false
       primary_language: XSLT
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mcf:
@@ -1342,6 +1429,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: v2.1.0
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mcf-model-import-export:
@@ -1358,6 +1446,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   md-cst-montecarlo:
@@ -1374,6 +1463,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   md-cst-rabbitmq:
@@ -1389,6 +1479,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mdk-expression:
@@ -1405,6 +1496,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 1.1.1
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-adapter-plugin:
@@ -1421,6 +1513,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: v2.1.0
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-alfresco:
@@ -1436,6 +1529,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 3.4.2
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-autocref:
@@ -1451,6 +1545,7 @@ repos:
       fork: false
       primary_language: Jupyter Notebook
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-doc-convert:
@@ -1467,6 +1562,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 1.0.2
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-extensions:
@@ -1482,6 +1578,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-helm-chart:
@@ -1498,6 +1595,7 @@ repos:
       fork: false
       primary_language: Smarty
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-mathematica-client:
@@ -1512,6 +1610,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-migration:
@@ -1527,6 +1626,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   MMS-Python-Adapter:
@@ -1542,6 +1642,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-python-client-feedstock:
@@ -1556,6 +1657,7 @@ repos:
       fork: true
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-rdf:
@@ -1571,6 +1673,7 @@ repos:
       fork: false
       primary_language: Jupyter Notebook
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-sparql-service:
@@ -1586,6 +1689,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms3-to-mms4-json:
@@ -1602,6 +1706,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms5-consul:
@@ -1617,6 +1722,7 @@ repos:
       fork: false
       primary_language: Kotlin
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mpspi:
@@ -1633,6 +1739,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   MSE:
@@ -1649,14 +1756,15 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: v0.2.2
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mtip-cameo:
     assigned: false
-    kind: tool/active-development
+    kind: tool/maintained
     tier: high
     matched:
-    - tool/active-development
+    - tool/maintained
     reason: null
     flags: []
     evidence:
@@ -1664,6 +1772,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: v1.0.9
+      feature_release_last_12_months: false
       commits_last_12_months: 12
       commits_last_3_months: 1
   mtip-sparx:
@@ -1680,6 +1789,7 @@ repos:
       fork: false
       primary_language: C#
       latest_semver: v1.0.4
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   mvn-repo:
@@ -1694,6 +1804,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   nvim-lspconfig:
@@ -1708,6 +1819,7 @@ repos:
       fork: true
       primary_language: Lua
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 573
       commits_last_3_months: 96
   OMGSpecifications:
@@ -1724,6 +1836,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   oosem.github.io:
@@ -1739,6 +1852,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 7
       commits_last_3_months: 7
   open-mbee.github.io:
@@ -1754,6 +1868,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 18
       commits_last_3_months: 2
   openapi-generator:
@@ -1768,6 +1883,7 @@ repos:
       fork: true
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   openapi-graph-extractor:
@@ -1784,6 +1900,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   opencode:
@@ -1798,6 +1915,7 @@ repos:
       fork: true
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 12484
       commits_last_3_months: 688
   openmbee-graphic-assets:
@@ -1813,6 +1931,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 46
       commits_last_3_months: 12
   openmbee-workshops.github.io:
@@ -1828,6 +1947,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 18
       commits_last_3_months: 18
   OpenSE-Cookbook:
@@ -1843,6 +1963,7 @@ repos:
       fork: false
       primary_language: Jupyter Notebook
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 3
       commits_last_3_months: 0
   OpenSysML:
@@ -1858,6 +1979,7 @@ repos:
       fork: false
       primary_language: Go
       latest_semver: v0.10.1
+      feature_release_last_12_months: true
       commits_last_12_months: 13808
       commits_last_3_months: 13808
   OpenSysML-Extensions-Library:
@@ -1873,6 +1995,7 @@ repos:
       fork: false
       primary_language: Shell
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 196
       commits_last_3_months: 196
   OpenSysML-FAQ:
@@ -1889,6 +2012,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   OpenSysML-REDK-Skills:
@@ -1904,6 +2028,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 6
       commits_last_3_months: 6
   opensysml.github.io:
@@ -1919,6 +2044,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 36
       commits_last_3_months: 33
   opentelemetry-demo:
@@ -1933,6 +2059,7 @@ repos:
       fork: true
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 941
       commits_last_3_months: 321
   opentelemetry-proto:
@@ -1947,6 +2074,7 @@ repos:
       fork: true
       primary_language: Makefile
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 121
       commits_last_3_months: 43
   opentelemetry-specification:
@@ -1961,6 +2089,7 @@ repos:
       fork: true
       primary_language: Makefile
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 388
       commits_last_3_months: 99
   opl:
@@ -1977,6 +2106,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: v1.0.9
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   pane-layout:
@@ -1992,6 +2122,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 1
       commits_last_3_months: 0
   perseverance-modelica:
@@ -2008,6 +2139,7 @@ repos:
       fork: false
       primary_language: Modelica
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   pma:
@@ -2023,6 +2155,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   pmc-fdir:
@@ -2038,6 +2171,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 3
       commits_last_3_months: 0
   PropertyKindCalculus:
@@ -2052,6 +2186,7 @@ repos:
       fork: true
       primary_language: Lean
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 461
       commits_last_3_months: 355
   python-mdk:
@@ -2067,6 +2202,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   readthedocs:
@@ -2083,6 +2219,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   repo-registry:
@@ -2107,6 +2244,7 @@ repos:
       fork: true
       primary_language: Scala
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   sbt-pack:
@@ -2121,6 +2259,7 @@ repos:
       fork: true
       primary_language: Scala
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   scxml4py:
@@ -2137,6 +2276,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: v0.2.0
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   staged-recipes:
@@ -2151,6 +2291,7 @@ repos:
       fork: true
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   staged-recipes-opensysml:
@@ -2165,6 +2306,7 @@ repos:
       fork: true
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 5611
       commits_last_3_months: 0
   starkit:
@@ -2179,6 +2321,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 3
       commits_last_3_months: 3
   structured-use-cases:
@@ -2193,6 +2336,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 29
       commits_last_3_months: 29
   structured-usecase-editor:
@@ -2208,6 +2352,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 12
       commits_last_3_months: 12
   swagger-codegen:
@@ -2222,6 +2367,7 @@ repos:
       fork: true
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   swagger-codegen-mathematica-client:
@@ -2238,6 +2384,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   swagger-codegen-matlab-client:
@@ -2254,6 +2401,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   sync-service:
@@ -2270,6 +2418,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   sysml:
@@ -2286,6 +2435,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   SysML-LoRD:
@@ -2301,6 +2451,7 @@ repos:
       fork: false
       primary_language: Go
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 32
       commits_last_3_months: 32
   sysml-sdk:
@@ -2316,6 +2467,7 @@ repos:
       fork: false
       primary_language: C++
       latest_semver: v0.1.0
+      feature_release_last_12_months: true
       commits_last_12_months: 7
       commits_last_3_months: 7
   sysml-toolkit:
@@ -2331,6 +2483,7 @@ repos:
       fork: false
       primary_language: Rust
       latest_semver: v0.10.10
+      feature_release_last_12_months: true
       commits_last_12_months: 11
       commits_last_3_months: 11
   SysML-v2-Applications-and-Examples:
@@ -2347,6 +2500,7 @@ repos:
       fork: false
       primary_language: Jupyter Notebook
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   sysmlv2-python-client:
@@ -2362,6 +2516,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: v0.1.0
+      feature_release_last_12_months: true
       commits_last_12_months: 31
       commits_last_3_months: 8
   sysmlv2-rdf-ontology:
@@ -2376,6 +2531,7 @@ repos:
       fork: true
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 2
       commits_last_3_months: 2
   sysmlv2-testing:
@@ -2391,6 +2547,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 41
       commits_last_3_months: 41
   sysmlv2-web-modeler:
@@ -2406,6 +2563,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 13
       commits_last_3_months: 10
   sysmlv2_dls:
@@ -2421,6 +2579,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 68
       commits_last_3_months: 6
   sysmlv2_excel:
@@ -2436,6 +2595,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 6
       commits_last_3_months: 0
   sysmlv2x:
@@ -2451,6 +2611,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 1
       commits_last_3_months: 0
   sysmod-sysmlv2-api:
@@ -2465,6 +2626,7 @@ repos:
       fork: false
       primary_language: HTML
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 26
       commits_last_3_months: 0
   syson:
@@ -2479,6 +2641,7 @@ repos:
       fork: true
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 554
       commits_last_3_months: 105
   testrail-cli:
@@ -2495,6 +2658,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 1.1.1
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   testrail-client-wrapper:
@@ -2511,6 +2675,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: 1.1.0
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   text2text:
@@ -2527,6 +2692,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   TMT-SysML-Model:
@@ -2542,6 +2708,7 @@ repos:
       fork: false
       primary_language: CSS
       latest_semver: v2.0.0
+      feature_release_last_12_months: false
       commits_last_12_months: 1
       commits_last_3_months: 0
   toaster:
@@ -2557,6 +2724,7 @@ repos:
       fork: false
       primary_language: Jupyter Notebook
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 795
       commits_last_3_months: 795
   trafo-v2-v1:
@@ -2571,6 +2739,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 1
       commits_last_3_months: 1
   tree-sitter-sysml:
@@ -2586,6 +2755,7 @@ repos:
       fork: false
       primary_language: C
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 6
       commits_last_3_months: 6
   user-forum:
@@ -2602,6 +2772,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   util:
@@ -2618,6 +2789,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-confluence:
@@ -2634,6 +2806,7 @@ repos:
       fork: false
       primary_language: TypeScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-confluence-app:
@@ -2650,6 +2823,7 @@ repos:
       fork: false
       primary_language: Java
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-diagram-generator:
@@ -2666,6 +2840,7 @@ repos:
       fork: false
       primary_language: Python
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-mobile:
@@ -2681,6 +2856,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   view-service:
@@ -2697,6 +2873,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   ViewEditor-Sesame:
@@ -2712,6 +2889,7 @@ repos:
       fork: false
       primary_language: JavaScript
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0
   websysml-core:
@@ -2726,6 +2904,7 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 2
       commits_last_3_months: 2
   winget-pkgs:
@@ -2740,6 +2919,7 @@ repos:
       fork: true
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 114984
       commits_last_3_months: 30081
   zzProjectWiki:
@@ -2754,5 +2934,6 @@ repos:
       fork: false
       primary_language: null
       latest_semver: null
+      feature_release_last_12_months: false
       commits_last_12_months: 0
       commits_last_3_months: 0

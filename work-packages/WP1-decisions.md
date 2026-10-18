@@ -175,3 +175,13 @@ The WP1 scope is approved (merge 3bb8ee8). These changes need a new approval by 
   year means active development, otherwise maintained), and the "not maintained" reason is gone. The maintained
   meaning now states the category and its expected upkeep, and says that whether the upkeep happens is checked by the
   maintained-lifecycle policies (WP2), not by the kind.
+
+## Active development vs maintained is about new features *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "active development vs is maintained is related to whether new feature
+  development is happening"
+- **Outcome:** For tools, the recommendation reads it from semantic versioning. A feature release (x.y.0, raising
+  MAJOR or MINOR) in the last 12 months means active development. Otherwise the tool is maintained (patch releases
+  only, or no recent release). The lifecycle meanings say this in plain words. Media keeps the activity guide. Result
+  on the snapshot: 0 tools in active development, 15 maintained. The current feature work is all in 0.x tools, which
+  stay experimental.

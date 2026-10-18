@@ -143,7 +143,7 @@ class EngineTests(unittest.TestCase):
         report = load(ROOT / "data/reports/kind-recommendations.yaml")["repos"]
         expected = {
             "OpenSysML": "tool/experimental",           # v0.10.1, active
-            "mtip-cameo": "tool/active-development",    # v1.0.9, commits in the last 12 months
+            "mtip-cameo": "tool/maintained",            # v1.0.9, no feature release in 12 months
             "exec-mms": "tool/maintained",              # 4.0.20, stable; whether upkeep happens is a policy check
             "flexo-cli-client": "tool/unreleased",      # no semver release, low tier
             "EMS-Repo": "tool/archived",                # archived tool
@@ -161,6 +161,15 @@ class EngineTests(unittest.TestCase):
         ]}
         d = recommend.derive(repo)
         self.assertEqual((d["has_semver_release"], d["latest_semver"], d["latest_semver_major"]), (True, "v1.4.0", 1))
+
+    def test_R9_feature_release_means_active_development(self):
+        """Active development vs maintained: a recent x.y.0 release is new features; a patch release is upkeep."""
+        since = "2026-01-01T00:00:00+00:00"
+        feat = {"releases": [{"tag": "v2.4.0", "prerelease": False, "published_at": "2026-03-01T00:00:00Z"}]}
+        patch = {"releases": [{"tag": "v2.4.1", "prerelease": False, "published_at": "2026-03-01T00:00:00Z"},
+                              {"tag": "v2.4.0", "prerelease": False, "published_at": "2025-06-01T00:00:00Z"}]}
+        self.assertTrue(recommend.derive(feat, since)["feature_release_last_12_months"])
+        self.assertFalse(recommend.derive(patch, since)["feature_release_last_12_months"])
         self.assertFalse(recommend.derive({"releases": [{"tag": "nightly", "prerelease": False}]})["has_semver_release"])
 
 

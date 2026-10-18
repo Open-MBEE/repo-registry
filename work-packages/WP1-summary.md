@@ -11,8 +11,8 @@ repo is in `data/reports/kind-recommendations.yaml`.
 
 | Kind | Tier | Repos |
 |---|---|---|
-| tool/active-development | high | 1 |
-| tool/maintained | high | 14 |
+| tool/active-development | high | 0 |
+| tool/maintained | high | 15 |
 | tool/experimental | medium | 9 |
 | tool/unreleased | low | 63 |
 | tool/archived | none | 21 |
@@ -53,11 +53,14 @@ but that breaks "0.x stays medium".
 
 ## Things worth your attention
 
-1. **A kind is a category, not a compliance verdict.** The 14 tools at version 1.0 or later with no changes in a year
-   are tool/maintained, because that is their stage. Whether anyone actually does the upkeep (tracking dependencies,
+1. **A kind is a category, not a compliance verdict.** All 15 tools at version 1.0 or later are tool/maintained,
+   because that is their stage. Whether anyone actually does the upkeep (tracking dependencies,
    fixing reported security flaws) is checked by the maintained-lifecycle policies in WP2, not by the kind. Until
    those policies exist, nothing can be out of compliance with them.
-2. **Little is in active development by the rules:** only `mtip-cameo` (v1.0.9). `OpenSysML` and `sysml-toolkit`
+2. **No tool is in active development by the rules.** Active development means new features, read from the
+   releases: a feature release (x.y.0) in the last 12 months. No tool at 1.0 or later has published any release in
+   the last 12 months. `mtip-cameo` has recent commits but no new release, so it is maintained. The feature work
+   happening now is in tools below 1.0 (`OpenSysML`, `sysml-toolkit`, `sysml-sdk`, `sysmlv2-python-client`). They
    stay experimental (medium) until they release 1.0.0 (WP1 A3).
 3. **Maintenance duties carried to WP2:** tracking dependencies and handling reported security flaws (CVEs), as
    policies attached to the maintained lifecycle.
@@ -68,5 +71,5 @@ but that breaks "0.x stays medium".
 
 ## Checks
 
-`python3 -m unittest discover -s tests` runs 16 checks covering R-1 to R-10 and D-4 and D-5. All pass. Two checks
+`python3 -m unittest discover -s tests` runs 17 checks covering R-1 to R-10 and D-4 and D-5. All pass. Two checks
 need a person: R-1's code review of `scripts/snapshot.py`, and R-4's cold read of the kind and tier meanings.

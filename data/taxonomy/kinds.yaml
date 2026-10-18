@@ -33,9 +33,12 @@ lifecycles:
     Early and still changing. For a tool, its releases are numbered below 1.0 (for example 0.4.2). When a tool
     releases version 1.0, it moves on: to active development if it is still changing, or to maintained if not.
   active-development: >-
-    Being worked on now. For a tool, it has also released version 1.0 or later.
+    New features are being added. For a tool, it has released version 1.0 or later, and its recent releases add
+    features (they raise the first or second number of the version, for example 2.3.0 to 2.4.0).
   maintained: >-
-    Stable and offered for use, with little new being added. Maintenance is active work: someone is expected to keep
+    Stable and offered for use, with no new features being added. For a tool, its recent releases only fix things
+    (they raise just the last number of the version, for example 2.4.0 to 2.4.1), or it hasn't released lately.
+    Maintenance is still active work: someone is expected to keep
     it safe and reliable, by keeping track of the other software it depends on, watching for publicly reported
     security flaws in it, and fixing what they find. Whether that work is actually being done is checked by the
     policies for maintained repositories, not by the repository's kind.
@@ -53,6 +56,7 @@ signals:
   semver_1_or_later: {attr: latest_semver_major, gte: 1}
   commits_last_3_months: {attr: commits_last_3_months, gt: 0}
   commits_last_12_months: {attr: commits_last_12_months, gt: 0}
+  feature_release_last_12_months: {attr: feature_release_last_12_months, eq: true}
   media_words:
     any:
       - attr: name
@@ -84,10 +88,10 @@ kinds:
     lifecycle: active-development
     tier: high
     meaning: >-
-      A tool at version 1.0 or later that people depend on and that is still being changed. Every release needs
-      careful control, so it gets the strictest controls.
+      A tool at version 1.0 or later that people depend on and that is still gaining new features. Every release
+      needs careful control, so it gets the strictest controls.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months}]
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: feature_release_last_12_months}]
   tool/maintained:
     type: tool
     lifecycle: maintained
@@ -97,7 +101,7 @@ kinds:
       tracking what it depends on and fixing reported security flaws. It gets the strictest controls because people
       rely on its releases.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: commits_last_12_months}}]
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: feature_release_last_12_months}}]
   tool/experimental:
     type: tool
     lifecycle: experimental
@@ -134,7 +138,7 @@ kinds:
     lifecycle: active-development
     tier: medium
     meaning: >-
-      Media that many people rely on, such as the website, that is still being changed.
+      Media that many people rely on, such as the website, that is still gaining new content.
     recommend_when:
       all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}]
   media/maintained:
