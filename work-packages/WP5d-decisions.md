@@ -30,3 +30,32 @@ mzargham's.
 - **Answer (mzargham, typed by agent):** "You run it, today"
 - **Outcome:** The supervisor runs the live publish himself, from a validated `main`; automating it in CI waits for
   WP7.
+
+## Scoping (after WP5c)
+
+- **Supervisor (mzargham, typed by agent):** "green and merged what's net" (WP5c accepted, 42ecec0; scope WP5d next).
+
+## OD1 — How a maintainer asks for a change
+
+- **Question:** After reading the review pack on the wiki, how does a maintainer ask for a change (the
+  review-and-revise cycle)? (Options: an issue / a pull request / both.)
+- **Answer (mzargham, typed by agent):** "A pull request"
+- **Outcome:** A change is a pull request to the model file. Every page links to the file that holds what it shows,
+  with GitHub's edit link.
+
+## Sources pages *(raised by the supervisor, answering the defaults question)*
+
+- **Supervisor (mzargham, typed by agent):** "i want make sure we also have clear mapping back to the cited sources. do
+  we need a polices by sources table and pages for our sources too. i think this goes a long way to justify our
+  choices. and invites maintainers to become informed before going to hard with alternative suggestions without
+  first understanding where the policies came from"
+- **Outcome:** Added as G6, D-6 and R-7: a Sources page, one page per source with each item's adopting policies or
+  departure reason, and each policy's citations linked both ways. The defaults are put again as one item.
+
+## OD2 — The Agent's defaults
+
+- **Question:** With the sources added, approve the defaults (the wiki pages, including Sources and Source-<source>;
+  repositories grouped by kind; a policy's tiers from its kinds; the publish commit message; the first wiki page
+  created by the supervisor) as one item?
+- **Answer (mzargham, typed by agent):** "Approve all"
+- **Outcome:** Approved as written.
