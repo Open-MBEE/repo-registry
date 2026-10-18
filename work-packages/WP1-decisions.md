@@ -185,3 +185,22 @@ The WP1 scope is approved (merge 3bb8ee8). These changes need a new approval by 
   only, or no recent release). The lifecycle meanings say this in plain words. Media keeps the activity guide. Result
   on the snapshot: 0 tools in active development, 15 maintained. The current feature work is all in 0.x tools, which
   stay experimental.
+
+## Secondary citations for the lifecycle *(raised by supervisor, after the review)*
+
+- **Supervisor (mzargham, typed by agent):** "i am considering whether we need an ISO 12207-2026 as another core
+  citation. our lifecycle mode is significantly compressed relative to this so its probably overkill but alternatively
+  we could make it a secondary citation along with something from eg the linux foundation talking about the lifecycle
+  for open source software. the one thing i'd like to note is that most lifecycle models fail to adequately account
+  for the exploratory / experimental phase, because it doesn't fit as neatly into a top down model. its more common in
+  communities that have capacity for bottom up creativity"
+- **Agent's suggestions:** keep CISA and NIST RMF as the only core citations. Add as secondary citations
+  ISO/IEC/IEEE 12207:2026 §5.4 (life-cycle stages; its common set of concept exploration, development, sustainment and
+  retirement maps to experimental, active development, maintained and archived) and one open-source project maturity
+  model whose Sandbox stage legitimizes bottom-up experimental work. Record them in WP2's policy basis review (D-9)
+  rather than amending WP0. Cite 12207 by reference only, because the supervisor's copy is single-user licensed.
+- **Answer (mzargham, typed by agent):** "i accept your suggestions"
+- **Outcome:** Carried to WP2 (D-9). The agent verified both foundation models use Sandbox → Incubating → Graduated →
+  Archived: CNCF (https://contribute.cncf.io/projects/lifecycle/) and OpenSSF
+  (https://github.com/ossf/tac/blob/main/process/project-lifecycle.md). Default for WP2: cite the OpenSSF lifecycle,
+  because OpenSSF is the security-focused foundation and aligns with the CISA guidance. No WP0 amendment.
