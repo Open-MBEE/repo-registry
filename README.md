@@ -40,9 +40,10 @@ It does this through **minimum viable policy making and controls**:
   Authority is spread out to each repository's CODEOWNERS, who govern their own repository.
 - **Clear release controls by tier.** Every kind of repository sits in one of four tiers, and each tier makes clear
   which release controls its CODEOWNERS need to put in place:
-  - **High:** core tools that need rigorous release control.
-  - **Medium:** load-bearing media, such as the website, and tools that are ancillary or experimental.
-  - **Low:** repositories that need an owner but have no formal controls beyond someone who looks after them.
+  - **High:** graduated tools that need rigorous release control, and the governance of the organization itself.
+  - **Medium:** load-bearing media, such as the website, and incubating tools (version 1.0 or later, not yet graduated).
+  - **Low:** repositories that need an owner but have no formal controls beyond someone who looks after them,
+    including sandbox tools that are still experimenting.
   - **None:** archived material, which is read-only once archived.
 
 ## What it is, and what it is not
@@ -69,8 +70,8 @@ You may hold more than one role. Each role has one place to go.
 ### Reader: you want to find or understand a repository
 
 Use the **wiki of this repository**. It is generated automatically and never edited by hand. It has:
-- an **index page** that lists the highlighted repositories first (under active development, or
-  trusted and maintained), then every repository with its kind and its CODEOWNERS;
+- an **index page** that lists the highlighted repositories first (incubating or graduated), then every
+  repository with its kind and its CODEOWNERS;
 - **one page per kind of repository**, which says what puts a repository in that kind and which tier it is in;
 - **one page per tier**, which says which policies are in effect for it and which deliberately aren't;
 - **one page per policy**, which holds the policy and its standard operating procedure;

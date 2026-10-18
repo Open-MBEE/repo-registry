@@ -50,18 +50,21 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
   those three attributes holds. Kinds are classified from rich data about each repo, and they are a fairly small
   taxonomy. Repos are many and policies are few. The rules connecting them are low-dimensional, plain-language,
   deterministic and replayable: categorical feature engineering from repos to three attributes, and from those
-  attributes to the policies in effect. *(Amended, A1.)* Each policy is defined at a level GitHub can configure. The pilot is a few
+  attributes to the policies in effect. *(Amended, A1.)* The lifecycle stages are adopted from the CNCF and OpenSSF
+  project lifecycles: Sandbox, Incubating, Graduated, Archived ([lifecycle-stage-map.md](../docs/lifecycle-stage-map.md),
+  *amended A4*). Each policy is defined at a level GitHub can configure. The pilot is a few
   dozen repos. The full scope is the low hundreds.
 - **Simplest sufficient policy set:** the policies are drawn from a review of GitHub's security features and
   documentation, cross-checked against the NIST RMF and CISA guidance, to find the simplest set of policies that meets
   our security objectives.
 - **Governance type.** Besides tool, media and research, there is a **governance** type. Only two things have it:
-  this repo (governance/experimental) and the administration of the GitHub org itself (governance/maintained). Every
+  this repo (governance/sandbox) and the administration of the GitHub org itself (governance/graduated, *amended A4*). Every
   governance kind maps to the high tier, because controls at the governance level must be as strict as, or stricter
   than, anything they govern. Governance kinds are assigned, not recommended. *(Amended, A2.)*
-- **Four tiers across the kinds.** Each kind sits in one of four tiers. **High:** core tools that need rigorous
-  release control, and governance. **Medium:** load-bearing media such as the website, and tools that are ancillary or experimental.
-  **Low:** repos that need an owner but have no formal controls beyond someone who looks after them. **None:**
+- **Four tiers across the kinds.** Each kind sits in one of four tiers. **High:** graduated tools, which need
+  rigorous release control, and governance. **Medium:** load-bearing media such as the website, and incubating tools
+  (version 1.0 or later, not yet graduated). **Low:** repos that need an owner but have no formal controls beyond
+  someone who looks after them, including sandbox tools (no release yet, or only 0.x releases). *(Amended, A4.)* **None:**
   archived material, read-only once its archived status has been verified.
 - **Operators are named in each repo.** Repos are governed locally by their CODEOWNERS, which the program senses.
   Where a tier needs an owner (high, medium, low), the owner is the repo's CODEOWNERS *(default)*, and only a
@@ -127,7 +130,7 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
 ## Goals
 
 - G1. **Find your way.** Anyone can see, in one place, every Open-MBEE repo: its kind, who is responsible for it, and
-  which repos are highlighted (in active development, or trusted and maintained).
+  which repos are highlighted (incubating or graduated; *amended A4*).
 - G2. **Show that we follow our own rules.** Regulated adopters can see that who may change what, and who approves a
   release, follow written rules, aligned with CISA *Open Source Software: Security Principles and Practices* (2026) and the NIST Risk
   Management Framework (SP 800-37 Rev. 2). In R1 this
