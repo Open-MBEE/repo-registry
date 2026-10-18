@@ -1,11 +1,12 @@
 status: provisional
 policy: license-by-type
 counts:
-  green: 77
-  red: 38
+  green: 76
+  red: 39
 red_by_license:
   BSD-3-Clause: 1
   CC0-1.0: 1
+  MIT: 1
   MPL-2.0: 1
   NOASSERTION: 3
   none: 32
@@ -36,10 +37,10 @@ repos:
     status: green
     detail: allowed for its type
   arch_model:
-    kind: media/incubating
+    kind: governance/sandbox
     license: MIT
-    status: green
-    detail: allowed for its type
+    status: red
+    detail: not in the allowed set for governance (Apache-2.0); needs a change or an exception
   architecture-based-risk-analysis:
     kind: tool/sandbox
     license: MPL-2.0
