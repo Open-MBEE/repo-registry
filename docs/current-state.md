@@ -2,8 +2,8 @@
 
 > The consistent basis to start from. Written at the docs sweep after WP4 (2026-10-18). **Where this file and an
 > older design document disagree, this file and the decision records it cites win.** The design documents in `docs/`
-> (design, roadmap, requirements, testing) are early DRAFT inputs. The docs sweep (WP4b) edits them in place to match
-> the decisions and keeps them DRAFT (WP4b OD1).
+> (design, roadmap, requirements, testing) are early DRAFT inputs. The docs sweep (WP4b, accepted 3f2c557) edited them in
+> place to match the decisions and kept them DRAFT (WP4b OD1).
 > Everything below is PROVISIONAL until the OpenMBEE maintainers approve it (the five approvals, below).
 
 ## How the work is governed
@@ -54,8 +54,8 @@
 | WP2a | License by type | accepted 61a3db6 |
 | WP3 | Org governance | accepted 3c0ba20 |
 | WP4 | Fit analysis and pilot | accepted 1408259 |
-| **WP4b** | Docs sweep and checkpoint | **in progress** (scope approved 85430b5) |
-| WP5 | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | next, after WP4b |
+| WP4b | Docs sweep and checkpoint | accepted 3f2c557 |
+| **WP5** | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | **next**, not yet scoped |
 | WP6 | Engine: sensing, status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |

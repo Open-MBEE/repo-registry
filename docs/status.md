@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, during WP4b (docs sweep and checkpoint). Update this at each acceptance gate.*
+*Updated 2026-10-18, at the WP4b acceptance gate. Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -9,7 +9,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 - **Design:** the contract is [WP0](../work-packages/WP0-scope-of-work.md), the project scope through R1, approved
   in 1dccb62 and amended twice (3c72b7d, 3edae32), with the later work-package scopes and decision records. The early
   design documents (`design.md`, `roadmap.md`, `testing-and-demonstration.md`, `requirements/`) are DRAFT inputs,
-  being brought in line with the decisions by WP4b. The other documents in `docs/` are PROVISIONAL deliverables of
+  brought in line with the decisions by WP4b (they stay DRAFT). The other documents in `docs/` are PROVISIONAL deliverables of
   accepted packages, waiting for the maintainers' approval.
 - **Work packages:**
   - **WP0** (project scope through R1): approved.
@@ -19,8 +19,9 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP2a** (license by type, a supplement to WP2): accepted in 61a3db6. Review:
     [WP2a-review.md](../work-packages/WP2a-review.md).
   - **WP4** (fit analysis and pilot): accepted in 1408259. Review: [WP4-review.md](../work-packages/WP4-review.md).
-  - **WP4b** (docs sweep and checkpoint): **in progress**; scope approved in 85430b5
-    ([WP4b-scope-of-work.md](../work-packages/WP4b-scope-of-work.md)).
+  - **WP4b** (docs sweep and checkpoint): accepted in 3f2c557. Review:
+    [WP4b-review.md](../work-packages/WP4b-review.md); drift report:
+    [WP4b-drift-report.md](../work-packages/WP4b-drift-report.md).
   - **WP5 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
@@ -50,7 +51,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 1. WP1, kinds and tiers: **accepted**.
 2. WP2, policies: **accepted**. WP2a, license by type: **accepted**.
 3. WP3, org governance: **accepted**.
-4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **in progress**.
+4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
@@ -58,8 +59,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Finish **WP4b** (docs sweep and checkpoint) and take it to the acceptance gate. Then scope **WP5 (meta-rule checks
-in CI, and the move to Open-MBEE)** with `scope-of-work`. It is the first package that writes to the org (creating
+Scope **WP5 (meta-rule checks in CI, and the move to Open-MBEE)** with `scope-of-work`. It is the first package that writes to the org (creating
 this repository there), so the move happens only on the supervisor's explicit go-ahead.
 Inputs carried to it:
 - the meta-rules to enforce: the kind list (`docs/kind-list-format.md`), the policies (`docs/policy-format.md`), and
