@@ -33,6 +33,8 @@ def attributes(name, repo, entry, kinds, flags, usage, weights):
         "commits_last_3_months": repo.get("commits_last_3_months") or 0,
         "commits_last_12_months": repo.get("commits_last_12_months") or 0,
         "archive_candidate": "archive-candidate" in flags, "usage_score": score,
+        "release_downloads": u.get("release_downloads") or 0,
+        "clone_uniques_14d": clones.get("uniques", 0) if clones.get("readable") else 0,
     }
 
 

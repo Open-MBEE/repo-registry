@@ -47,7 +47,24 @@ def main():
          f"**{len(pilot)} repositories** are proposed (target 24 to 36). Every other public repository is on the exclude list",
          "(`data/exclude.yaml`), with a reason. Must-includes were named by the supervisor. The rest were chosen by the rule",
          "in `data/pilot-rule.yaml`: most used first, where use means release downloads, clone visitors (readable only",
-         "where the supervisor has push access), stars and forks.", ""]
+         "where the supervisor has push access), stars and forks.", "",
+         "## How to read this", "",
+         "- **Kind** = type / stage. The type is what a repository is: tool, media (website, documentation, teaching",
+         "  material, example models), research, or governance. The stage comes from the CNCF and OpenSSF project",
+         "  lifecycles ([lifecycle-stage-map.md](lifecycle-stage-map.md)):",
+         "  - **sandbox** means early and experimental; for a tool, no release yet or releases below 1.0;",
+         "  - **incubating** means stabilizing and in use; for a tool, version 1.0 or later;",
+         "  - **graduated** means mature and widely used, given only by the maintainers;",
+         "  - **archived** means read-only.",
+         "- **Tier** = how strict the controls are: **high** (graduated tools and governance), **medium** (tools at",
+         "  incubating, and media people rely on), **low** (a named owner and little else), **none** (archived).",
+         "- **Policies** = the named policies a repository would carry, linked to their plain-language SOPs. The full",
+         "  table is [policy-applicability.md](policy-applicability.md). This briefing shows what *would* apply, not",
+         "  whether a repository meets it yet.",
+         "- **Why OpenSysML is sandbox and low.** It is by far the most used tool, but its releases are still below",
+         "  1.0. By the maintainers' rule (amendment A4), a tool stays in sandbox, with light controls, until it",
+         "  releases 1.0, so that fast development isn't slowed. At 1.0 it becomes incubating (medium) and carries 11",
+         "  policies instead of 3. The same holds for sysml-toolkit and the Flexo MMS tools.", ""]
     for cat in order:
         names = sorted(by_cat.get(cat, []), key=str.lower)
         if not names:
@@ -58,11 +75,12 @@ def main():
             L += [meanings[cat], ""]
         else:
             L += ["Named by the supervisor, outside the categories above.", ""]
-        L += ["| Repository | Proposed kind | Tier | Policies | License | Use |", "|---|---|---|---|---|---|"]
+        L += ["| Repository | Proposed kind | Tier | Policies it would carry | License | Use |", "|---|---|---|---|---|---|"]
         for n in names:
             kind = pilot[n]["kind"]
             tier = kinds[kind]["tier"] if kind in kinds else "—"
-            pol = len(appl.get(kind, [])) if kind in kinds else "—"
+            pol = (", ".join(f"[{p}](sops/{p}.md)" for p in appl.get(kind, [])) or "—") if kind in kinds else \
+                "none (forks have no kind)"
             l = lic.get(n)
             licence = (f"{l['license'] or 'none'} ({l['status']})" if l else "not covered")
             must = " (must-include)" if pilot[n]["why"].startswith("must-include") else ""
@@ -72,12 +90,17 @@ def main():
     tiers = collections.Counter(kinds[k]["tier"] if k in kinds else "unclassified" for k in
                                 (p["kind"] for p in pilot.values()))
     reds = sorted(n for n in pilot if lic.get(n, {}).get("status") == "red")
+    flags = yaml.safe_load(pathlib.Path("data/reports/kind-recommendations.yaml").read_text())["repos"]
+    dormant = sorted((n for n in pilot if "archive-candidate" in flags.get(n, {}).get("flags", [])), key=str.lower)
     L += ["## At a glance", "",
           f"- **Kinds in the pilot:** {', '.join(f'{k} {c}' for k, c in sorted(kinds_count.items()))}.",
           f"- **Tiers:** {', '.join(f'{t} {c}' for t, c in tiers.most_common())}.",
           f"- **License red today:** {len(reds)} ({', '.join('`'+n+'`' for n in reds) or 'none'}).",
-          "- **Decisions for the maintainers:** approve this pilot (approval 3) and each repository's kind (approval 4).",
-          "  Consider graduating heavily used tools, and decide the should-be-archived repositories.", ""]
+          f"- **No changes in a year:** {len(dormant)} pilot repositories ({', '.join('`'+n+'`' for n in dormant)}). "
+          "This includes the heavily used `exec-*` tools: they are still downloaded and cloned, so they need a",
+          "  maintenance decision (who looks after them) before any thought of graduating them.",
+          "- **Decisions for the maintainers:** approve this pilot (approval 3) and each repository's kind (approval 4),",
+          "  and decide the should-be-archived repositories.", ""]
     pathlib.Path(args.out).write_text("\n".join(L) + "\n")
     print(f"wrote {args.out}")
 

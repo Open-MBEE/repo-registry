@@ -45,8 +45,9 @@ Every live assignment was read by hand against its name and description. Most ar
 
 ## Archive candidates
 
-74 live repositories have had no commits in the last 12 months. This is a hint, never a verdict (WP1). The pilot carries
-six of them (`should-be-archived`), so that the maintainers can decide a few in the open. A notable group is the
+74 live repositories have had no commits in the last 12 months. This is a hint, never a verdict (WP1). 12 of them are in
+the pilot: the 6 chosen as should-be-archived, so that the maintainers can decide a few in the open, and 6 more chosen
+for other reasons (`exec-cameo-mdk`, `exec-mdk-systems-reasoner`, `exec-mms`, `exec-mmsri`, `exec-ve`, `flexo-sysml2-adapter-experiment`). A notable group is the
 heavily used `exec-*` tools (for example `exec-mms`, `exec-ve`, `exec-cameo-mdk`). They are still downloaded and
 cloned, yet unchanged for a year. That is a maintenance question, not an archiving one.
 

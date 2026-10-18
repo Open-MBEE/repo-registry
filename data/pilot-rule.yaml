@@ -4,7 +4,7 @@
 #
 # `where` uses the predicate language of data/taxonomy/kinds.yaml, over these attributes of each repository:
 #   name, description, kind, type, lifecycle, tier, fork, archived, commits_last_3_months, commits_last_12_months,
-#   archive_candidate (WP1 flag), usage_score (below).
+#   archive_candidate (WP1 flag), usage_score (below), release_downloads, clone_uniques_14d (0 where unreadable).
 # `quota` counts the must-include repositories that fall in the category.
 status: provisional
 provisional_until: "WP0 maintainer approval 3: the initial subset of repos in the registry"
@@ -24,32 +24,36 @@ usage_score:
 categories:                       # WP4 OD2: about 30 in all
   - id: tools-actively-developed
     quota: 6
-    meaning: Tools changed in the last three months, including busy tools still below 1.0.
+    meaning: Tools changed in the last three months, including busy tools still below 1.0. Ranked by use (release
+      downloads, clone visitors, stars, forks).
     where: {all: [{attr: type, eq: tool}, {attr: archived, eq: false}, {attr: commits_last_3_months, gt: 0}]}
     sort_by: usage_score
   - id: tools-heavily-used
     quota: 6
-    meaning: Tools at 1.0 or later that people use most (downloads, clones, stars, forks).
-    where: {all: [{attr: kind, eq: tool/incubating}, {attr: archived, eq: false}]}
+    meaning: Tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least 20 clone
+      visitors in 14 days), ranked by use. A slot stays empty rather than go to a tool without that evidence.
+    where: {all: [{attr: kind, eq: tool/incubating}, {attr: archived, eq: false},
+                  {any: [{attr: release_downloads, gte: 100}, {attr: clone_uniques_14d, gte: 20}]}]}
     sort_by: usage_score
   - id: media
     quota: 6
-    meaning: The websites, documentation, teaching material and example models people use most.
+    meaning: The websites, documentation, teaching material and example models, ranked by use.
     where: {all: [{attr: type, eq: media}, {attr: archived, eq: false}]}
     sort_by: usage_score
   - id: research
     quota: 4
-    meaning: Research explored in public, most active first.
+    meaning: Research explored in public, ranked by use.
     where: {all: [{attr: type, eq: research}, {attr: archived, eq: false}]}
     sort_by: usage_score
   - id: should-be-archived
     quota: 6
-    meaning: Live repositories with no changes in a year (WP1's archive-candidate flag), most used first, so the most
+    meaning: Live repositories with no changes in a year (WP1's archive-candidate flag), ranked by use, so the most
       relevant decisions come first.
     where: {all: [{attr: archive_candidate, eq: true}, {attr: fork, eq: false}]}
     sort_by: usage_score
   - id: forks
     quota: 2
-    meaning: Forks related to SysML, kept unclassified on purpose to show that the taxonomy has no kind for forks.
+    meaning: Forks related to SysML, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
+      for forks.
     where: {all: [{attr: fork, eq: true}, {attr: archived, eq: false}, {any: [{attr: name, matches: sysml}, {attr: description, matches: sysml}]}]}
     sort_by: usage_score

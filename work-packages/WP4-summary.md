@@ -5,19 +5,19 @@
 
 ## The pilot ([pilot-briefing.md](../docs/pilot-briefing.md))
 
-**33 repositories**, chosen by `data/pilot-rule.yaml` around your six must-includes:
+**32 repositories**, chosen by `data/pilot-rule.yaml` around your six must-includes:
 
 | Category | Repos |
 |---|---|
 | Tools actively developed | OpenSysML, sysml-toolkit, flexo-mms-layer1-service, sysmlv2-python-client, sysmlv2-web-modeler, mtip-cameo |
-| Tools heavily used | exec-cameo-mdk, exec-ve, exec-mms, exec-mmsri, exec-mdk-systems-reasoner, mcf |
+| Tools heavily used (only those with clear evidence of use) | exec-cameo-mdk, exec-ve, exec-mms, exec-mmsri, exec-mdk-systems-reasoner |
 | Media | open-mbee.github.io, opensysml.github.io, flexo-mms.openmbee.org, openmbee-graphic-assets, toaster (tutorial), TMT-SysML-Model |
 | Research | flexo-conflict-resolution-policy-research, aircraftengine-simulation, lunar-lander-simulation, flexo-sysml2-adapter-experiment |
-| Should be archived | bae2_3_1, K, mtip-sparx, openapi-graph-extractor, util, ve-confluence |
+| Should be archived | mcf, K, mtip-sparx, openapi-graph-extractor, util, ve-confluence |
 | Forks (unclassified on purpose) | staged-recipes-opensysml, sysmlv2-rdf-ontology |
 | Other must-includes | flexo-mms-deployment, flexo-mms-sysmlv2, repo-registry |
 
-The other 149 public repositories are on the exclude list (`data/exclude.yaml`), each with a reason.
+The other 150 public repositories are on the exclude list (`data/exclude.yaml`), each with a reason.
 
 **Use.** Clone counts were readable for 47 repositories, where you have push access. OpenSysML leads by far, with 3,869
 clone visitors in 14 days and 9,338 release downloads. The `exec-*` tools are still downloaded and cloned, though
@@ -40,7 +40,7 @@ unchanged for a year.
 
 ## For your attention
 
-1. **8 pilot repositories are red on licensing today,** including `mtip-cameo` (unrecognized license) and
+1. **7 pilot repositories are red on licensing today,** including `mtip-cameo` (unrecognized license) and
    `openmbee-graphic-assets` (none).
 2. **The heavily used `exec-*` tools haven't changed in a year.** They are graduation candidates by use, but a
    maintenance question first.

@@ -7,12 +7,7 @@ repos:
   aircraftengine-simulation:
     kind: research/sandbox
     category: research
-    why: 'research: research explored in public, most active first'
-  bae2_3_1:
-    kind: tool/sandbox
-    category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), most used first,
-      so the most relevant decisions come first'
+    why: 'research: research explored in public, ranked by use'
   exec-cameo-mdk:
     kind: tool/incubating
     category: tools-heavily-used
@@ -36,7 +31,7 @@ repos:
   flexo-conflict-resolution-policy-research:
     kind: research/sandbox
     category: research
-    why: 'research: research explored in public, most active first'
+    why: 'research: research explored in public, ranked by use'
   flexo-mms-deployment:
     kind: tool/sandbox
     category: must-include
@@ -56,20 +51,21 @@ repos:
   flexo-sysml2-adapter-experiment:
     kind: research/sandbox
     category: research
-    why: 'research: research explored in public, most active first'
+    why: 'research: research explored in public, ranked by use'
   K:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), most used first,
+    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   lunar-lander-simulation:
     kind: research/sandbox
     category: research
-    why: 'research: research explored in public, most active first'
+    why: 'research: research explored in public, ranked by use'
   mcf:
     kind: tool/incubating
-    category: tools-heavily-used
-    why: 'tools-heavily-used: tools at 1'
+    category: should-be-archived
+    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
+      so the most relevant decisions come first'
   mtip-cameo:
     kind: tool/incubating
     category: tools-actively-developed
@@ -77,21 +73,21 @@ repos:
   mtip-sparx:
     kind: tool/incubating
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), most used first,
+    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   open-mbee.github.io:
     kind: media/incubating
     category: media
-    why: 'media: the websites, documentation, teaching material and example models people use most'
+    why: 'media: the websites, documentation, teaching material and example models, ranked by use'
   openapi-graph-extractor:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), most used first,
+    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   openmbee-graphic-assets:
     kind: media/incubating
     category: media
-    why: 'media: the websites, documentation, teaching material and example models people use most'
+    why: 'media: the websites, documentation, teaching material and example models, ranked by use'
   OpenSysML:
     kind: tool/sandbox
     category: tools-actively-developed
@@ -99,7 +95,7 @@ repos:
   opensysml.github.io:
     kind: media/incubating
     category: media
-    why: 'media: the websites, documentation, teaching material and example models people use most'
+    why: 'media: the websites, documentation, teaching material and example models, ranked by use'
   repo-registry:
     kind: governance/sandbox
     category: must-include
@@ -107,7 +103,8 @@ repos:
   staged-recipes-opensysml:
     kind: unclassified
     category: forks
-    why: 'forks: forks related to sysml, kept unclassified on purpose to show that the taxonomy has no kind for forks'
+    why: 'forks: forks related to sysml, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
+      for forks'
   sysml-toolkit:
     kind: tool/sandbox
     category: tools-actively-developed
@@ -119,7 +116,8 @@ repos:
   sysmlv2-rdf-ontology:
     kind: unclassified
     category: forks
-    why: 'forks: forks related to sysml, kept unclassified on purpose to show that the taxonomy has no kind for forks'
+    why: 'forks: forks related to sysml, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind
+      for forks'
   sysmlv2-web-modeler:
     kind: tool/sandbox
     category: tools-actively-developed
@@ -127,18 +125,18 @@ repos:
   TMT-SysML-Model:
     kind: media/incubating
     category: media
-    why: 'media: the websites, documentation, teaching material and example models people use most'
+    why: 'media: the websites, documentation, teaching material and example models, ranked by use'
   toaster:
     kind: media/incubating
     category: media
-    why: 'media: the websites, documentation, teaching material and example models people use most'
+    why: 'media: the websites, documentation, teaching material and example models, ranked by use'
   util:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), most used first,
+    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
   ve-confluence:
     kind: tool/sandbox
     category: should-be-archived
-    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), most used first,
+    why: 'should-be-archived: live repositories with no changes in a year (wp1''s archive-candidate flag), ranked by use,
       so the most relevant decisions come first'
