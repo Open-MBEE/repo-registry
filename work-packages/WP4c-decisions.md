@@ -69,3 +69,15 @@ mzargham's. The scope document carries only the outcomes ([WP4c-scope-of-work.md
 - **Question:** Approve the Agent's defaults, revised for one governance type, as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## OpenSSF as a core citation *(raised by the supervisor while WP4d was scoped)*
+
+- **Supervisor (mzargham, typed by agent):** "i think we also elevate OpenSSF to a primary source since we use it
+  explicitly for our lifecycle model"
+- **Question:** Where should that change be scoped? (Options: fold into WP4c / fold into WP4d / separate package.)
+- **Answer (mzargham, typed by agent):** "Fold into WP4c"
+- **Outcome:** WP4c, not yet approved, is revised on its scope branch: G4, D-5 and R-8 make OpenSSF a core citation
+  alongside CISA and NIST; meta-rule 7 also requires `cites.openssf` *(default)*. CNCF and ISO stay secondary.
+- **Question:** With OpenSSF core, policy meta-rule 7 also requires `cites.openssf`, and CNCF stays secondary. Approve
+  this new default?
+- **Answer (mzargham, typed by agent):** "Approve"

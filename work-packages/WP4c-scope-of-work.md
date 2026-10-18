@@ -34,6 +34,10 @@ settings for `repo-registry`.
 and in and work together to get it calibrated", and "we wont switch it to graduate until the repo-registry is accepted
 as the canonical source".
 
+The supervisor also: "i think we also elevate OpenSSF to a primary source since we use it explicitly for our lifecycle
+model". The stages are adopted from CNCF and OpenSSF (A4), and the OpenSSF security baseline is already the backbone
+for the policies (WP2), yet OpenSSF is listed as a secondary citation, after CISA and NIST.
+
 ## Goals
 
 - G1. **Friction rises with the stage for governance**, as for every other type: governance/sandbox lightest,
@@ -43,6 +47,7 @@ as the canonical source".
 - G3. **governance/graduated carries one set:** the org policies and the repository policies together (OD1), so the
   org keeps its org policies and `repo-registry` takes everything when it graduates. No policy names a governance kind
   to exclude the org.
+- G4. **OpenSSF is a core citation**, alongside CISA and NIST: its project lifecycle and its security baseline.
 
 ## Non-goals
 
@@ -64,6 +69,7 @@ as the canonical source".
 | D-2 | The applies-if rules changed in `data/policies/`, and the SOP lines that state them, so that each governance kind carries the policies for its stage, and governance/graduated carries the org policies and the repository policies | G1, G3 |
 | D-3 | A WP1 amendment record, `work-packages/WP1-amendment-3.md` *(default)*, stating what A2 and amendment 2 said and what replaces them | G1, G2, G3 |
 | D-4 | Everything generated replayed (applicability, license report, pilot, briefing), and the current documents updated (`docs/current-state.md`, `docs/kind-list-format.md`, `docs/lifecycle-stage-map.md`, `docs/roadmap.md` R3, README tiers), with the early DRAFT documents edited in place (as WP4b OD1) | G1, G2, G3 |
+| D-5 | OpenSSF raised to a core citation wherever the citations are listed (WP0's citations, `docs/current-state.md`, `docs/policy-basis-review.md`, `docs/policy-format.md`, README "The guidance we follow"), recorded in D-3's amendment record. CNCF and ISO/IEC/IEEE 12207 stay secondary | G4 |
 
 ## Requirements
 
@@ -76,10 +82,12 @@ as the canonical source".
 | R-5 | Every other kind keeps exactly its policies, every other repository keeps its kind, and the pilot and exclude list keep the same repositories. | Compare before and after; the full test suite |
 | R-6 | The taxonomy and policy meta-rules still hold (kind-list meta-rule 10, policy meta-rules 1-13). | `python3 scripts/policies.py`; the full test suite |
 | R-7 | Every document that states the governance kinds, or their tiers, says the new thing, or is marked superseded with a pointer. | `grep -rn "governance/"` over the docs, inspected; the link check |
+| R-8 | OpenSSF is listed as a core citation wherever the citations are listed, and policy meta-rule 7 requires `cites.openssf` as it requires `cites.cisa` and `cites.nist` *(default)*. No policy's citations change. | Inspect; a test that every policy has `cites.openssf`; `python3 scripts/policies.py` |
 
 ## Definition of good
 
-- Someone reading the applicability table sees friction rise with the stage for every type, governance included.
+- Someone reading the applicability table sees friction rise with the stage for every type, governance included,
+  and the citations name as core the sources the model is actually built on.
 
 ## Definition of good enough
 
@@ -103,6 +111,8 @@ record above.
 - governance/sandbox takes only the policies a low-tier sandbox kind takes (OD2). The policies that name
   governance/sandbox today are changed to name governance/graduated instead.
 - governance/archived stays omitted.
+- With OpenSSF core, policy meta-rule 7 also requires `cites.openssf`: a list of baseline items, empty when the policy
+  adopts none (as every policy has today). CNCF stays secondary, and still appears only in `secondary_notes`.
 - After this package is accepted, `main` is merged into `wp5-work` (no rebase, so no commit changes). Any WP5 test
   that uses a governance kind is updated then, as part of WP5.
 
@@ -115,5 +125,6 @@ record above.
 - **OD3.** The Agent's defaults. *Decided: approved (as revised for one governance type).*
 
 None remain open. Every item was resolved through the decision loop: 3 decided (OD1 revisited once), 0 deferred,
-1 raised (governance/incubating, folded into the defaults). The records are in
+2 raised (governance/incubating, folded into the defaults; OpenSSF as a core citation, folded in by the
+supervisor). The records are in
 [WP4c-decisions.md](WP4c-decisions.md).
