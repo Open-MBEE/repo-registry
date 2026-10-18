@@ -22,12 +22,12 @@ STEPS = ["recommend.py", "policies.py", "licenses.py", "org.py", "pilot.py", "br
 
 
 def render(out, root=".", quiet=True):
-    out = pathlib.Path(out)
+    out, root = pathlib.Path(out).resolve(), pathlib.Path(root).resolve()  # absolute: each step runs with cwd=root
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
     for step in STEPS:
-        script = pathlib.Path(root) / "scripts" / step  # the controller of the tree being rendered
+        script = root / "scripts" / step  # the controller of the tree being rendered
         run = subprocess.run([sys.executable, str(script if script.exists() else HERE / step), "--out", str(out),
                               "--root", str(root)],
                              cwd=root, capture_output=True, text=True)
