@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, at the WP3 acceptance gate. Update this at each acceptance gate.*
+*Updated 2026-10-18, at the WP2a acceptance gate. Update this at each acceptance gate.*
 
 ## Where we are
 
@@ -12,6 +12,8 @@
   - **WP1** (kinds and tiers): accepted in bcb1e73. Review: [WP1-review.md](../work-packages/WP1-review.md).
   - **WP2** (policies): accepted in 1ced09b. Review: [WP2-review.md](../work-packages/WP2-review.md).
   - **WP3** (org governance): accepted in 3c0ba20. Review: [WP3-review.md](../work-packages/WP3-review.md).
+  - **WP2a** (license by type, a supplement to WP2): accepted in 61a3db6. Review:
+    [WP2a-review.md](../work-packages/WP2a-review.md).
   - **WP4 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
@@ -19,7 +21,7 @@
     ([lifecycle-stage-map.md](lifecycle-stage-map.md));
   - four tiers;
   - the provisional kind list (`registry.yaml`);
-  - 15 policies with SOPs (`data/policies/`, `docs/sops/`). Each has an applies-if rule on type, stage or tier, and
+  - 16 repository policies (including `license-by-type`) with SOPs (`data/policies/`, `docs/sops/`). Each has an applies-if rule on type, stage or tier, and
     is grounded in [policy-basis-review.md](policy-basis-review.md) (CISA and NIST core; the OpenSSF baseline as
     backbone; CNCF and ISO/IEC/IEEE 12207 secondary);
   - five org policies, a provisional named-maintainer list (`data/maintainers.yaml`: Chris Delp, Michael Zargham,
@@ -35,7 +37,7 @@
 ## Breakdown (agreed plan, revisited at each gate)
 
 1. WP1, kinds and tiers: **accepted**.
-2. WP2, policies: **accepted**.
+2. WP2, policies: **accepted**. WP2a, license by type: **accepted**.
 3. WP3, org governance: **accepted**.
 4. **WP4, fit analysis of all repos, and the pilot of 24 to 36 repos.**
 5. WP5, meta-rule checks in CI, and the move to Open-MBEE.
@@ -51,4 +53,6 @@ Scope **WP4 (fit analysis and pilot)** with `scope-of-work`. Inputs carried to i
 - the fit analysis of all of the org's repos is a separate task from the pilot (WP0 D-6);
 - the pilot: 24 to 36 repos, sampled to include heavily used and actively developed tools, the website and other
   media, research repos, and repos that should be archived (WP0); everything else goes on the exclude list;
-- the applicability table from WP2 and WP3 shows which policies each pilot repo would carry.
+- the applicability table from WP2, WP2a and WP3 shows which policies each pilot repo would carry;
+- the license report (`data/reports/license-report.yaml`): 38 of 115 live, classified repos are red on licensing, and
+  3 off-list licenses await the maintainers' decision.
