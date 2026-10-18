@@ -4,7 +4,7 @@
 |---|---|
 | **Scope of work** | [WP5e-scope-of-work.md](WP5e-scope-of-work.md) |
 | **Scope approval verified** | The supervisor's statement, recorded verbatim in [WP5e-decisions.md](WP5e-decisions.md) "Approval": "let's keep the scope of work approved locally and then merge it with the PR that implements it" |
-| **Work reviewed** | `wp5e-work` at 932f920 (rebased onto `main` at c0d8979, WP5d's acceptance; the tree is the one reviewed), with this report |
+| **Work reviewed** | `wp5e-work` at c1fe9a7 (rebased onto `main` at c0d8979, WP5d's acceptance), with this report |
 | **Supervisor (accepts)** | mzargham |
 | **Acceptance record** | mzargham's merge, with a merge commit, of the delivery pull request into `main` (which also brings the scope to `main`) |
 
@@ -56,6 +56,27 @@ page, the CISA page's C4 Community criterion, following links from the SOP's cit
 **Against the definition of good:** a maintainer reading the SOP learns who may be a code owner of a high-tier
 repository, what an owner checks, and why; each citation opens the source's own words. An owner records a verification
 by one pull request (the SOP's set-up steps).
+
+## Before the push: the README, the wiki, and the two policies
+
+At the supervisor's requests, after the first recommendation:
+
+- **The README** (D-7): rewritten around the repository's intent, its status (sandbox; nothing in effect), the review
+  pack, and how to take part by branches and pull requests, with what to edit for a taxonomy, policy or labeling
+  change. It says publishing the wiki is manual until WP7, as `docs/current-state.md` and `docs/status.md` now do.
+- **A fresh browser review of the whole wiki.** Findings, all fixed: Home said the wiki "is republished" as if
+  automatically (W1), didn't say nothing is in effect (W2), didn't invite draft pull requests or issues (W3), and read
+  "the check check" (W4); the Sources table carried CISA's whole quoting note (W5, now on its Source page). Then, at the
+  supervisor's concern that the wiki is generated from code, the row links labelled "edit" read **"propose a change"**,
+  with a title saying they open a pull request to the model file, never the wiki. A second pass: 36 pages, 996 links
+  between pages resolving, no "edit" label left, the banner on every page.
+- **Two policies, not one** ([WP5e-decisions.md](WP5e-decisions.md), "Two policies" to "The split, as applied"):
+  `contributing` governs what is contributed and is unchanged by the split; `verified-code-owners` is where the
+  personnel control resolves, and says it is for code owners, not contributors. A sanctions floor for contributors
+  was considered and declined, with the supervisor's reasons, recorded in the policy and as a candidate. The memo's
+  §2.C(1) moved to `codeowners`.
+- **CI on #12** failed on two commit IDs the rebase had retired (`test_R7_every_cited_commit_resolves`); both records
+  now cite commits on the branch.
 
 ## Outside the scope
 
