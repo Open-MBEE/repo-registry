@@ -31,8 +31,8 @@ repos:
   "apv-mdk":
     reason: "No type signal. No media or research words, and no programming language."
   "arch_model":
-    type: media
-    stage: incubating
+    type: governance
+    stage: sandbox
   "architecture-based-risk-analysis":
     type: tool
     stage: sandbox
