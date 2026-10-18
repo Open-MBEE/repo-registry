@@ -45,3 +45,62 @@ contributor sourcing".
   (SSDF) PS.1 to PS.3; NIST SP 800-161 Rev. 1 SR-4 and SR-6, with SP 1326; EAR §734.3(b)(3) and §734.7 (context); the
   2025 SecDef memo (context, to verify). Set aside, with the reason: EPAAR 1552.239-71 and EAR Part 732. The WP5e
   scope decides which are adopted.
+
+## OD1 — What an owner verifies
+
+- **Question:** What does an owner verify before a maintainer may be a code owner of a high-tier repository?
+  (Options: identity + sanctions / + affiliation / + nationality.)
+- **Answer (mzargham, typed by agent):** "+ affiliation"
+- **Outcome:** Identity; not a sanctioned party, nor located or ordinarily resident in a comprehensively sanctioned
+  jurisdiction (OFAC's tests); and no affiliation with an organization of concern (CISA's C4 "Community" criterion).
+  Nationality is not a criterion.
+
+## OD2 — What the public record holds
+
+- **Question:** What does the public verification record in this repository hold? (Options: fact of verification /
+  + criteria met / the facts.)
+- **Answer (mzargham, typed by agent):** "The facts"
+- **Follow-up** (the answer conflicted with the standing privacy rule, WP3 OD1, and the repository is public): Which
+  facts go in the public record? (Options: name, residence, affiliation, with each maintainer's consent / name and
+  affiliation / criteria met only.)
+- **Answer (mzargham, typed by agent):** "Name, residence, affil."
+- **Outcome:** The record publishes the maintainer's legal name, country of residence and affiliation, each with the
+  maintainer's consent; no consent means not verified. No identity documents or other details are written. The WP3
+  rule (concealed members are never named) is unchanged: a maintainer who verifies consents to being named.
+
+## OD3 — Contributors who are not code owners
+
+- **Question:** What applies to contributors who are not code owners? (Options: nothing more now / DCO on high tier /
+  self-attestation.)
+- **Answer (mzargham, typed by agent):** "Nothing more now"
+- **Outcome:** No contributor requirement in this package; review by a verified code owner is the control.
+
+## OD4 — The secondary sources
+
+- **Question:** Which secondary sources are adopted with the DoD CIO memo? (Options: OFAC only / OFAC + NIST / none
+  beyond.)
+- **Answer (mzargham, typed by agent):** "OFAC + NIST"
+- **Outcome:** OFAC's sanctions regulations (31 CFR Chapter V) and the SDN list; NIST SP 800-218 (SSDF) PS.1 to PS.3;
+  NIST SP 800-161 Rev. 1 SR-4 and SR-6. The other candidates stay listed as candidates.
+
+## OD6 — Verbatim citations *(raised by the supervisor, during the defaults)*
+
+- **Supervisor (mzargham, typed by agent):** "why are we not citing the memo verbatim, same with the earlier cisa doc.
+  it seems like we should be quoting verbatim citations"
+- **Agent's answer, in brief:** no recorded decision chose paraphrase; it was a default carried from WP2. CISA, the DoD
+  CIO, OFAC and NIST publish U.S. government works (no copyright, 17 U.S.C. §105), released for public distribution.
+  ISO/IEC/IEEE 12207 stays clause numbers only (licensed, WP2 R-12).
+- **Question:** Converting the existing sources (CISA's practices, and the OpenSSF baseline if its license allows) from
+  paraphrase to verbatim quotes: where does that work go? (Options: in WP5e / its own package.)
+- **Answer (mzargham, typed by agent):** "In WP5e"
+- **Outcome:** WP5e quotes its new sources verbatim (default 5 changed) and adds D-8, requoting the CISA practices and,
+  if licensed for it, the OpenSSF items; R-7 checks the quotes against the documents.
+
+## OD5 — The Agent's defaults
+
+- **Question:** Approve the eight Agent's defaults as one item (default 5 now: cited passages quoted verbatim, whole,
+  with section and page)? (Asked after a walkthrough of each default, at the supervisor's request: "walk me through".)
+- **Answer (mzargham, typed by agent):** "i just reversed 5, and am requesting an update on cisa quotes to be verbatim
+  but i accept the others."
+- **Outcome:** Defaults 1 to 4 and 6 to 8 approved; default 5 reversed from paraphrase to verbatim quotes (as written
+  in the scope); the CISA quotes made verbatim (D-8).
