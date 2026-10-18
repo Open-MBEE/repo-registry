@@ -55,3 +55,10 @@ mzargham's. The scope document carries only the outcomes ([WP4d-scope-of-work.md
 - **Outcome:** Fixed under the same scope: an archived repository is read at its final commit on the default branch,
   whatever its releases (`docs/policy-format.md`, `docs/attestations-format.md`, the archive-notice SOP, WP0
   amendment 3). The whole review is rerun.
+
+## Acceptance review (rerun) — observations
+
+- **Question:** Every deliverable and requirement is met, G-1 fixed. Four observations (10 SOPs not 9; status.md;
+  no ATTESTATIONS.yaml here yet; a small schema validator in the test). Accept these as is, or pick any to act on?
+- **Answer (mzargham, typed by agent):** "Accept as is"
+- **Outcome:** All four accepted as is. See [WP4d-review.md](WP4d-review.md).
