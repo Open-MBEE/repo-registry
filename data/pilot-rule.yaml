@@ -1,0 +1,55 @@
+# PROVISIONAL until the maintainers approve the pilot (WP0, maintainer approval 3). WP4 D-2.
+# The rule that picks the pilot from the snapshot. scripts/pilot.py applies it deterministically: categories are
+# filled in order, each repository goes to the first category that takes it, and ties break by name.
+#
+# `where` uses the predicate language of data/taxonomy/kinds.yaml, over these attributes of each repository:
+#   name, description, kind, type, lifecycle, tier, fork, archived, commits_last_3_months, commits_last_12_months,
+#   archive_candidate (WP1 flag), usage_score (below).
+# `quota` counts the must-include repositories that fall in the category.
+status: provisional
+provisional_until: "WP0 maintainer approval 3: the initial subset of repos in the registry"
+
+# Supervisor's must-includes (WP4 OD1). repo-registry registers itself (WP0 X-9), though it isn't in the org yet.
+must_include: [sysml-toolkit, OpenSysML, flexo-mms-layer1-service, flexo-mms-deployment, flexo-mms.openmbee.org,
+               flexo-mms-sysmlv2, repo-registry]
+
+# "Heavily used" (WP4 default): release downloads, clone visitors where readable (push access, last 14 days), stars
+# and forks. An unreadable clone count adds nothing; it is never treated as zero use in the briefing.
+usage_score:
+  release_downloads: 1
+  clone_uniques_14d: 10
+  stars: 5
+  forks: 5
+
+categories:                       # WP4 OD2: about 30 in all
+  - id: tools-actively-developed
+    quota: 6
+    meaning: Tools changed in the last three months, including busy tools still below 1.0.
+    where: {all: [{attr: type, eq: tool}, {attr: archived, eq: false}, {attr: commits_last_3_months, gt: 0}]}
+    sort_by: usage_score
+  - id: tools-heavily-used
+    quota: 6
+    meaning: Tools at 1.0 or later that people use most (downloads, clones, stars, forks).
+    where: {all: [{attr: kind, eq: tool/incubating}, {attr: archived, eq: false}]}
+    sort_by: usage_score
+  - id: media
+    quota: 6
+    meaning: The websites, documentation, teaching material and example models people use most.
+    where: {all: [{attr: type, eq: media}, {attr: archived, eq: false}]}
+    sort_by: usage_score
+  - id: research
+    quota: 4
+    meaning: Research explored in public, most active first.
+    where: {all: [{attr: type, eq: research}, {attr: archived, eq: false}]}
+    sort_by: usage_score
+  - id: should-be-archived
+    quota: 6
+    meaning: Live repositories with no changes in a year (WP1's archive-candidate flag), most used first, so the most
+      relevant decisions come first.
+    where: {all: [{attr: archive_candidate, eq: true}, {attr: fork, eq: false}]}
+    sort_by: usage_score
+  - id: forks
+    quota: 2
+    meaning: Forks related to SysML, kept unclassified on purpose to show that the taxonomy has no kind for forks.
+    where: {all: [{attr: fork, eq: true}, {attr: archived, eq: false}, {any: [{attr: name, matches: sysml}, {attr: description, matches: sysml}]}]}
+    sort_by: usage_score

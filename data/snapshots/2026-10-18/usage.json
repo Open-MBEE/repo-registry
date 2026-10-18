@@ -1,0 +1,956 @@
+{
+  "note": "clones_14d needs push access; unreadable is not zero",
+  "repos": {
+    ".github": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "ChatGPT-Prompts": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "Comodo": {
+      "clones_14d": {
+        "count": 28,
+        "readable": true,
+        "uniques": 8
+      },
+      "release_downloads": 0
+    },
+    "DesertKite.sysml": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "Dragon-Architecture-Model": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "K": {
+      "clones_14d": {
+        "count": 24,
+        "readable": true,
+        "uniques": 12
+      },
+      "release_downloads": 0
+    },
+    "Livingstone": {
+      "clones_14d": {
+        "count": 2,
+        "readable": true,
+        "uniques": 2
+      },
+      "release_downloads": 0
+    },
+    "MBSEPlugin": {
+      "clones_14d": {
+        "count": 2,
+        "readable": true,
+        "uniques": 2
+      },
+      "release_downloads": 0
+    },
+    "MSE": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 43
+    },
+    "OMGSpecifications": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "OpenSE-Cookbook": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "OpenSysML": {
+      "clones_14d": {
+        "count": 56646,
+        "readable": true,
+        "uniques": 3869
+      },
+      "release_downloads": 9338
+    },
+    "OpenSysML-Extensions-Library": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "OpenSysML-FAQ": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "OpenSysML-REDK-Skills": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "SysML-LoRD": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "SysML-v2-Applications-and-Examples": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "TMT-SysML-Model": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "_OpenMBEE-Documentation": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "aircraftengine-simulation": {
+      "clones_14d": {
+        "count": 14,
+        "readable": true,
+        "uniques": 10
+      },
+      "release_downloads": 0
+    },
+    "airflow-provider-opensysml": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "apv": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "apv-mdk": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "arch_model": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "architecture-based-risk-analysis": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "bae": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "bae2_3_1": {
+      "clones_14d": {
+        "count": 11,
+        "readable": true,
+        "uniques": 9
+      },
+      "release_downloads": 0
+    },
+    "concept-definition-stage": {
+      "clones_14d": {
+        "count": 5,
+        "readable": true,
+        "uniques": 5
+      },
+      "release_downloads": 0
+    },
+    "configuration-management-plugin": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "confluence-mdk": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "des-ex-toolset": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "dis": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "docs": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "doors-ng-mdk": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "enhancement-proposals": {
+      "clones_14d": {
+        "count": 2,
+        "readable": true,
+        "uniques": 2
+      },
+      "release_downloads": 0
+    },
+    "exec-cameo-mdk": {
+      "clones_14d": {
+        "count": 204,
+        "readable": true,
+        "uniques": 77
+      },
+      "release_downloads": 1396
+    },
+    "exec-mdk-systems-reasoner": {
+      "clones_14d": {
+        "count": 50,
+        "readable": true,
+        "uniques": 20
+      },
+      "release_downloads": 104
+    },
+    "exec-mms": {
+      "clones_14d": {
+        "count": 161,
+        "readable": true,
+        "uniques": 69
+      },
+      "release_downloads": 0
+    },
+    "exec-mms-migration-cameo2022x": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "exec-mms-python-client-example": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "exec-mmsri": {
+      "clones_14d": {
+        "count": 17,
+        "readable": true,
+        "uniques": 14
+      },
+      "release_downloads": 267
+    },
+    "exec-ve": {
+      "clones_14d": {
+        "count": 69,
+        "readable": true,
+        "uniques": 37
+      },
+      "release_downloads": 1487
+    },
+    "flexo-cli-client": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-cli-sysmlv2-plugin": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-conflict-resolution-policy-research": {
+      "clones_14d": {
+        "count": 14,
+        "readable": true,
+        "uniques": 10
+      },
+      "release_downloads": 0
+    },
+    "flexo-graphql": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-auth-service": {
+      "clones_14d": {
+        "count": 8,
+        "readable": true,
+        "uniques": 8
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-deployment": {
+      "clones_14d": {
+        "count": 32,
+        "readable": true,
+        "uniques": 27
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-jama-sdk": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-layer0-dashboard": {
+      "clones_14d": {
+        "count": 66,
+        "readable": true,
+        "uniques": 10
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-layer1-mcp": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-layer1-openapi": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-layer1-service": {
+      "clones_14d": {
+        "count": 76,
+        "readable": true,
+        "uniques": 50
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-ontology": {
+      "clones_14d": {
+        "count": 1,
+        "readable": true,
+        "uniques": 1
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-sso-auth-service": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-store-service": {
+      "clones_14d": {
+        "count": 10,
+        "readable": true,
+        "uniques": 9
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-sysmlv2": {
+      "clones_14d": {
+        "count": 44,
+        "readable": true,
+        "uniques": 35
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms-sysmlv2-mcp": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-mms.openmbee.org": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-performance-test": {
+      "clones_14d": {
+        "count": 5,
+        "readable": true,
+        "uniques": 4
+      },
+      "release_downloads": 0
+    },
+    "flexo-pr-manager": {
+      "clones_14d": {
+        "count": 6,
+        "readable": true,
+        "uniques": 6
+      },
+      "release_downloads": 0
+    },
+    "flexo-sysml2-adapter-experiment": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "flexo-sysmlv2-swagger": {
+      "clones_14d": {
+        "count": 6,
+        "readable": true,
+        "uniques": 5
+      },
+      "release_downloads": 0
+    },
+    "flexo_syside": {
+      "clones_14d": {
+        "count": 22,
+        "readable": true,
+        "uniques": 15
+      },
+      "release_downloads": 0
+    },
+    "homebrew-tap": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "jl_scxml": {
+      "clones_14d": {
+        "count": 4,
+        "readable": true,
+        "uniques": 4
+      },
+      "release_downloads": 0
+    },
+    "junit-xml-parser": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "k2mms": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "k_webeditor": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "klang": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "kservices": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "lunar-lander-simulation": {
+      "clones_14d": {
+        "count": 10,
+        "readable": true,
+        "uniques": 6
+      },
+      "release_downloads": 0
+    },
+    "mbple-featureide": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mcf": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mcf-model-import-export": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "md-cst-montecarlo": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "md-cst-rabbitmq": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mdk-expression": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 16
+    },
+    "mms-adapter-plugin": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mms-autocref": {
+      "clones_14d": {
+        "count": 1,
+        "readable": true,
+        "uniques": 1
+      },
+      "release_downloads": 0
+    },
+    "mms-doc-convert": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 14
+    },
+    "mms-helm-chart": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mms-migration": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mms-rdf": {
+      "clones_14d": {
+        "count": 3,
+        "readable": true,
+        "uniques": 3
+      },
+      "release_downloads": 0
+    },
+    "mms3-to-mms4-json": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mpspi": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "mtip-cameo": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 233
+    },
+    "mtip-sparx": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 97
+    },
+    "oosem.github.io": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "open-mbee.github.io": {
+      "clones_14d": {
+        "count": 59,
+        "readable": true,
+        "uniques": 33
+      },
+      "release_downloads": 0
+    },
+    "openapi-graph-extractor": {
+      "clones_14d": {
+        "count": 7,
+        "readable": true,
+        "uniques": 7
+      },
+      "release_downloads": 0
+    },
+    "openmbee-graphic-assets": {
+      "clones_14d": {
+        "count": 34,
+        "readable": true,
+        "uniques": 25
+      },
+      "release_downloads": 0
+    },
+    "openmbee-workshops.github.io": {
+      "clones_14d": {
+        "count": 11,
+        "readable": true,
+        "uniques": 8
+      },
+      "release_downloads": 0
+    },
+    "opensysml.github.io": {
+      "clones_14d": {
+        "count": 203,
+        "readable": true,
+        "uniques": 98
+      },
+      "release_downloads": 0
+    },
+    "opl": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "pane-layout": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "perseverance-modelica": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "pmc-fdir": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "readthedocs": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "scxml4py": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "starkit": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "structured-use-cases": {
+      "clones_14d": {
+        "count": 19,
+        "readable": true,
+        "uniques": 15
+      },
+      "release_downloads": 0
+    },
+    "structured-usecase-editor": {
+      "clones_14d": {
+        "count": 5,
+        "readable": true,
+        "uniques": 4
+      },
+      "release_downloads": 0
+    },
+    "swagger-codegen-mathematica-client": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "swagger-codegen-matlab-client": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "sync-service": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "sysml": {
+      "clones_14d": {
+        "count": 3,
+        "readable": true,
+        "uniques": 3
+      },
+      "release_downloads": 0
+    },
+    "sysml-sdk": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 70
+    },
+    "sysml-toolkit": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 538
+    },
+    "sysmlv2-python-client": {
+      "clones_14d": {
+        "count": 195,
+        "readable": true,
+        "uniques": 71
+      },
+      "release_downloads": 0
+    },
+    "sysmlv2-testing": {
+      "clones_14d": {
+        "count": 15,
+        "readable": true,
+        "uniques": 10
+      },
+      "release_downloads": 0
+    },
+    "sysmlv2-web-modeler": {
+      "clones_14d": {
+        "count": 31,
+        "readable": true,
+        "uniques": 28
+      },
+      "release_downloads": 0
+    },
+    "sysmlv2_dls": {
+      "clones_14d": {
+        "count": 39,
+        "readable": true,
+        "uniques": 23
+      },
+      "release_downloads": 0
+    },
+    "sysmlv2_excel": {
+      "clones_14d": {
+        "count": 4,
+        "readable": true,
+        "uniques": 4
+      },
+      "release_downloads": 0
+    },
+    "sysmlv2x": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "sysmod-sysmlv2-api": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "testrail-cli": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 69
+    },
+    "testrail-client-wrapper": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "text2text": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "toaster": {
+      "clones_14d": {
+        "count": 170,
+        "readable": true,
+        "uniques": 79
+      },
+      "release_downloads": 0
+    },
+    "trafo-v2-v1": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "tree-sitter-sysml": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "user-forum": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "util": {
+      "clones_14d": {
+        "count": 50,
+        "readable": true,
+        "uniques": 20
+      },
+      "release_downloads": 0
+    },
+    "ve-confluence": {
+      "clones_14d": {
+        "count": 22,
+        "readable": true,
+        "uniques": 15
+      },
+      "release_downloads": 0
+    },
+    "ve-confluence-app": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "ve-diagram-generator": {
+      "clones_14d": {
+        "count": 4,
+        "readable": true,
+        "uniques": 4
+      },
+      "release_downloads": 0
+    },
+    "view-service": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    },
+    "websysml-core": {
+      "clones_14d": {
+        "readable": false,
+        "reason": "{\"message\":\"Must have push access to repository\",\"documentation_url\":\"https://docs.github.com/rest/metrics/traffic#get-repository-clones\",\"status\":\"403\"}"
+      },
+      "release_downloads": 0
+    }
+  },
+  "taken_with_snapshot": "2026-10-18T01:37:12+00:00"
+}
