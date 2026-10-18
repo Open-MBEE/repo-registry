@@ -44,16 +44,23 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
   | Monitor | Scheduled runs, red / yellow / green status and the status log |
 - **Kinds and policies reduce dimensionality.** The aim is rigorous controls on the repos that need them and low
   friction everywhere else. We don't support every policy GitHub can express. We name a small set of policies,
-  document each one's configuration, and state clearly which policies are in effect for which tiers. The chain is
-  **repo → kind → tier → policies**. Kinds are classified from rich data about each repo, and they are a fairly small
-  taxonomy. Each kind maps to one of the 4 tiers, and each tier maps to its policies. There are more than 4 policies,
-  because several can be in effect for one tier. Each is defined at a level GitHub can configure. The pilot is a few
+  document each one's configuration, and state clearly when each policy is in effect. A repo's kind gives it three
+  categorical attributes: its **type**, its **lifecycle**, and its **tier** (derived from the kind). Each policy
+  attaches to a type, a lifecycle or a tier, so it reduces to a plain rule: *this policy applies if* a condition on
+  those three attributes holds. Kinds are classified from rich data about each repo, and they are a fairly small
+  taxonomy. Repos are many and policies are few. The rules connecting them are low-dimensional, plain-language,
+  deterministic and replayable: categorical feature engineering from repos to three attributes, and from those
+  attributes to the policies in effect. *(Amended, A1.)* Each policy is defined at a level GitHub can configure. The pilot is a few
   dozen repos. The full scope is the low hundreds.
 - **Simplest sufficient policy set:** the policies are drawn from a review of GitHub's security features and
   documentation, cross-checked against the NIST RMF and CISA guidance, to find the simplest set of policies that meets
   our security objectives.
+- **Governance type.** Besides tool, media and research, there is a **governance** type. Only two things have it:
+  this repo (governance/experimental) and the administration of the GitHub org itself (governance/maintained). Every
+  governance kind maps to the high tier, because controls at the governance level must be as strict as, or stricter
+  than, anything they govern. Governance kinds are assigned, not recommended. *(Amended, A2.)*
 - **Four tiers across the kinds.** Each kind sits in one of four tiers. **High:** core tools that need rigorous
-  release control. **Medium:** load-bearing media such as the website, and tools that are ancillary or experimental.
+  release control, and governance. **Medium:** load-bearing media such as the website, and tools that are ancillary or experimental.
   **Low:** repos that need an owner but have no formal controls beyond someone who looks after them. **None:**
   archived material, read-only once its archived status has been verified.
 - **Operators are named in each repo.** Repos are governed locally by their CODEOWNERS, which the program senses.
@@ -82,7 +89,7 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
   holding only enough to look up the policies that apply. The policies are files too. Both must be easy for people to
   read and easy for the program to check against what it senses. YAML is the starting point for reasoning about the
   format, not a decision.
-- **Issues:** each issue states that the repo is out of line with a specific policy in effect for its tier. The main
+- **Issues:** each issue states that the repo is out of line with a specific policy in effect for it. The main
   path is to change the repo's configuration to match. The escalation path is a kind-change PR to this repo.
 - **Credentials:** reading uses a strong credential, so settings are measured rather than asked about. Writing uses a
   comparatively weak one.
@@ -141,7 +148,7 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
 - Deleting repositories. It never deletes anything.
 - The authority on a repo's status. People decide that: operators propose kinds by PR, and governors merge. The
   system records, infers initial kinds and checks.
-- Supporting every policy GitHub can express. Only named policies, in effect for named tiers, are checked.
+- Supporting every policy GitHub can express. Only named policies, each with a rule on type, lifecycle or tier, are checked.
 - Its own identity or permission system. Everything uses GitHub users, teams, roles, CODEOWNERS and rulesets.
 - Writing to the live org, apart from this repo itself once it moves there. The only contact with other repos in R1 is
   reading them: the pilot repos, and the fit analysis of all repos. The sample issues are not posted.
@@ -155,10 +162,10 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
 
 | ID | Deliverable | Serves |
 |---|---|---|
-| D-1 | The rules as data: the canonical kind list (one file at the root of this repo, one entry per repo, with only enough to look up its kind), the map from kinds to tiers and from tiers to policies, and the named policies. Each policy documents its GitHub configuration, states which tiers it is in effect for, names the CISA practice and the RMF task or SP 800-53 control it serves (or "none"), and has an SOP covering setup, automated checks and attested checks. Readable by people and checkable by the program. | G2, G3 |
+| D-1 | The rules as data: the canonical kind list (one file at the root of this repo, one entry per repo, with only enough to look up its kind), the map from kinds to tiers, and the named policies. Each policy documents its GitHub configuration, states its applies-if rule on type, lifecycle or tier, names the CISA practice and the RMF task or SP 800-53 control it serves (or "none"), and has an SOP covering setup, automated checks and attested checks. Readable by people and checkable by the program. | G2, G3 |
 | D-2 | The program: a small deterministic check that compares each repo with its rules and works out what it would send, run read-only on the pilot, with its tests running in GitHub Actions on every PR | G4 |
 | D-3 | Wiki pages generated by the program as local files: an index page; one page per kind, per policy and per tier (the policy pages hold the policies); and views of the registry by kind, by policy and by tier. No page per repo. In each view, every repo shows its red / yellow / green status, a link to the repo, and a link to its outstanding registry issues, filtered by the labels the program writes on them | G1, G3 |
-| D-4 | Sample issue texts, generated as local files: what the system would write, shown for demonstration and not posted. Filled deterministically from templates by the state machine, and carrying the labels the wiki's issue links filter on *(default: a registry label plus one per policy)*. Each states which policy in effect for the repo's tier it is out of line with, the main path (change the configuration) and the escalation path (a kind-change PR to this repo). Policy questions go to governors. | G4 |
+| D-4 | Sample issue texts, generated as local files: what the system would write, shown for demonstration and not posted. Filled deterministically from templates by the state machine, and carrying the labels the wiki's issue links filter on *(default: a registry label plus one per policy)*. Each states which policy in effect for the repo it is out of line with, the main path (change the configuration) and the escalation path (a kind-change PR to this repo). Policy questions go to governors. | G4 |
 | D-5 | The pilot: a proposed subset of 24 to 36 real Open-MBEE repos (everything else on the exclude list), with each one's proposed kind, sampled as in *Direction*; tests on stored snapshots of it; and three demonstration flows, one per role (reader, operator, governor), showing what would happen if the system were turned on | G5 |
 | D-6 | A read-only fit analysis of all of the org's repos (about 183): how well the draft kinds fit them, and which don't fit. A separate task from the pilot | G5 |
 | D-7 | The status log: a data file in this repo, one entry per repo per run with its red / yellow / green status, joining cleanly to the canonical kind list, so compliance history is in git. In R1 it is written for the pilot. | G2, G3 |
@@ -188,7 +195,7 @@ scoping. All were approved by the supervisor.
 | R-13 | Every repo, and every control on it, shows a compliance status: **red** = known out of compliance, **yellow** = can't tell, **green** = known in compliance. Green means the automated checks pass and every required attestation is present and up to date. A missing or out-of-date required attestation is red. An attestation is out of date once it is older than the repo's latest release *(default)*. An archived repo is green by definition. A repo is archived through the archive policy, and repos archived before it existed are green as they are *(default)*. A control with an accepted deviation is green, marked visibly as an accepted exception. A repo is red if any control is red, yellow if none is red but any is yellow, and green only if every control is green *(default)*. The status is shown in words as well as color *(default)*. | On the pilot snapshot, repos and controls in each state show the expected status |
 | R-14 | No invalid state can reach `main`. Every change to this repo's data (kind list, policies, status log), from a person or the program, is checked against the meta-rules before it lands *(default: the program's own status-log commits are checked the same way)*. Out of compliance is valid. The wiki is published only from a valid `main`. | A change with deliberately invalid data fails the check and does not land; an out-of-compliance change passes |
 | R-15 | The named-maintainer list matches the people with governance power: this repo's CODEOWNERS and the org's admins. What can be measured (org roles, CODEOWNERS) is sensed. What can't (for example, powers held outside GitHub roles) is attested. Each mismatch is a gap with a status. | On the pilot snapshot, a matching list is green, and a deliberate mismatch is red with a sample issue to governors |
-| R-16 | Every policy is named, documents its GitHub configuration, states which tiers it is in effect for, cites the CISA practice and the RMF task or SP 800-53 control it serves (or "none"), and has an SOP covering setup, automated checks and attested checks. No check runs that isn't in a named policy. | The meta-rule check (R-14) rejects a policy missing any part; a cold read of each SOP |
+| R-16 | Every policy is named, documents its GitHub configuration, states its applies-if rule on type, lifecycle or tier *(amended, A1)*, cites the CISA practice and the RMF task or SP 800-53 control it serves (or "none"), and has an SOP covering setup, automated checks and attested checks. No check runs that isn't in a named policy. | The meta-rule check (R-14) rejects a policy missing any part; a cold read of each SOP |
 | R-17 | Every kind is in exactly one tier (high, medium, low, none). A repo's operators are its CODEOWNERS, sensed from the repo, whose CODEOWNERS file is the authoritative source; the registry reads it and shows it in the wiki. A repo in a tier that needs an owner, with no CODEOWNERS, is red. Only a CODEOWNER's attestation counts *(default)*. | The meta-rule check rejects a kind with no tier; on the pilot snapshot, a repo with no CODEOWNERS in an owned tier is red, and an attestation by a non-CODEOWNER doesn't count |
 | R-18 | Every repo shown in a wiki view links to the repo and to a view of its outstanding registry issues, filtered by the labels the program writes. | On the pilot views, every repo has both links, and each issue link's filter matches the labels on that repo's sample issues |
 
@@ -213,7 +220,7 @@ doesn't touch it. The supervisor approved the grid one deliverable column at a t
 | **R-13** Red / yellow / green | | Status follows from the verdicts | Each pilot repo shows its expected color in every view | | Pilot has red, yellow and green repos, and a green-with-exception control | | Records each repo's status per run | The org gets a status | |
 | **R-14** Valid main | Invalid kind list or policy fails the check | The meta-rule check runs on every change | Published only from a valid `main` | | Invalid-change and out-of-compliance cases included | | Each log commit passes the check before it lands | Invalid maintainer list fails the check | |
 | **R-15** Maintainers match governance power | Maintainer list and org policy are data | Compares the list with CODEOWNERS and org admins | The org page shows the match | Sample issue to governors on a mismatch | Pilot demo includes the org | | Records the org's status per run | Matching list and settings in effect: green; a mismatch or a missing setting: red | |
-| **R-16** Named policies with SOPs | Each policy has every required part, citations included; meta-rule check | Runs only the checks the named policies define | Tier pages list the policies in effect; policy pages hold each SOP | Each issue links to its policy's SOP | Pilot has a strict tool, a lax research repo, and an archived repo shown green | | | | Each proposed policy has its GitHub configuration and both citations |
+| **R-16** Named policies with SOPs | Each policy has every required part, citations included; meta-rule check | Runs only the checks the named policies define | Type, lifecycle and tier pages list the policies attached to them; policy pages hold each SOP | Each issue links to its policy's SOP | Pilot has a strict tool, a lax research repo, and an archived repo shown green | | | | Each proposed policy has its GitHub configuration and both citations |
 | **R-17** Tiers and operators | Each kind maps to one tier; meta-rule check | Senses CODEOWNERS; counts only CODEOWNER attestations | Views show each repo's tier and CODEOWNERS | Issues go to the repo's CODEOWNERS | Pilot covers all four tiers, and a repo with no CODEOWNERS | | | | |
 | **R-18** Repo and issue links | | Builds both links for every repo | Every repo in every view has both links | Issues carry the labels the links filter on | Link check on the pilot views | | | | |
 
