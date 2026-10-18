@@ -76,3 +76,13 @@ mzargham's.
 - **Outcome:** The brief shows its shape with a hypothetical example, labelled throughout as hypothetical: not the
   proposed decision, and naming no real person as an owner or maintainer. The co-founders' actual decision is recorded
   separately, by the supervisor (D-3).
+
+## Approval *(stated by the supervisor; the scope and its completion in one pull request)*
+
+- **Supervisor (mzargham, typed by agent):** "combine the scope and its completion in the same pr. we don't want so many
+  spurious prs for the scopes"
+- **Question:** Do you approve the WP5f scope as written, so I can build it on #14's branch? (Options: approve it /
+  change first.)
+- **Answer (mzargham, typed by agent):** "Approve it"
+- **Outcome:** WP5f's scope is approved by this answer. #14 carries the scope, its records and the work; its merge is
+  the acceptance and brings the scope to `main`.
