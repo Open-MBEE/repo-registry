@@ -23,8 +23,9 @@ types:
   tool: Software that people install, run, or build on.
   media: The website, documentation, teaching material, example models, and the organization's shared pages and images.
   research: Ideas explored in public, often by one person working alone. Often archived once work on it stops.
-  governance: The rules for the organization itself. Only two things are this type, this repository and the
-    administration of the GitHub organization.
+  governance: >-
+    The rules for the organization itself. Only two things are this type: the repo-registry repository, which
+    holds these rules, and the administration of the GitHub organization.
 
 lifecycles:
   experimental: >-
@@ -33,7 +34,7 @@ lifecycles:
   active-development: >-
     Being worked on now. For a tool, it has released version 1.0 or later and has had changes in the last year.
   maintained: >-
-    Stable, still offered for use, and looked after, with few recent changes.
+    Stable, still offered for use, and looked after, with no changes in the last year.
   unreleased: >-
     Tools only. A tool that has never published a numbered release (such as 1.2.0). It needs a named person to look
     after it, and nothing more, until it starts releasing.
@@ -143,7 +144,7 @@ kinds:
     type: media
     lifecycle: experimental
     tier: low
-    meaning: Draft or trial media. Only a governor gives a repository this kind.
+    meaning: Draft or trial media. Only the OpenMBEE maintainers give a repository this kind.
     recommend_when: false
   media/archived:
     type: media
@@ -167,14 +168,14 @@ kinds:
     type: research
     lifecycle: active-development
     tier: low
-    meaning: Research being worked on toward a result. Only a governor gives a repository this kind.
+    meaning: Research being worked on toward a result. Only the OpenMBEE maintainers give a repository this kind.
     recommend_when: false
   research/maintained:
     type: research
     lifecycle: maintained
     tier: low
     meaning: >-
-      Finished research kept available, for example alongside a paper. Only a governor gives a repository this kind.
+      Finished research kept available, for example alongside a paper. Only the OpenMBEE maintainers give a repository this kind.
     recommend_when: false
   research/archived:
     type: research
@@ -190,7 +191,7 @@ kinds:
     lifecycle: experimental
     tier: high
     meaning: >-
-      Rules for the organization that are still being built. Only this repository has this kind. It gets the
+      Rules for the organization that are still being built. Only the repo-registry repository, which holds these rules, has this kind. It gets the
       strictest controls, because whatever governs must be at least as strict as what it governs.
     recommend_when: false
   governance/maintained:
@@ -204,8 +205,8 @@ kinds:
 
 # Kinds in the type x lifecycle cross product that are deliberately left out, each with its reason (WP1 R-3).
 omitted:
-  governance/active-development: Only two things have the governance type, and neither is at this stage (WP1 A2).
-  governance/archived: Only two things have the governance type, and neither is archived (WP1 A2).
+  governance/active-development: Only two things have the governance type, and neither is at this stage.
+  governance/archived: Only two things have the governance type, and neither is archived.
   governance/unreleased: The unreleased stage is for tools only.
   media/unreleased: The unreleased stage is for tools only.
   research/unreleased: The unreleased stage is for tools only.

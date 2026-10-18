@@ -14,7 +14,7 @@ tiers:
     order: 2
     meaning: >-
       Moderate controls. For media that many people rely on, such as the website, and for tools that are still
-      early or that play a supporting role.
+      early, with releases numbered below 1.0.
   low:
     order: 3
     meaning: >-
