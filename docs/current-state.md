@@ -31,7 +31,7 @@
 | Types | tool, media, research, governance (governance: `repo-registry` and the org's administration, the same type at different stages: the org is graduated, `repo-registry` is in sandbox) | WP0 A2; [WP1-amendment-3](../work-packages/WP1-amendment-3.md) |
 | Stages | Sandbox, Incubating, Graduated, Archived, adopted from CNCF and OpenSSF. A tool moves Sandbox → Incubating at 1.0.0. Graduated is never recommended; maintainers assign it | WP0/WP1 A4; [lifecycle-stage-map](lifecycle-stage-map.md) |
 | Tiers | high (graduated tools, governance/graduated), medium (incubating tools, media people rely on, governance/incubating), low (named owner only, including governance/sandbox), none (archived). Governance friction rises with the stage; governance/graduated carries the org policies and the repository policies | A4; [WP1-amendment-3](../work-packages/WP1-amendment-3.md); `data/taxonomy/tiers.yaml` |
-| Kind assignment | Inferred initial kind (guidance). Changed by a pull request to this repo, merged by any maintainer; an operator's only action here | [WP0-decisions](../work-packages/WP0-decisions.md) "OD3"; WP1 A3; [WP4b-decisions](../work-packages/WP4b-decisions.md) "OD3" |
+| Kind assignment | Each kind-list entry has a **source** (WP5c OD1): `inferred` (the rules' candidate), `topic` (its code owners declared the type with one `openmbee-<type>` GitHub topic; the rules give the stage) or `maintainer` (a maintainer's merged decision, with the decision it records). Precedence: inferred, then topic, then maintainer; rules and topics never change a maintainer entry. A kind change is a pull request to this repo, merged by any maintainer; the refresh view lists the candidates the rules would change | [WP5c-decisions](../work-packages/WP5c-decisions.md); [WP1-amendment-6](../work-packages/WP1-amendment-6.md); [WP4b-decisions](../work-packages/WP4b-decisions.md) "OD3" |
 | A kind is not a compliance verdict | Lifecycle is a category; whether its duties are done is checked by policies | [WP1-decisions](../work-packages/WP1-decisions.md) |
 | Policies | Repository policies (including `license-by-type`) and org policies, each a file in `data/policies/` with its scope, citations, applies-if rule, checks and set-up steps; the set's status is stored once (`_set.yaml`). Each SOP is rendered from its policy, never written by hand | `data/policies/`; [policy-format](policy-format.md); [policy-basis-review](policy-basis-review.md) (narrative; its tables are rendered) |
 | Plans | OpenMBEE is on GitHub Free. Every policy declares `available_on`; immutable releases and rulesets are confirmed for the org; Enterprise-only features are listed for the future, never required | [WP3-decisions](../work-packages/WP3-decisions.md); `data/sources/github-plan.yaml`; `data/policies/_future.yaml` |
@@ -67,7 +67,8 @@
 | WP4e | Type and stage in the kind list | accepted 63e270f |
 | WP5 | Meta-rule checks in CI; move to Open-MBEE | accepted 6938aa5 ([#1](https://github.com/Open-MBEE/repo-registry/pull/1)) |
 | WP5b | The model, its integrity, and views out of the model (MVC, demo mode) | accepted 9e14099 ([#6](https://github.com/Open-MBEE/repo-registry/pull/6)) |
-| **WP5c** | Taxonomy refinements from WP4's fit analysis | **scoped**, approved by the merge of its scope PR ([WP5c-scope-of-work](../work-packages/WP5c-scope-of-work.md)) |
+| **WP5c** | Taxonomy refinements from WP4's fit analysis | **accepted by the merge of its delivery pull request** (scope approved 8197d77) |
+| **WP5d** | The maintainer review pack, published to the wiki | **next**; decisions in [WP5d-decisions](../work-packages/WP5d-decisions.md) |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
@@ -78,9 +79,9 @@
   (no approving review required until R3).
 - **Forthcoming** (`data/forthcoming.yaml`, capabilities not built): XF-1, the sensing credential with
   *Administration: read* (set up and closed in WP6).
-- **Taxonomy candidates** ([fit-analysis](fit-analysis.md)), for WP5c: forks assessed against their upstream; type
-  declared by a GitHub topic; better word and file signals; a default for archived repositories with no type;
-  `.github` as governance.
+- **Taxonomy:** the fit report view (`build/demo/fit-report.md`) gives the unclassified repositories by reason. After
+  WP5c: mirrors (forks with no changes of ours), live repositories with no type signal, and archived ones with no type.
+  Code owners can classify theirs with an `openmbee-<type>` topic.
 - **Open for the maintainers:** the off-list and missing licenses (the license view); the should-be-archived
   repositories; maintenance of the heavily used `exec-*` tools.
 

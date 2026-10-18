@@ -97,10 +97,6 @@ repos:
     name: "repo-registry"
     category: must-include
     reason: "registers itself (X-9)"
-  1187592523:
-    name: "staged-recipes-opensysml"
-    category: forks
-    reason: "forks: forks related to SysML, ranked by use, kept unclassified on purpose to show that the taxonomy has no kind for forks"
   1361506514:
     name: "sysml-toolkit"
     category: tools-actively-developed

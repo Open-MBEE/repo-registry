@@ -5,16 +5,18 @@ WP1 D-5. Deterministic, no language model (WP1 R-5, WP0 R-1). The taxonomy is da
 type, stage, tier or signal (WP1 R-7, WP0 R-6). It only RECOMMENDS kinds. Authority to set a repo's kind
 belongs to the maintainers (WP1 Direction, AGENTS.md "Provisional data").
 
-Usage: python3 scripts/recommend.py [--out build/demo] [--kinds ...] [--tiers ...] [--assignments ...]
+Usage: python3 scripts/recommend.py [--out build/demo] [--kinds ...] [--tiers ...] [--registry registry.yaml]
 
 It writes two views into --out: the recommendation report (reports/kind-recommendations.yaml) and a draft kind list
 (kind-list-draft.yaml), which is what the rules alone would give. The kind list itself (registry.yaml) is model data
 that people change one entry at a time (WP0 R-12); the rules only propose a candidate (WP5c, the supervisor:
 "the inference produces a candidate not a decision").
 
-Assigned kinds (data/assignments.yaml) come from recorded decisions. They replace the recommendation for that repo,
-and a repo with no sensed row (one created after the snapshot, such as this one) is added. The org's own kind is
-assigned the same way. Rows are keyed by GitHub's repository ID (WP5b OD3).
+Precedence (WP5c OD1): a maintainer's decision (a kind-list entry whose source is `maintainer`) is kept as it is;
+otherwise a type declared by exactly one openmbee-<type> topic (`type_topics` in kinds.yaml) overrides the word and
+language rules, and the rules decide the stage; otherwise the rules alone propose a candidate. Each draft entry says
+which source gave it. A repo with no sensed row (one created after the snapshot, such as this one) comes only from a
+maintainer's decision. Rows are keyed by GitHub's repository ID (WP5b OD3).
 
 Derived attributes, added to each snapshot record before the rules run:
   has_semver_release   true if any non-prerelease release tag is semantic versioning (vMAJOR.MINOR.PATCH)
@@ -39,15 +41,18 @@ class TaxonomyError(Exception):
     pass
 
 
-def derive(repo):
+def derive(repo, type_topics=None):
+    """Derived columns (data/schema/model.yaml, derived): the release maturity, and the type its topics declare."""
     versions = []
     for rel in repo.get("releases", []):
         m = SEMVER.match(rel["tag"] or "")
         if m and not rel.get("prerelease"):
             versions.append((tuple(int(x) for x in m.groups()), rel["tag"]))
     best = max(versions) if versions else None
+    declared = {type_topics[t] for t in repo.get("topics") or [] if t in (type_topics or {})}
     return {
         **repo,
+        "declared_type": declared.pop() if len(declared) == 1 else None,  # none, or more than one, declares nothing
         "has_semver_release": bool(versions),
         "latest_semver": best[1] if best else None,
         "latest_semver_major": best[0][0] if best else None,
@@ -139,7 +144,7 @@ def recommend(repos, kinds_doc, assigned=None):
     for rid, repo in repos.items():
         if repo.get("after_snapshot"):
             continue  # no sensed columns: only an assignment can give it a kind (below)
-        repo = derive(repo)
+        repo = derive(repo, kinds_doc.get("type_topics"))
         matched = [n for n, k in kinds.items() if evaluate(k["recommend_when"], repo, signals)]
         flags = [n for n, f in kinds_doc.get("flags", {}).items() if evaluate(f["when"], repo, signals)]
         if len(matched) == 1:
@@ -153,11 +158,13 @@ def recommend(repos, kinds_doc, assigned=None):
                     (r["reason"] for r in kinds_doc.get("unclassified_reasons", []) if evaluate(r["when"], repo, signals)),
                     "No kind's rule matches.",
                 )
+        source = "topic" if repo["declared_type"] else "inferred"
         if rid in assigned:
-            kind, reason = model.kind_of(assigned[rid]), None
+            kind, reason, source = model.kind_of(assigned[rid]), assigned[rid].get("reason"), "maintainer"
         results[rid] = {
             "name": repo["name"],
-            "assigned": rid in assigned,
+            "source": source,
+            "declared_type": repo["declared_type"],
             "kind": kind,
             "tier": kinds[kind]["tier"] if kind in kinds else None,
             "matched": matched,
@@ -175,7 +182,8 @@ def recommend(repos, kinds_doc, assigned=None):
     for rid, a in assigned.items():
         if rid not in results:
             results[rid] = {
-                "name": a.get("name") or repos.get(rid, {}).get("name"), "assigned": True, "kind": model.kind_of(a),
+                "name": a.get("name") or repos.get(rid, {}).get("name"), "source": "maintainer", "declared_type": None,
+                "kind": model.kind_of(a),
                 "tier": (kinds.get(model.kind_of(a)) or {}).get("tier"), "matched": [], "reason": None, "flags": [],
                 "evidence": {"note": "No sensed row: created after the snapshot.", "decision": a["decision"]},
             }
@@ -189,22 +197,51 @@ def quote(s):
     return json.dumps(s)  # a JSON string is a valid YAML scalar
 
 
-def write_draft(path, results, org, org_kind, kinds_doc):
-    """The kind list the rules alone would give (a view): the same format as registry.yaml."""
+def entry_lines(rid, r, kinds, decisions):
+    lines = [f"  {rid}:", f"    name: {quote(r['name'])}"]
+    if r["kind"] in kinds:
+        lines += [f"    type: {kinds[r['kind']]['type']}", f"    stage: {kinds[r['kind']]['stage']}"]
+    if r["reason"]:
+        lines.append(f"    reason: {quote(r['reason'])}")
+    lines.append(f"    source: {r['source']}")
+    if r["source"] == "maintainer":
+        lines.append(f"    decision: {quote(decisions.get(rid, ''))}")
+    return lines
+
+
+def write_draft(path, results, org, kinds_doc, decisions):
+    """The kind list the rules and topics would give, with the maintainers' decisions kept (a view): the same format
+    as registry.yaml, so the refresh is a plain comparison."""
     kinds = model.kinds(kinds_doc)
-    lines = ["# A VIEW (WP5b OD4): the kind list the rules would draft. registry.yaml is the model; this is a candidate.",
-             "status: provisional", "org:", f"  name: {org}"]
-    if org_kind in kinds:
-        lines += [f"  type: {kinds[org_kind]['type']}", f"  stage: {kinds[org_kind]['stage']}"]
+    o = org or {}
+    lines = ["# A VIEW (WP5b OD4): the kind list the rules and topics would give, maintainers' decisions kept.",
+             "status: provisional", "org:", f"  name: {o.get('name')}"]
+    if model.kind_of(o) in kinds:
+        lines += [f"  type: {o['type']}", f"  stage: {o['stage']}", f"  source: {o.get('source')}"]
     lines.append("repos:")
     for rid, r in results.items():
-        lines += [f"  {rid}:", f"    name: {quote(r['name'])}"]
-        if r["kind"] in kinds:
-            lines += [f"    type: {kinds[r['kind']]['type']}", f"    stage: {kinds[r['kind']]['stage']}"]
-        if r["reason"]:
-            lines.append(f"    reason: {quote(r['reason'])}")
+        lines += entry_lines(rid, r, kinds, decisions)
     pathlib.Path(path).parent.mkdir(parents=True, exist_ok=True)
     pathlib.Path(path).write_text("\n".join(lines) + "\n")
+
+
+def write_refresh(path, results, registry, kinds_doc):
+    """The inferred and topic entries the rules or topics would change today (a view, WP5c): applying it is an
+    ordinary pull request. Maintainer entries never appear: rules and topics don't change them (WP5c OD1)."""
+    kinds = model.kinds(kinds_doc)
+    changes = {}
+    for rid, r in results.items():
+        now = registry.get(rid) or {}
+        if now.get("source") == "maintainer":
+            continue
+        would = {"kind": r["kind"], "reason": r["reason"], "source": r["source"]}
+        have = {"kind": model.kind_of(now), "reason": now.get("reason"), "source": now.get("source")}
+        if would != have:
+            changes[rid] = {"name": r["name"], "now": have, "would_be": would}
+    doc = {"note": "A view (WP5c): kind-list entries the rules or topics would change today. Maintainer entries are "
+                   "never listed. Apply by a pull request.", "changes": changes}
+    pathlib.Path(path).write_text(yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=120))
+    return changes
 
 
 def write_report(path, results):
@@ -220,30 +257,33 @@ def main():
     ap.add_argument("--root", default=".")
     ap.add_argument("--kinds", default="data/taxonomy/kinds.yaml")
     ap.add_argument("--tiers", default="data/taxonomy/tiers.yaml")
-    ap.add_argument("--assignments", default="data/assignments.yaml")
+    ap.add_argument("--registry", default="registry.yaml", help="the kind list, for its maintainer decisions; '' for none")
     args = ap.parse_args()
 
     root = pathlib.Path(args.root)
-    meta = json.loads((model.snapshot_dir(root) / "meta.json").read_text())
     kinds_doc = yaml.safe_load(pathlib.Path(args.kinds).read_text())
     tiers_doc = yaml.safe_load(pathlib.Path(args.tiers).read_text())
-    assignments = yaml.safe_load(pathlib.Path(args.assignments).read_text()) if args.assignments else {}
-    org_kind = model.kind_of((assignments or {}).get("org") or {})
+    registry = yaml.safe_load(pathlib.Path(args.registry).read_text()) if args.registry else {"repos": {}, "org": {}}
+    entries = registry.get("repos") or {}
+    decided = {rid: e for rid, e in entries.items() if e.get("source") == "maintainer"}
+    decisions = {rid: e.get("decision", "") for rid, e in decided.items()}
+    org = registry.get("org") or {}
     try:
         check_taxonomy(kinds_doc, tiers_doc)
-        if org_kind != "unclassified" and org_kind not in model.kinds(kinds_doc):
-            raise TaxonomyError(f"org: assigned kind {org_kind} is not a kind")
-        results = recommend(model.repos(root), kinds_doc, (assignments or {}).get("repos") or {})
+        if org and model.kind_of(org) not in model.kinds(kinds_doc):
+            raise TaxonomyError(f"org: kind {model.kind_of(org)} is not a kind")
+        results = recommend(model.repos(root), kinds_doc, decided)
     except TaxonomyError as e:
         sys.exit(f"taxonomy error:\n{e}")
 
     out = pathlib.Path(args.out)
-    write_draft(out / "kind-list-draft.yaml", results, meta["org"], org_kind, kinds_doc)
+    write_draft(out / "kind-list-draft.yaml", results, org, kinds_doc, decisions)
     write_report(out / "reports/kind-recommendations.yaml", results)
+    changes = write_refresh(out / "kind-list-refresh.yaml", results, entries, kinds_doc)
     counts = {}
     for r in results.values():
         counts[r["kind"]] = counts.get(r["kind"], 0) + 1
-    print(f"{len(results)} repos; org kind: {org_kind}")
+    print(f"{len(results)} repos; org kind: {model.kind_of(org)}; {len(changes)} candidate entries would change")
     for kind in list(model.kinds(kinds_doc)) + ["unclassified"]:
         tier = model.kinds(kinds_doc).get(kind, {}).get("tier", "-")
         print(f"  {kind:28} {tier:7} {counts.get(kind, 0)}")

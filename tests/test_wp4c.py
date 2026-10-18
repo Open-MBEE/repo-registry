@@ -35,7 +35,7 @@ class GovernanceKindTests(unittest.TestCase):
         self.assertEqual(gov(load("registry.yaml")["org"]), ("governance", "graduated"))
         entry = next(e for e in load("registry.yaml")["repos"].values() if e["name"] == "repo-registry")
         self.assertEqual(gov(entry), ("governance", "sandbox"))
-        self.assertEqual(gov(next(iter(load("data/assignments.yaml")["repos"].values()))), ("governance", "sandbox"))
+        self.assertEqual(entry["source"], "maintainer")  # a maintainer's decision (WP5c OD1)
 
     def test_R2_graduated_carries_org_and_repository_policies(self):
         """R-2: governance/graduated takes the 5 org policies and every policy governance/sandbox took before WP4c."""

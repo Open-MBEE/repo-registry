@@ -48,6 +48,8 @@ through that model, so every change is checked as it lands.
 - Approving any kind: the kind list stays provisional until the maintainers' approval 4 (WP0).
 - Changing the kept pilot list (`data/pilot.yaml`, a model table). The rule's proposal view may change; the kept list
   changes only by its own governed pull request.
+  *(amended at the review, G-1: the mirror `staged-recipes-opensysml` moves from the pilot to the exclude list, as
+  OD2 says; the supervisor's "Fix before acceptance". Recorded in WP5c-decisions.md.)*
 - The engine (WP6) and the wiki (WP7).
 
 ## Deliverables

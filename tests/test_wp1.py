@@ -23,18 +23,17 @@ KINDS = ROOT / "data/taxonomy/kinds.yaml"
 TIERS = ROOT / "data/taxonomy/tiers.yaml"
 REGISTRY = ROOT / "registry.yaml"
 FIXTURES = ROOT / "tests/fixtures"
-ASSIGNMENTS = ROOT / "data/assignments.yaml"
 
 
 def load(path):
     return yaml.safe_load(pathlib.Path(path).read_text())
 
 
-def run_recommend(tmp, kinds=KINDS, tiers=TIERS, assignments=ASSIGNMENTS):
+def run_recommend(tmp, kinds=KINDS, tiers=TIERS, registry=REGISTRY):
     """The rules' draft kind list and the recommendation report: views, rendered into tmp (WP5b OD4)."""
     subprocess.run(
         [sys.executable, str(ROOT / "scripts/recommend.py"), "--out", str(tmp), "--kinds", str(kinds),
-         "--tiers", str(tiers), "--assignments", str(assignments or "")],
+         "--tiers", str(tiers), "--registry", str(registry or "")],
         cwd=ROOT, check=True, capture_output=True, text=True,
     )
     return (pathlib.Path(tmp) / "kind-list-draft.yaml").read_text(), load(pathlib.Path(tmp) / "reports/kind-recommendations.yaml")
@@ -135,7 +134,7 @@ class EngineTests(unittest.TestCase):
         """R-5: if two kinds' rules overlap, the repo is unclassified and the overlap is named."""
         with tempfile.TemporaryDirectory() as t:
             _, report = run_recommend(t, kinds=FIXTURES / "overlap-kinds.yaml", tiers=FIXTURES / "toy-tiers.yaml",
-                                      assignments=None)
+                                      registry=None)
         first = next(iter(report["repos"].values()))
         self.assertEqual(first["kind"], "unclassified")
         self.assertIn("more than one kind", first["reason"])
@@ -144,7 +143,7 @@ class EngineTests(unittest.TestCase):
         """R-7: a different taxonomy runs through the same engine, and the engine names no kind, type or tier."""
         with tempfile.TemporaryDirectory() as t:
             _, report = run_recommend(t, kinds=FIXTURES / "toy-kinds.yaml", tiers=FIXTURES / "toy-tiers.yaml",
-                                      assignments=None)
+                                      registry=None)
         self.assertEqual({r["kind"] for r in report["repos"].values()}, {"thing/busy", "thing/quiet"})
         src = (ROOT / "scripts/recommend.py").read_text()
         kinds = load(KINDS)
@@ -191,21 +190,22 @@ class KindListTests(unittest.TestCase):
         self.assertTrue(self.text.startswith("# PROVISIONAL"))
         self.assertEqual(self.doc["status"], "provisional")
         self.assertTrue(self.doc["provisional_until"].strip())
-        for path in (KINDS, TIERS, ASSIGNMENTS):
+        for path in (KINDS, TIERS):
             self.assertEqual(load(path)["status"], "provisional", path)
 
     def test_D4_meta_rules(self):
         """D-4 meta-rules 1-8 and 10 hold on the provisional kind list (entries hold type and stage, WP4e)."""
         kinds = model.kinds(load(KINDS))
         self.assertLessEqual(set(self.doc), {"status", "org", "repos", "provisional_until"})
-        self.assertEqual(set(self.doc["org"]), {"name", "type", "stage"})
+        self.assertEqual(set(self.doc["org"]), {"name", "type", "stage", "source", "decision"})
         self.assertIn(model.kind_of(self.doc["org"]), kinds)
         names = [e["name"] for e in self.doc["repos"].values()]
         self.assertEqual(len({n.lower() for n in names}), len(names))
         self.assertEqual(names, sorted(names, key=str.lower))
         for rid, entry in self.doc["repos"].items():
             self.assertIsInstance(rid, int)  # keyed by GitHub's repository ID (WP5b OD3)
-            self.assertIn(set(entry), ({"name", "type", "stage"}, {"name", "reason"}), entry["name"])
+            self.assertIn(set(entry) - {"source", "decision"}, ({"name", "type", "stage"}, {"name", "reason"}),
+                          entry["name"])  # source and decision: WP5c OD1
             kind = model.kind_of(entry)
             self.assertTrue(kind in kinds or kind == "unclassified", entry["name"])
         recommend.check_taxonomy(load(KINDS), load(TIERS))

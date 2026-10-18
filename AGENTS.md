@@ -72,7 +72,8 @@ Start with [docs/current-state.md](docs/current-state.md). Where things stand: [
 - **Never reimplement what git or GitHub provides.** Identity, permissions, review and audit are GitHub-native
   (X-5, X-7, X-8). Policies are GitHub configurations that this repo references and checks (PO-6, PO-7).
 - **Respect the roles and planes.** Readers use the wiki. Operators, who are each repo's CODEOWNERS (WP0 R-17), work
-  in their own repos; the only thing they do here is open kind-change PRs. Governors (the maintainers) work here
+  in their own repos (where they can declare its type with an `openmbee-<type>` topic, WP5c); the only thing they do
+  here is open kind-change PRs. Governors (the maintainers) work here
   (FM-9, [design](docs/design.md#roles-planes-and-interfaces)).
 - **Who merges what (WP4b OD3).** A kind change: any maintainer. The maintainer list and maintainers' powers: an
   owner. An accepted exception: an owner.

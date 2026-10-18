@@ -108,8 +108,10 @@ issue there. The issue says what to do, why (which rule, and what was seen), and
 A repository's operators **are** its CODEOWNERS. Every repository in a tier that needs an owner (high, medium or
 low) must have a CODEOWNERS file, and only a code owner's attestation counts.
 
-The only thing you ever do in this repository is propose a change to your repository's kind, by a pull
-request that any maintainer may merge.
+In your own repository you can declare its type with one GitHub topic: `openmbee-tool`, `openmbee-media`,
+`openmbee-research` or `openmbee-governance`. A topic beats the registry's guess, and a maintainer's decision beats a
+topic. Otherwise, the only thing you ever do in this repository is propose a change to your repository's kind, by a
+pull request that any maintainer may merge.
 
 ### Governor: you set the rules
 

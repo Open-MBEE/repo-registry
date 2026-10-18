@@ -41,8 +41,9 @@ class PilotTests(unittest.TestCase):
             for view in ("pilot-proposal.yaml", "pilot-briefing.md"):
                 self.assertEqual((pathlib.Path(a) / view).read_text(), (pathlib.Path(b) / view).read_text(), view)
             proposal = yaml.safe_load((pathlib.Path(a) / "pilot-proposal.yaml").read_text())
-        self.assertEqual(proposal["pilot"], PILOT["repos"])
-        self.assertEqual(set(proposal["excluded"]), set(EXCLUDE["repos"]))
+        # The kept pilot is a model table (WP5b OD6), changed only by a governed pull request (WP5c G-1 moved a
+        # mirror out); the rule's proposal is a view, and a difference is shown, not an error. Both cover the kind list.
+        self.assertEqual(set(proposal["pilot"]) | set(proposal["excluded"]), set(PILOT["repos"]) | set(EXCLUDE["repos"]))
 
     def test_R3_size_and_every_category(self):
         """R-3: 24 to 36 repositories, every category represented, and the must-includes present."""

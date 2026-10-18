@@ -20,13 +20,10 @@ def load(rel):
 
 
 def entries():
-    reg, asg = load("registry.yaml"), load("data/assignments.yaml")
-    yield "registry.yaml org", reg["org"], {"name", "type", "stage"}
+    reg = load("registry.yaml")  # data/assignments.yaml is folded into the kind list (WP5c OD1)
+    yield "registry.yaml org", reg["org"], {"name", "type", "stage", "source", "decision"}
     for n, e in reg["repos"].items():
         yield f"registry.yaml {n}", e, None
-    yield "data/assignments.yaml org", asg["org"], {"type", "stage", "decision"}
-    for n, e in asg["repos"].items():
-        yield f"data/assignments.yaml {n}", e, {"name", "type", "stage", "decision"}
 
 
 class KindListTests(unittest.TestCase):
@@ -37,7 +34,7 @@ class KindListTests(unittest.TestCase):
             if fields:
                 self.assertEqual(set(e), fields, where)
             else:
-                self.assertIn(set(e), ({"name", "type", "stage"}, {"name", "reason"}), where)  # name: WP5b OD3
+                self.assertIn(set(e) - {"source", "decision"}, ({"name", "type", "stage"}, {"name", "reason"}), where)
 
     def test_R2_type_and_stage_name_a_defined_kind(self):
         """R-2: each entry's type and stage name a defined kind, not an omitted one."""

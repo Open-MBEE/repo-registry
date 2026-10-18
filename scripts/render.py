@@ -18,7 +18,7 @@ import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
 STEPS = ["recommend.py", "policies.py", "licenses.py", "org.py", "pilot.py", "briefing.py", "sops.py", "basis.py",
-         "datamodel.py"]  # each later step may read the views written by earlier ones
+         "datamodel.py", "fit.py"]  # each later step may read the views written by earlier ones
 
 
 def render(out, root=".", quiet=True):

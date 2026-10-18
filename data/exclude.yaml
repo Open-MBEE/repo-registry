@@ -104,8 +104,10 @@ repos:
     name: "flexo_syside"
   1422498382:
     name: "fprime"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1375281693:
     name: "helix"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1325979711:
     name: "homebrew-tap"
   162639632:
@@ -130,18 +132,24 @@ repos:
     name: "kservices"
   1423592451:
     name: "L4YAML"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1375281058:
     name: "langserver.github.io"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1375280929:
     name: "language-server-protocol"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   33291237:
     name: "Livingstone"
   1375281379:
     name: "lsp-mode"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1375281848:
     name: "lsp4ij"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1375281560:
     name: "mason-registry"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   248101450:
     name: "mathematica-mdk"
   100315040:
@@ -180,6 +188,7 @@ repos:
     name: "MMS-Python-Adapter"
   232688190:
     name: "mms-python-client-feedstock"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   144634994:
     name: "mms-rdf"
   219587644:
@@ -196,14 +205,17 @@ repos:
     name: "mvn-repo"
   1375281201:
     name: "nvim-lspconfig"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   83185538:
     name: "OMGSpecifications"
   1349113785:
     name: "oosem.github.io"
   168441786:
     name: "openapi-generator"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1375280798:
     name: "opencode"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1373634798:
     name: "openmbee-workshops.github.io"
   78896957:
@@ -216,10 +228,13 @@ repos:
     name: "OpenSysML-REDK-Skills"
   1422497683:
     name: "opentelemetry-demo"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1422497939:
     name: "opentelemetry-proto"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1422497329:
     name: "opentelemetry-specification"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   354897889:
     name: "opl"
   495939642:
@@ -232,18 +247,25 @@ repos:
     name: "pmc-fdir"
   1422654883:
     name: "PropertyKindCalculus"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   104777007:
     name: "python-mdk"
   305725041:
     name: "readthedocs"
   29108554:
     name: "sbt-license-plugin"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   35046190:
     name: "sbt-pack"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   952943191:
     name: "scxml4py"
   171956804:
     name: "staged-recipes"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
+  1187592523:
+    name: "staged-recipes-opensysml"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   1326912794:
     name: "starkit"
   1345195457:
@@ -252,6 +274,7 @@ repos:
     name: "structured-usecase-editor"
   133737729:
     name: "swagger-codegen"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   118489913:
     name: "swagger-codegen-mathematica-client"
   130741087:
@@ -278,6 +301,7 @@ repos:
     name: "sysmod-sysmlv2-api"
   1380680226:
     name: "syson"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   93499228:
     name: "testrail-cli"
   93506137:
@@ -304,5 +328,6 @@ repos:
     name: "websysml-core"
   1389553817:
     name: "winget-pkgs"
+    reason: "a mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)"
   34681989:
     name: "zzProjectWiki"

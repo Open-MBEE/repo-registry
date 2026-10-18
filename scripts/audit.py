@@ -152,7 +152,7 @@ def f13():
 
 def f14():
     """The snapshot path stored in a model file instead of once, in data/schema/model.yaml."""
-    rels = ["registry.yaml", "data/pilot.yaml", "data/exclude.yaml", "data/assignments.yaml"]
+    rels = ["registry.yaml", "data/pilot.yaml", "data/exclude.yaml"]
     return [f"{rel}: snapshot" for rel in rels if "snapshot" in (load(rel) or {})]
 
 

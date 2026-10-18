@@ -48,8 +48,8 @@ INVALID = [
     ("registry.yaml", OPENSYSML, OPENSYSML.replace("sandbox", "beta"), "stage: 'beta' is not a stage"),
     ("registry.yaml", OPENSYSML, OPENSYSML + "\n    tier: low", "column 'tier' is not declared"),
     ("registry.yaml", OPENSYSML, OPENSYSML.replace('"OpenSysML"', '"OpenSysML2"'), "renamed?"),
-    ("data/assignments.yaml", "    type: governance\n    stage: sandbox", "    type: governance\n    stage: graduated",
-     "repo-registry is assigned governance/graduated"),
+    ("registry.yaml", "    source: maintainer\n    decision:", "    source: maintainer\n    note:",
+     "a decision is stated exactly when the source is maintainer"),
     ("data/policies/codeowners.yaml", "\nsetup:", "\nset_up:", "column 'set_up' is not declared"),
     ("data/maintainers.yaml", "  60184290:", "  rkarban:", "user_id: 'rkarban' is not a id"),
     ("data/proposed-codeowners", " @HuiJun", "", "must list exactly the maintainers"),
@@ -141,7 +141,7 @@ class EnvironmentTests(unittest.TestCase):
         pyproject = (ROOT / "pyproject.toml").read_text()
         self.assertIn('requires-python = "==3.10.*"', pyproject)
         self.assertIn('dependencies = ["pyyaml==6.0.3"]', pyproject)
-        self.assertEqual((ROOT / ".python-version").read_text().strip(), "3.10")
+        self.assertRegex((ROOT / ".python-version").read_text().strip(), r"^3\.10\.\d+$")  # patch pinned (WP5c)
         lock = (ROOT / "uv.lock").read_text()
         self.assertRegex(lock, r'name = "pyyaml"\nversion = "6\.0\.3"')
         workflow = (ROOT / ".github/workflows/check.yml").read_text()
