@@ -12,7 +12,7 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-import recommend  # noqa: E402
+import model  # noqa: E402
 
 
 def load(rel):
@@ -26,7 +26,7 @@ def entries():
         yield f"registry.yaml {n}", e, None
     yield "data/assignments.yaml org", asg["org"], {"type", "stage", "decision"}
     for n, e in asg["repos"].items():
-        yield f"data/assignments.yaml {n}", e, {"type", "stage", "decision"}
+        yield f"data/assignments.yaml {n}", e, {"name", "type", "stage", "decision"}
 
 
 class KindListTests(unittest.TestCase):
@@ -37,32 +37,33 @@ class KindListTests(unittest.TestCase):
             if fields:
                 self.assertEqual(set(e), fields, where)
             else:
-                self.assertIn(set(e), ({"type", "stage"}, {"reason"}), where)
+                self.assertIn(set(e), ({"name", "type", "stage"}, {"name", "reason"}), where)  # name: WP5b OD3
 
     def test_R2_type_and_stage_name_a_defined_kind(self):
         """R-2: each entry's type and stage name a defined kind, not an omitted one."""
         kinds = load("data/taxonomy/kinds.yaml")
         for where, e, _ in entries():
             if "type" in e:
-                kind = recommend.kind_of(e)
-                self.assertIn(kind, kinds["kinds"], where)
+                kind = model.kind_of(e)
+                self.assertIn(kind, model.kinds(kinds), where)
                 self.assertNotIn(kind, kinds.get("omitted", {}), where)
-                self.assertEqual((kinds["kinds"][kind]["type"], kinds["kinds"][kind]["stage"]),
+                self.assertEqual((model.kinds(kinds)[kind]["type"], model.kinds(kinds)[kind]["stage"]),
                                  (e["type"], e["stage"]), where)
 
     def test_R3_every_repository_keeps_its_kind(self):
-        """R-3: the computed kind of every pilot repository is the kind the pilot shows. (The one-time comparison with
-        the kinds before WP4e is in WP4e-review.md; this lasting check must hold after any later kind change.)"""
+        """R-3: every pilot repository's kind derives from the kind list, as a defined kind or unclassified. (The one-time
+        comparison with the kinds before WP4e is in WP4e-review.md; this lasting check holds after any kind change.)"""
         reg = load("registry.yaml")["repos"]
-        for n, p in load("data/pilot.yaml")["repos"].items():
-            self.assertEqual(recommend.kind_of(reg[n]), p["kind"], n)
+        for rid, p in load("data/pilot.yaml")["repos"].items():
+            self.assertIn(model.kind_of(reg[rid]), set(model.kinds(load("data/taxonomy/kinds.yaml"))) | {"unclassified"},
+                          p["name"])  # the pilot stores no kind since WP5b F-09: it is derived from the kind list
 
     def test_R6_the_attribute_is_stage(self):
         """R-6: no data file or script names the attribute lifecycle; the taxonomy lists stages."""
         kinds = load("data/taxonomy/kinds.yaml")
         self.assertIn("stages", kinds)
         self.assertNotIn("lifecycles", kinds)
-        for name, k in kinds["kinds"].items():
+        for name, k in model.kinds(kinds).items():
             self.assertIn("stage", k, name)
             self.assertNotIn("lifecycle", k, name)
         files = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard", "data", "scripts"],

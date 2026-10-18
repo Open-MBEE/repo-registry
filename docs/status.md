@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, with the WP5b scope (status updates ride with each package's PRs). Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP5b delivery (status updates ride with each package's PRs). Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -32,33 +32,30 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP5** (meta-rule checks in CI, and the move to Open-MBEE): accepted by mzargham's merge of
     [#1](https://github.com/Open-MBEE/repo-registry/pull/1), 6938aa5. Review:
     [WP5-review.md](../work-packages/WP5-review.md); the move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
-  - **WP5b** (the model, its integrity, and views out of the model): scope proposed in this pull request
-    ([WP5b-scope-of-work.md](../work-packages/WP5b-scope-of-work.md)); approved by its merge.
-  - **WP5c** (the taxonomy refinements from WP4's fit analysis): next after WP5b; early answers in
+  - **WP5b** (the model, its integrity, and views out of the model): scope approved in e219b85
+    ([WP5b-scope-of-work.md](../work-packages/WP5b-scope-of-work.md)); accepted by the merge of its delivery pull
+    request. Audit: [WP5b-audit.md](../work-packages/WP5b-audit.md); review: [WP5b-review.md](../work-packages/WP5b-review.md).
+  - **WP5c** (the taxonomy refinements from WP4's fit analysis): next; early answers in
     [WP5c-decisions.md](../work-packages/WP5c-decisions.md).
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
-- **Data (all PROVISIONAL until the maintainers approve it):**
-  - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
-  - kinds as type × lifecycle stage, with stages adopted from CNCF and OpenSSF
-    ([lifecycle-stage-map.md](lifecycle-stage-map.md));
-  - four tiers;
-  - the provisional kind list (`registry.yaml`);
-  - 16 repository policies (including `license-by-type`) with SOPs (`data/policies/`, `docs/sops/`). Each has an
-    applies-if rule on type, stage or tier, and is grounded in [policy-basis-review.md](policy-basis-review.md)
-    (CISA, NIST and OpenSSF core, with the OpenSSF baseline as backbone; CNCF and ISO/IEC/IEEE 12207 secondary);
-  - five org policies, a provisional named-maintainer list (`data/maintainers.yaml`: Chris Delp, Michael Zargham,
-    Robert Karban, Jason Han), a proposed CODEOWNERS, and the maintainer policy
-    ([maintainer-policy.md](maintainer-policy.md)); concealed org members are counted, never named;
-  - the fit analysis ([fit-analysis.md](fit-analysis.md)) and the proposed pilot of 32 repositories
-    ([pilot-briefing.md](pilot-briefing.md), `data/pilot.yaml`), with every other public repository on the exclude
-    list (`data/exclude.yaml`);
-  - known gaps that later work closes, as explicit expected failures (`data/expected-gaps.yaml`).
-- **Code:** `scripts/snapshot.py` (read-only sensing), `scripts/recommend.py` (deterministic kind recommendations),
-  `scripts/policies.py` (policy meta-rules and applicability), `scripts/licenses.py` (license report, WP2a),
-  `scripts/org_snapshot.py`, `scripts/org.py` and `scripts/privacy_check.py` (org governance), and
-  `scripts/usage_snapshot.py`, `scripts/pilot.py` and `scripts/briefing.py` (usage, pilot and briefing, WP4), and
-  `scripts/validate.py` (the meta-rule check) and `scripts/history_privacy_check.py` (WP5).
-  The required check: `uv run python scripts/validate.py` and `uv run python -m unittest discover -s tests`, in the environment locked in `uv.lock` (Python 3.10, PyYAML 6.0.3).
+- **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
+  [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
+  (keyed by GitHub's repository ID); the taxonomy (types, stages adopted from CNCF and OpenSSF, tiers, kinds keyed by
+  type and stage); the kind list (`registry.yaml`); the policies (`data/policies/`, the set's status in `_set.yaml`),
+  grounded in [policy-basis-review.md](policy-basis-review.md) (CISA, NIST and OpenSSF core; CNCF and
+  ISO/IEC/IEEE 12207 secondary); the named maintainers (keyed by GitHub user ID), the proposed CODEOWNERS and the
+  maintainer policy ([maintainer-policy.md](maintainer-policy.md)), with concealed org members counted, never named;
+  the pilot and exclude list, kept as tables; the construction controls (`data/controls.yaml`), the measured gaps
+  (`data/measured-gaps.yaml`) and the forthcoming capabilities (`data/forthcoming.yaml`).
+- **Views (never committed, WP5b OD4):** rendered by `uv run python scripts/render.py` into `build/demo/` (demo mode,
+  OD5): the applicability table, every SOP, the pilot proposal and briefing, the reports, the basis tables, and the
+  data-model document. The fit analysis ([fit-analysis.md](fit-analysis.md)) is WP4's dated record.
+- **Controller:** `scripts/validate.py` enforces the model (CI); `scripts/render.py` runs the view steps
+  (`recommend.py`, `policies.py`, `licenses.py`, `org.py`, `pilot.py`, `briefing.py`, `sops.py`, `basis.py`,
+  `datamodel.py`); `scripts/audit.py` reproduces the WP5b audit; read-only sensing in `snapshot.py`,
+  `org_snapshot.py`, `usage_snapshot.py`, with `privacy_check.py` and `history_privacy_check.py`. The required check:
+  `uv run python scripts/validate.py` and `uv run python -m unittest discover -s tests`, in the environment locked in
+  `uv.lock`.
 - **Remote:** [Open-MBEE/repo-registry](https://github.com/Open-MBEE/repo-registry), public. `main` takes changes
   only through pull requests that pass the required check, with no bypass (WP5 OD3).
 
@@ -70,15 +67,15 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
    kinds: **accepted**. WP4d, the attestations file: **accepted**.
    WP4e, type and stage in the kind list: **accepted**.
-5. WP5, meta-rule checks in CI, and the move to Open-MBEE: **accepted**. **WP5b, the model and views: scoped.**
-   WP5c, the taxonomy refinements: next.
+5. WP5, meta-rule checks in CI, and the move to Open-MBEE: **accepted**. WP5b, the model and views: **accepted** by
+   the merge of its delivery pull request. **WP5c, the taxonomy refinements: next.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
 
-Approve **WP5b** by merging its scope pull request, then build it: the declared model, the audit and its check-in, the
-normalization (type and stage, repository IDs), the views rendered in demo mode, and the enforcement. Then scope
-**WP5c** (the taxonomy refinements) from the answers already recorded. WP6 (the engine) follows; the sensing
-credential is set up there (WP5 OD6).
+Scope **WP5c** (the taxonomy refinements from WP4's fit analysis) from the answers already recorded in
+[WP5c-decisions.md](../work-packages/WP5c-decisions.md): forks assessed against their upstream, GitHub topics to
+declare type, the precedence inferred → topic → maintainer-merged commit, a default for archived repositories with no
+type, and `.github` as governance. WP6 (the engine) follows; the sensing credential is set up there (WP5 OD6).

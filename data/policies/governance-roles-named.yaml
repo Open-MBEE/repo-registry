@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP3 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: governance-roles-named
+scope: org                               # what the policy governs: a repository, or the org's administration
 name: Governance roles are held openly
 meaning: Everyone who holds governance power over the organization, its owners and its named maintainers, makes their organization
   membership public, so that who governs OpenMBEE is visible. Until this policy is ratified, nobody is named against their
@@ -36,4 +35,6 @@ cites:
   - CISA-C4-COMMUNITY
   nist: none
   openssf: []
-sop: docs/sops/governance-roles-named.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- Each owner, and each named maintainer, opens the organization's People page, finds their own name, and sets their membership to Public.
+- Anyone who prefers not to be named publicly can step down from the governance role instead. That is a choice, not a failure.

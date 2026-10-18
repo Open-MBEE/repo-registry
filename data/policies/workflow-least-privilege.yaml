@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: workflow-least-privilege
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: Least-privilege automation
 meaning: Tools from version 1.0, and the registry, give their GitHub Actions workflows read-only access by default, and set
   up workflows following GitHub's hardening guidance.
@@ -42,4 +41,8 @@ cites:
   openssf:
   - TI-3
   - OI-1
-sop: docs/sops/workflow-least-privilege.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- Go to Settings, then Actions, then General.
+- Under Workflow permissions, choose Read repository contents and packages permissions.
+- In each workflow, give each job only the permissions it needs, using the `permissions:` key.
+- Follow GitHub's security hardening guide for Actions (https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), then record the attestation below.

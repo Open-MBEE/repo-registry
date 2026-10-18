@@ -5,7 +5,7 @@
 
 ## The policy
 
-`license-by-type` ([SOP](../docs/sops/license-by-type.md)) applies to every live repository except forks:
+`license-by-type` ([SOP](https://github.com/Open-MBEE/repo-registry/blob/6938aa5/docs/sops/license-by-type.md)) applies to every live repository except forks:
 
 | Type | Allowed |
 |---|---|

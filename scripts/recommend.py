@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-"""Recommend each repo's initial kind from a stored snapshot, and write the provisional kind list.
+"""Recommend each repo's initial kind from a stored snapshot: a view, rendered, never committed (WP5b OD4).
 
 WP1 D-5. Deterministic, no language model (WP1 R-5, WP0 R-1). The taxonomy is data: this file names no kind,
 type, stage, tier or signal (WP1 R-7, WP0 R-6). It only RECOMMENDS kinds. Authority to set a repo's kind
 belongs to the maintainers (WP1 Direction, AGENTS.md "Provisional data").
 
-Usage:
-  python3 scripts/recommend.py --snapshot data/snapshots/2026-10-18 \
-      [--kinds data/taxonomy/kinds.yaml] [--tiers data/taxonomy/tiers.yaml] \
-      [--assignments data/assignments.yaml] \
-      [--registry registry.yaml] [--report data/reports/kind-recommendations.yaml]
+Usage: python3 scripts/recommend.py [--out build/demo] [--kinds ...] [--tiers ...] [--assignments ...]
+
+It writes two views into --out: the recommendation report (reports/kind-recommendations.yaml) and a draft kind list
+(kind-list-draft.yaml), which is what the rules alone would give. The kind list itself (registry.yaml) is model data
+that people change one entry at a time (WP0 R-12); the rules only propose a candidate (WP5c, the supervisor:
+"the inference produces a candidate not a decision").
 
 Assigned kinds (data/assignments.yaml) come from recorded decisions. They replace the recommendation for that repo,
-and a repo that isn't in the snapshot yet (such as this one) is added. The org's own kind is assigned the same way.
+and a repo with no sensed row (one created after the snapshot, such as this one) is added. The org's own kind is
+assigned the same way. Rows are keyed by GitHub's repository ID (WP5b OD3).
 
 Derived attributes, added to each snapshot record before the rules run:
   has_semver_release   true if any non-prerelease release tag is semantic versioning (vMAJOR.MINOR.PATCH)
@@ -26,6 +28,9 @@ import re
 import sys
 
 import yaml
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import model  # noqa: E402
 
 SEMVER = re.compile(r"^v?(\d+)\.(\d+)\.(\d+)(?:[-+].*)?$")
 
@@ -99,27 +104,25 @@ def check_taxonomy(kinds_doc, tiers_doc):
     tiers = tiers_doc["tiers"]
     types, stages = kinds_doc["types"], kinds_doc["stages"]
     problems = []
-    for name, kind in kinds_doc["kinds"].items():
+    kinds, omitted = model.kinds(kinds_doc), model.omitted(kinds_doc)
+    for name, kind in kinds.items():
         if kind.get("tier") not in tiers:
             problems.append(f"{name}: tier {kind.get('tier')!r} is not a tier")
         if kind.get("type") not in types:
             problems.append(f"{name}: type {kind.get('type')!r} is not a type")
         if kind.get("stage") not in stages and not kind.get("departure"):
             problems.append(f"{name}: stage {kind.get('stage')!r} is not a stage and no departure is stated")
-        if name != f"{kind.get('type')}/{kind.get('stage')}":
-            problems.append(f"{name}: name must be <type>/<stage>")
         if not kind.get("meaning"):
             problems.append(f"{name}: no meaning")
-    cross = {f"{t}/{s}" for t in types for s in stages}
-    omitted = kinds_doc.get("omitted", {})
+    cross = {model.kind_name(t, s) for t in types for s in stages}
     for name in omitted:
         if name not in cross:
             problems.append(f"omitted {name} is not in the type x stage cross product")
-        if name in kinds_doc["kinds"]:
+        if name in kinds:
             problems.append(f"{name} is both defined and omitted")
-    for name in sorted(cross - set(kinds_doc["kinds"]) - set(omitted)):
+    for name in sorted(cross - set(kinds) - set(omitted)):
         problems.append(f"{name} is neither defined nor omitted with a reason")
-    used = {k["tier"] for k in kinds_doc["kinds"].values()}
+    used = {k["tier"] for k in kinds.values()}
     for tier in tiers:
         if tier not in used:
             problems.append(f"tier {tier} is used by no kind")
@@ -128,12 +131,16 @@ def check_taxonomy(kinds_doc, tiers_doc):
 
 
 def recommend(repos, kinds_doc, assigned=None):
+    """repos: {repo_id: row} (model.repos). assigned: {repo_id: assignment}. Returns {repo_id: result}, sorted by name."""
     signals = kinds_doc["signals"]
+    kinds = model.kinds(kinds_doc)
     assigned = assigned or {}
     results = {}
-    for repo in repos:
+    for rid, repo in repos.items():
+        if repo.get("after_snapshot"):
+            continue  # no sensed columns: only an assignment can give it a kind (below)
         repo = derive(repo)
-        matched = [n for n, k in kinds_doc["kinds"].items() if evaluate(k["recommend_when"], repo, signals)]
+        matched = [n for n, k in kinds.items() if evaluate(k["recommend_when"], repo, signals)]
         flags = [n for n, f in kinds_doc.get("flags", {}).items() if evaluate(f["when"], repo, signals)]
         if len(matched) == 1:
             kind, reason = matched[0], None
@@ -146,12 +153,13 @@ def recommend(repos, kinds_doc, assigned=None):
                     (r["reason"] for r in kinds_doc.get("unclassified_reasons", []) if evaluate(r["when"], repo, signals)),
                     "No kind's rule matches.",
                 )
-        if repo["name"] in assigned:
-            kind, reason = kind_of(assigned[repo["name"]]), None
-        results[repo["name"]] = {
-            "assigned": repo["name"] in assigned,
+        if rid in assigned:
+            kind, reason = model.kind_of(assigned[rid]), None
+        results[rid] = {
+            "name": repo["name"],
+            "assigned": rid in assigned,
             "kind": kind,
-            "tier": kinds_doc["kinds"][kind]["tier"] if kind in kinds_doc["kinds"] else None,
+            "tier": kinds[kind]["tier"] if kind in kinds else None,
             "matched": matched,
             "reason": reason,
             "flags": flags,
@@ -164,104 +172,80 @@ def recommend(repos, kinds_doc, assigned=None):
                 "commits_last_3_months": repo["commits_last_3_months"],
             },
         }
-    for name, a in assigned.items():
-        if name not in results:
-            results[name] = {
-                "assigned": True, "kind": kind_of(a), "tier": (kinds_doc["kinds"].get(kind_of(a)) or {}).get("tier"),
-                "matched": [],
-                "reason": None, "flags": [], "evidence": {"note": "Not in the snapshot.", "decision": a["decision"]},
+    for rid, a in assigned.items():
+        if rid not in results:
+            results[rid] = {
+                "name": a.get("name") or repos.get(rid, {}).get("name"), "assigned": True, "kind": model.kind_of(a),
+                "tier": (kinds.get(model.kind_of(a)) or {}).get("tier"), "matched": [], "reason": None, "flags": [],
+                "evidence": {"note": "No sensed row: created after the snapshot.", "decision": a["decision"]},
             }
-    for name, r in results.items():
-        if r["kind"] != "unclassified" and r["kind"] not in kinds_doc["kinds"]:
-            raise TaxonomyError(f"{name}: assigned kind {r['kind']} is not a kind")
-    return dict(sorted(results.items(), key=lambda kv: kv[0].lower()))
-
-
-def kind_of(entry):
-    """The kind an entry of the kind list (or of data/assignments.yaml) names: computed from its type and stage, or
-    `unclassified` for an entry that has only a reason (WP4e)."""
-    if "type" in entry or "stage" in entry:
-        return f"{entry.get('type')}/{entry.get('stage')}"
-    return "unclassified"
+    for rid, r in results.items():
+        if r["kind"] != "unclassified" and r["kind"] not in kinds:
+            raise TaxonomyError(f"{r['name']}: assigned kind {r['kind']} is not a kind")
+    return dict(sorted(results.items(), key=lambda kv: str(kv[1]["name"]).lower()))
 
 
 def quote(s):
     return json.dumps(s)  # a JSON string is a valid YAML scalar
 
 
-def write_registry(path, results, snapshot_dir, meta, org_kind, kinds_doc):
-    lines = [
-        "# PROVISIONAL. NOT APPROVED. Kinds recommended by rule, plus kinds assigned by recorded decisions",
-        "# (data/assignments.yaml). Drafted by scripts/recommend.py (WP1 D-5).",
-        "# Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).",
-        "# Format: docs/kind-list-format.md. One entry per repo: its type and stage, or only a reason. Changing a",
-        "# repo's stage (or type) is a one-line edit.",
-        "status: provisional",
-        f"provisional_until: {quote('WP0 maintainer approval 4: the assigned kind of each repo in the registry')}",
-        "org:",
-        f"  name: {meta['org']}",
-    ]
-    if org_kind in kinds_doc["kinds"]:  # with no assignment (a toy taxonomy), the org has no type or stage
-        lines += [f"  type: {kinds_doc['kinds'][org_kind]['type']}", f"  stage: {kinds_doc['kinds'][org_kind]['stage']}"]
-    lines += [
-        f"snapshot: {snapshot_dir}",
-        "repos:",
-    ]
-    for name, r in results.items():
-        lines.append(f"  {quote(name)}:")
-        if r["kind"] in kinds_doc["kinds"]:
-            lines.append(f"    type: {kinds_doc['kinds'][r['kind']]['type']}")
-            lines.append(f"    stage: {kinds_doc['kinds'][r['kind']]['stage']}")
+def write_draft(path, results, org, org_kind, kinds_doc):
+    """The kind list the rules alone would give (a view): the same format as registry.yaml."""
+    kinds = model.kinds(kinds_doc)
+    lines = ["# A VIEW (WP5b OD4): the kind list the rules would draft. registry.yaml is the model; this is a candidate.",
+             "status: provisional", "org:", f"  name: {org}"]
+    if org_kind in kinds:
+        lines += [f"  type: {kinds[org_kind]['type']}", f"  stage: {kinds[org_kind]['stage']}"]
+    lines.append("repos:")
+    for rid, r in results.items():
+        lines += [f"  {rid}:", f"    name: {quote(r['name'])}"]
+        if r["kind"] in kinds:
+            lines += [f"    type: {kinds[r['kind']]['type']}", f"    stage: {kinds[r['kind']]['stage']}"]
         if r["reason"]:
             lines.append(f"    reason: {quote(r['reason'])}")
+    pathlib.Path(path).parent.mkdir(parents=True, exist_ok=True)
     pathlib.Path(path).write_text("\n".join(lines) + "\n")
 
 
-def write_report(path, results, snapshot_dir):
-    doc = {
-        "status": "provisional",
-        "note": "Evidence for each recommended kind. Flags never change a kind.",
-        "snapshot": str(snapshot_dir),
-        "repos": results,
-    }
+def write_report(path, results):
+    doc = {"note": "A view (WP5b OD4): evidence for each recommended kind, keyed by repository ID. Flags never change "
+                   "a kind.", "repos": results}
     pathlib.Path(path).parent.mkdir(parents=True, exist_ok=True)
     pathlib.Path(path).write_text(yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=120))
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--snapshot", required=True)
+    ap.add_argument("--out", default="build/demo")
+    ap.add_argument("--root", default=".")
     ap.add_argument("--kinds", default="data/taxonomy/kinds.yaml")
     ap.add_argument("--tiers", default="data/taxonomy/tiers.yaml")
     ap.add_argument("--assignments", default="data/assignments.yaml")
-    ap.add_argument("--registry", default="registry.yaml")
-    ap.add_argument("--report", default="data/reports/kind-recommendations.yaml")
     args = ap.parse_args()
 
-    snap = pathlib.Path(args.snapshot)
-    repos = json.loads((snap / "repos.json").read_text())
-    meta = json.loads((snap / "meta.json").read_text())
+    root = pathlib.Path(args.root)
+    meta = json.loads((model.snapshot_dir(root) / "meta.json").read_text())
     kinds_doc = yaml.safe_load(pathlib.Path(args.kinds).read_text())
     tiers_doc = yaml.safe_load(pathlib.Path(args.tiers).read_text())
     assignments = yaml.safe_load(pathlib.Path(args.assignments).read_text()) if args.assignments else {}
-    org_kind = kind_of(assignments.get("org") or {})
+    org_kind = model.kind_of((assignments or {}).get("org") or {})
     try:
         check_taxonomy(kinds_doc, tiers_doc)
-        if org_kind != "unclassified" and org_kind not in kinds_doc["kinds"]:
+        if org_kind != "unclassified" and org_kind not in model.kinds(kinds_doc):
             raise TaxonomyError(f"org: assigned kind {org_kind} is not a kind")
-        results = recommend(repos, kinds_doc, assignments.get("repos") or {})
+        results = recommend(model.repos(root), kinds_doc, (assignments or {}).get("repos") or {})
     except TaxonomyError as e:
         sys.exit(f"taxonomy error:\n{e}")
 
-    write_registry(args.registry, results, args.snapshot, meta, org_kind, kinds_doc)
-    write_report(args.report, results, args.snapshot)
-
+    out = pathlib.Path(args.out)
+    write_draft(out / "kind-list-draft.yaml", results, meta["org"], org_kind, kinds_doc)
+    write_report(out / "reports/kind-recommendations.yaml", results)
     counts = {}
     for r in results.values():
         counts[r["kind"]] = counts.get(r["kind"], 0) + 1
     print(f"{len(results)} repos; org kind: {org_kind}")
-    for kind in list(kinds_doc["kinds"]) + ["unclassified"]:
-        tier = kinds_doc["kinds"].get(kind, {}).get("tier", "-")
+    for kind in list(model.kinds(kinds_doc)) + ["unclassified"]:
+        tier = model.kinds(kinds_doc).get(kind, {}).get("tier", "-")
         print(f"  {kind:28} {tier:7} {counts.get(kind, 0)}")
 
 

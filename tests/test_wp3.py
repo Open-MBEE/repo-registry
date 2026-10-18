@@ -30,6 +30,11 @@ def snapshot():
     return json.loads(SNAP.read_text())
 
 
+def logins():
+    """The maintainers' logins: maintainers are keyed by GitHub user ID, with the login as a column (WP5b F-05)."""
+    return {m["login"] for m in load(ROOT / "data/maintainers.yaml")["maintainers"].values()}
+
+
 class ReadOnlyTests(unittest.TestCase):
     def test_R1_snapshot_only_reads(self):
         """R-1: the org snapshot only makes GET requests through gh."""
@@ -95,23 +100,22 @@ class MatchTests(unittest.TestCase):
     def test_D3_proposed_codeowners_match_the_list(self):
         """D-3: the proposed CODEOWNERS names exactly the listed maintainers."""
         owners = org.codeowners_logins((ROOT / "data/proposed-codeowners").read_text())
-        self.assertEqual(owners, set(load(ROOT / "data/maintainers.yaml")["maintainers"]))
+        self.assertEqual(owners, logins())
 
     def test_R4_check_replays(self):
-        """R-4: the match check is deterministic and matches the committed report."""
-        with tempfile.TemporaryDirectory() as t:
-            rep = pathlib.Path(t) / "r.yaml"
-            for _ in range(2):
-                subprocess.run([sys.executable, "scripts/org.py", "--snapshot", str(SNAP.relative_to(ROOT)),
-                                "--report", str(rep)], cwd=ROOT, check=True, capture_output=True)
-                self.assertEqual(rep.read_text(), (ROOT / "data/reports/maintainers-match.yaml").read_text())
+        """R-4: the match check is deterministic (a view, never committed: WP5b OD4)."""
+        with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
+            for t in (a, b):
+                subprocess.run([sys.executable, "scripts/org.py", "--out", t], cwd=ROOT, check=True, capture_output=True)
+            rep = lambda t: (pathlib.Path(t) / "reports/maintainers-match.yaml").read_text()  # noqa: E731
+            self.assertEqual(rep(a), rep(b))
 
     def test_R5_unreadable_is_yellow_not_off(self):
         """R-5: if the owner list can't be read, the check says yellow; unreadable settings are stored as unreadable."""
         snap = snapshot()
         snap["owners"] = {"readable": False, "value": None, "reason": "test"}
         rows = self.run_check(snap)["rows"]
-        self.assertTrue(any(r["check"] == "owners-readable" and r["status"] == "yellow" for r in rows))
+        self.assertTrue(any(r["check"] == "owners-readable" and r["color"] == "yellow" for r in rows))
         self.assertFalse(any(r["check"] == "owner-is-listed" for r in rows))
         for field, v in snapshot()["settings"].items():
             if not v["readable"]:
@@ -123,7 +127,7 @@ class MatchTests(unittest.TestCase):
         self.assertEqual(load(ROOT / "data/maintainers.yaml")["status"], "provisional")
         self.assertIn("PROVISIONAL", (ROOT / "data/proposed-codeowners").read_text().splitlines()[0])
         self.assertIn("PROVISIONAL", (ROOT / "docs/maintainer-policy.md").read_text())
-        self.assertEqual(load(ROOT / "data/reports/maintainers-match.yaml")["status"], "provisional")
+        self.assertEqual(org.check(snapshot(), load(ROOT / "data/maintainers.yaml"), logins())["status"], "provisional")
 
 
 class PrivacyTests(unittest.TestCase):
@@ -140,7 +144,7 @@ class PrivacyTests(unittest.TestCase):
     def test_R8_check_reveals_nothing_about_concealed_roles(self):
         """R-8: the check's output is identical whether or not a listed concealed member is an owner."""
         maint = load(ROOT / "data/maintainers.yaml")
-        owners_file = set(maint["maintainers"])
+        owners_file = logins()
         snap = snapshot()
         concealed = [l for l, r in snap["listed_maintainers"].items() if not r["membership_public"]]
         self.assertTrue(concealed)
@@ -149,7 +153,7 @@ class PrivacyTests(unittest.TestCase):
         base = org.check(snap, maint, owners_file)["rows"]
         for r in base:
             if r["subject"] in concealed and r["check"] == "is-org-owner":
-                self.assertEqual(r["status"], "yellow")
+                self.assertEqual(r["color"], "yellow")
                 self.assertNotIn("owner", r["detail"].replace("org role", ""))
         concealed_rows = [r for r in base if r["check"] == "concealed-owners"]
         self.assertEqual(len(concealed_rows), 1)
@@ -159,7 +163,7 @@ class PrivacyTests(unittest.TestCase):
     def test_R8_names_in_repo_are_public_or_supervisor_named(self):
         """R-8: every GitHub login the governance data names is a public member or one the supervisor named."""
         snap = snapshot()
-        allowed = set(snap["public_members"]["value"]) | set(load(ROOT / "data/maintainers.yaml")["maintainers"])
+        allowed = set(snap["public_members"]["value"]) | logins()
         named = set(snap["owners"]["value"]["public_logins"]) | set(snap["listed_maintainers"])
         named |= org.codeowners_logins((ROOT / "data/proposed-codeowners").read_text())
         self.assertLessEqual(named, allowed)

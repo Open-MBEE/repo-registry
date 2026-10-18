@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Pick the pilot from the snapshot by the rule in data/pilot-rule.yaml, and write the exclude list (WP4 D-2, D-3).
+"""Render the pilot the rule in data/pilot-rule.yaml would propose today: a view (WP4 D-2; WP5b OD6).
+
+The pilot list (data/pilot.yaml) and exclude list (data/exclude.yaml) are model tables: written once by this rule,
+then kept, and changed only by a governed pull request. This script renders what the rule would propose now, so a
+difference between the rule and the kept list is visible, not an error.
 
 Deterministic and offline (WP4 R-1, R-2): it reads the stored snapshot, usage.json, registry.yaml, the kind
-recommendations report and the taxonomy. The categories, quotas, weights and must-includes are all data; this file
-names none of them. Every public repository ends up either in the pilot or on the exclude list with a reason (R-4).
+recommendations view and the taxonomy. The categories, quotas, weights and must-includes are all data; this file names
+none of them. Every repository is proposed for the pilot or for the exclude list (R-4).
 
-Usage: python3 scripts/pilot.py --snapshot data/snapshots/2026-10-18 \
-          [--rule data/pilot-rule.yaml] [--pilot data/pilot.yaml] [--exclude data/exclude.yaml]
+Usage: python3 scripts/pilot.py [--out build/demo]   (reads build/demo/reports/kind-recommendations.yaml)
 """
 import argparse
 import json
@@ -16,18 +19,21 @@ import sys
 import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from recommend import evaluate, kind_of  # noqa: E402
+import model  # noqa: E402
+from recommend import evaluate  # noqa: E402
 
 
-def attributes(name, repo, entry, kinds, flags, usage, weights):
-    kind = kinds.get(kind_of(entry), {})
-    u = usage.get(name, {})
+def attributes(repo, entry, kinds, flags, usage, weights):
+    """The columns the pilot rule's predicates read: declared in data/schema/model.yaml (WP5b F-15). No kind name:
+    rules read type and stage (WP5b OD2)."""
+    kind = kinds.get(model.kind_of(entry), {})
+    u = usage.get(entry["name"], {})
     clones = u.get("clones_14d", {})
     score = (weights["release_downloads"] * (u.get("release_downloads") or 0)
              + weights["clone_uniques_14d"] * (clones.get("uniques", 0) if clones.get("readable") else 0)
              + weights["stars"] * (repo.get("stars") or 0) + weights["forks"] * (repo.get("forks") or 0))
     return {
-        "name": name, "description": repo.get("description"), "kind": kind_of(entry),
+        "name": entry["name"], "description": repo.get("description"),
         "type": kind.get("type"), "stage": kind.get("stage"), "tier": kind.get("tier"),
         "fork": repo.get("fork", False), "archived": repo.get("archived", False),
         "commits_last_3_months": repo.get("commits_last_3_months") or 0,
@@ -39,12 +45,10 @@ def attributes(name, repo, entry, kinds, flags, usage, weights):
 
 
 def select(rule, repos, registry, kinds, report, usage):
+    """Everything keyed by repository ID. Returns the proposal {repo_id: {name, category, reason}} and the attributes."""
     weights = rule["usage_score"]
-    attrs = {}
-    for name, entry in registry.items():
-        repo = repos.get(name, {"name": name})
-        flags = report.get(name, {}).get("flags", [])
-        attrs[name] = attributes(name, repo, entry, kinds, flags, usage, weights)
+    attrs = {rid: attributes(repos.get(rid, {}), entry, kinds, report.get(rid, {}).get("flags", []), usage, weights)
+             for rid, entry in registry.items()}
     chosen = {}
 
     def category_of(a):
@@ -53,58 +57,48 @@ def select(rule, repos, registry, kinds, report, usage):
                 return cat["id"]
         return None
 
-    for name in rule["must_include"] + rule.get("self_registered", []):
-        if name not in attrs:
-            raise SystemExit(f"must-include {name} is not in registry.yaml")
-        why = ("registers itself (X-9)" if name in rule.get("self_registered", []) else "must-include (supervisor)")
-        chosen[name] = {"category": category_of(attrs[name]) or "must-include", "why": why}
+    named = [(r, "must-include (supervisor)") for r in rule["must_include"]] + \
+        [(r, "registers itself (X-9)") for r in rule.get("self_registered", [])]
+    for ref, why in named:
+        if ref["repo_id"] not in attrs:
+            raise SystemExit(f"must-include {ref['name']} is not in registry.yaml")
+        chosen[ref["repo_id"]] = {"name": ref["name"], "category": category_of(attrs[ref["repo_id"]]) or "must-include",
+                                  "reason": why}
     for cat in rule["categories"]:
         have = sum(1 for c in chosen.values() if c["category"] == cat["id"])
-        candidates = sorted((n for n, a in attrs.items() if n not in chosen and evaluate(cat["where"], a, {})),
-                            key=lambda n: (-attrs[n][cat["sort_by"]], n.lower()))
-        for name in candidates[: max(0, cat["quota"] - have)]:
+        candidates = sorted((r for r, a in attrs.items() if r not in chosen and evaluate(cat["where"], a, {})),
+                            key=lambda r: (-attrs[r][cat["sort_by"]], attrs[r]["name"].lower()))
+        for rid in candidates[: max(0, cat["quota"] - have)]:
             first = " ".join(cat["meaning"].split()).split(". ")[0].rstrip(".")
-            chosen[name] = {"category": cat["id"], "why": f"{cat['id']}: {first[0].lower() + first[1:]}"}
+            chosen[rid] = {"name": attrs[rid]["name"], "category": cat["id"],
+                           "reason": f"{cat['id']}: {first[0].lower() + first[1:]}"}
     return chosen, attrs
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--snapshot", required=True)
-    ap.add_argument("--rule", default="data/pilot-rule.yaml")
-    ap.add_argument("--registry", default="registry.yaml")
-    ap.add_argument("--kinds", default="data/taxonomy/kinds.yaml")
-    ap.add_argument("--report", default="data/reports/kind-recommendations.yaml")
-    ap.add_argument("--pilot", default="data/pilot.yaml")
-    ap.add_argument("--exclude", default="data/exclude.yaml")
+    ap.add_argument("--out", default="build/demo")
+    ap.add_argument("--root", default=".")
     args = ap.parse_args()
-    snap = pathlib.Path(args.snapshot)
-    repos = {r["name"]: r for r in json.loads((snap / "repos.json").read_text())}
-    usage = json.loads((snap / "usage.json").read_text())["repos"]
-    rule = yaml.safe_load(pathlib.Path(args.rule).read_text())
-    registry = yaml.safe_load(pathlib.Path(args.registry).read_text())["repos"]
-    kinds = yaml.safe_load(pathlib.Path(args.kinds).read_text())["kinds"]
-    report = yaml.safe_load(pathlib.Path(args.report).read_text())["repos"]
-    chosen, attrs = select(rule, repos, registry, kinds, report, usage)
-
-    prov = ("# PROVISIONAL until the maintainers approve the pilot (WP0, maintainer approval 3). WP4 D-3.\n"
-            "# Generated by scripts/pilot.py from data/pilot-rule.yaml. Do not edit by hand; change the rule.\n")
-    pilot = {"status": "provisional", "provisional_until": rule["provisional_until"], "snapshot": args.snapshot,
-             "repos": {n: {"kind": attrs[n]["kind"], **chosen[n]} for n in sorted(chosen, key=str.lower)}}
-    pathlib.Path(args.pilot).write_text(prov + yaml.safe_dump(pilot, sort_keys=False, width=120))
-    excluded = {n: "outside the pilot sample (WP4): kept in registry.yaml with its recommended kind, not tracked yet"
-                for n in sorted(registry, key=str.lower) if n not in chosen}
-    exclude = {"status": "provisional", "provisional_until": rule["provisional_until"],
-               "note": "Every public repository outside the pilot, with the reason (TX-5). Private repositories are "
-                       "never listed (WP1 OD2).", "repos": excluded}
-    pathlib.Path(args.exclude).write_text(prov.replace("D-3.", "D-3 (exclude list).") +
-                                          yaml.safe_dump(exclude, sort_keys=False, width=120))
+    root, out = pathlib.Path(args.root), pathlib.Path(args.out)
+    usage = json.loads((model.snapshot_dir(root) / "usage.json").read_text())["repos"]
+    rule = model.load("data/pilot-rule.yaml", root)
+    registry = model.load("registry.yaml", root)["repos"]
+    kinds = model.kinds(model.load("data/taxonomy/kinds.yaml", root))
+    report = yaml.safe_load((out / "reports/kind-recommendations.yaml").read_text())["repos"]
+    chosen, attrs = select(rule, model.repos(root), registry, kinds, report, usage)
+    proposal = {"note": "A view (WP5b OD6): the pilot the rule would propose today. data/pilot.yaml is the kept list.",
+                "pilot": {r: chosen[r] for r in sorted(chosen, key=lambda r: chosen[r]["name"].lower())},
+                "excluded": sorted((r for r in registry if r not in chosen), key=lambda r: registry[r]["name"].lower())}
+    path = out / "pilot-proposal.yaml"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(yaml.safe_dump(proposal, sort_keys=False, width=120))
     by_cat = {}
-    for n, c in chosen.items():
-        by_cat.setdefault(c["category"], []).append(n)
+    for c in chosen.values():
+        by_cat.setdefault(c["category"], []).append(c["name"])
     for cat, names in by_cat.items():
         print(f"{cat:26} {len(names):2}  {', '.join(sorted(names, key=str.lower))}")
-    print(f"pilot: {len(chosen)}  excluded: {len(excluded)}")
+    print(f"pilot: {len(chosen)}  excluded: {len(proposal['excluded'])}")
 
 
 if __name__ == "__main__":

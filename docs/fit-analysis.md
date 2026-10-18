@@ -1,5 +1,9 @@
 # Fit analysis
 
+> **A dated record** (WP5b): this is the analysis made at WP4, against the snapshot of 2026-10-18 and the
+> kinds as they stood then. Its figures are that analysis's findings; the current kinds are in `registry.yaml`, and
+> the current views are rendered by `uv run python scripts/render.py`.
+>
 > **PROVISIONAL.** WP4 D-1. How well the draft taxonomy (WP1, with amendments A2 and A4) fits all of the org's
 > public repositories, and what would make it fit better. Recommendations are candidates for later work, never
 > applied here (WP4 OD3).

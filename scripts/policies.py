@@ -5,12 +5,11 @@ WP2 D-4 and D-5. Deterministic, no language model (WP0 R-1). Policies are data (
 policy, kind, type, stage or tier. Applies-if rules use the predicate language of scripts/recommend.py, over
 exactly three attributes of a kind: `type`, `stage` and `tier` (WP0 A1, WP2 R-2; WP4e names the stage attribute).
 
-Usage:
-  python3 scripts/policies.py [--policies data/policies] [--kinds data/taxonomy/kinds.yaml] \
-      [--tiers data/taxonomy/tiers.yaml] [--baseline data/sources/openssf-security-baseline.yaml] \
-      [--table docs/policy-applicability.md] [--report data/reports/policy-applicability.yaml]
+Usage: python3 scripts/policies.py [--out build/demo] [--policies data/policies] [--kinds ...] [--tiers ...] ...
 
-Exits non-zero, writing nothing, if any meta-rule is broken (docs/policy-format.md).
+Writes the applicability views into --out (policy-applicability.md, reports/policy-applicability.yaml), which are
+rendered, never committed (WP5b OD4). Exits non-zero, writing nothing, if any meta-rule is broken
+(docs/policy-format.md).
 """
 import argparse
 import pathlib
@@ -20,11 +19,11 @@ import sys
 import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import model  # noqa: E402
 from recommend import TaxonomyError, check_taxonomy, evaluate  # noqa: E402
 
 KIND_ATTRS = ("type", "stage", "tier")
-REQUIRED = ("status", "id", "name", "meaning", "applies_if", "github", "checks", "cites", "sop")
-SOP_HEADINGS = ("## Set up", "## Automated checks", "## Attested checks")
+REQUIRED = ("id", "name", "meaning", "applies_if", "github", "checks", "cites", "setup")
 CLAUSE = re.compile(r"^\d+(\.\d+)*$")
 POLICY_ID = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
@@ -58,6 +57,16 @@ def load_policies(directory):
     return policies, departures
 
 
+def check_set(policy_set):
+    """Meta-rule 3, for the set as a whole (WP5b F-13): provisional is marked once, in data/policies/_set.yaml."""
+    status = (policy_set or {}).get("status")
+    if status not in ("provisional", "approved"):
+        return ["_set.yaml: status must be provisional or approved"]
+    if (status == "provisional") != bool((policy_set or {}).get("provisional_until")):
+        return ["_set.yaml: provisional_until is required exactly when status is provisional"]
+    return []
+
+
 def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None, nist=None, org_plan=None,
           future=None):
     future = future or {}
@@ -78,10 +87,8 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
             continue
         if p["id"] != pid or not POLICY_ID.match(pid):
             problems.append(f"{where}: id must equal the file name and be lower-case words joined by hyphens")
-        if p["status"] not in ("provisional", "approved"):
-            problems.append(f"{where}: status must be provisional or approved")
-        if (p["status"] == "provisional") != bool(p.get("provisional_until")):
-            problems.append(f"{where}: provisional_until is required exactly when status is provisional")
+        if set(p) & {"status", "provisional_until"}:
+            problems.append(f"{where}: status belongs to the policy set (_set.yaml), not to one policy (WP5b F-13)")
         try:
             used = attrs_used(p["applies_if"])
         except TaxonomyError as e:
@@ -130,14 +137,8 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
         for clause in cites.get("iso12207") or []:
             if not CLAUSE.match(str(clause)):
                 problems.append(f"{where}: iso12207 citations are clause numbers only, got {clause!r}")
-        sop = root / p["sop"]
-        if not sop.exists():
-            problems.append(f"{where}: SOP {p['sop']} does not exist")
-        else:
-            text = sop.read_text()
-            for heading in SOP_HEADINGS:
-                if heading not in text:
-                    problems.append(f"{where}: SOP lacks the heading {heading!r}")
+        if not isinstance(p["setup"], list) or not p["setup"] or not all(str(x).strip() for x in p["setup"]):
+            problems.append(f"{where}: setup must list the SOP's set-up steps (the SOP is rendered from them)")
     if cisa is not None:
         cisa_cited = set()
         for p in policies.values():
@@ -158,6 +159,10 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
             problems.append(f"OpenSSF {item} is both adopted ({adopted[item]}) and departed")
         if item not in departed and item not in adopted:
             problems.append(f"OpenSSF {item} is neither adopted by a policy nor departed with a reason")
+    for feature, f in ((future or {}).get("features") or {}).items():
+        for pid in f.get("strengthens") or []:
+            if pid not in policies:
+                problems.append(f"_future.yaml: {feature} strengthens {pid!r}, which is not a policy (WP5b F-06)")
     for item, reason in (departures.get("openssf") or {}).items():
         if item not in items:
             problems.append(f"departure for unknown OpenSSF item {item}")
@@ -188,7 +193,7 @@ def _literals(pred):
 def applicability(policies, kinds_doc):
     """For every kind, the policies in effect, in policy-id order."""
     table = {}
-    for kname, kind in kinds_doc["kinds"].items():
+    for kname, kind in model.kinds(kinds_doc).items():
         attrs = {a: kind[a] for a in KIND_ATTRS}
         table[kname] = [pid for pid, p in sorted(policies.items()) if evaluate(p["applies_if"], attrs, {})]
     return table
@@ -199,20 +204,21 @@ def write_outputs(table, policies, kinds_doc, md_path, yaml_path):
     lines = [
         "# Policy applicability",
         "",
-        "> **PROVISIONAL.** Generated by `scripts/policies.py` from `data/policies/` and `data/taxonomy/kinds.yaml`",
-        "> (WP2 D-5). Do not edit by hand. A tick means the policy is in effect for that kind.",
+        "> **PROVISIONAL.** A view (WP5b OD4), rendered by `scripts/policies.py` from `data/policies/` and",
+        "> `data/taxonomy/kinds.yaml` (WP2 D-5); never committed. A tick means the policy is in effect for that kind.",
         "",
         "| Kind | Tier | " + " | ".join(f"[{pid}](sops/{pid}.md)" for pid in pids) + " | Count |",
         "|---|---|" + "---|" * len(pids) + "---|",
     ]
     for kname, in_effect in table.items():
         ticks = " | ".join("✓" if pid in in_effect else "" for pid in pids)
-        lines.append(f"| {kname} | {kinds_doc['kinds'][kname]['tier']} | {ticks} | {len(in_effect)} |")
+        lines.append(f"| {kname} | {model.kinds(kinds_doc)[kname]['tier']} | {ticks} | {len(in_effect)} |")
     lines += ["", "## Policies", ""]
     for pid in pids:
         lines.append(f"- **[{policies[pid]['name']}](sops/{pid}.md)** (`{pid}`): {policies[pid]['meaning'].strip()}")
+    pathlib.Path(md_path).parent.mkdir(parents=True, exist_ok=True)
     pathlib.Path(md_path).write_text("\n".join(lines) + "\n")
-    doc = {"status": "provisional", "note": "Generated by scripts/policies.py (WP2 D-5).",
+    doc = {"status": "provisional", "note": "A view, rendered by scripts/policies.py (WP2 D-5).",
            "kinds": table,
            "policies": {pid: [k for k, v in table.items() if pid in v] for pid in pids}}
     pathlib.Path(yaml_path).parent.mkdir(parents=True, exist_ok=True)
@@ -225,8 +231,7 @@ def main():
     ap.add_argument("--kinds", default="data/taxonomy/kinds.yaml")
     ap.add_argument("--tiers", default="data/taxonomy/tiers.yaml")
     ap.add_argument("--baseline", default="data/sources/openssf-security-baseline.yaml")
-    ap.add_argument("--table", default="docs/policy-applicability.md")
-    ap.add_argument("--report", default="data/reports/policy-applicability.yaml")
+    ap.add_argument("--out", default="build/demo")
     ap.add_argument("--root", default=".")
     ap.add_argument("--cisa", default="data/sources/cisa-practices.yaml")
     ap.add_argument("--nist", default="data/sources/nist-800-53.yaml")
@@ -247,12 +252,16 @@ def main():
         future = yaml.safe_load(future_path.read_text()) if future_path.exists() else {}
         problems = check(policies, departures, kinds_doc, tiers_doc, baseline, pathlib.Path(args.root), cisa, nist,
                          org_plan, future)
+        set_path = pathlib.Path(args.policies) / "_set.yaml"
+        if set_path.exists():
+            problems += check_set(yaml.safe_load(set_path.read_text()))
     except TaxonomyError as e:
         problems = [str(e)]
     if problems:
         sys.exit("policy meta-rules broken:\n  " + "\n  ".join(problems))
     table = applicability(policies, kinds_doc)
-    write_outputs(table, policies, kinds_doc, args.table, args.report)
+    out = pathlib.Path(args.out)
+    write_outputs(table, policies, kinds_doc, out / "policy-applicability.md", out / "reports/policy-applicability.yaml")
     for kname, in_effect in table.items():
         print(f"  {kname:28} {len(in_effect):2}  {', '.join(in_effect)}")
 

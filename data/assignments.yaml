@@ -10,7 +10,8 @@ org:
   decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md"
 
 repos:
-  repo-registry:
+  1424079165:
+    name: "repo-registry"
     type: governance
     stage: sandbox
-    decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md (sandbox until the maintainers calibrate it). Not in the org yet; it moves there in WP5."
+    decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md (sandbox until the maintainers calibrate it). In the org since WP5."

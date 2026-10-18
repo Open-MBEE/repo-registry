@@ -10,6 +10,7 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
+import model  # noqa: E402
 import policies as P  # noqa: E402
 
 ORG = {"org-two-factor", "org-few-owners", "org-base-permission", "maintainers-match", "governance-roles-named"}
@@ -28,12 +29,13 @@ class GovernanceKindTests(unittest.TestCase):
     def test_R1_one_type_at_different_stages(self):
         """R-1: the org is governance/graduated, repo-registry governance/sandbox; governance/incubating is defined."""
         kinds = load("data/taxonomy/kinds.yaml")
-        self.assertIn("governance/incubating", kinds["kinds"])
+        self.assertIn("governance/incubating", model.kinds(kinds))
         self.assertNotIn("governance/incubating", kinds.get("omitted", {}))
         gov = lambda e: (e["type"], e["stage"])  # noqa: E731 (the kind list holds type and stage, WP4e)
         self.assertEqual(gov(load("registry.yaml")["org"]), ("governance", "graduated"))
-        self.assertEqual(gov(load("registry.yaml")["repos"]["repo-registry"]), ("governance", "sandbox"))
-        self.assertEqual(gov(load("data/assignments.yaml")["repos"]["repo-registry"]), ("governance", "sandbox"))
+        entry = next(e for e in load("registry.yaml")["repos"].values() if e["name"] == "repo-registry")
+        self.assertEqual(gov(entry), ("governance", "sandbox"))
+        self.assertEqual(gov(next(iter(load("data/assignments.yaml")["repos"].values()))), ("governance", "sandbox"))
 
     def test_R2_graduated_carries_org_and_repository_policies(self):
         """R-2: governance/graduated takes the 5 org policies and every policy governance/sandbox took before WP4c."""
@@ -46,7 +48,7 @@ class GovernanceKindTests(unittest.TestCase):
     def test_R3_friction_rises_with_the_stage(self):
         """R-3: sandbox like tool/sandbox; incubating like tool/incubating minus semantic-versioning; no org policy
         before graduated."""
-        kinds = load("data/taxonomy/kinds.yaml")["kinds"]
+        kinds = model.kinds(load("data/taxonomy/kinds.yaml"))
         self.assertEqual([kinds[f"governance/{s}"]["tier"] for s in ("sandbox", "incubating", "graduated")],
                          ["low", "medium", "high"])
         _, t = table()

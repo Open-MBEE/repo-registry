@@ -56,6 +56,12 @@ Start with [docs/current-state.md](docs/current-state.md). Where things stand: [
 ## Hard constraints
 
 - **No LLM in the loop.** Sensing, classifying, deciding and acting are deterministic code (X-1).
+- **Model, view, controller (WP5b).** The records are the model, declared as tables in `data/schema/model.yaml`;
+  the Python is the controller; views are rendered, never committed or edited by hand. Keys are GitHub's repository
+  and user IDs, and (type, stage) for a kind; the name `type/stage` is derived shorthand, never stored.
+- **Two kinds of error (WP5b F-16).** A construction error (a malformed record, a broken join, broken software) is
+  invalid and CI rejects it. A compliance error (a repository out of line with a policy) is the error signal: valid,
+  kept, never a CI failure.
 - **Taxonomy and policy are data, not code.** The engine names no kind, type, stage, tier, policy or signal (WP1
   R-7, WP2 R-10). Code names the three kind attributes (`type`, `stage`, `tier`) on purpose, because policies
   attach to them (WP0 A1).
@@ -82,9 +88,11 @@ Start with [docs/current-state.md](docs/current-state.md). Where things stand: [
 - [docs/current-state.md](docs/current-state.md): the place to start: what is decided, where, and what is next
 - [docs/status.md](docs/status.md): where things stand and the next step
 - [work-packages/](work-packages/): scopes, decision records, reviews and summaries (the record)
-- `data/`: taxonomy, policies, sources, snapshots, pilot and reports (PROVISIONAL)
-- [docs/policy-applicability.md](docs/policy-applicability.md) (generated), [docs/sops/](docs/sops/), and
-  [docs/pilot-briefing.md](docs/pilot-briefing.md) (generated): the current deliverables
+- `data/`: the model's tables (taxonomy, policies, kind list's companions, pilot, maintainers, gaps) and the sources
+  and snapshots, all declared in [data/schema/model.yaml](data/schema/model.yaml) (PROVISIONAL)
+- Views (never committed; WP5b OD4): `uv run python scripts/render.py` renders them all into `build/demo/` (demo
+  mode): the policy applicability table, every SOP, the pilot briefing and proposal, the reports, the basis tables,
+  and the data-model document
 - Early design (DRAFT inputs): [docs/design.md](docs/design.md): architecture, roles, cross-cutting requirements,
   decisions, evidence, parked items
 - [docs/roadmap.md](docs/roadmap.md): R1–R5 with exit tests

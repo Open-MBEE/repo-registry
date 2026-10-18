@@ -7,7 +7,7 @@
 
 Fifteen named policies, each GitHub-native, each with a plain "applies if" rule on type, stage or tier, an SOP, and
 citations: CISA and NIST SP 800-53 (core), and the OpenSSF baseline, the CNCF and OpenSSF lifecycles, and ISO/IEC/IEEE
-12207 clauses (secondary). Full table: [policy-applicability.md](../docs/policy-applicability.md). Grounding:
+12207 clauses (secondary). Full table: [policy-applicability.md](https://github.com/Open-MBEE/repo-registry/blob/6938aa5/docs/policy-applicability.md). Grounding:
 [policy-basis-review.md](../docs/policy-basis-review.md).
 
 | Policy | In effect for | What it asks |

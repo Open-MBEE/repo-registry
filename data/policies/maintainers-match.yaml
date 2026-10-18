@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP3 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: maintainers-match
+scope: org                               # what the policy governs: a repository, or the org's administration
 name: Named maintainers match governance power
 meaning: The named maintainers (data/maintainers.yaml) are exactly this repository's code owners, and every owner of the organization
   is a named maintainer. Owners are a small subset of the maintainers.
@@ -37,4 +36,8 @@ cites:
   nist:
   - AC-6(1)
   openssf: []
-sop: docs/sops/maintainers-match.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- Keep data/maintainers.yaml up to date through pull requests to this repository, which an owner merges.
+- Make this repository's CODEOWNERS list the same people.
+- Make sure every owner of the organization is a named maintainer. Owners are only two or three of them (see org-few-owners).
+- Declare any other admin powers under `other_powers` in data/maintainers.yaml, by a pull request that an owner merges (see below).

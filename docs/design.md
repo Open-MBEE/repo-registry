@@ -172,8 +172,8 @@ lifecycle, and ISO/IEC/IEEE 12207 by clause *(updated: WP0 "NIST RMF as a second
 - Not yet measured: which repos have issues disabled (needed for IF-4). mzargham's `gh` token lacks the `project`
   scope that IF-10's board would need.
 - mzargham is an org `member`. The org defines no custom properties. Branch protection needs admin to read; this is
-  expected gap XF-1, closed by a sensing credential with *Administration: read* in WP6 *(updated:
-  `data/expected-gaps.yaml`)*.
+  forthcoming capability XF-1, closed by a sensing credential with *Administration: read* in WP6 *(updated:
+  `data/forthcoming.yaml`; WP5b)*.
 - **CISA guidance** (*Open Source Software: Security Principles and Practices*, 2026-07-30, 31 pp.). It is written for
   federal agencies as OSS consumers and producers, so it bears on OpenMBEE in two ways. These are inputs to policy design, not decisions:
   - *How adopters will judge OpenMBEE repos:* the **C4 Framework** (App. A, pp. 24–26) assesses *how* software is
@@ -199,7 +199,7 @@ lifecycle, and ISO/IEC/IEEE 12207 by clause *(updated: WP0 "NIST RMF as a second
   the attestations named in each policy's SOP.
 - Calibration targets for the R2 exit.
 - ~~The class→controls table.~~ Resolved: the policies and their applies-if rules
-  ([policy-applicability.md](policy-applicability.md)), mapped to CISA and the NIST RMF in
+  (`policy-applicability.md` (a view, rendered into `build/demo/`)), mapped to CISA and the NIST RMF in
   [policy-basis-review.md](policy-basis-review.md) *(WP2; WP0 A1)*.
 - ~~`0.x` vs `1.0.0` release review.~~ Resolved: 1.0.0 is the Sandbox → Incubating seam (low → medium) *(A4)*.
 - GitHub App vs admin token (the actuator writes issues across the org).

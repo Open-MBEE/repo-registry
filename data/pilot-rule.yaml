@@ -3,17 +3,23 @@
 # filled in order, each repository goes to the first category that takes it, and ties break by name.
 #
 # `where` uses the predicate language of data/taxonomy/kinds.yaml, over these attributes of each repository:
-#   name, description, kind, type, stage, tier, fork, archived, commits_last_3_months, commits_last_12_months,
+#   name, description, type, stage, tier, fork, archived, commits_last_3_months, commits_last_12_months,
 #   archive_candidate (WP1 flag), usage_score (below), release_downloads, clone_uniques_14d (0 where unreadable).
 # `quota` counts the must-include repositories that fall in the category.
 status: provisional
 provisional_until: "WP0 maintainer approval 3: the initial subset of repos in the registry"
 
 # Supervisor's must-includes (WP4 OD1).
-must_include: [sysml-toolkit, OpenSysML, flexo-mms-layer1-service, flexo-mms-deployment, flexo-mms.openmbee.org,
-               flexo-mms-sysmlv2]
-# This repository registers itself (design.md X-9), though it isn't in the org yet. Added by the agent, not the supervisor.
-self_registered: [repo-registry]
+must_include:
+  - {repo_id: 1361506514, name: "sysml-toolkit"}
+  - {repo_id: 1318945311, name: "OpenSysML"}
+  - {repo_id: 441051412, name: "flexo-mms-layer1-service"}
+  - {repo_id: 530816056, name: "flexo-mms-deployment"}
+  - {repo_id: 1370327789, name: "flexo-mms.openmbee.org"}
+  - {repo_id: 884000666, name: "flexo-mms-sysmlv2"}
+# This repository registers itself (design.md X-9). Added by the agent, not the supervisor.
+self_registered:
+  - {repo_id: 1424079165, name: "repo-registry"}
 
 # "Heavily used" (WP4 default): release downloads, clone visitors where readable (push access, last 14 days), stars
 # and forks. An unreadable clone count adds nothing; it is never treated as zero use in the briefing.
@@ -34,7 +40,7 @@ categories:                       # WP4 OD2: about 30 in all
     quota: 6
     meaning: Tools at 1.0 or later with clear evidence of use (at least 100 release downloads, or at least 20 clone
       visitors in 14 days), ranked by use. A slot stays empty rather than go to a tool without that evidence.
-    where: {all: [{attr: kind, eq: tool/incubating}, {attr: archived, eq: false},
+    where: {all: [{attr: type, eq: tool}, {attr: stage, eq: incubating}, {attr: archived, eq: false},
                   {any: [{attr: release_downloads, gte: 100}, {attr: clone_uniques_14d, gte: 20}]}]}
     sort_by: usage_score
   - id: media

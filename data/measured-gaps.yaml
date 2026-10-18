@@ -1,0 +1,16 @@
+# Known non-passes of compliance controls (WP5b F-16, revised by the supervisor): the error signal, kept on purpose.
+#
+# A compliance error is a measured gap between what a policy requires and what a governed repository does. It is
+# valid, and it never fails CI; the feedback loop remediates it. (A construction error, a malformed record or broken
+# software, is invalid, and CI rejects it: data/controls.yaml.) Until the engine measures (WP6), a row here records a
+# non-pass that is known by design, with where it comes from. Each row names its subject (the repository), its policy and its check.
+measured:
+  XF-2:
+    repo_id: 1424079165
+    name: "repo-registry"
+    policy: change-review
+    check: review-required
+    color: red
+    reason: "WP0 keeps this repository's review friction low until its first canonical release (R3): the ruleset requires no approving review."
+    known_from: "the ruleset valid-main (work-packages/WP5-move-record.md, step 4)"
+    closes_in: "R3, when repo-registry is accepted as the canonical source and CODEOWNERS approval is required"

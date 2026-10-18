@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: project-files
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: README
 meaning: Every live repository has a README that says what it is and how to use it. (Its license is covered by license-by-type.)
 applies_if:
@@ -27,4 +26,5 @@ cites:
   - CISA-P-README
   nist: none
   openssf: []
-sop: docs/sops/project-files.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- Add a `README.md` at the root that says what the project is and how to use it.

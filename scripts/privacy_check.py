@@ -28,7 +28,7 @@ def main():
     ap.add_argument("--org", default="Open-MBEE")
     args = ap.parse_args()
     concealed = logins(f"orgs/{args.org}/members?per_page=100") - logins(f"orgs/{args.org}/public_members?per_page=100")
-    allowed = set(yaml.safe_load(pathlib.Path("data/maintainers.yaml").read_text())["maintainers"])
+    allowed = {m["login"] for m in yaml.safe_load(pathlib.Path("data/maintainers.yaml").read_text())["maintainers"].values()}
     files = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"], capture_output=True,
                            text=True, check=True).stdout.split()
     hits = []

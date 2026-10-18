@@ -81,3 +81,40 @@ The agent walked through six recommendations; the supervisor answered them toget
   PyYAML only; one PR per step with its status update) as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## Check-in — the audit's findings (WP5b OD1)
+
+The audit ([WP5b-audit.md](WP5b-audit.md)) found 16 findings. F-01, F-02, F-03, F-04, F-07, F-08, F-09 and F-12 were
+settled by earlier answers (OD2, OD3, OD4, answer 6, OD6, R-2).
+
+- **F-05. Question:** People (the maintainers, the proposed CODEOWNERS, a deviation's approved_by) are keyed by login,
+  which a user can change. Should they be keyed by GitHub's numeric user ID, as repositories now are? (Options: key by
+  user ID / keep logins.)
+- **Answer (mzargham, typed by agent):** "Key by user ID"
+- **The remaining findings. Question:** Fix F-06, F-10, F-11, F-13, F-14, F-15 and F-16 as proposed in the audit?
+- **Answer (mzargham, typed by agent):** "if every expected gap names its test then we should be at the point that
+  every control names its test and expected gap is just a place where we've run the check and we know it doesn't pass.
+  which is to say. this is an area we need to be delicate because we are allowing error in our control system so we
+  can identify and remediate it through a feedback loop. this is distinct from correct construction errors with
+  malformed records. its going to be very important that we keep the "error" we're measuring so our controls can bring
+  us into compliance with our policies, and errors in the sense of violation of our models rules or broken software"
+- **Follow-up:** Revised F-16: every control names its test, in two declared classes: construction controls
+  (meta-rules: a violation is invalid and CI fails) and compliance controls (policy checks: a non-pass is a measured
+  error and CI passes). A known non-pass of a compliance control (like XF-2) is kept as a measurement, the error
+  signal for remediation; a capability not built yet (like XF-1) is tracked separately as forthcoming. With that, fix
+  F-06, F-10, F-11, F-13, F-14, F-15 as proposed and F-16 as revised?
+- **Answer (mzargham, typed by agent):** "Yes, as revised"
+- **Outcome:** Every finding is to be fixed: F-05 by user ID; F-16 as revised. No finding is accepted as is or moved.
+
+## Acceptance review — observations
+
+- **Question:** Seven observations, none affecting good enough or a non-goal (names checked against the snapshot;
+  fit-analysis as a dated record; the .pyc, ISO title and privacy checks fixed on the way; the suite's time; the view
+  diff before main has render.py; trial branches and the Python patch pin to WP5c; #6's first CI failure on the review
+  link). Accept these as is, or pick any to act on?
+- **Supervisor, meanwhile (mzargham, typed by agent):** "did you address ci fail?" and "i need you to got to green
+  before i will merge it. if its xfail mark it as such". The failure was the missing review report, not an expected
+  failure; the report was added, and #6 went green (run 39149449242).
+- **Answer (mzargham, typed by agent):** "Accept the seven WP5b observations as is. Record it, write the
+  recommendation, and confirm #6 is green."
+- **Outcome:** All seven accepted as is. See [WP5b-review.md](WP5b-review.md).

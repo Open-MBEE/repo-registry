@@ -10,20 +10,25 @@ status: provisional
 provisional_until: "WP0 maintainer approval 5: the named maintainers"
 target_size: 5            # a starting point (supervisor: "5 is a good number"; "maintainers can be more")
 
-maintainers:
-  aftimg:
+maintainers:                           # keyed by GitHub's numeric user ID, with the login as a column (WP5b F-05)
+  6760647:
+    login: aftimg
     name: Chris Delp
     basis: Co-founder with Robert Karban; an org owner with public membership (supervisor).
-  mzargham:
+  10465438:
+    login: mzargham
     name: Michael Zargham
     basis: Part of the org's current leadership; liaison with NumFOCUS, the fiscal sponsor (supervisor).
-  rkarban:
+  60184290:
+    login: rkarban
     name: Robert Karban
     basis: A founder, publicly named as an admin elsewhere (supervisor).
-  HuiJun:
+  1014891:
+    login: HuiJun
     name: Jason Han
     basis: Publicly named as a maintainer elsewhere; release authority for OpenSysML, credentialing under way (supervisor).
-    release_authority: [OpenSysML]
+    release_authority:
+      - {repo_id: 1318945311, name: "OpenSysML"}
 
 # Admin power over OpenMBEE held outside GitHub's owner role (installed apps, other platforms, the fiscal-sponsor
 # relationship), declared by a pull request that an owner merges (policy maintainers-match). None declared yet.

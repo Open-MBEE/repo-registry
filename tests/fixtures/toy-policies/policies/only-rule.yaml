@@ -1,7 +1,6 @@
 # Toy policy for the policy-swap test (WP2 R-10). Not a proposal.
-status: provisional
-provisional_until: "never: test fixture"
 id: only-rule
+scope: repository
 name: Only rule
 meaning: Applies to busy things.
 applies_if: {attr: stage, eq: busy}
@@ -10,4 +9,4 @@ checks:
   automated: [{id: readme, reads: "GET /repos/{owner}/{repo}/readme -> 200", permission: "Contents: read"}]
   attested: []
 cites: {cisa: [TOY-1], nist: none, openssf: [T-1]}
-sop: sop.md
+setup: [Add a README.]

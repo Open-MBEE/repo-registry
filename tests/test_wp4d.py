@@ -6,11 +6,15 @@ import datetime
 import pathlib
 import re
 import subprocess
+import sys
+import tempfile
 import unittest
 
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+import render  # noqa: E402
 SCHEMA = ROOT / "data/schema/attestations.schema.yaml"
 FORMAT = ROOT / "docs/attestations-format.md"
 
@@ -62,7 +66,7 @@ def attested_checks():
     for f in sorted((ROOT / "data/policies").glob("[a-z]*.yaml")):
         p = load(f)
         for c in p["checks"].get("attested") or []:
-            pairs[(p["id"], c["id"])] = p["sop"]
+            pairs[(p["id"], c["id"])] = p["id"]
     return pairs
 
 
@@ -82,16 +86,19 @@ class FormatTests(unittest.TestCase):
         self.assertTrue(any("unknown key attested-by" in p for p in problems(bad, schema)))
 
     def test_R2_every_attested_check_can_be_answered(self):
-        """R-2: every attested check in data/policies/ appears in its SOP's YAML entry, and the entry meets the schema."""
+        """R-2: every attested check in data/policies/ appears in its rendered SOP's YAML entry, which meets the schema
+        (SOPs are rendered from the policy data since WP5b)."""
         schema = load(SCHEMA)
-        for (pid, cid), sop in attested_checks().items():
-            with self.subTest(policy=pid, check=cid):
-                text = (ROOT / sop).read_text()
-                blocks = re.findall(r"```yaml\n(.*?)```", text, re.S)
-                self.assertTrue(blocks, sop)
-                entries = yaml.safe_load(blocks[-1].replace("YYYY-MM-DD", "2026-10-18"))["attestations"]
-                self.assertIn((pid, cid), {(e["policy"], e["check"]) for e in entries})
-                self.assertEqual(problems({"attestations": entries}, schema), [])
+        with tempfile.TemporaryDirectory() as t:
+            render.render(t, ROOT)
+            for (pid, cid), _ in attested_checks().items():
+                with self.subTest(policy=pid, check=cid):
+                    text = (pathlib.Path(t) / "sops" / f"{pid}.md").read_text()
+                    blocks = re.findall(r"```yaml\n(.*?)```", text, re.S)
+                    self.assertTrue(blocks, pid)
+                    entries = yaml.safe_load(blocks[-1].replace("YYYY-MM-DD", "2026-10-18"))["attestations"]
+                    self.assertIn((pid, cid), {(e["policy"], e["check"]) for e in entries})
+                    self.assertEqual(problems({"attestations": entries}, schema), [])
 
 
 class DocumentTests(unittest.TestCase):

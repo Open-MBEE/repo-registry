@@ -14,7 +14,7 @@ nothing is written to the repos and the sample issues are not posted.
 
 ## The pilot
 
-24 to 36 real repos (32 proposed, in [pilot-briefing.md](pilot-briefing.md)), sampled to include heavily used and
+24 to 36 real repos (32 proposed, in `pilot-briefing.md` (a view, rendered into `build/demo/`)), sampled to include heavily used and
 actively developed tools, the website and other media, some research repos, and some repos that should be archived.
 Every other public repo is on the exclude list with a reason *(updated: WP0 D-5; WP4)*. The pilot runs on the draft
 taxonomy and policy through the snapshot bindings (FM-11). It produces the same outputs as a live run (wiki pages and

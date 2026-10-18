@@ -1,7 +1,6 @@
 # PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
-status: provisional
-provisional_until: 'WP0 maintainer approval 2: the policies'
 id: security-design
+scope: repository                               # what the policy governs: a repository, or the org's administration
 name: Documented security design
 meaning: High-tier repositories keep a short design document that describes the security controls of what they build, and
   keep it current.
@@ -33,4 +32,7 @@ cites:
   - TG-1
   iso12207:
   - 6.4.4
-sop: docs/sops/security-design.md
+setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
+- 'Write a short design document (for example `docs/design.md`) that describes the security controls of what the repository builds: the measures that protect it and its users, such as who can sign in, how data is protected, and how input is checked.'
+- Update it whenever those controls change.
+- Record the attestation below.

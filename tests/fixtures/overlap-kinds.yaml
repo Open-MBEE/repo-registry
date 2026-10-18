@@ -8,5 +8,6 @@ stages:
   b: B.
 signals: {}
 kinds:
-  thing/a: {type: thing, stage: a, tier: strict, meaning: A., recommend_when: true}
-  thing/b: {type: thing, stage: b, tier: loose, meaning: B., recommend_when: true}
+  thing:
+    a: {tier: strict, meaning: A., recommend_when: true}
+    b: {tier: loose, meaning: B., recommend_when: true}

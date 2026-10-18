@@ -5,17 +5,20 @@
 needs_research: {}
 features:
   org-rulesets:
-    why: Organization-wide rulesets need GitHub Team or Enterprise.
-    would_strengthen: history-protection, change-review (set once for all repositories)
+    reason: Organization-wide rulesets need GitHub Team or Enterprise.
+    strengthens: [history-protection, change-review]
+    note: set once for all repositories
   audit-log-api:
-    why: The organization audit-log API is Enterprise Cloud only.
-    would_strengthen: maintainers-match (who changed roles, and when)
+    reason: The organization audit-log API is Enterprise Cloud only.
+    strengthens: [maintainers-match]
+    note: who changed roles, and when
   saml-sso:
-    why: SAML single sign-on is Enterprise Cloud only.
-    would_strengthen: org-two-factor
+    reason: SAML single sign-on is Enterprise Cloud only.
+    strengthens: [org-two-factor]
   custom-roles:
-    why: Custom organization and repository roles are Enterprise Cloud only.
-    would_strengthen: maintainer-policy (fine-grained maintainer powers)
+    reason: Custom organization and repository roles are Enterprise Cloud only.
+    strengthens: []
+    note: fine-grained maintainer powers, for the maintainer policy (docs/maintainer-policy.md), which is a document, not a policy
   owner-only-collaborator-invites:
-    why: Restricting outside-collaborator invitations to owners is Enterprise Cloud only.
-    would_strengthen: org-few-owners
+    reason: Restricting outside-collaborator invitations to owners is Enterprise Cloud only.
+    strengthens: [org-few-owners]

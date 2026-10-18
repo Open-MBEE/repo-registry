@@ -83,139 +83,115 @@ signals:
   is_tool: {all: [{signal: owned_here}, {signal: code_language}, {not: {signal: media_words}}, {not: {signal: research_words}}]}
   live: {not: {signal: archived}}
 
-kinds:
+kinds:                                 # keyed by type, then stage: the composite key (WP5b OD2); the name
+                                       # "type/stage" is derived shorthand, for display
   # --- tools ---
-  tool/sandbox:
-    type: tool
-    stage: sandbox
-    tier: low
-    meaning: >-
-      A tool that is still experimenting: no numbered release yet, or releases still numbered below 1.0. It needs a
-      named person to look after it, and controls are kept light so that experiments stay easy. When it releases
-      version 1.0, it becomes an incubating tool.
-    recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_1_or_later}}]
-  tool/incubating:
-    type: tool
-    stage: incubating
-    tier: medium
-    meaning: >-
-      A tool at version 1.0 or later that people are starting to rely on. It gets moderate controls. It becomes a
-      graduated tool when the maintainers judge that it is widely used and well governed.
-    recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}]
-  tool/graduated:
-    type: tool
-    stage: graduated
-    tier: high
-    meaning: >-
-      A mature tool that many people depend on in real work. Every release needs careful control, so it gets the
-      strictest controls. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
-    recommend_when: false
-  tool/archived:
-    type: tool
-    stage: archived
-    tier: none
-    meaning: An archived tool. Nobody can change it any more.
-    recommend_when:
-      all: [{signal: is_tool}, {signal: archived}]
+  tool:
+    sandbox:
+      tier: low
+      meaning: >-
+        A tool that is still experimenting: no numbered release yet, or releases still numbered below 1.0. It needs a
+        named person to look after it, and controls are kept light so that experiments stay easy. When it releases
+        version 1.0, it becomes an incubating tool.
+      recommend_when:
+        all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_1_or_later}}]
+    incubating:
+      tier: medium
+      meaning: >-
+        A tool at version 1.0 or later that people are starting to rely on. It gets moderate controls. It becomes a
+        graduated tool when the maintainers judge that it is widely used and well governed.
+      recommend_when:
+        all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}]
+    graduated:
+      tier: high
+      meaning: >-
+        A mature tool that many people depend on in real work. Every release needs careful control, so it gets the
+        strictest controls. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      recommend_when: false
+    archived:
+      tier: none
+      meaning: An archived tool. Nobody can change it any more.
+      recommend_when:
+        all: [{signal: is_tool}, {signal: archived}]
 
   # --- media ---
-  media/sandbox:
-    type: media
-    stage: sandbox
-    tier: low
-    meaning: Draft or trial media. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
-    recommend_when: false
-  media/incubating:
-    type: media
-    stage: incubating
-    tier: medium
-    meaning: >-
-      Media that people use and rely on, such as the website, documentation and teaching material.
-    recommend_when:
-      all: [{signal: is_media}, {signal: live}]
-  media/graduated:
-    type: media
-    stage: graduated
-    tier: medium
-    meaning: >-
-      Mature media that the whole community depends on. Media gets at most moderate controls, so that it stays easy to
-      contribute to. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
-    recommend_when: false
-  media/archived:
-    type: media
-    stage: archived
-    tier: none
-    meaning: Archived media. Nobody can change it any more.
-    recommend_when:
-      all: [{signal: is_media}, {signal: archived}]
+  media:
+    sandbox:
+      tier: low
+      meaning: Draft or trial media. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      recommend_when: false
+    incubating:
+      tier: medium
+      meaning: >-
+        Media that people use and rely on, such as the website, documentation and teaching material.
+      recommend_when:
+        all: [{signal: is_media}, {signal: live}]
+    graduated:
+      tier: medium
+      meaning: >-
+        Mature media that the whole community depends on. Media gets at most moderate controls, so that it stays easy to
+        contribute to. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      recommend_when: false
+    archived:
+      tier: none
+      meaning: Archived media. Nobody can change it any more.
+      recommend_when:
+        all: [{signal: is_media}, {signal: archived}]
 
   # --- research ---
-  research/sandbox:
-    type: research
-    stage: sandbox
-    tier: low
-    meaning: >-
-      Ideas being explored in public, often by one person. Controls are kept light on purpose, so that this kind of
-      work stays easy.
-    recommend_when:
-      all: [{signal: is_research}, {signal: live}]
-  research/incubating:
-    type: research
-    stage: incubating
-    tier: low
-    meaning: Research that others are starting to use or build on. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
-    recommend_when: false
-  research/graduated:
-    type: research
-    stage: graduated
-    tier: low
-    meaning: >-
-      Established research that others rely on, kept available, for example alongside a paper. Research stays
-      lightly controlled. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
-    recommend_when: false
-  research/archived:
-    type: research
-    stage: archived
-    tier: none
-    meaning: Archived research. Nobody can change it any more.
-    recommend_when:
-      all: [{signal: is_research}, {signal: archived}]
+  research:
+    sandbox:
+      tier: low
+      meaning: >-
+        Ideas being explored in public, often by one person. Controls are kept light on purpose, so that this kind of
+        work stays easy.
+      recommend_when:
+        all: [{signal: is_research}, {signal: live}]
+    incubating:
+      tier: low
+      meaning: Research that others are starting to use or build on. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      recommend_when: false
+    graduated:
+      tier: low
+      meaning: >-
+        Established research that others rely on, kept available, for example alongside a paper. Research stays
+        lightly controlled. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      recommend_when: false
+    archived:
+      tier: none
+      meaning: Archived research. Nobody can change it any more.
+      recommend_when:
+        all: [{signal: is_research}, {signal: archived}]
 
   # --- governance (WP0 A2, A4; WP1 amendment 3): always assigned, never recommended ---
-  # Two things have the governance type: the repo-registry repository, which holds the organization's rules for its
-  # repositories, and the administration of the GitHub organization itself. They differ only by stage. Friction
-  # rises with the stage, as for every other type (WP4c).
-  governance/sandbox:
-    type: governance
-    stage: sandbox
-    tier: low
-    meaning: >-
-      Governance that is still being set up and tried out. Light controls, like a sandbox tool, so that it can change
-      quickly. repo-registry has this kind until the maintainers buy in and work together to calibrate it.
-    recommend_when: false
-  governance/incubating:
-    type: governance
-    stage: incubating
-    tier: medium
-    meaning: >-
-      Governance that the maintainers have taken up and are calibrating together, before it becomes the canonical
-      source. Controls like an incubating tool. Nothing has this kind yet; repo-registry is expected to pass through it.
-    recommend_when: false
-  governance/graduated:
-    type: governance
-    stage: graduated
-    tier: high
-    meaning: >-
-      Established governance: the administration of the GitHub organization itself, and repo-registry once it is
-      accepted as the canonical source. The strictest controls, because whatever governs must be at least as strict
-      as what it governs. It carries the organization's policies and the repository policies together.
-    recommend_when: false
+    # Two things have the governance type: the repo-registry repository, which holds the organization's rules for its
+    # repositories, and the administration of the GitHub organization itself. They differ only by stage. Friction
+    # rises with the stage, as for every other type (WP4c).
+  governance:
+    sandbox:
+      tier: low
+      meaning: >-
+        Governance that is still being set up and tried out. Light controls, like a sandbox tool, so that it can change
+        quickly. repo-registry has this kind until the maintainers buy in and work together to calibrate it.
+      recommend_when: false
+    incubating:
+      tier: medium
+      meaning: >-
+        Governance that the maintainers have taken up and are calibrating together, before it becomes the canonical
+        source. Controls like an incubating tool. Nothing has this kind yet; repo-registry is expected to pass through it.
+      recommend_when: false
+    graduated:
+      tier: high
+      meaning: >-
+        Established governance: the administration of the GitHub organization itself, and repo-registry once it is
+        accepted as the canonical source. The strictest controls, because whatever governs must be at least as strict
+        as what it governs. It carries the organization's policies and the repository policies together.
+      recommend_when: false
 
 # Kinds in the type x stage cross product that are deliberately left out, each with its reason (WP1 R-3).
 omitted:
-  governance/archived: Only two things have the governance type, and neither is archived.
+  governance:
+    archived: Only two things have the governance type, and neither is archived.
 
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:
