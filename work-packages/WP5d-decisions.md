@@ -59,3 +59,11 @@ mzargham's.
   created by the supervisor) as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## Approval *(a verbal approval, in place of the merge, while the runner queue waited)*
+
+- **Supervisor (mzargham, typed by agent):** "i want to merge the PR but its stuck in the queue for a runner again.
+  last time it took over 30 min. since all we did was write a scope of work, not edit any content i want you to start
+  work on my verbal approval so we don't need to wait on a runner"
+- **Outcome:** WP5d's scope (`wp5d-scope`, the content of PR #10) is approved by this statement; execution starts on
+  `wp5d-work`, branched from the scope. PR #10 is merged when its check runs; the delivery PR carries the scope too.
