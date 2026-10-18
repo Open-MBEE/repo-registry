@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, with the WP5 delivery. Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP5b scope (status updates ride with each package's PRs). Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -29,9 +29,13 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     [WP4d-review.md](../work-packages/WP4d-review.md); the change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
   - **WP4e** (type and stage in the kind list): accepted in 63e270f. Review:
     [WP4e-review.md](../work-packages/WP4e-review.md); the change is recorded in [WP1-amendment-4.md](../work-packages/WP1-amendment-4.md).
-  - **WP5** (meta-rule checks in CI, and the move to Open-MBEE): scope approved in 0cbe887
-    ([WP5-scope-of-work.md](../work-packages/WP5-scope-of-work.md)); delivered as a pull request, waiting for
-    acceptance. The move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
+  - **WP5** (meta-rule checks in CI, and the move to Open-MBEE): accepted by mzargham's merge of
+    [#1](https://github.com/Open-MBEE/repo-registry/pull/1), 6938aa5. Review:
+    [WP5-review.md](../work-packages/WP5-review.md); the move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
+  - **WP5b** (the model, its integrity, and views out of the model): scope proposed in this pull request
+    ([WP5b-scope-of-work.md](../work-packages/WP5b-scope-of-work.md)); approved by its merge.
+  - **WP5c** (the taxonomy refinements from WP4's fit analysis): next after WP5b; early answers in
+    [WP5c-decisions.md](../work-packages/WP5c-decisions.md).
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
@@ -66,15 +70,15 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
    kinds: **accepted**. WP4d, the attestations file: **accepted**.
    WP4e, type and stage in the kind list: **accepted**.
-5. **WP5, meta-rule checks in CI, and the move to Open-MBEE: delivered, waiting for acceptance.**
+5. WP5, meta-rule checks in CI, and the move to Open-MBEE: **accepted**. **WP5b, the model and views: scoped.**
+   WP5c, the taxonomy refinements: next.
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
 
-Review **WP5** and take it to the acceptance gate: mzargham's merge of the delivery pull request. Then scope **WP6
-(the engine: compare, status, status log, sample issues)** with `scope-of-work`. Inputs carried to it:
-- the sensing credential with *Administration: read* is set up in WP6 (WP5 OD6), which closes expected gap XF-1;
-- the status log's meta-rules join `scripts/validate.py` (WP5 non-goals);
-- expected gap XF-2 (`repo-registry` passes `change-review`) closes at R3 (`data/expected-gaps.yaml`).
+Approve **WP5b** by merging its scope pull request, then build it: the declared model, the audit and its check-in, the
+normalization (type and stage, repository IDs), the views rendered in demo mode, and the enforcement. Then scope
+**WP5c** (the taxonomy refinements) from the answers already recorded. WP6 (the engine) follows; the sensing
+credential is set up there (WP5 OD6).

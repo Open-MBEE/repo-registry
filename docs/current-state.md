@@ -62,8 +62,10 @@
 | WP4c | The governance kinds; OpenSSF as a core citation | accepted 4cad812 |
 | WP4d | The attestations file | accepted caaca38 |
 | WP4e | Type and stage in the kind list | accepted 63e270f |
-| **WP5** | Meta-rule checks in CI; move to Open-MBEE | **delivered**, waiting for acceptance (scope approved 0cbe887) |
-| WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | next |
+| WP5 | Meta-rule checks in CI; move to Open-MBEE | accepted 6938aa5 ([#1](https://github.com/Open-MBEE/repo-registry/pull/1)) |
+| **WP5b** | The model, its integrity, and views out of the model (MVC, demo mode) | **scoped**, approved by the merge of its scope PR |
+| WP5c | Taxonomy refinements from WP4's fit analysis | next after WP5b |
+| WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
 
