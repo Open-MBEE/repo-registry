@@ -145,3 +145,72 @@ The WP1 scope is approved (merge 3bb8ee8). These changes need a new approval by 
   governance/maintained, every governance kind maps to high, and the other governance kinds are omitted with a reason.
   R-3 now allows omitted kinds, with a reason. R-6 and D-2 were updated.
 - **A3.** Recommendations are guidance and governors assign. OpenSysML and sysml-toolkit stay experimental until 1.0.0.
+
+## Third review pass — R-4's stopping point (raised by the agent, a level up)
+
+- **Question:** R-4 is checked by a cold read, and a model stand-in finds a new, smaller layer each pass. What should
+  count as meeting R-4 for WP1?
+- **Answer (mzargham, typed by agent):** "Fix 1-5, then stop"
+- **Outcome:** Fix the third pass's five items, accept the two minor ones (version numbers, "controls"), and treat
+  stand-in reads as advisory. The real cold read by a person happens at the WP8 demonstrations.
+
+## Maintained means active upkeep *(raised by supervisor, during the fixes)*
+
+- **Supervisor (mzargham, typed by agent):** "maintenance is active not passive"
+- **Supervisor (mzargham, typed by agent):** "repos being maintained need to be aware of their dependencies. as well as
+  CVEs and other ongoing work to keep their stable software safe and reliable"
+- **Outcome:** The meaning of maintained now says it is actively looked after: tracking dependencies, watching for
+  publicly reported security flaws (CVEs) and fixing them. Recommendation rules (agent's inner-loop detail): active
+  development means changes in the last 3 months, and maintained means changes in the last 12 months but not the last
+  3. A 1.0-or-later tool, or media, with no changes in a year is unclassified, with the reason "isn't being maintained:
+  archive it, or a maintainer says who looks after it". Carried to WP2: policies attached to the maintained lifecycle
+  for dependency tracking and vulnerability (CVE) handling (WP0 A1 allows lifecycle-attached policies).
+
+## Lifecycle is a category, not compliance *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "you also may be confusing the lifecycle category with compliance to
+  controls. these repos wouldn't be in compliance with controls that don't exist"
+- **Outcome:** The agent had made "no changes in a year" leave a repo unclassified as "not maintained". That judged
+  compliance through the kind. Reverted: lifecycle recommendations use the 12-month split again (changes in the last
+  year means active development, otherwise maintained), and the "not maintained" reason is gone. The maintained
+  meaning now states the category and its expected upkeep, and says that whether the upkeep happens is checked by the
+  maintained-lifecycle policies (WP2), not by the kind.
+
+## Active development vs maintained is about new features *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "active development vs is maintained is related to whether new feature
+  development is happening"
+- **Outcome:** For tools, the recommendation reads it from semantic versioning. A feature release (x.y.0, raising
+  MAJOR or MINOR) in the last 12 months means active development. Otherwise the tool is maintained (patch releases
+  only, or no recent release). The lifecycle meanings say this in plain words. Media keeps the activity guide. Result
+  on the snapshot: 0 tools in active development, 15 maintained. The current feature work is all in 0.x tools, which
+  stay experimental.
+
+## Secondary citations for the lifecycle *(raised by supervisor, after the review)*
+
+- **Supervisor (mzargham, typed by agent):** "i am considering whether we need an ISO 12207-2026 as another core
+  citation. our lifecycle mode is significantly compressed relative to this so its probably overkill but alternatively
+  we could make it a secondary citation along with something from eg the linux foundation talking about the lifecycle
+  for open source software. the one thing i'd like to note is that most lifecycle models fail to adequately account
+  for the exploratory / experimental phase, because it doesn't fit as neatly into a top down model. its more common in
+  communities that have capacity for bottom up creativity"
+- **Agent's suggestions:** keep CISA and NIST RMF as the only core citations. Add as secondary citations
+  ISO/IEC/IEEE 12207:2026 §5.4 (life-cycle stages; its common set of concept exploration, development, sustainment and
+  retirement maps to experimental, active development, maintained and archived) and one open-source project maturity
+  model whose Sandbox stage legitimizes bottom-up experimental work. Record them in WP2's policy basis review (D-9)
+  rather than amending WP0. Cite 12207 by reference only, because the supervisor's copy is single-user licensed.
+- **Answer (mzargham, typed by agent):** "i accept your suggestions"
+- **Outcome:** Carried to WP2 (D-9). The agent verified both foundation models use Sandbox → Incubating → Graduated →
+  Archived: CNCF (https://contribute.cncf.io/projects/lifecycle/) and OpenSSF
+  (https://github.com/ossf/tac/blob/main/process/project-lifecycle.md). Default for WP2: cite the OpenSSF lifecycle,
+  because OpenSSF is the security-focused foundation and aligns with the CISA guidance. No WP0 amendment.
+
+### Follow-up — Which open-source maturity model
+
+- **Question:** Which open-source maturity model matches better? The agent's analysis: CNCF and OpenSSF have the same
+  stages, and neither has a stage matching *maintained* (LF Networking's Maintenance/LTS does, unverified). The agent
+  recommended OpenSSF.
+- **Answer (mzargham, typed by agent):** "oh they have the same one, you can put both in citations since its secondary"
+- **Outcome:** WP2 (D-9) cites both the CNCF and the OpenSSF project lifecycles as secondary citations, for their stage
+  definitions (Sandbox as legitimate experimental work, Archived as the end state), not their graduation criteria.
+  This replaces the OpenSSF-only default above.

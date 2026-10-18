@@ -1,0 +1,6 @@
+# Toy tiers for the taxonomy-swap test (WP1 R-7). Not a proposal.
+status: provisional
+provisional_until: "never: test fixture"
+tiers:
+  strict: {order: 1, meaning: Strict.}
+  loose: {order: 2, meaning: Loose.}

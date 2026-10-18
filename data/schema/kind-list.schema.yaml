@@ -1,0 +1,36 @@
+# PROVISIONAL until the maintainers approve the taxonomy (WP0, maintainer approval 1). WP1 D-4.
+# JSON Schema (draft 2020-12), written in YAML, for registry.yaml. It covers meta-rules 1, 2, 5 (shape), 6 and 7 of
+# docs/kind-list-format.md. Rules 3 (first line), 4 (case), 5 (kind exists), 8, 9 and 10 need the taxonomy, the raw
+# file or the org, so WP5 checks them in code.
+$schema: https://json-schema.org/draft/2020-12/schema
+title: repo-registry canonical kind list
+type: object
+additionalProperties: false
+required: [status, org, repos]
+properties:
+  status: {enum: [provisional, approved]}
+  provisional_until: {type: string, minLength: 1}
+  org:
+    type: object
+    additionalProperties: false
+    required: [name, kind]
+    properties:
+      name: {type: string, minLength: 1}
+      kind: {type: string, pattern: '^[a-z]+/[a-z-]+$'}
+  snapshot: {type: string}
+  repos:
+    type: object
+    additionalProperties:
+      type: object
+      additionalProperties: false
+      required: [kind]
+      properties:
+        kind: {type: string, pattern: '^(unclassified|[a-z]+/[a-z-]+)$'}
+        reason: {type: string, minLength: 1}
+      if: {properties: {kind: {const: unclassified}}}
+      then: {required: [reason]}
+      else: {not: {required: [reason]}}
+allOf:
+  - if: {properties: {status: {const: provisional}}}
+    then: {required: [provisional_until]}
+    else: {not: {required: [provisional_until]}}
