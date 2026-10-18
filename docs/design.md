@@ -77,7 +77,7 @@ interfaces are inside GitHub, so the system stays self-contained there.
 | Role (activity) | Plane | Interface | What happens there |
 |---|---|---|---|
 | **Reader**: finds and understands repos | — (read-only) | **Wiki** of this repo | Generated from controller state each run: an index page, one page per kind, per tier and per policy, and views of the registry by kind, tier and policy, with each repo's red / yellow / green status and links to the repo and its open registry issues. No page per repo *(updated: WP0 D-3, "Wiki downscope")*. Never hand-edited. |
-| **Operator**: brings a repo into conformance; the repo's CODEOWNERS *(updated: WP0 R-17)* | Operations | **Issues in their own repo**, plus **direct edits** to that repo | The system files change requests as issues in the repo they concern (in R1, sample issue texts only, not posted). Operators act in their own repo: they edit it (sensed on the next pass), answer attested checks in its README attestation block, and close the issue to assert the task is done *(updated: WP0 "Compliance", R-13)*. A kind-change PR is an operator's only action in this repo (WP0 OD3). |
+| **Operator**: brings a repo into conformance; the repo's CODEOWNERS *(updated: WP0 R-17)* | Operations | **Issues in their own repo**, plus **direct edits** to that repo | The system files change requests as issues in the repo they concern (in R1, sample issue texts only, not posted). Operators act in their own repo: they edit it (sensed on the next pass), answer attested checks in its `ATTESTATIONS.yaml`, and close the issue to assert the task is done *(updated: WP0 "Compliance", R-13; WP0 amendment 3)*. A kind-change PR is an operator's only action in this repo (WP0 OD3). |
 | **Governor**: sets and tunes the rules; the named maintainers, and the owners among them | Policy (controller tuning) | **This repo**: PR → review → merge, its own issues, and *ideally* an org **Project board** aggregating every issue the system has written across the org | Changes to taxonomy, policy and implementation; the exclude list. Any maintainer merges a kind change; an owner merges changes to the maintainer list and accepted exceptions *(updated: WP4b OD3)*. Items needing a policy decision (`unclassified`, taxonomy review) are issues here. Low friction before canonical (R1–R2): in R1 the only restriction is the valid-`main` check (WP0 R-14). From its first canonical release (R3): CODEOWNERS (OpenMBEE maintainers) approval to merge to `main`; the number of reviews is parked (IF-9). |
 
 ### Stakeholders → roles (draft, for iteration)
@@ -190,8 +190,9 @@ lifecycle, and ISO/IEC/IEEE 12207 by clause *(updated: WP0 "NIST RMF as a second
 
 ## Parked (content; for later design sessions)
 
-- ~~Where attested facts land and in what format.~~ Resolved: in a README attestation block in the repo, committed by
-  a code owner, out of date once older than the latest release *(WP0 "Compliance", R-13, R-17)*.
+- ~~Where attested facts land and in what format.~~ Resolved: in one `ATTESTATIONS.yaml` at the repo's root,
+  committed by a code owner, read at the latest release's commit, each entry naming the release it was made for
+  ([attestations-format](attestations-format.md)) *(WP0 "Compliance", R-13, R-17; WP0 amendment 3)*.
 - The number of required reviews from R3 on.
 - ~~The class set.~~ Resolved: the kinds in `data/taxonomy/kinds.yaml` (15 defined, 1 omitted with a reason; WP1 amendment 3);
   `repo-registry` is governance/sandbox *(WP1; A2, A4)*. Y and Z for R1: the measurements in the stored snapshot and

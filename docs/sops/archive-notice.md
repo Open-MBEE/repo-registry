@@ -9,7 +9,7 @@ Before a repository is archived, its README says that support has ended and poin
 ## Set up
 
 1. Before archiving, add a note at the top of the README saying that support has ended, with the date, and naming any known active forks.
-2. In the same commit, add the attestation block below to the end of the README. Once a repository is archived, nobody can commit to it, so this has to come first.
+2. In the same commit, add the attestation entry below to the repository's `ATTESTATIONS.yaml`. Once a repository is archived, nobody can commit to it, so this has to come first. An archived repository is read at this final commit, so no release is needed for it.
 3. Then archive the repository (Settings, then General, then Archive this repository).
 4. Repositories archived before this policy existed need nothing more.
 
@@ -23,18 +23,18 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 
 - **end-of-support-note**: The README says that support has ended, and names any known active forks. (Repositories archived before this policy existed are exempt.)
 
-How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
-release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it
-is older than the repository's latest release.
+How to attest: add this entry to your repository's `ATTESTATIONS.yaml`, at its root, and renew it for each release
+([attestations-format.md](../attestations-format.md)). An entry counts only if its `release` names the release being
+checked (or `none` before the first release), and the last change to the file was committed by a code owner of the repository. Point to
+the file from the README: "Attestations: see `ATTESTATIONS.yaml`."
 
-```markdown
-<!-- repo-registry attestation
-policy: archive-notice
-check: end-of-support-note
-attested-by: @your-github-username
-date: YYYY-MM-DD
-release: vX.Y.Z (or none)
--->
+```yaml
+attestations:
+  - policy: archive-notice
+    check: end-of-support-note
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
 ```
 
 

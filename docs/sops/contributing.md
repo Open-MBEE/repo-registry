@@ -23,18 +23,18 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 
 - **contributing-content**: The contribution guide keeps requirements on contributors minimal, says which kinds of contribution are accepted, and (for code) asks for tests with each change.
 
-How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
-release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it
-is older than the repository's latest release.
+How to attest: add this entry to your repository's `ATTESTATIONS.yaml`, at its root, and renew it for each release
+([attestations-format.md](../attestations-format.md)). An entry counts only if its `release` names the release being
+checked (or `none` before the first release), and the last change to the file was committed by a code owner of the repository. Point to
+the file from the README: "Attestations: see `ATTESTATIONS.yaml`."
 
-```markdown
-<!-- repo-registry attestation
-policy: contributing
-check: contributing-content
-attested-by: @your-github-username
-date: YYYY-MM-DD
-release: vX.Y.Z (or none)
--->
+```yaml
+attestations:
+  - policy: contributing
+    check: contributing-content
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
 ```
 
 

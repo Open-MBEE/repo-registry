@@ -27,18 +27,23 @@ The registry checks these itself. A check it can't read shows as yellow (can't t
 - **signed-with-provenance**: Release artifacts are signed, and a build record (provenance) is published with them that meets SLSA Build Level 3: built by GitHub Actions on GitHub-hosted runners through a reusable workflow, with GitHub artifact attestations.
 - **no-built-executables**: The source repository holds no built executables, except test fixtures that are documented as such.
 
-How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
-release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it
-is older than the repository's latest release.
+How to attest: add these entries to your repository's `ATTESTATIONS.yaml`, at its root, and renew them for each release
+([attestations-format.md](../attestations-format.md)). An entry counts only if its `release` names the release being
+checked (or `none` before the first release), and the last change to the file was committed by a code owner of the repository. Point to
+the file from the README: "Attestations: see `ATTESTATIONS.yaml`."
 
-```markdown
-<!-- repo-registry attestation
-policy: release-integrity
-check: signed-with-provenance
-attested-by: @your-github-username
-date: YYYY-MM-DD
-release: vX.Y.Z (or none)
--->
+```yaml
+attestations:
+  - policy: release-integrity
+    check: signed-with-provenance
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
+  - policy: release-integrity
+    check: no-built-executables
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
 ```
 
 

@@ -99,9 +99,11 @@ issue there. The issue says what to do, why (which rule, and what was seen), and
 
 - If it asks you to **change something** (for example, add a `SECURITY.md` or turn on required
   reviews), make the change in your repository and close the issue. The next check confirms it.
-- If it asks you a **question** (a fact the system can't see for itself), answer it in an attestation block in
-  your repository's `README.md`, committed by a code owner. The policy's SOP shows the form. An attestation is out
-  of date once it is older than your latest release.
+- If it asks you a **question** (a fact the system can't see for itself), answer it in one file,
+  `ATTESTATIONS.yaml`, at the root of your repository, committed by a code owner, and point to it from your README.
+  The policy's SOP shows the entry to copy. Each release carries its own attestations: the file is read as it is in
+  the release, and each entry names the release it was made for, so you renew your entries as part of each release
+  ([attestations-format.md](docs/attestations-format.md)).
 
 A repository's operators **are** its CODEOWNERS. Every repository in a tier that needs an owner (high, medium or
 low) must have a CODEOWNERS file, and only a code owner's attestation counts.
