@@ -1,6 +1,6 @@
 # PROVISIONAL until the maintainers approve the taxonomy (WP0, maintainer approval 1). WP1 D-4.
 # JSON Schema (draft 2020-12), written in YAML, for registry.yaml. It covers meta-rules 1, 2, 5 (shape), 6 and 7 of
-# docs/kind-list-format.md. Rules 3 (first line), 4 (case), 5 (kind exists), 8, 9 and 10 need the taxonomy, the raw
+# docs/kind-list-format.md. Rules 3 (first line), 4 (case), 5 (the type and stage name a defined kind), 8, 9 and 10 need the taxonomy, the raw
 # file or the org, so WP5 checks them in code.
 $schema: https://json-schema.org/draft/2020-12/schema
 title: repo-registry canonical kind list
@@ -13,23 +13,26 @@ properties:
   org:
     type: object
     additionalProperties: false
-    required: [name, kind]
+    required: [name, type, stage]
     properties:
       name: {type: string, minLength: 1}
-      kind: {type: string, pattern: '^[a-z]+/[a-z-]+$'}
+      type: {type: string, pattern: '^[a-z]+$'}
+      stage: {type: string, pattern: '^[a-z-]+$'}
   snapshot: {type: string}
   repos:
     type: object
     additionalProperties:
       type: object
       additionalProperties: false
-      required: [kind]
       properties:
-        kind: {type: string, pattern: '^(unclassified|[a-z]+/[a-z-]+)$'}
+        type: {type: string, pattern: '^[a-z]+$'}
+        stage: {type: string, pattern: '^[a-z-]+$'}
         reason: {type: string, minLength: 1}
-      if: {properties: {kind: {const: unclassified}}}
-      then: {required: [reason]}
-      else: {not: {required: [reason]}}
+      oneOf:                                  # WP4e OD2: type and stage, or a reason alone
+        - required: [type, stage]
+          not: {required: [reason]}
+        - required: [reason]
+          allOf: [{not: {required: [type]}}, {not: {required: [stage]}}]
 allOf:
   - if: {properties: {status: {const: provisional}}}
     then: {required: [provisional_until]}

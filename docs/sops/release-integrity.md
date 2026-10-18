@@ -4,7 +4,7 @@
 
 Graduated tools publish each release with a software bill of materials (SBOM), sign it, publish build provenance, and keep built executables out of the source repository.
 
-**Applies to:** tool at graduated. Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+**Applies to:** tool at graduated. Your repository's type and stage are in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

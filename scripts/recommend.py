@@ -2,7 +2,7 @@
 """Recommend each repo's initial kind from a stored snapshot, and write the provisional kind list.
 
 WP1 D-5. Deterministic, no language model (WP1 R-5, WP0 R-1). The taxonomy is data: this file names no kind,
-type, lifecycle, tier or signal (WP1 R-7, WP0 R-6). It only RECOMMENDS kinds. Authority to set a repo's kind
+type, stage, tier or signal (WP1 R-7, WP0 R-6). It only RECOMMENDS kinds. Authority to set a repo's kind
 belongs to the maintainers (WP1 Direction, AGENTS.md "Provisional data").
 
 Usage:
@@ -97,24 +97,24 @@ def evaluate(pred, repo, signals, stack=()):
 def check_taxonomy(kinds_doc, tiers_doc):
     """Structural checks on the taxonomy itself (WP1 R-6)."""
     tiers = tiers_doc["tiers"]
-    types, lifecycles = kinds_doc["types"], kinds_doc["lifecycles"]
+    types, stages = kinds_doc["types"], kinds_doc["stages"]
     problems = []
     for name, kind in kinds_doc["kinds"].items():
         if kind.get("tier") not in tiers:
             problems.append(f"{name}: tier {kind.get('tier')!r} is not a tier")
         if kind.get("type") not in types:
             problems.append(f"{name}: type {kind.get('type')!r} is not a type")
-        if kind.get("lifecycle") not in lifecycles and not kind.get("departure"):
-            problems.append(f"{name}: lifecycle {kind.get('lifecycle')!r} is not a lifecycle and no departure is stated")
-        if name != f"{kind.get('type')}/{kind.get('lifecycle')}":
-            problems.append(f"{name}: name must be <type>/<lifecycle>")
+        if kind.get("stage") not in stages and not kind.get("departure"):
+            problems.append(f"{name}: stage {kind.get('stage')!r} is not a stage and no departure is stated")
+        if name != f"{kind.get('type')}/{kind.get('stage')}":
+            problems.append(f"{name}: name must be <type>/<stage>")
         if not kind.get("meaning"):
             problems.append(f"{name}: no meaning")
-    cross = {f"{t}/{l}" for t in types for l in lifecycles}
+    cross = {f"{t}/{s}" for t in types for s in stages}
     omitted = kinds_doc.get("omitted", {})
     for name in omitted:
         if name not in cross:
-            problems.append(f"omitted {name} is not in the type x lifecycle cross product")
+            problems.append(f"omitted {name} is not in the type x stage cross product")
         if name in kinds_doc["kinds"]:
             problems.append(f"{name} is both defined and omitted")
     for name in sorted(cross - set(kinds_doc["kinds"]) - set(omitted)):
@@ -147,7 +147,7 @@ def recommend(repos, kinds_doc, assigned=None):
                     "No kind's rule matches.",
                 )
         if repo["name"] in assigned:
-            kind, reason = assigned[repo["name"]]["kind"], None
+            kind, reason = kind_of(assigned[repo["name"]]), None
         results[repo["name"]] = {
             "assigned": repo["name"] in assigned,
             "kind": kind,
@@ -167,7 +167,8 @@ def recommend(repos, kinds_doc, assigned=None):
     for name, a in assigned.items():
         if name not in results:
             results[name] = {
-                "assigned": True, "kind": a["kind"], "tier": kinds_doc["kinds"][a["kind"]]["tier"], "matched": [],
+                "assigned": True, "kind": kind_of(a), "tier": (kinds_doc["kinds"].get(kind_of(a)) or {}).get("tier"),
+                "matched": [],
                 "reason": None, "flags": [], "evidence": {"note": "Not in the snapshot.", "decision": a["decision"]},
             }
     for name, r in results.items():
@@ -176,27 +177,41 @@ def recommend(repos, kinds_doc, assigned=None):
     return dict(sorted(results.items(), key=lambda kv: kv[0].lower()))
 
 
+def kind_of(entry):
+    """The kind an entry of the kind list (or of data/assignments.yaml) names: computed from its type and stage, or
+    `unclassified` for an entry that has only a reason (WP4e)."""
+    if "type" in entry or "stage" in entry:
+        return f"{entry.get('type')}/{entry.get('stage')}"
+    return "unclassified"
+
+
 def quote(s):
     return json.dumps(s)  # a JSON string is a valid YAML scalar
 
 
-def write_registry(path, results, snapshot_dir, meta, org_kind):
+def write_registry(path, results, snapshot_dir, meta, org_kind, kinds_doc):
     lines = [
         "# PROVISIONAL. NOT APPROVED. Kinds recommended by rule, plus kinds assigned by recorded decisions",
         "# (data/assignments.yaml). Drafted by scripts/recommend.py (WP1 D-5).",
         "# Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).",
-        "# Format: docs/kind-list-format.md. One entry per repo. Changing a repo's kind is a one-line edit.",
+        "# Format: docs/kind-list-format.md. One entry per repo: its type and stage, or only a reason. Changing a",
+        "# repo's stage (or type) is a one-line edit.",
         "status: provisional",
         f"provisional_until: {quote('WP0 maintainer approval 4: the assigned kind of each repo in the registry')}",
         "org:",
         f"  name: {meta['org']}",
-        f"  kind: {org_kind}",
+    ]
+    if org_kind in kinds_doc["kinds"]:  # with no assignment (a toy taxonomy), the org has no type or stage
+        lines += [f"  type: {kinds_doc['kinds'][org_kind]['type']}", f"  stage: {kinds_doc['kinds'][org_kind]['stage']}"]
+    lines += [
         f"snapshot: {snapshot_dir}",
         "repos:",
     ]
     for name, r in results.items():
         lines.append(f"  {quote(name)}:")
-        lines.append(f"    kind: {r['kind']}")
+        if r["kind"] in kinds_doc["kinds"]:
+            lines.append(f"    type: {kinds_doc['kinds'][r['kind']]['type']}")
+            lines.append(f"    stage: {kinds_doc['kinds'][r['kind']]['stage']}")
         if r["reason"]:
             lines.append(f"    reason: {quote(r['reason'])}")
     pathlib.Path(path).write_text("\n".join(lines) + "\n")
@@ -229,7 +244,7 @@ def main():
     kinds_doc = yaml.safe_load(pathlib.Path(args.kinds).read_text())
     tiers_doc = yaml.safe_load(pathlib.Path(args.tiers).read_text())
     assignments = yaml.safe_load(pathlib.Path(args.assignments).read_text()) if args.assignments else {}
-    org_kind = (assignments.get("org") or {}).get("kind", "unclassified")
+    org_kind = kind_of(assignments.get("org") or {})
     try:
         check_taxonomy(kinds_doc, tiers_doc)
         if org_kind != "unclassified" and org_kind not in kinds_doc["kinds"]:
@@ -238,7 +253,7 @@ def main():
     except TaxonomyError as e:
         sys.exit(f"taxonomy error:\n{e}")
 
-    write_registry(args.registry, results, args.snapshot, meta, org_kind)
+    write_registry(args.registry, results, args.snapshot, meta, org_kind, kinds_doc)
     write_report(args.report, results, args.snapshot)
 
     counts = {}

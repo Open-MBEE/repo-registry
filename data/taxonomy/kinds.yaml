@@ -1,7 +1,7 @@
 # PROVISIONAL until the maintainers approve the taxonomy (WP0, maintainer approval 1).
-# WP1 D-2. The kinds: type x lifecycle (WP1 R-3), each mapped to exactly one tier (WP1 R-6, WP0 R-17).
-# A repo has a kind. A kind gives the repo three attributes: its type, its lifecycle and its tier. Policies attach
-# to a type, a lifecycle or a tier (WP0 A1). Nothing here gives a repo a tier directly.
+# WP1 D-2. The kinds: type x stage (WP1 R-3), each mapped to exactly one tier (WP1 R-6, WP0 R-17).
+# A repo has a type and a stage in the lifecycle (registry.yaml); the kind is the point they name, and it gives the
+# repo its tier. Policies attach to a type, a stage or a tier (WP0 A1; WP4e). Nothing here gives a repo a tier directly.
 #
 # `recommend_when` is a deterministic predicate over snapshot attributes (WP1 R-5). It only RECOMMENDS a
 # repo's initial kind, as guidance. Governors assign kinds (WP1 A3).
@@ -30,7 +30,7 @@ types:
 
 # Lifecycle stages are adopted from the CNCF and OpenSSF project lifecycles (WP0/WP1 amendment A4).
 # The map from their documents, with sources, is docs/lifecycle-stage-map.md.
-lifecycles:
+stages:
   sandbox: >-
     The first stage, for early and experimental work. Big changes, including ones that break things for users, are
     expected. One person working alone is fine. For a tool, it has no numbered release yet, or its releases are still
@@ -87,7 +87,7 @@ kinds:
   # --- tools ---
   tool/sandbox:
     type: tool
-    lifecycle: sandbox
+    stage: sandbox
     tier: low
     meaning: >-
       A tool that is still experimenting: no numbered release yet, or releases still numbered below 1.0. It needs a
@@ -97,7 +97,7 @@ kinds:
       all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_1_or_later}}]
   tool/incubating:
     type: tool
-    lifecycle: incubating
+    stage: incubating
     tier: medium
     meaning: >-
       A tool at version 1.0 or later that people are starting to rely on. It gets moderate controls. It becomes a
@@ -106,7 +106,7 @@ kinds:
       all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}]
   tool/graduated:
     type: tool
-    lifecycle: graduated
+    stage: graduated
     tier: high
     meaning: >-
       A mature tool that many people depend on in real work. Every release needs careful control, so it gets the
@@ -114,7 +114,7 @@ kinds:
     recommend_when: false
   tool/archived:
     type: tool
-    lifecycle: archived
+    stage: archived
     tier: none
     meaning: An archived tool. Nobody can change it any more.
     recommend_when:
@@ -123,13 +123,13 @@ kinds:
   # --- media ---
   media/sandbox:
     type: media
-    lifecycle: sandbox
+    stage: sandbox
     tier: low
     meaning: Draft or trial media. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   media/incubating:
     type: media
-    lifecycle: incubating
+    stage: incubating
     tier: medium
     meaning: >-
       Media that people use and rely on, such as the website, documentation and teaching material.
@@ -137,7 +137,7 @@ kinds:
       all: [{signal: is_media}, {signal: live}]
   media/graduated:
     type: media
-    lifecycle: graduated
+    stage: graduated
     tier: medium
     meaning: >-
       Mature media that the whole community depends on. Media gets at most moderate controls, so that it stays easy to
@@ -145,7 +145,7 @@ kinds:
     recommend_when: false
   media/archived:
     type: media
-    lifecycle: archived
+    stage: archived
     tier: none
     meaning: Archived media. Nobody can change it any more.
     recommend_when:
@@ -154,7 +154,7 @@ kinds:
   # --- research ---
   research/sandbox:
     type: research
-    lifecycle: sandbox
+    stage: sandbox
     tier: low
     meaning: >-
       Ideas being explored in public, often by one person. Controls are kept light on purpose, so that this kind of
@@ -163,13 +163,13 @@ kinds:
       all: [{signal: is_research}, {signal: live}]
   research/incubating:
     type: research
-    lifecycle: incubating
+    stage: incubating
     tier: low
     meaning: Research that others are starting to use or build on. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   research/graduated:
     type: research
-    lifecycle: graduated
+    stage: graduated
     tier: low
     meaning: >-
       Established research that others rely on, kept available, for example alongside a paper. Research stays
@@ -177,7 +177,7 @@ kinds:
     recommend_when: false
   research/archived:
     type: research
-    lifecycle: archived
+    stage: archived
     tier: none
     meaning: Archived research. Nobody can change it any more.
     recommend_when:
@@ -189,7 +189,7 @@ kinds:
   # rises with the stage, as for every other type (WP4c).
   governance/sandbox:
     type: governance
-    lifecycle: sandbox
+    stage: sandbox
     tier: low
     meaning: >-
       Governance that is still being set up and tried out. Light controls, like a sandbox tool, so that it can change
@@ -197,7 +197,7 @@ kinds:
     recommend_when: false
   governance/incubating:
     type: governance
-    lifecycle: incubating
+    stage: incubating
     tier: medium
     meaning: >-
       Governance that the maintainers have taken up and are calibrating together, before it becomes the canonical
@@ -205,7 +205,7 @@ kinds:
     recommend_when: false
   governance/graduated:
     type: governance
-    lifecycle: graduated
+    stage: graduated
     tier: high
     meaning: >-
       Established governance: the administration of the GitHub organization itself, and repo-registry once it is
@@ -213,7 +213,7 @@ kinds:
       as what it governs. It carries the organization's policies and the repository policies together.
     recommend_when: false
 
-# Kinds in the type x lifecycle cross product that are deliberately left out, each with its reason (WP1 R-3).
+# Kinds in the type x stage cross product that are deliberately left out, each with its reason (WP1 R-3).
 omitted:
   governance/archived: Only two things have the governance type, and neither is archived.
 

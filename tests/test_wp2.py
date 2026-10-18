@@ -51,12 +51,12 @@ class MetaRuleTests(unittest.TestCase):
         self.assertEqual(P.check(**real()), [])
 
     def test_R2_applies_if_rejects_other_attributes(self):
-        """R-2: an applies-if rule reading anything but type, lifecycle or tier is rejected."""
+        """R-2: an applies-if rule reading anything but type, stage or tier is rejected."""
         args = real()
         bad = copy.deepcopy(args["policies"]["codeowners"])
         bad["applies_if"] = {"attr": "stars", "gt": 10}
         args["policies"] = {"codeowners": bad}
-        self.assertTrue(any("only type, lifecycle, tier" in p for p in P.check(**args)))
+        self.assertTrue(any("only type, stage, tier" in p for p in P.check(**args)))
         bad["applies_if"] = {"signal": "is_tool"}
         self.assertTrue(any("may not use signals" in p for p in P.check(**args)))
 

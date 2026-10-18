@@ -3,7 +3,7 @@
 # filled in order, each repository goes to the first category that takes it, and ties break by name.
 #
 # `where` uses the predicate language of data/taxonomy/kinds.yaml, over these attributes of each repository:
-#   name, description, kind, type, lifecycle, tier, fork, archived, commits_last_3_months, commits_last_12_months,
+#   name, description, kind, type, stage, tier, fork, archived, commits_last_3_months, commits_last_12_months,
 #   archive_candidate (WP1 flag), usage_score (below), release_downloads, clone_uniques_14d (0 where unreadable).
 # `quota` counts the must-include repositories that fall in the category.
 status: provisional

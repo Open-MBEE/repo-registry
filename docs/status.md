@@ -27,6 +27,8 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     [WP1-amendment-3.md](../work-packages/WP1-amendment-3.md).
   - **WP4d** (the attestations file): accepted in caaca38. Review:
     [WP4d-review.md](../work-packages/WP4d-review.md); the change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
+  - **WP4e** (type and stage in the kind list): accepted in 63e270f. Review:
+    [WP4e-review.md](../work-packages/WP4e-review.md); the change is recorded in [WP1-amendment-4.md](../work-packages/WP1-amendment-4.md).
   - **WP5** (meta-rule checks in CI, and the move to Open-MBEE): scope approved in 0cbe887
     ([WP5-scope-of-work.md](../work-packages/WP5-scope-of-work.md)); delivered as a pull request, waiting for
     acceptance. The move is recorded in [WP5-move-record.md](../work-packages/WP5-move-record.md).
@@ -63,6 +65,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 3. WP3, org governance: **accepted**.
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
    kinds: **accepted**. WP4d, the attestations file: **accepted**.
+   WP4e, type and stage in the kind list: **accepted**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE: delivered, waiting for acceptance.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.

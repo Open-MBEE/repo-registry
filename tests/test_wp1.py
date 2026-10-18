@@ -59,15 +59,15 @@ class TaxonomyTests(unittest.TestCase):
     def setUp(self):
         self.kinds, self.tiers = load(KINDS), load(TIERS)
 
-    def test_R3_type_x_lifecycle_with_stated_departures(self):
-        """R-3: kinds start from type x lifecycle; every added or omitted kind states a reason."""
-        cross = {f"{t}/{l}" for t in self.kinds["types"] for l in self.kinds["lifecycles"]}
+    def test_R3_type_x_stage_with_stated_departures(self):
+        """R-3: kinds start from type x stage; every added or omitted kind states a reason."""
+        cross = {f"{t}/{l}" for t in self.kinds["types"] for l in self.kinds["stages"]}
         defined, omitted = set(self.kinds["kinds"]), self.kinds.get("omitted", {})
         self.assertEqual(defined - cross, set(), "a kind outside the cross product")
         self.assertEqual(cross - defined, set(omitted), "a cross-product kind is neither defined nor omitted")
         for name, reason in omitted.items():
             self.assertTrue(reason.strip(), name)
-        self.assertEqual(set(self.kinds["lifecycles"]), {"sandbox", "incubating", "graduated", "archived"})
+        self.assertEqual(set(self.kinds["stages"]), {"sandbox", "incubating", "graduated", "archived"})
 
     def test_R6_one_tier_per_kind_and_fixed_map(self):
         """R-6: each kind has one tier; the fixed parts of the map hold; every tier is used."""
@@ -77,14 +77,14 @@ class TaxonomyTests(unittest.TestCase):
         self.assertEqual(k["tool/incubating"]["tier"], "medium")
         self.assertEqual(k["tool/sandbox"]["tier"], "low")
         for name, kind in k.items():
-            if kind["lifecycle"] == "graduated":
+            if kind["stage"] == "graduated":
                 self.assertIs(kind["recommend_when"], False, f"{name}: graduated is assigned only")
         for name, kind in k.items():
             if kind["type"] == "governance":  # friction rises with the stage (WP4c OD2; WP1 amendment 3)
-                expected = {"sandbox": "low", "incubating": "medium", "graduated": "high"}[kind["lifecycle"]]
+                expected = {"sandbox": "low", "incubating": "medium", "graduated": "high"}[kind["stage"]]
                 self.assertEqual(kind["tier"], expected, name)
                 self.assertIs(kind["recommend_when"], False, name)
-            elif kind["lifecycle"] == "archived":
+            elif kind["stage"] == "archived":
                 self.assertEqual(kind["tier"], "none", name)
             elif name != "tool/graduated":
                 self.assertIn(kind["tier"], ("low", "medium"), name)
@@ -92,8 +92,8 @@ class TaxonomyTests(unittest.TestCase):
     def test_R6_governance_assignments(self):
         """R-6 (A2, A4): repo-registry is governance/sandbox and the org is governance/graduated."""
         doc = yaml.safe_load(REGISTRY.read_text())
-        self.assertEqual(doc["repos"]["repo-registry"]["kind"], "governance/sandbox")
-        self.assertEqual(doc["org"]["kind"], "governance/graduated")
+        self.assertEqual(recommend.kind_of(doc["repos"]["repo-registry"]), "governance/sandbox")
+        self.assertEqual(recommend.kind_of(doc["org"]), "governance/graduated")
 
     def test_R4_every_kind_has_a_meaning(self):
         """R-4 (part): every kind and tier has a plain meaning. The cold read itself is a manual check."""
@@ -185,18 +185,18 @@ class KindListTests(unittest.TestCase):
             self.assertEqual(load(path)["status"], "provisional", path)
 
     def test_D4_meta_rules(self):
-        """D-4 meta-rules 1-8 and 10 hold on the provisional kind list (WP5 will enforce them in CI)."""
+        """D-4 meta-rules 1-8 and 10 hold on the provisional kind list (entries hold type and stage, WP4e)."""
         kinds = load(KINDS)["kinds"]
         self.assertLessEqual(set(self.doc), {"status", "org", "repos", "snapshot", "provisional_until"})
-        self.assertEqual(set(self.doc["org"]), {"name", "kind"})
-        self.assertIn(self.doc["org"]["kind"], kinds)
+        self.assertEqual(set(self.doc["org"]), {"name", "type", "stage"})
+        self.assertIn(recommend.kind_of(self.doc["org"]), kinds)
         names = list(self.doc["repos"])
         self.assertEqual(len({n.lower() for n in names}), len(names))
         self.assertEqual(names, sorted(names, key=str.lower))
         for name, entry in self.doc["repos"].items():
-            self.assertLessEqual(set(entry), {"kind", "reason"}, name)
-            self.assertTrue(entry["kind"] in kinds or entry["kind"] == "unclassified", name)
-            self.assertEqual("reason" in entry, entry["kind"] == "unclassified", name)
+            self.assertIn(set(entry), ({"type", "stage"}, {"reason"}), name)
+            kind = recommend.kind_of(entry)
+            self.assertTrue(kind in kinds or kind == "unclassified", name)
         recommend.check_taxonomy(load(KINDS), load(TIERS))
 
     def test_D5_covers_every_snapshot_repo(self):
@@ -206,12 +206,12 @@ class KindListTests(unittest.TestCase):
         self.assertEqual(set(self.doc["repos"]), {r["name"] for r in repos} | assigned)
 
     def test_R8_reclassification_is_one_entry(self):
-        """R-8: changing a repo's kind is a one-line edit."""
-        after = self.text.replace('  "OpenSysML":\n    kind: tool/sandbox\n',
-                                  '  "OpenSysML":\n    kind: tool/incubating\n')
+        """R-8: changing a repo's kind is a one-line edit (its stage, WP4e)."""
+        after = self.text.replace('  "OpenSysML":\n    type: tool\n    stage: sandbox\n',
+                                  '  "OpenSysML":\n    type: tool\n    stage: incubating\n')
         changed = [l for l in difflib.unified_diff(self.text.splitlines(), after.splitlines(), lineterm="", n=0)
                    if l[:1] in "+-" and not l.startswith(("+++", "---"))]
-        self.assertEqual(changed, ["-    kind: tool/sandbox", "+    kind: tool/incubating"])
+        self.assertEqual(changed, ["-    stage: sandbox", "+    stage: incubating"])
 
 
 if __name__ == "__main__":
