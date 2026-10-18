@@ -150,9 +150,17 @@ explain:
     The rules read it as research: it started here with research words and no media words, or it is a fork with
     changes of ours that are not mostly models.
   inferred_tool: "The rules read it as a tool: it started here, has a programming language, and has no media or research words."
-  is_media: Its type is media, by its topic, or by the rules when no topic declares a type.
-  is_research: Its type is research, by its topic, or by the rules when no topic declares a type.
-  is_tool: Its type is tool, by its topic, or by the rules when no topic declares a type.
+  is_media: >-
+    Its type is media: its code owners declared it with the openmbee-media topic, or, with no type topic, it has no
+    research words and either started here with media words or holds only notebooks or models, or it is a fork whose
+    changes of ours are mostly models.
+  is_research: >-
+    Its type is research: its code owners declared it with the openmbee-research topic, or, with no type topic, it
+    started here with research words and no media words, or it is a fork with changes of ours that are not mostly
+    models.
+  is_tool: >-
+    Its type is tool: its code owners declared it with the openmbee-tool topic, or, with no type topic, it started
+    here, GitHub reports a programming language for it, and it has no media or research words.
   live: It is not archived.
 
 kinds:                                 # keyed by type, then stage: the composite key (WP5b OD2); the name

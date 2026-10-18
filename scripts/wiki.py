@@ -31,19 +31,19 @@ BLOB, EDIT = f"{REPO}/blob/main", f"{REPO}/edit/main"
 # The cited sources, in the order and with the roles of docs/policy-basis-review.md ("The sources"). Those with an
 # item file in data/sources/ get a page; the rest are cited as a whole, and link to the document that reads them.
 SOURCES = [
-    {"id": "cisa", "file": "data/sources/cisa-practices.yaml", "items": "practices", "role": "Core",
+    {"id": "cisa", "short": "CISA practices", "file": "data/sources/cisa-practices.yaml", "items": "practices", "role": "Core",
      "name": "CISA, Open Source Software: Security Principles and Practices"},
-    {"id": "nist", "file": "data/sources/nist-800-53.yaml", "items": "controls", "role": "Core",
+    {"id": "nist", "short": "NIST SP 800-53", "file": "data/sources/nist-800-53.yaml", "items": "controls", "role": "Core",
      "name": "NIST SP 800-53 Rev. 5, the controls cited"},
     {"id": "nist-rmf", "role": "Core", "name": "NIST SP 800-37 Rev. 2, the Risk Management Framework",
      "read": "Official PDF; the step map is in WP0", "doc": "work-packages/WP0-scope-of-work.md"},
-    {"id": "openssf", "file": "data/sources/openssf-security-baseline.yaml", "items": "items", "role": "Core, backbone",
+    {"id": "openssf", "short": "OpenSSF baseline", "file": "data/sources/openssf-security-baseline.yaml", "items": "items", "role": "Core, backbone",
      "name": "OpenSSF security baseline, by stage"},
     {"id": "openssf-lifecycle", "role": "Core", "name": "OpenSSF project lifecycle (the stages)",
      "read": "ossf/tac commit d019efe", "doc": "docs/lifecycle-stage-map.md"},
     {"id": "cncf-lifecycle", "role": "Secondary", "name": "CNCF project lifecycle (the stages)",
      "read": "cncf/toc commit d815451", "doc": "docs/lifecycle-stage-map.md"},
-    {"id": "iso12207", "file": "data/sources/iso12207-clauses.yaml", "items": "clauses", "role": "Secondary",
+    {"id": "iso12207", "short": "ISO/IEC/IEEE 12207", "file": "data/sources/iso12207-clauses.yaml", "items": "clauses", "role": "Secondary",
      "name": "ISO/IEC/IEEE 12207:2026, by clause number and title only (no text of the standard is committed)"},
 ]
 ITEM_WORD = {"cisa": "practice", "nist": "control", "openssf": "item", "iso12207": "clause"}
@@ -55,7 +55,10 @@ def anchor(heading):
 
 
 def cell(text):
-    return " ".join(str(text).split()).replace("|", "\\|")
+    """One table cell: on one line, its pipes escaped, and `<` and `>` escaped outside code spans (GitHub strips
+    them as HTML, so `openmbee-<type>` would lose its `<type>`)."""
+    parts = " ".join(str(text).split()).replace("|", "\\|").split("`")
+    return "`".join(p if i % 2 else p.replace("<", "&lt;").replace(">", "&gt;") for i, p in enumerate(parts))
 
 
 def commit(root):
@@ -187,6 +190,11 @@ class Pack:
               "rule in words, its citations, and its SOP page |",
               "| [Sources](Sources) | The cited sources, and for each item the policies that adopt it, or why we "
               "depart from it |", "",
+              "## What we ask of you", "",
+              "Read the pack, and either agree or propose a change. The OpenMBEE maintainers approve, in turn: the "
+              "taxonomy ([Taxonomy](Taxonomy)), the policies ([Policies](Policies) and their SOPs), the pilot "
+              "(marked on [Repositories](Repositories)), each pilot repository's kind, and the named maintainers. "
+              "Until then everything here is PROVISIONAL.", "",
               "## How the model fits together", "",
               "A repository has a **type** and a **stage** in its lifecycle. Together they name its **kind**, and the "
               "kind gives its **tier**, which says how strict the controls are. Each policy says, with a rule over "
@@ -315,7 +323,8 @@ class Pack:
                 else:
                     name = f"[{e['name']}]({GITHUB}/{e['name']})"
                     entry = held_in("registry.yaml", reg_line[rid], "registry.yaml")
-                L.append(f"| {name} | {k} | {self.tier_of(k)} | {e['source']} | "
+                source = e["source"] + (f": {cell(e['decision'])}" if e.get("decision") else "")
+                L.append(f"| {name} | {k} | {self.tier_of(k)} | {source} | "
                          f"{'pilot' if rid in self.pilot else ''} | {entry} |")
             L.append("")
         L += ["## unclassified", "",
@@ -331,28 +340,39 @@ class Pack:
         order = {t: r["order"] for t, r in self.tiers.items()}
         L = header("Policies", self.sha, "From `data/policies/`, and which kinds each is in effect for.")
         L += [f"The {len(self.pols)} policies. Each is in effect for the kinds its rule selects, over type, stage and "
-              "tier only; its tiers are the tiers of those kinds. Each links to its SOP (how to set it up and how it "
-              "is checked) and its citations link to the [Sources](Sources).", "",
-              "| Policy | Scope | In effect when | Kinds | Tiers | Citations | Held in |", "|---|---|---|---|---|---|---|"]
-        for pid, p in sorted(self.pols.items()):
+              "tier only; its tiers are the tiers of those kinds. Below the summary, each policy has its kinds, its "
+              "citations (linked to the [Sources](Sources)), its SOP (how to set it up and how it is checked) and the "
+              "file that holds it.", "",
+              "| Policy | What it asks | In effect when | Tiers |", "|---|---|---|---|"]
+        rows, sections = [], []
+        for pid, p in sorted(self.pols.items(), key=lambda kv: kv[1]["name"].lower()):
             ks = self.by_policy.get(pid, [])
-            tiers = sorted({self.tier_of(k) for k in ks}, key=order.get)
+            tiers = ", ".join(sorted({self.tier_of(k) for k in ks}, key=order.get)) or "—"
+            rule = rule_words(p["applies_if"])
+            rows.append(f"| [{cell(p['name'])}](#{anchor(p['name'])}) | {cell(p['meaning'])} | {cell(rule)} | {tiers} |")
             cites = []
             for s in ("cisa", "nist", "openssf", "iso12207"):
                 refs = p["cites"].get(s)
                 if isinstance(refs, list) and refs:
-                    cites.append(", ".join(self.cite(s, str(r)) for r in refs))
-            L.append(f"| [{cell(p['name'])}](SOP-{pid}) | {p['scope']} | {cell(rule_words(p['applies_if']))} | "
-                     f"{', '.join(kind_link(k) for k in ks) or '—'} | {', '.join(tiers) or '—'} | "
-                     f"{'; '.join(cites)} | {held_in(f'data/policies/{pid}.yaml')} |")
-        L += ["", "## By kind", "", "| Kind | Tier | Policies in effect |", "|---|---|---|"]
+                    cites.append(f"- {self.sources[s]['short']}: " + ", ".join(self.cite(s, str(r)) for r in refs))
+            sections += [f"## {p['name']}", "", cell(p["meaning"]), "",
+                         f"- **Governs:** {'the organization' if p['scope'] == 'org' else 'a repository'}",
+                         f"- **In effect when:** {cell(rule)}",
+                         f"- **Kinds:** {', '.join(kind_link(k) for k in ks) or '—'}",
+                         f"- **Tiers:** {tiers}",
+                         f"- **SOP:** [{cell(p['name'])}](SOP-{pid})",
+                         f"- **Held in:** {held_in(f'data/policies/{pid}.yaml')}",
+                         "- **Citations:**"] + ["  " + c for c in cites] + [""]
+        L += rows + ["", "## By kind", "", "| Kind | Tier | Policies in effect |", "|---|---|---|"]
         for k in self.kinds:
-            ps = [pid for pid in sorted(self.pols) if k in self.by_policy.get(pid, [])]
-            L.append(f"| {kind_link(k)} | {self.tier_of(k)} | {', '.join(f'[{q}](SOP-{q})' for q in ps) or '—'} |")
-        return L
+            ps = [q for q in sorted(self.pols) if k in self.by_policy.get(q, [])]
+            links = ", ".join(f"[{cell(self.pols[q]['name'])}](SOP-{q})" for q in ps) or "—"
+            L.append(f"| {kind_link(k)} | {self.tier_of(k)} | {links} |")
+        return L + [""] + sections
 
     def sop(self, pid):
-        text = sops.render(self.pols[pid], self.by_policy.get(pid, []), table_link="Policies", cite=self.cite)
+        text = sops.render(self.pols[pid], self.by_policy.get(pid, []), table=("Policies", "Policies"), cite=self.cite,
+                          banner=False)
         text = re.sub(r"\]\((?:\.\./)+([^)#:]+)\)", rf"]({BLOB}/\1)", text)  # a policy's repo-relative link
         body = text.split("\n")
         body = body[1:] if body[0].startswith("# ") else body
@@ -398,6 +418,13 @@ class Pack:
               f"{sum(1 for i in items if i in departed)} departed from with a reason"
               + (f", {sum(1 for i in items if i not in adopted and i not in departed)} cited elsewhere (below)"
                  if any(i not in adopted and i not in departed for i in items) else "") + ".", ""]
+        L += [f"| {word.capitalize()} | {'Section' if sid == 'cisa' else 'Title'} | Adopted by, or departed |", "|---|---|---|"]
+        for ref, row in items.items():
+            what = row["section"] if sid == "cisa" else row["title"]
+            by = (", ".join(f"[{cell(self.pols[q]['name'])}](SOP-{q})" for q in adopted[ref]) if ref in adopted
+                  else "departed from, with a reason" if ref in departed else "no policy; cited elsewhere")
+            L.append(f"| [{ref}](#{anchor(ref)}) | {cell(what)} | {by} |")
+        L.append("")
         docs = sorted((self.root / "docs").glob("*.md"))
         for ref, row in items.items():
             pat = re.compile(rf'^  "?{re.escape(ref)}"?:')
@@ -427,8 +454,8 @@ class Pack:
     def sidebar(self):
         L = ["**[Home](Home)**", "", "- [Taxonomy](Taxonomy)", "- [Repositories](Repositories)",
              "- [Policies](Policies)", "- [Sources](Sources)", "", "**SOPs**", ""]
-        L += [f"- [{self.pols[q]['name']}](SOP-{q})" for q in sorted(self.pols)]
-        L += ["", "**Sources**", ""] + [f"- [{s['id']}](Source-{s['id']})" for s in SOURCES if "file" in s]
+        L += [f"- [{self.pols[q]['name']}](SOP-{q})" for q in sorted(self.pols, key=lambda q: self.pols[q]["name"].lower())]
+        L += ["", "**Sources**", ""] + [f"- [{s['short']}](Source-{s['id']})" for s in SOURCES if "file" in s]
         L += ["", f"Rendered from [`{self.sha[:7]}`]({REPO}/tree/{self.sha}). PROVISIONAL."]
         return L
 

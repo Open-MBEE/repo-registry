@@ -57,22 +57,33 @@ class PageTests(unittest.TestCase):
                     self.assertEqual(cells[2], e["source"])
                 else:
                     k = model.kind_of(e)
-                    self.assertEqual(cells[1:4], [k, kinds[k]["tier"], e["source"]])
+                    self.assertEqual(cells[1:3], [k, kinds[k]["tier"]])
+                    self.assertEqual(cells[3].split(":")[0], e["source"])
+                    if e.get("decision"):  # a maintainer's entry shows its decision: the why
+                        self.assertIn(wiki.cell(e["decision"]), cells[3])
         for k in kinds:
             self.assertIn(f"[{k}](Taxonomy#{wiki.anchor(k)})", text)
 
     def test_R2_every_policy_with_its_kinds_tiers_and_sop(self):
-        """R-2: every policy has one row, with the kinds the applicability view gives, their tiers, its rule in
-        words, and a link to its SOP page."""
+        """R-2: every policy has one summary row (what it asks, its rule in words, its tiers) and one section, with the
+        kinds the applicability view gives, their tiers, its rule in words, and a link to its SOP page."""
         kinds = model.kinds(model.load("data/taxonomy/kinds.yaml"))
-        for pid in APPLIES:
+        pols = {pid: yaml.safe_load((ROOT / f"data/policies/{pid}.yaml").read_text()) for pid in APPLIES}
+        text = PAGES["Policies"]
+        for pid, p in pols.items():
             with self.subTest(policy=pid):
-                found = [ln for ln in rows("Policies") if f"](SOP-{pid}) |" in ln and ln.count(" | ") > 4]
+                name, tiers = p["name"], {kinds[k]["tier"] for k in APPLIES[pid]}
+                found = [ln for ln in rows("Policies") if ln.startswith(f"| [{wiki.cell(name)}](#{wiki.anchor(name)}) |")]
                 self.assertEqual(len(found), 1)
                 cells = [c.strip() for c in found[0].strip("|").split(" | ")]
-                self.assertEqual(re.findall(r"\[([^\]]+)\]\(Taxonomy", cells[3]), APPLIES[pid])
-                self.assertEqual(set(cells[4].split(", ")) - {"—"}, {kinds[k]["tier"] for k in APPLIES[pid]})
-                self.assertTrue(cells[2].startswith(("its ", "not ", "(")))
+                self.assertEqual(cells[1], wiki.cell(p["meaning"]))
+                self.assertEqual(cells[2], wiki.cell(wiki.rule_words(p["applies_if"])))
+                self.assertEqual(set(cells[3].split(", ")) - {"—"}, tiers)
+                section = text.split(f"\n## {name}\n")[1].split("\n## ")[0]
+                kinds_line = next(ln for ln in section.splitlines() if ln.startswith("- **Kinds:**"))
+                self.assertEqual(re.findall(r"\[([^\]]+)\]\(Taxonomy", kinds_line), APPLIES[pid])
+                self.assertIn(f"](SOP-{pid})", section)
+                self.assertIn(f"/edit/main/data/policies/{pid}.yaml", section)
                 self.assertIn(f"SOP-{pid}", PAGES)
 
     def test_R3_taxonomy_defines_everything_and_gives_the_heuristics(self):

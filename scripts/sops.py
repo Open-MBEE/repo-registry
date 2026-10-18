@@ -51,18 +51,20 @@ def attest_block(p, org_policy):
             "", "```yaml", "attestations:", entries, "```"]
 
 
-def render(p, in_effect_for, table_link="../policy-applicability.md", cite=None):
-    """One SOP. The wiki (scripts/wiki.py) passes its own table link and a `cite(source, ref)` that links each citation."""
+def render(p, in_effect_for, table=("policy-applicability.md", "../policy-applicability.md"), cite=None, banner=True):
+    """One SOP. The wiki (scripts/wiki.py) passes its own table link, a `cite(source, ref)` that links each citation,
+    and no banner (its pages carry their own)."""
     pid = p["id"]
     org_policy = in_effect_for == ["governance/graduated"]
-    L = [f"# {p['name']}", "",
-         f"> **PROVISIONAL** until the maintainers approve the policies. A view, rendered from policy `{pid}` "
-         f"([`data/policies/{pid}.yaml`]({REPO}/data/policies/{pid}.yaml)); never edit it by hand.", "",
-         " ".join(p["meaning"].split()), "",
+    L = [f"# {p['name']}", ""]
+    if banner:
+        L += [f"> **PROVISIONAL** until the maintainers approve the policies. A view, rendered from policy `{pid}` "
+              f"([`data/policies/{pid}.yaml`]({REPO}/data/policies/{pid}.yaml)); never edit it by hand.", ""]
+    L += [" ".join(p["meaning"].split()), "",
          f"**Applies to:** {', '.join(kind_phrase(k) for k in in_effect_for) or 'no kind'}. Your repository's type and "
          f"stage are in [registry.yaml]({REPO}/registry.yaml); the stages are explained in "
          f"[lifecycle-stage-map.md]({REPO}/docs/lifecycle-stage-map.md), and the full table is in "
-         f"[policy-applicability.md]({table_link})."
+         f"[{table[0]}]({table[1]})."
          + (f" {' '.join(p['applies_note'].split())}" if p.get("applies_note") else ""), ""]
     guidance = p.get("license_guidance")
     if guidance:
