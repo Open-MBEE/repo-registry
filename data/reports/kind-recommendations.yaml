@@ -1,0 +1,2567 @@
+status: provisional
+note: Evidence for each recommended kind. Flags never change a kind.
+snapshot: data/snapshots/2026-10-18
+repos:
+  .github:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  _OpenMBEE-Documentation:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  aircraftengine-simulation:
+    kind: research/experimental
+    tier: low
+    matched:
+    - research/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 7
+      commits_last_3_months: 7
+  airflow-provider-opensysml:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 16
+      commits_last_3_months: 16
+  amazonaws:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: Archived, with no type signal. Inert whatever its type.
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  apv:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  apv-mdk:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  arch_model:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  architecture-based-risk-analysis:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  bae:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  bae2_3_1:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  ChatGPT-Prompts:
+    kind: research/experimental
+    tier: low
+    matched:
+    - research/experimental
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  Comodo:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 20
+      commits_last_3_months: 20
+  concept-definition-stage:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 64
+      commits_last_3_months: 23
+  configuration-management-plugin:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  confluence-mdk:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  des-ex-toolset:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: MATLAB
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  DesertKite.sysml:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 2
+      commits_last_3_months: 0
+  dis:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: v1.0.1
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  docbook:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  docbookgen:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: XSLT
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  DocGenServer:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  docs:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  docweb-service:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  doors-ng-client:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  doors-ng-mdk:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  Dragon-Architecture-Model:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 2
+      commits_last_3_months: 0
+  ems-config:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: Archived, with no type signal. Inert whatever its type.
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  EMS-Repo:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: 2.3.12
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  EMS-Share:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  enhancement-proposals:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-cameo-mdk:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 7.0.1
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-mdk-systems-reasoner:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 3.0.0
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-mms:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 4.0.20
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-mms-migration-cameo2022x:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-mms-python-client-example:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-mmsri:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 4.0.20
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  exec-ve:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: 5.0.0
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-cli-client:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 44
+      commits_last_3_months: 0
+  flexo-cli-sysmlv2-plugin:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 26
+      commits_last_3_months: 0
+  flexo-conflict-resolution-policy-research:
+    kind: research/experimental
+    tier: low
+    matched:
+    - research/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 74
+      commits_last_3_months: 0
+  flexo-graphql:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-mms-auth-service:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Kotlin
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-mms-deployment:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Bru
+      latest_semver: null
+      commits_last_12_months: 4
+      commits_last_3_months: 0
+  flexo-mms-jama-sdk:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-mms-layer0-dashboard:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Svelte
+      latest_semver: null
+      commits_last_12_months: 19
+      commits_last_3_months: 19
+  flexo-mms-layer1-mcp:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 7
+      commits_last_3_months: 0
+  flexo-mms-layer1-openapi:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-mms-layer1-service:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Kotlin
+      latest_semver: v0.2.2
+      commits_last_12_months: 238
+      commits_last_3_months: 42
+  flexo-mms-ontology:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-mms-sso-auth-service:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 12
+      commits_last_3_months: 10
+  flexo-mms-store-service:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Kotlin
+      latest_semver: null
+      commits_last_12_months: 4
+      commits_last_3_months: 4
+  flexo-mms-sysmlv2:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Bru
+      latest_semver: v0.1.1
+      commits_last_12_months: 58
+      commits_last_3_months: 0
+  flexo-mms-sysmlv2-mcp:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 10
+      commits_last_3_months: 0
+  flexo-mms.openmbee.org:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 11
+      commits_last_3_months: 11
+  flexo-performance-test:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 7
+      commits_last_3_months: 0
+  flexo-pr-manager:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 2
+      commits_last_3_months: 0
+  flexo-sysml2-adapter-experiment:
+    kind: research/experimental
+    tier: low
+    matched:
+    - research/experimental
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  flexo-sysmlv2-swagger:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 3
+      commits_last_3_months: 0
+  flexo_syside:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: 0.3.0
+      commits_last_12_months: 98
+      commits_last_3_months: 2
+  fprime:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: C++
+      latest_semver: null
+      commits_last_12_months: 777
+      commits_last_3_months: 354
+  helix:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Rust
+      latest_semver: null
+      commits_last_12_months: 746
+      commits_last_3_months: 11
+  homebrew-tap:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Ruby
+      latest_semver: null
+      commits_last_12_months: 38
+      commits_last_3_months: 38
+  IAlf:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  jl_scxml:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  jsonPath2:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  junit-xml-parser:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  jupyter-mdk:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  jupyterlab-mms:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  K:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  k2mms:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  k_webeditor:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  klang:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  kservices:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  L4YAML:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Lean
+      latest_semver: null
+      commits_last_12_months: 1814
+      commits_last_3_months: 16
+  langserver.github.io:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 16
+      commits_last_3_months: 2
+  language-server-protocol:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 75
+      commits_last_3_months: 19
+  Livingstone:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  lsp-mode:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Emacs Lisp
+      latest_semver: null
+      commits_last_12_months: 147
+      commits_last_3_months: 3
+  lsp4ij:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 234
+      commits_last_3_months: 34
+  lunar-lander-simulation:
+    kind: research/experimental
+    tier: low
+    matched:
+    - research/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Jupyter Notebook
+      latest_semver: null
+      commits_last_12_months: 7
+      commits_last_3_months: 7
+  mason-registry:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 4975
+      commits_last_3_months: 914
+  mathematica-mdk:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Mathematica
+      latest_semver: 3.4.2
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mathematica-mdk-core:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: Archived, with no type signal. Inert whatever its type.
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  matlab-mdk:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Shell
+      latest_semver: 3.4.2
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mbple-featureide:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 5
+      commits_last_3_months: 0
+  MBSEPlugin:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: XSLT
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mcf:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: v2.1.0
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mcf-model-import-export:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  md-cst-montecarlo:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  md-cst-rabbitmq:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mdk-expression:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 1.1.1
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-adapter-plugin:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: v2.1.0
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-alfresco:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: 3.4.2
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-autocref:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Jupyter Notebook
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-doc-convert:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 1.0.2
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-extensions:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-helm-chart:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Smarty
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-mathematica-client:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: Archived, with no type signal. Inert whatever its type.
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-migration:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  MMS-Python-Adapter:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-python-client-feedstock:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-rdf:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Jupyter Notebook
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms-sparql-service:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms3-to-mms4-json:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mms5-consul:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Kotlin
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mpspi:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  MSE:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: v0.2.2
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mtip-cameo:
+    kind: tool/active-development
+    tier: high
+    matched:
+    - tool/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: v1.0.9
+      commits_last_12_months: 12
+      commits_last_3_months: 1
+  mtip-sparx:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: C#
+      latest_semver: v1.0.4
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  mvn-repo:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: Archived, with no type signal. Inert whatever its type.
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  nvim-lspconfig:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Lua
+      latest_semver: null
+      commits_last_12_months: 573
+      commits_last_3_months: 96
+  OMGSpecifications:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  oosem.github.io:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 7
+      commits_last_3_months: 7
+  open-mbee.github.io:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 18
+      commits_last_3_months: 2
+  openapi-generator:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  openapi-graph-extractor:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  opencode:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 12484
+      commits_last_3_months: 688
+  openmbee-graphic-assets:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 46
+      commits_last_3_months: 12
+  openmbee-workshops.github.io:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 18
+      commits_last_3_months: 18
+  OpenSE-Cookbook:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Jupyter Notebook
+      latest_semver: null
+      commits_last_12_months: 3
+      commits_last_3_months: 0
+  OpenSysML:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Go
+      latest_semver: v0.10.1
+      commits_last_12_months: 13808
+      commits_last_3_months: 13808
+  OpenSysML-Extensions-Library:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Shell
+      latest_semver: null
+      commits_last_12_months: 196
+      commits_last_3_months: 196
+  OpenSysML-FAQ:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  OpenSysML-REDK-Skills:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 6
+      commits_last_3_months: 6
+  opensysml.github.io:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 36
+      commits_last_3_months: 33
+  opentelemetry-demo:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 941
+      commits_last_3_months: 321
+  opentelemetry-proto:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Makefile
+      latest_semver: null
+      commits_last_12_months: 121
+      commits_last_3_months: 43
+  opentelemetry-specification:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Makefile
+      latest_semver: null
+      commits_last_12_months: 388
+      commits_last_3_months: 99
+  opl:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: v1.0.9
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  pane-layout:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 1
+      commits_last_3_months: 0
+  perseverance-modelica:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Modelica
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  pma:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  pmc-fdir:
+    kind: research/experimental
+    tier: low
+    matched:
+    - research/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 3
+      commits_last_3_months: 0
+  PropertyKindCalculus:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Lean
+      latest_semver: null
+      commits_last_12_months: 461
+      commits_last_3_months: 355
+  python-mdk:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  readthedocs:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  sbt-license-plugin:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: true
+      fork: true
+      primary_language: Scala
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  sbt-pack:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: true
+      fork: true
+      primary_language: Scala
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  scxml4py:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: v0.2.0
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  staged-recipes:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  staged-recipes-opensysml:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 5611
+      commits_last_3_months: 0
+  starkit:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 3
+      commits_last_3_months: 3
+  structured-use-cases:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 29
+      commits_last_3_months: 29
+  structured-usecase-editor:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 12
+      commits_last_3_months: 12
+  swagger-codegen:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  swagger-codegen-mathematica-client:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  swagger-codegen-matlab-client:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  sync-service:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  sysml:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  SysML-LoRD:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Go
+      latest_semver: null
+      commits_last_12_months: 32
+      commits_last_3_months: 32
+  sysml-sdk:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: C++
+      latest_semver: v0.1.0
+      commits_last_12_months: 7
+      commits_last_3_months: 7
+  sysml-toolkit:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Rust
+      latest_semver: v0.10.10
+      commits_last_12_months: 11
+      commits_last_3_months: 11
+  SysML-v2-Applications-and-Examples:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Jupyter Notebook
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  sysmlv2-python-client:
+    kind: tool/experimental
+    tier: medium
+    matched:
+    - tool/experimental
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: v0.1.0
+      commits_last_12_months: 31
+      commits_last_3_months: 8
+  sysmlv2-rdf-ontology:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 2
+      commits_last_3_months: 2
+  sysmlv2-testing:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 41
+      commits_last_3_months: 41
+  sysmlv2-web-modeler:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 13
+      commits_last_3_months: 10
+  sysmlv2_dls:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 68
+      commits_last_3_months: 6
+  sysmlv2_excel:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 6
+      commits_last_3_months: 0
+  sysmlv2x:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 1
+      commits_last_3_months: 0
+  sysmod-sysmlv2-api:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: HTML
+      latest_semver: null
+      commits_last_12_months: 26
+      commits_last_3_months: 0
+  syson:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 554
+      commits_last_3_months: 105
+  testrail-cli:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 1.1.1
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  testrail-client-wrapper:
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: 1.1.0
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  text2text:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  TMT-SysML-Model:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: CSS
+      latest_semver: v2.0.0
+      commits_last_12_months: 1
+      commits_last_3_months: 0
+  toaster:
+    kind: media/active-development
+    tier: medium
+    matched:
+    - media/active-development
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Jupyter Notebook
+      latest_semver: null
+      commits_last_12_months: 795
+      commits_last_3_months: 795
+  trafo-v2-v1:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 1
+      commits_last_3_months: 1
+  tree-sitter-sysml:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: C
+      latest_semver: null
+      commits_last_12_months: 6
+      commits_last_3_months: 6
+  user-forum:
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  util:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  ve-confluence:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: TypeScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  ve-confluence-app:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Java
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  ve-diagram-generator:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: Python
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  ve-mobile:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  view-service:
+    kind: tool/unreleased
+    tier: low
+    matched:
+    - tool/unreleased
+    reason: null
+    flags:
+    - archive-candidate
+    evidence:
+      archived: false
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  ViewEditor-Sesame:
+    kind: tool/archived
+    tier: none
+    matched:
+    - tool/archived
+    reason: null
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: JavaScript
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0
+  websysml-core:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: No type signal. No media or research words, and no programming language.
+    flags: []
+    evidence:
+      archived: false
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 2
+      commits_last_3_months: 2
+  winget-pkgs:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    flags: []
+    evidence:
+      archived: false
+      fork: true
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 114984
+      commits_last_3_months: 30081
+  zzProjectWiki:
+    kind: unclassified
+    tier: null
+    matched: []
+    reason: Archived, with no type signal. Inert whatever its type.
+    flags: []
+    evidence:
+      archived: true
+      fork: false
+      primary_language: null
+      latest_semver: null
+      commits_last_12_months: 0
+      commits_last_3_months: 0

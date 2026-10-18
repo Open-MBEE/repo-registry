@@ -1,0 +1,12 @@
+# Two kinds whose rules overlap, to show an overlap is reported, not hidden (WP1 R-5). Not a proposal.
+status: provisional
+provisional_until: "never: test fixture"
+types:
+  thing: Anything.
+lifecycles:
+  a: A.
+  b: B.
+signals: {}
+kinds:
+  thing/a: {type: thing, lifecycle: a, tier: strict, meaning: A., recommend_when: true}
+  thing/b: {type: thing, lifecycle: b, tier: loose, meaning: B., recommend_when: true}

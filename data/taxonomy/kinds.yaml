@@ -1,0 +1,175 @@
+# PROVISIONAL until the maintainers approve the taxonomy (WP0, maintainer approval 1).
+# WP1 D-2. The kinds: type x lifecycle (WP1 R-3), each mapped to exactly one tier (WP1 R-6, WP0 R-17).
+# The chain is repo -> kind -> tier -> policies. Nothing here gives a repo a tier directly.
+#
+# `recommend_when` is a deterministic predicate over snapshot attributes (WP1 R-5). It only RECOMMENDS a
+# repo's initial kind. Authority to set a repo's kind belongs to the maintainers and governors (WP0).
+# The rules must be mutually exclusive: a repo that matches two kinds, or none, is shown as unclassified.
+#
+# Predicate language (read by scripts/recommend.py, which names no kind, type or signal; WP1 R-7):
+#   {all: [p, ...]}  {any: [p, ...]}  {not: p}  {signal: <name>}
+#   {attr: <name>, eq: v | in: [..] | matches: <regex> | gt: n | gte: n | lt: n}
+#   `matches` is a case-insensitive regex search; on a list attribute it is true if any element matches.
+#   `recommend_when: false` means the rules never recommend that kind; only a governor assigns it.
+# Attributes are the snapshot fields plus the derived ones listed in scripts/recommend.py.
+status: provisional
+provisional_until: "WP0 maintainer approval 1: the taxonomy"
+
+types:
+  tool: Software that people install, run or build on.
+  media: The website, documentation, educational material, example models, org-level pages and assets.
+  research: Exploratory work in public, often by a single committer, often archived when it goes stale.
+
+lifecycles:
+  experimental: Exploring. For a tool, only 0.x releases (below the 1.0.0 seam).
+  active-development: Being actively developed. For a tool, 1.0.0 or later with commits in the last 12 months.
+  maintained: Stable and looked after, with little recent change.
+  archived: Terminal state. Read-only.
+
+# Signals are named building blocks the kinds share. They are data, not code.
+signals:
+  archived: {attr: archived, eq: true}
+  fork: {attr: fork, eq: true}
+  semver_release: {attr: has_semver_release, eq: true}
+  semver_1_or_later: {attr: latest_semver_major, gte: 1}
+  commits_last_3_months: {attr: commits_last_3_months, gt: 0}
+  commits_last_12_months: {attr: commits_last_12_months, gt: 0}
+  media_words:
+    any:
+      - attr: name
+        matches: '\.github\.io$|\.openmbee\.org$|^\.github$|^docs$|readthedocs|documentation|graphic-assets|user-forum|enhancement-proposals|specifications|cookbook|faq|examples|-model$|_model$|\.sysml$'
+      - attr: description
+        matches: '\bwebsite\b|\bsite\b|documentation|\btutorial\b|\bfaq\b|\bmodel of\b|system model|\bassets\b|\bforum\b|\bproposals\b'
+  research_words:
+    any:
+      - attr: name
+        matches: 'research|experiment|simulation|prompts'
+      - attr: description
+        matches: 'research|formali[sz]ation|probabilistic'
+  code_language:
+    all:
+      - {attr: primary_language, matches: '.'}
+      - not: {attr: primary_language, in: [HTML, CSS, Jupyter Notebook, TeX, Markdown]}
+  # Forks mirror an upstream project. The taxonomy has no kind for them yet (WP0 parked item), so no kind
+  # matches a fork and every fork is shown as unclassified with that reason (TX-4: no force fit).
+  owned_here: {not: {signal: fork}}
+  is_media: {all: [{signal: owned_here}, {signal: media_words}, {not: {signal: research_words}}]}
+  is_research: {all: [{signal: owned_here}, {signal: research_words}, {not: {signal: media_words}}]}
+  is_tool: {all: [{signal: owned_here}, {signal: code_language}, {not: {signal: media_words}}, {not: {signal: research_words}}]}
+  live: {not: {signal: archived}}
+
+kinds:
+  # --- tools ---
+  tool/active-development:
+    type: tool
+    lifecycle: active-development
+    tier: high
+    meaning: A tool at 1.0.0 or later that is still being developed. Core tools that need rigorous release control.
+    recommend_when:
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months}]
+  tool/maintained:
+    type: tool
+    lifecycle: maintained
+    tier: high
+    meaning: A tool at 1.0.0 or later with no commits in the last 12 months, still offered for use.
+    recommend_when:
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: commits_last_12_months}}]
+  tool/experimental:
+    type: tool
+    lifecycle: experimental
+    tier: medium
+    meaning: A tool with only 0.x releases. At 1.0.0 it becomes a tool in active development.
+    recommend_when:
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_release}, {not: {signal: semver_1_or_later}}]
+  tool/unreleased:
+    type: tool
+    lifecycle: unreleased
+    tier: low
+    departure: >-
+      Not in the type x lifecycle cross product. Added because a tool can be in the low tier without semantic
+      versioning (supervisor, WP1 OD3), while medium and high require it and the 0.x tools are experimental
+      (medium). Without this kind, a tool with no semver release has no low-tier kind to land in.
+    meaning: A tool with no semantic-versioned release. It needs an owner and nothing more until it releases.
+    recommend_when:
+      all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_release}}]
+  tool/archived:
+    type: tool
+    lifecycle: archived
+    tier: none
+    meaning: An archived tool. Read-only and inert.
+    recommend_when:
+      all: [{signal: is_tool}, {signal: archived}]
+
+  # --- media ---
+  media/active-development:
+    type: media
+    lifecycle: active-development
+    tier: medium
+    meaning: Load-bearing media that changed in the last 12 months, such as the website.
+    recommend_when:
+      all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}]
+  media/maintained:
+    type: media
+    lifecycle: maintained
+    tier: medium
+    meaning: Load-bearing media with no change in the last 12 months that is still offered.
+    recommend_when:
+      all: [{signal: is_media}, {signal: live}, {not: {signal: commits_last_12_months}}]
+  media/experimental:
+    type: media
+    lifecycle: experimental
+    tier: low
+    meaning: Draft or trial media. The rules don't recommend it; a governor assigns it.
+    recommend_when: false
+  media/archived:
+    type: media
+    lifecycle: archived
+    tier: none
+    meaning: Archived media. Read-only and inert.
+    recommend_when:
+      all: [{signal: is_media}, {signal: archived}]
+
+  # --- research ---
+  research/experimental:
+    type: research
+    lifecycle: experimental
+    tier: low
+    meaning: Exploring ideas in public, often a single committer. Lax by design; we don't want to stop it.
+    recommend_when:
+      all: [{signal: is_research}, {signal: live}]
+  research/active-development:
+    type: research
+    lifecycle: active-development
+    tier: low
+    meaning: Research being actively developed toward a result. The rules don't recommend it; a governor assigns it.
+    recommend_when: false
+  research/maintained:
+    type: research
+    lifecycle: maintained
+    tier: low
+    meaning: Finished research kept available, for example alongside a paper. The rules don't recommend it.
+    recommend_when: false
+  research/archived:
+    type: research
+    lifecycle: archived
+    tier: none
+    meaning: Archived research. Read-only and inert.
+    recommend_when:
+      all: [{signal: is_research}, {signal: archived}]
+
+# Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
+unclassified_reasons:
+  - when: {signal: fork}
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+  - when: {all: [{signal: media_words}, {signal: research_words}]}
+    reason: Its name or description reads as both media and research.
+  - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}
+    reason: Archived, with no type signal. Inert whatever its type.
+  - when: {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}
+    reason: No type signal. No media or research words, and no programming language.
+
+# Flags are shown in the recommendation report, never in the kind list. They don't change a kind.
+flags:
+  archive-candidate:
+    meaning: Not archived, and no commits on the default branch in the last 12 months.
+    when: {all: [{signal: owned_here}, {signal: live}, {not: {signal: commits_last_12_months}}]}

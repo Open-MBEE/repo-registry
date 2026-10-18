@@ -1,0 +1,23 @@
+# Toy taxonomy for the taxonomy-swap test (WP1 R-7). Not a proposal. Different names everywhere.
+status: provisional
+provisional_until: "never: test fixture"
+types:
+  thing: Anything.
+lifecycles:
+  busy: Commits in the last 12 months.
+  quiet: No commits in the last 12 months.
+signals:
+  recent: {attr: commits_last_12_months, gt: 0}
+kinds:
+  thing/busy:
+    type: thing
+    lifecycle: busy
+    tier: strict
+    meaning: Busy things.
+    recommend_when: {signal: recent}
+  thing/quiet:
+    type: thing
+    lifecycle: quiet
+    tier: loose
+    meaning: Quiet things.
+    recommend_when: {not: {signal: recent}}

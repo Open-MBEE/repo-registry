@@ -1,0 +1,415 @@
+# PROVISIONAL. NOT APPROVED. Recommended kinds only, drafted by scripts/recommend.py (WP1 D-5).
+# Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).
+# Format: docs/kind-list-format.md. One entry per repo. Changing a repo's kind is a one-line edit.
+status: provisional
+provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
+org: Open-MBEE
+snapshot: data/snapshots/2026-10-18
+repos:
+  ".github":
+    kind: media/maintained
+  "_OpenMBEE-Documentation":
+    kind: media/maintained
+  "aircraftengine-simulation":
+    kind: research/experimental
+  "airflow-provider-opensysml":
+    kind: tool/unreleased
+  "amazonaws":
+    kind: unclassified
+    reason: "Archived, with no type signal. Inert whatever its type."
+  "apv":
+    kind: tool/unreleased
+  "apv-mdk":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "arch_model":
+    kind: media/maintained
+  "architecture-based-risk-analysis":
+    kind: tool/unreleased
+  "bae":
+    kind: tool/unreleased
+  "bae2_3_1":
+    kind: tool/unreleased
+  "ChatGPT-Prompts":
+    kind: research/experimental
+  "Comodo":
+    kind: tool/unreleased
+  "concept-definition-stage":
+    kind: tool/unreleased
+  "configuration-management-plugin":
+    kind: tool/unreleased
+  "confluence-mdk":
+    kind: tool/unreleased
+  "des-ex-toolset":
+    kind: tool/unreleased
+  "DesertKite.sysml":
+    kind: media/active-development
+  "dis":
+    kind: tool/maintained
+  "docbook":
+    kind: tool/archived
+  "docbookgen":
+    kind: tool/archived
+  "DocGenServer":
+    kind: tool/archived
+  "docs":
+    kind: media/maintained
+  "docweb-service":
+    kind: tool/archived
+  "doors-ng-client":
+    kind: tool/archived
+  "doors-ng-mdk":
+    kind: tool/unreleased
+  "Dragon-Architecture-Model":
+    kind: media/active-development
+  "ems-config":
+    kind: unclassified
+    reason: "Archived, with no type signal. Inert whatever its type."
+  "EMS-Repo":
+    kind: tool/archived
+  "EMS-Share":
+    kind: tool/archived
+  "enhancement-proposals":
+    kind: media/maintained
+  "exec-cameo-mdk":
+    kind: tool/maintained
+  "exec-mdk-systems-reasoner":
+    kind: tool/maintained
+  "exec-mms":
+    kind: tool/maintained
+  "exec-mms-migration-cameo2022x":
+    kind: tool/unreleased
+  "exec-mms-python-client-example":
+    kind: tool/unreleased
+  "exec-mmsri":
+    kind: tool/maintained
+  "exec-ve":
+    kind: tool/maintained
+  "flexo-cli-client":
+    kind: tool/unreleased
+  "flexo-cli-sysmlv2-plugin":
+    kind: tool/unreleased
+  "flexo-conflict-resolution-policy-research":
+    kind: research/experimental
+  "flexo-graphql":
+    kind: tool/unreleased
+  "flexo-mms-auth-service":
+    kind: tool/unreleased
+  "flexo-mms-deployment":
+    kind: tool/unreleased
+  "flexo-mms-jama-sdk":
+    kind: tool/unreleased
+  "flexo-mms-layer0-dashboard":
+    kind: tool/unreleased
+  "flexo-mms-layer1-mcp":
+    kind: tool/unreleased
+  "flexo-mms-layer1-openapi":
+    kind: tool/unreleased
+  "flexo-mms-layer1-service":
+    kind: tool/experimental
+  "flexo-mms-ontology":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "flexo-mms-sso-auth-service":
+    kind: tool/unreleased
+  "flexo-mms-store-service":
+    kind: tool/unreleased
+  "flexo-mms-sysmlv2":
+    kind: tool/experimental
+  "flexo-mms-sysmlv2-mcp":
+    kind: tool/unreleased
+  "flexo-mms.openmbee.org":
+    kind: media/active-development
+  "flexo-performance-test":
+    kind: tool/unreleased
+  "flexo-pr-manager":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "flexo-sysml2-adapter-experiment":
+    kind: research/experimental
+  "flexo-sysmlv2-swagger":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "flexo_syside":
+    kind: tool/experimental
+  "fprime":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "helix":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "homebrew-tap":
+    kind: tool/unreleased
+  "IAlf":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "jl_scxml":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "jsonPath2":
+    kind: tool/archived
+  "junit-xml-parser":
+    kind: tool/unreleased
+  "jupyter-mdk":
+    kind: tool/archived
+  "jupyterlab-mms":
+    kind: tool/archived
+  "K":
+    kind: tool/unreleased
+  "k2mms":
+    kind: tool/unreleased
+  "k_webeditor":
+    kind: tool/unreleased
+  "klang":
+    kind: tool/unreleased
+  "kservices":
+    kind: tool/unreleased
+  "L4YAML":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "langserver.github.io":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "language-server-protocol":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "Livingstone":
+    kind: tool/unreleased
+  "lsp-mode":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "lsp4ij":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "lunar-lander-simulation":
+    kind: research/experimental
+  "mason-registry":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "mathematica-mdk":
+    kind: tool/archived
+  "mathematica-mdk-core":
+    kind: unclassified
+    reason: "Archived, with no type signal. Inert whatever its type."
+  "matlab-mdk":
+    kind: tool/archived
+  "mbple-featureide":
+    kind: tool/unreleased
+  "MBSEPlugin":
+    kind: tool/unreleased
+  "mcf":
+    kind: tool/maintained
+  "mcf-model-import-export":
+    kind: tool/unreleased
+  "md-cst-montecarlo":
+    kind: tool/unreleased
+  "md-cst-rabbitmq":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "mdk-expression":
+    kind: tool/maintained
+  "mms-adapter-plugin":
+    kind: tool/maintained
+  "mms-alfresco":
+    kind: tool/archived
+  "mms-autocref":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "mms-doc-convert":
+    kind: tool/maintained
+  "mms-extensions":
+    kind: tool/archived
+  "mms-helm-chart":
+    kind: tool/unreleased
+  "mms-mathematica-client":
+    kind: unclassified
+    reason: "Archived, with no type signal. Inert whatever its type."
+  "mms-migration":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "MMS-Python-Adapter":
+    kind: tool/archived
+  "mms-python-client-feedstock":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "mms-rdf":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "mms-sparql-service":
+    kind: tool/archived
+  "mms3-to-mms4-json":
+    kind: tool/unreleased
+  "mms5-consul":
+    kind: tool/archived
+  "mpspi":
+    kind: tool/unreleased
+  "MSE":
+    kind: tool/experimental
+  "mtip-cameo":
+    kind: tool/active-development
+  "mtip-sparx":
+    kind: tool/maintained
+  "mvn-repo":
+    kind: unclassified
+    reason: "Archived, with no type signal. Inert whatever its type."
+  "nvim-lspconfig":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "OMGSpecifications":
+    kind: media/maintained
+  "oosem.github.io":
+    kind: media/active-development
+  "open-mbee.github.io":
+    kind: media/active-development
+  "openapi-generator":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "openapi-graph-extractor":
+    kind: tool/unreleased
+  "opencode":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "openmbee-graphic-assets":
+    kind: media/active-development
+  "openmbee-workshops.github.io":
+    kind: media/active-development
+  "OpenSE-Cookbook":
+    kind: media/active-development
+  "OpenSysML":
+    kind: tool/experimental
+  "OpenSysML-Extensions-Library":
+    kind: tool/unreleased
+  "OpenSysML-FAQ":
+    kind: media/maintained
+  "OpenSysML-REDK-Skills":
+    kind: tool/unreleased
+  "opensysml.github.io":
+    kind: media/active-development
+  "opentelemetry-demo":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "opentelemetry-proto":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "opentelemetry-specification":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "opl":
+    kind: tool/maintained
+  "pane-layout":
+    kind: tool/unreleased
+  "perseverance-modelica":
+    kind: media/maintained
+  "pma":
+    kind: tool/archived
+  "pmc-fdir":
+    kind: research/experimental
+  "PropertyKindCalculus":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "python-mdk":
+    kind: tool/archived
+  "readthedocs":
+    kind: media/maintained
+  "sbt-license-plugin":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "sbt-pack":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "scxml4py":
+    kind: tool/experimental
+  "staged-recipes":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "staged-recipes-opensysml":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "starkit":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "structured-use-cases":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "structured-usecase-editor":
+    kind: tool/unreleased
+  "swagger-codegen":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "swagger-codegen-mathematica-client":
+    kind: tool/unreleased
+  "swagger-codegen-matlab-client":
+    kind: tool/unreleased
+  "sync-service":
+    kind: tool/unreleased
+  "sysml":
+    kind: tool/unreleased
+  "SysML-LoRD":
+    kind: tool/unreleased
+  "sysml-sdk":
+    kind: tool/experimental
+  "sysml-toolkit":
+    kind: tool/experimental
+  "SysML-v2-Applications-and-Examples":
+    kind: media/maintained
+  "sysmlv2-python-client":
+    kind: tool/experimental
+  "sysmlv2-rdf-ontology":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "sysmlv2-testing":
+    kind: tool/unreleased
+  "sysmlv2-web-modeler":
+    kind: tool/unreleased
+  "sysmlv2_dls":
+    kind: tool/unreleased
+  "sysmlv2_excel":
+    kind: tool/unreleased
+  "sysmlv2x":
+    kind: tool/unreleased
+  "sysmod-sysmlv2-api":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "syson":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "testrail-cli":
+    kind: tool/maintained
+  "testrail-client-wrapper":
+    kind: tool/maintained
+  "text2text":
+    kind: tool/unreleased
+  "TMT-SysML-Model":
+    kind: media/active-development
+  "toaster":
+    kind: media/active-development
+  "trafo-v2-v1":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "tree-sitter-sysml":
+    kind: tool/unreleased
+  "user-forum":
+    kind: media/maintained
+  "util":
+    kind: tool/unreleased
+  "ve-confluence":
+    kind: tool/unreleased
+  "ve-confluence-app":
+    kind: tool/unreleased
+  "ve-diagram-generator":
+    kind: tool/unreleased
+  "ve-mobile":
+    kind: tool/archived
+  "view-service":
+    kind: tool/unreleased
+  "ViewEditor-Sesame":
+    kind: tool/archived
+  "websysml-core":
+    kind: unclassified
+    reason: "No type signal. No media or research words, and no programming language."
+  "winget-pkgs":
+    kind: unclassified
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+  "zzProjectWiki":
+    kind: unclassified
+    reason: "Archived, with no type signal. Inert whatever its type."

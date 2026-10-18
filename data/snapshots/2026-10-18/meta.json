@@ -1,0 +1,10 @@
+{
+  "all_repos_count": 184,
+  "org": "Open-MBEE",
+  "private_repos_count_only": 3,
+  "public_repos": 181,
+  "taken_at": "2026-10-18T01:37:12+00:00",
+  "tool": "scripts/snapshot.py (gh api graphql, read-only)",
+  "window_12_months_since": "2025-10-18T01:37:12+00:00",
+  "window_3_months_since": "2026-07-19T01:37:12+00:00"
+}
