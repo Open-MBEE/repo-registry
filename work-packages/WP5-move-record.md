@@ -20,7 +20,7 @@ commands below (OD4). The agent writes nothing to the org; it only reads (`gh` G
 | 5 | Push the WP5 work and open the delivery pull request (the acceptance record) | `git push -u origin wp5-work` then `gh pr create --repo Open-MBEE/repo-registry --base main --head wp5-work --title "WP5: meta-rule checks in CI, and the move to Open-MBEE" --body "Delivery for work-packages/WP5-scope-of-work.md. Acceptance is mzargham's merge of this PR with a merge commit (OD3)."` | [#1](https://github.com/Open-MBEE/repo-registry/pull/1) opened; its check passed on 641a29d, and GitHub reported it CLEAN |
 | 6 | Push the two trial branches and open a pull request for each (D-5) | `git push origin wp5-trial-invalid wp5-trial-out-of-compliance` then `gh pr create --repo Open-MBEE/repo-registry --base main --head wp5-trial-invalid --title "WP5 trial: invalid data (do not merge)" --body "WP5 D-5: must fail the required check and be blocked."` and `gh pr create --repo Open-MBEE/repo-registry --base main --head wp5-trial-out-of-compliance --title "WP5 trial: out of compliance (do not merge)" --body "WP5 D-5: must pass the required check."` | [#2](https://github.com/Open-MBEE/repo-registry/pull/2) and [#3](https://github.com/Open-MBEE/repo-registry/pull/3) opened; results below |
 | 7 | Close both trial pull requests unmerged, once their checks have finished | `gh pr close <n> --repo Open-MBEE/repo-registry` for each trial PR | Both closed unmerged, with a comment each. **Run by the agent**, at the supervisor's request in chat ("write comments about the successful failures and close with comment those PRs"), an exception to OD4 for this step |
-| 8 | Push this record with the evidence filled in, to the delivery pull request | `git push` (on `wp5-work`) | *pending* |
+| 8 | Push the test fix and this record to the delivery PR; push the rerun trial and open its PR; close it | `git push` (on `wp5-work`); `git push origin wp5-trial-out-of-compliance-2`; `gh pr create ...` (#4); `gh pr close 4 --comment ...` | Done. **Run by the agent**, at the supervisor's choice in chat ("You run them", and "close #4 with a comment, push the finished move record"), an exception to OD4 for these steps. `wp5-work` 641a29d → 19e7694, then this record |
 
 ## The trials (D-5, R-5)
 
@@ -34,7 +34,7 @@ commands below (OD4). The agent writes nothing to the org; it only reads (`gh` G
 |---|---|---|---|
 | invalid | [#2](https://github.com/Open-MBEE/repo-registry/pull/2), e0fb427 | **failed**, as intended: the meta-rule step reported `registry.yaml: OpenSysML: type 'tool' and stage 'beta' name no kind` | **BLOCKED** by the ruleset |
 | out of compliance | [#3](https://github.com/Open-MBEE/repo-registry/pull/3), c1357f9 | meta-rule step **valid**, but the test step **failed**: four tests were tied to today's kind list (see below) | BLOCKED |
-| out of compliance, rerun on the fix | *pending* (branch `wp5-trial-out-of-compliance-2`, 9b9b43a) | *pending* | *pending* |
+| out of compliance, rerun on the fix | [#4](https://github.com/Open-MBEE/repo-registry/pull/4), 9b9b43a | **passed**: meta-rule step valid, all tests pass (run 39106398000); the license report shows `arch_model` red | **CLEAN** (mergeable); closed unmerged with a comment |
 
 ## What the trials found
 
