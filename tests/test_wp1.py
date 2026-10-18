@@ -144,12 +144,13 @@ class EngineTests(unittest.TestCase):
         expected = {
             "OpenSysML": "tool/experimental",           # v0.10.1, active
             "mtip-cameo": "tool/active-development",    # v1.0.9, commits in the last 12 months
-            "exec-mms": "tool/maintained",              # 4.0.20, no commits in 12 months
+            "exec-mms": "unclassified",                 # 4.0.20, no changes in 12 months: not maintained
             "flexo-cli-client": "tool/unreleased",      # no semver release, low tier
             "EMS-Repo": "tool/archived",                # archived tool
         }
         for name, kind in expected.items():
             self.assertEqual(report[name]["kind"], kind, name)
+        self.assertIn("isn't being maintained", report["exec-mms"]["reason"])
 
     def test_R9_semver_parsing(self):
         """R-9: only non-prerelease MAJOR.MINOR.PATCH tags count; the highest wins."""

@@ -8,8 +8,8 @@ tiers:
   high:
     order: 1
     meaning: >-
-      The strictest controls. For the main tools that people depend on, where every release must be carefully
-      controlled, and for anything that governs the organization itself.
+      The strictest controls. For tools at version 1.0 or later that people depend on, where every release must be
+      carefully controlled, and for anything that governs the organization itself.
   medium:
     order: 2
     meaning: >-

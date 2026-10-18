@@ -25,16 +25,21 @@ types:
   research: Ideas explored in public, often by one person working alone. Often archived once work on it stops.
   governance: >-
     The rules for the organization itself. Only two things are this type: the repo-registry repository, which
-    holds these rules, and the administration of the GitHub organization.
+    holds these rules, and the administration of the GitHub organization. The administration isn't a repository,
+    but it gets a kind in the same way, so that its controls can be checked too.
 
 lifecycles:
   experimental: >-
-    Early and still changing. For a tool, its releases are numbered below 1.0 (for example 0.4.2). A tool moves on
-    to active development when it releases version 1.0.
+    Early and still changing. For a tool, its releases are numbered below 1.0 (for example 0.4.2). When a tool
+    releases version 1.0, it moves on: to active development if it is still changing, or to maintained if not.
   active-development: >-
-    Being worked on now. For a tool, it has released version 1.0 or later and has had changes in the last year.
+    Being worked on now: it has had changes in the last three months. For a tool, it has also released version 1.0
+    or later.
   maintained: >-
-    Stable, still offered for use, and looked after, with no changes in the last year.
+    Actively looked after, even if little new is being added. Someone keeps it safe and reliable: they keep track of
+    the other software it depends on, watch for publicly reported security flaws in it, and fix what they find. For a
+    tool or media, it has had changes in the last year, but not in the last three months. A repository with no
+    changes at all in a year isn't maintained.
   unreleased: >-
     Tools only. A tool that has never published a numbered release (such as 1.2.0). It needs a named person to look
     after it, and nothing more, until it starts releasing.
@@ -80,26 +85,28 @@ kinds:
     lifecycle: active-development
     tier: high
     meaning: >-
-      A tool at version 1.0 or later that people depend on and that is still being changed. Every release needs
-      careful control, so it gets the strictest controls.
+      A tool at version 1.0 or later that people depend on and that has changed in the last three months. Every
+      release needs careful control, so it gets the strictest controls.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months}]
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_3_months}]
   tool/maintained:
     type: tool
     lifecycle: maintained
     tier: high
     meaning: >-
-      A tool at version 1.0 or later with no changes in the last year that people may still install and depend on.
-      It gets the strictest controls because people may still rely on its releases.
+      A stable tool at version 1.0 or later that someone actively looks after: they keep track of what it depends on
+      and fix reported security flaws. It has had changes in the last year, but not in the last three months. It gets
+      the strictest controls because people rely on its releases.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: commits_last_12_months}}]
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months},
+            {not: {signal: commits_last_3_months}}]
   tool/experimental:
     type: tool
     lifecycle: experimental
     tier: medium
     meaning: >-
-      A tool whose releases are still numbered below 1.0. It can change fast. When it releases version 1.0 it
-      becomes a tool in active development, and its controls get stricter.
+      A tool whose releases are still numbered below 1.0. It can change fast. When it releases version 1.0, it
+      becomes a tool in active development (or maintained, if it has stopped changing), and its controls get stricter.
     recommend_when:
       all: [{signal: is_tool}, {signal: live}, {signal: semver_release}, {not: {signal: semver_1_or_later}}]
   tool/unreleased:
@@ -129,22 +136,23 @@ kinds:
     lifecycle: active-development
     tier: medium
     meaning: >-
-      Media that many people rely on, such as the website, that has changed in the last year.
+      Media that many people rely on, such as the website, that has changed in the last three months.
     recommend_when:
-      all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}]
+      all: [{signal: is_media}, {signal: live}, {signal: commits_last_3_months}]
   media/maintained:
     type: media
     lifecycle: maintained
     tier: medium
     meaning: >-
-      Media that people still use but that hasn't changed in the last year.
+      Media that people still use and that someone actively looks after, with changes in the last year but not in the
+      last three months.
     recommend_when:
-      all: [{signal: is_media}, {signal: live}, {not: {signal: commits_last_12_months}}]
+      all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}, {not: {signal: commits_last_3_months}}]
   media/experimental:
     type: media
     lifecycle: experimental
     tier: low
-    meaning: Draft or trial media. Only the OpenMBEE maintainers give a repository this kind.
+    meaning: Draft or trial media. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   media/archived:
     type: media
@@ -168,14 +176,14 @@ kinds:
     type: research
     lifecycle: active-development
     tier: low
-    meaning: Research being worked on toward a result. Only the OpenMBEE maintainers give a repository this kind.
+    meaning: Research being worked on toward a result. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   research/maintained:
     type: research
     lifecycle: maintained
     tier: low
     meaning: >-
-      Finished research kept available, for example alongside a paper. Only the OpenMBEE maintainers give a repository this kind.
+      Finished research kept available, for example alongside a paper. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   research/archived:
     type: research
@@ -215,6 +223,10 @@ omitted:
 unclassified_reasons:
   - when: {signal: fork}
     reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+  - when: {all: [{any: [{signal: is_tool}, {signal: is_media}]}, {signal: live}, {not: {signal: commits_last_12_months}},
+                 {any: [{signal: semver_1_or_later}, {signal: is_media}]}]}
+    reason: >-
+      No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
   - when: {all: [{signal: media_words}, {signal: research_words}]}
     reason: Its name or description reads as both media and research.
   - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}
