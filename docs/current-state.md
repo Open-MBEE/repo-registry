@@ -67,8 +67,8 @@
 | WP4e | Type and stage in the kind list | accepted 63e270f |
 | WP5 | Meta-rule checks in CI; move to Open-MBEE | accepted 6938aa5 ([#1](https://github.com/Open-MBEE/repo-registry/pull/1)) |
 | WP5b | The model, its integrity, and views out of the model (MVC, demo mode) | accepted 9e14099 ([#6](https://github.com/Open-MBEE/repo-registry/pull/6)) |
-| **WP5c** | Taxonomy refinements from WP4's fit analysis | **accepted by the merge of its delivery pull request** (scope approved 8197d77) |
-| **WP5d** | The maintainer review pack, published to the wiki | **next**; decisions in [WP5d-decisions](../work-packages/WP5d-decisions.md) |
+| WP5c | Taxonomy refinements from WP4's fit analysis | accepted 42ecec0 ([#9](https://github.com/Open-MBEE/repo-registry/pull/9)) |
+| **WP5d** | The maintainer review pack, published to the wiki | **scoped**, approved by the merge of its scope PR ([WP5d-scope-of-work](../work-packages/WP5d-scope-of-work.md)) |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
