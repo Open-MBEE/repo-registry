@@ -207,6 +207,13 @@ def check_rules(tables):
         if (r.get("source") == "maintainer") != bool(str(r.get("decision") or "").strip()):
             out.append(f"registry.yaml: {r.get('name')}: a decision is stated exactly when the source is maintainer "
                        "(WP5c OD1)")
+    for s in sorted(tables.keys("signal") - tables.keys("signal_explanation")):
+        out.append(f"data/taxonomy/kinds.yaml: signal {s} has no explanation in `explain` (WP5d D-1)")
+    cited = {r["ref"] for r in tables.rows("policy_cite") if r["source"] == "nist"}
+    for r in tables.rows("nist_control"):
+        if r["control_id"] not in cited and not str(r.get("context") or "").strip():
+            out.append(f"data/sources/nist-800-53.yaml: {r['control_id']} is cited by no policy and states no context "
+                       "(WP5d)")
     covered = tables.keys("pilot_member") | tables.keys("excluded")
     for rid in sorted(set(reg) - covered):
         out.append(f"data/exclude.yaml: {reg[rid].get('name')} is neither in the pilot nor excluded (TX-5)")

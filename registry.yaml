@@ -311,11 +311,11 @@ repos:
     source: inferred
   1422498382:
     name: "fprime"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1375281693:
     name: "helix"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1325979711:
     name: "homebrew-tap"
@@ -378,15 +378,15 @@ repos:
     source: inferred
   1423592451:
     name: "L4YAML"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1375281058:
     name: "langserver.github.io"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1375280929:
     name: "language-server-protocol"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   33291237:
     name: "Livingstone"
@@ -395,11 +395,11 @@ repos:
     source: inferred
   1375281379:
     name: "lsp-mode"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1375281848:
     name: "lsp4ij"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1324538016:
     name: "lunar-lander-simulation"
@@ -408,7 +408,7 @@ repos:
     source: inferred
   1375281560:
     name: "mason-registry"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   248101450:
     name: "mathematica-mdk"
@@ -504,7 +504,7 @@ repos:
     source: inferred
   232688190:
     name: "mms-python-client-feedstock"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   144634994:
     name: "mms-rdf"
@@ -552,7 +552,7 @@ repos:
     source: inferred
   1375281201:
     name: "nvim-lspconfig"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   83185538:
     name: "OMGSpecifications"
@@ -571,7 +571,7 @@ repos:
     source: inferred
   168441786:
     name: "openapi-generator"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   587136215:
     name: "openapi-graph-extractor"
@@ -580,7 +580,7 @@ repos:
     source: inferred
   1375280798:
     name: "opencode"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1068122714:
     name: "openmbee-graphic-assets"
@@ -624,15 +624,15 @@ repos:
     source: inferred
   1422497683:
     name: "opentelemetry-demo"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1422497939:
     name: "opentelemetry-proto"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1422497329:
     name: "opentelemetry-specification"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   354897889:
     name: "opl"
@@ -661,7 +661,7 @@ repos:
     source: inferred
   1422654883:
     name: "PropertyKindCalculus"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   104777007:
     name: "python-mdk"
@@ -681,11 +681,11 @@ repos:
     decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md (sandbox until the maintainers calibrate it). In the org since WP5."
   29108554:
     name: "sbt-license-plugin"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   35046190:
     name: "sbt-pack"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   952943191:
     name: "scxml4py"
@@ -694,11 +694,11 @@ repos:
     source: inferred
   171956804:
     name: "staged-recipes"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1187592523:
     name: "staged-recipes-opensysml"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   1326912794:
     name: "starkit"
@@ -716,7 +716,7 @@ repos:
     source: inferred
   133737729:
     name: "swagger-codegen"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   118489913:
     name: "swagger-codegen-mathematica-client"
@@ -799,7 +799,7 @@ repos:
     source: inferred
   1380680226:
     name: "syson"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   93499228:
     name: "testrail-cli"
@@ -881,7 +881,7 @@ repos:
     source: inferred
   1389553817:
     name: "winget-pkgs"
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
     source: inferred
   34681989:
     name: "zzProjectWiki"

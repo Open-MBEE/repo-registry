@@ -60,7 +60,7 @@ secondary_notes: 'OpenSSF''s charter, via its project lifecycle (ossf/tac d019ef
   Data License Agreement, specifications the Community Specification License 1.0, documentation CC-BY-4.0. NumFOCUS, OpenMBEE''s
   fiscal sponsor, expects a standard open source (OSI-approved) license, and counts mixed or missing licenses against a project.'
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
-- Look up your repository's `type` in [registry.yaml](../../registry.yaml), and pick the license from the table above.
+- Look up your repository's `type` in [registry.yaml](https://github.com/Open-MBEE/repo-registry/blob/main/registry.yaml), and pick the license from the table above.
 - 'Add it as a single `LICENSE` file at the root. On GitHub: Add file, then Create new file, name it `LICENSE`, and choose the license template GitHub offers. CC-BY-4.0 and the CDLA licenses aren''t in GitHub''s template list, so paste their official text instead (creativecommons.org, cdla.dev).'
 - 'Check that GitHub detects it: the repository''s main page shows the license name in the About box.'
 - 'If the repository holds both code and writing (for example a tool with a documentation folder), put the license for its main content in the root `LICENSE` file, because that is the one GitHub detects and the registry checks. License the rest in its own folder (for example `docs/LICENSE` with CC-BY-4.0), and say so in the README. Don''t put two license files at the root: GitHub then can''t recognize the license, and the check shows red.'

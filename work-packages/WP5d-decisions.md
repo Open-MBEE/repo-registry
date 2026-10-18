@@ -59,3 +59,53 @@ mzargham's.
   created by the supervisor) as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## Approval *(a verbal approval, in place of the merge, while the runner queue waited)*
+
+- **Supervisor (mzargham, typed by agent):** "i want to merge the PR but its stuck in the queue for a runner again.
+  last time it took over 30 min. since all we did was write a scope of work, not edit any content i want you to start
+  work on my verbal approval so we don't need to wait on a runner"
+- **Outcome:** WP5d's scope (`wp5d-scope`, the content of PR #10) is approved by this statement; execution starts on
+  `wp5d-work`, branched from the scope. PR #10 was then merged by the supervisor (fa3cf16), the GitHub record of the
+  same approval; `wp5d-work` was rebased onto it.
+
+## WP7 is the compliance dashboard *(raised by the supervisor during execution; documents only)*
+
+- **Supervisor (mzargham, typed by agent):** "i'd also like this PR to include some documentaiton updates in the repo
+  since wp7 was the wiki, that now needs to indicate extending the wiki with dashboard functionality aware of
+  compliance with controls state. the part we're building now describes the policies so the maintainers can agree on
+  what the taxonomy and policies should be. the later wp7 includes status information used to help bring us into
+  demonstrable compliance with our policies. that is different work, though it builds on the glossary since the this
+  wp5d will determine the what and why of compliance. even if it doesn't provide the current snapshot and how to get
+  into compliance we'll have later"
+- **Outcome:** Carried under D-5 (the documents and status). WP7 is described as the compliance dashboard: the wiki
+  extended with each repository's status against the controls and how to come into compliance, built on WP5d's pack
+  (the what and why). Changed: `docs/current-state.md` (the wiki row, the packages table, the architecture row),
+  `docs/status.md` (the breakdown, next step) and the README. The approved scopes, the decision records and the DRAFT
+  design documents are left as they are.
+
+## A candidate policy: contributor sourcing *(raised by the supervisor during execution; outside WP5d)*
+
+- **Supervisor (mzargham, typed by agent):** "i am doing a little but of hunting around because i realized we recently
+  had a policy discussion that is not covered her about not accepting code commits from import/export controlled
+  countries. this is specifically relevant because openmbee serves the aerospace and defense industries so we need to
+  be able to name and enforce policies. we cannot export control but we can control our contributor base to avoid
+  sanctioned countries. though in order to add this to our policy model we need canonical sources. [...] my intuition
+  right now is do a research spike to identify 1 or 2 relevant sources related to govt acquistition of open source
+  software to determine if we need to add a policy. my gut is at minimum we want to control for the maintainers
+  country of origin (unclear how tightly) and that on a repo level we may have policies that differ by tier. [...] it
+  seems like this is exactly the kind of thing our current work should make transparent"
+- **Outcome:** Not part of WP5d (its non-goals exclude changing policies). A research spike for canonical sources
+  runs separately; a policy, if warranted, is its own package. Recorded as a candidate in `docs/current-state.md`.
+  (The quote omits the links he read and one sentence about a specific past contribution.)
+
+## The review's observations *(the acceptance gate)*
+
+- **Supervisor (mzargham, typed by agent):** "it seems like we need to address of the the gaps you enumerated before me
+  push this current PR"
+- **Question (a follow-up, as the answer was unclear):** Which of the six observations should be fixed before #11 is
+  merged? (Options: 1, 2, 3, 6 / 4 and 5; more than one could be picked.)
+- **Answer (mzargham, typed by agent):** "1, 2, 3, 6,4 and 5"
+- **Outcome:** All six are fixed before acceptance, and the review is rerun in full. Fixes 1 and 6 edit model text
+  (a link in a policy's set-up step; the wording of unclassified reasons), which the supervisor's answer amends R-6
+  ("Nothing in the model changes") to allow; no kind, rule or policy's applicability changes.

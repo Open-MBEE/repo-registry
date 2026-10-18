@@ -57,7 +57,9 @@ tables:
     role: source
     rows: data/sources/nist-800-53.yaml, controls
     key: [control_id]
-    columns: {control_id: name, title: text, parent: optional(name)}   # parent: the base control of an enhancement
+    columns: {control_id: name, title: text, parent: optional(name), context: optional(text)}
+    # parent: the base control of an enhancement; context: why a control no policy cites is in the file (WP5d)
+    rule: "a control that no policy cites states its context (WP5d, observation 2)"
   openssf_item:
     role: source
     rows: data/sources/openssf-security-baseline.yaml, items
@@ -107,6 +109,12 @@ tables:
     rows: data/taxonomy/kinds.yaml, signals
     key: [signal]
     columns: {signal: name, when: predicate}
+  signal_explanation:
+    role: model
+    rows: data/taxonomy/kinds.yaml, explain
+    key: [signal]
+    columns: {signal: fk(signal), explain: text}
+    rule: "every signal has exactly one explanation, in plain words, for the wiki (WP5d D-1)"
   flag:
     role: model
     rows: data/taxonomy/kinds.yaml, flags

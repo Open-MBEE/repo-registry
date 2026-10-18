@@ -122,6 +122,47 @@ signals:
   is_tool: {any: [{attr: declared_type, eq: tool}, {all: [{not: {signal: type_declared}}, {signal: inferred_tool}]}]}
   live: {not: {signal: archived}}
 
+# Each signal in plain words, for the wiki's Taxonomy page (WP5d D-1): a kind's rule is read out from these.
+# Written as a statement about the repository; a `not` in a rule reads as "it is not the case that ...".
+explain:
+  archived: It is archived on GitHub.
+  fork: It is a fork of another project's repository.
+  semver_release: It has a release numbered in the vX.Y.Z (semantic versioning) style.
+  semver_1_or_later: Its latest numbered release is version 1.0 or later.
+  commits_last_3_months: It has commits on its default branch in the last 3 months.
+  commits_last_12_months: It has commits on its default branch in the last 12 months.
+  media_words: >-
+    Its name or description reads as media: a website, documentation, a tutorial, an FAQ, a forum, proposals or
+    specifications, assets, or a model (for example a name ending in .github.io or -model).
+  research_words: Its name or description reads as research (research, an experiment, a simulation, prompts, a formalization).
+  code_language: GitHub reports a programming language for it (not HTML, CSS, Jupyter Notebook, TeX or Markdown).
+  example_words: Its name or description says it is an example or examples.
+  notebook_or_model_only: It has no programming language, and holds notebooks or model files (.ipynb, .sysml, .kerml, .xmi, .mdzip).
+  fork_ours: It is a fork with commits of ours ahead of its upstream, on the default branch.
+  fork_mirror: It is a fork with no commits of ours ahead of its upstream (a mirror).
+  fork_models: It is a fork with commits of ours, and most of the files we changed are model files.
+  owned_here: It is not a fork; the project started here.
+  type_declared: Its code owners declared its type with exactly one openmbee-<type> topic.
+  inferred_media: >-
+    The rules read it as media: no research words, and either it started here with media words or holds only
+    notebooks or models, or it is a fork whose changes of ours are mostly models.
+  inferred_research: >-
+    The rules read it as research: it started here with research words and no media words, or it is a fork with
+    changes of ours that are not mostly models.
+  inferred_tool: "The rules read it as a tool: it started here, has a programming language, and has no media or research words."
+  is_media: >-
+    Its type is media: its code owners declared it with the openmbee-media topic, or, with no type topic, it has no
+    research words and either started here with media words or holds only notebooks or models, or it is a fork whose
+    changes of ours are mostly models.
+  is_research: >-
+    Its type is research: its code owners declared it with the openmbee-research topic, or, with no type topic, it
+    started here with research words and no media words, or it is a fork with changes of ours that are not mostly
+    models.
+  is_tool: >-
+    Its type is tool: its code owners declared it with the openmbee-tool topic, or, with no type topic, it started
+    here, GitHub reports a programming language for it, and it has no media or research words.
+  live: It is not archived.
+
 kinds:                                 # keyed by type, then stage: the composite key (WP5b OD2); the name
                                        # "type/stage" is derived shorthand, for display
   # --- tools ---
@@ -235,11 +276,11 @@ omitted:
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:
   - when: {signal: fork_mirror}
-    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch (WP5c OD2)."
+    reason: "A mirror: a copy of its upstream project, with no changes of ours on its default branch."
   - when: {attr: declared_type, eq: governance}
     reason: "Declares governance with a topic: governance kinds are assigned only, by a maintainer's decision."
   - when: {all: [{signal: example_words}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}, {signal: notebook_or_model_only}]}}]}
-    reason: "An example: media if it is there to show others, research if it is there to learn for ourselves (WP5c). Its code owners can declare the type with an openmbee-<type> topic."
+    reason: "An example: media if it is there to show others, research if it is there to learn for ourselves. Its code owners can declare the type with an openmbee-<type> topic."
   - when: {all: [{signal: media_words}, {signal: research_words}]}
     reason: Its name or description reads as both media and research.
   - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}

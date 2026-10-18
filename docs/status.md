@@ -37,8 +37,9 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP5c** (the taxonomy refinements from WP4's fit analysis): accepted by mzargham's merge of
     [#9](https://github.com/Open-MBEE/repo-registry/pull/9), 42ecec0 ([WP5c-scope-of-work.md](../work-packages/WP5c-scope-of-work.md)).
     Review: [WP5c-review.md](../work-packages/WP5c-review.md). The change is recorded in [WP1-amendment-6.md](../work-packages/WP1-amendment-6.md).
-  - **WP5d** (the maintainer review pack, published to the wiki): scope proposed in this pull request
-    ([WP5d-scope-of-work.md](../work-packages/WP5d-scope-of-work.md)); approved by its merge.
+  - **WP5d** (the maintainer review pack, published to the wiki): scope approved by the supervisor's verbal approval,
+    then the merge of [#10](https://github.com/Open-MBEE/repo-registry/pull/10)
+    ([WP5d-scope-of-work.md](../work-packages/WP5d-scope-of-work.md)); delivered in this pull request, for review.
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
   [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
@@ -50,11 +51,13 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   the pilot and exclude list, kept as tables; the construction controls (`data/controls.yaml`), the measured gaps
   (`data/measured-gaps.yaml`) and the forthcoming capabilities (`data/forthcoming.yaml`).
 - **Views (never committed, WP5b OD4):** rendered by `uv run python scripts/render.py` into `build/demo/` (demo mode,
-  OD5): the applicability table, every SOP, the pilot proposal and briefing, the reports, the basis tables, and the
-  data-model document. The fit analysis ([fit-analysis.md](fit-analysis.md)) is WP4's dated record.
+  OD5): the applicability table, every SOP, the pilot proposal and briefing, the reports, the basis tables, the
+  data-model document, the fit report, and the wiki pages (`build/demo/wiki/`, WP5d). Live mode
+  (`--mode live`) publishes the wiki pages to this repository's wiki, only from a clean, validated `main` equal to
+  `origin/main`. The fit analysis ([fit-analysis.md](fit-analysis.md)) is WP4's dated record.
 - **Controller:** `scripts/validate.py` enforces the model (CI); `scripts/render.py` runs the view steps
   (`recommend.py`, `policies.py`, `licenses.py`, `org.py`, `pilot.py`, `briefing.py`, `sops.py`, `basis.py`,
-  `datamodel.py`); `scripts/audit.py` reproduces the WP5b audit; read-only sensing in `snapshot.py`,
+  `datamodel.py`, `fit.py`, `wiki.py`); `scripts/audit.py` reproduces the WP5b audit; read-only sensing in `snapshot.py`,
   `org_snapshot.py`, `usage_snapshot.py`, with `privacy_check.py` and `history_privacy_check.py`. The required check:
   `uv run python scripts/validate.py` and `uv run python -m unittest discover -s tests`, in the environment locked in
   `uv.lock`.
@@ -73,11 +76,14 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
    the merge of its delivery pull request. WP5c, the taxonomy refinements: **accepted** by the merge of its delivery pull request. **WP5d, the maintainer
    review pack: scoped.**
 6. WP6, the engine: compare, status, status log, sample issues.
-7. WP7, the wiki.
+7. WP7, the compliance dashboard: the wiki that WP5d publishes, extended with status, aware of each repository's
+   state against the controls (from WP6's sensing), and how to come into demonstrable compliance. WP5d gives the
+   what and why of compliance; WP7 gives the current snapshot and the way there.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
 
-Approve **WP5d** by merging its scope pull request, then build it: plain-language rules, the wiki pages (the taxonomy,
-the repositories, the policies, the SOPs and the sources), and live mode. The supervisor creates the wiki's first
-page once, then publishes from a validated `main`. WP6 (the engine) follows.
+Review and accept **WP5d** by merging its delivery pull request. Then the supervisor creates the wiki's first page once
+in the web app and publishes from the validated `main`: `uv run python scripts/render.py --mode live`. The maintainers
+review the pack and propose changes by pull request. WP6 (the engine) follows; WP7 then extends the wiki into the
+compliance dashboard.

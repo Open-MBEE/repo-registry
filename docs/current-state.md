@@ -23,7 +23,7 @@
 
 | Topic | Now | Recorded in |
 |---|---|---|
-| Architecture | **Model, view, controller, with CI/CD** (WP5b). The **model** is the repository's records, declared as the tables of a database in [data/schema/model.yaml](../data/schema/model.yaml): each table's key, columns and foreign keys. Repositories are keyed by GitHub's repository ID, people by GitHub's user ID, kinds by (type, stage); the kind name `type/stage` is derived shorthand. The **controller** is the Python: `scripts/validate.py` admits only correctly constructed records (CI), and the render pipeline builds every **view** from the model. Views are never committed; they are rendered deterministically, in **demo mode** for now, into an ephemeral `build/demo/` (the plant simulated before the controller is turned on). CD publishes them (wiki, issues) only once live mode exists (WP6, WP7) and CI has passed | [WP5b](../work-packages/WP5b-scope-of-work.md), [WP5b-decisions](../work-packages/WP5b-decisions.md) |
+| Architecture | **Model, view, controller, with CI/CD** (WP5b). The **model** is the repository's records, declared as the tables of a database in [data/schema/model.yaml](../data/schema/model.yaml): each table's key, columns and foreign keys. Repositories are keyed by GitHub's repository ID, people by GitHub's user ID, kinds by (type, stage); the kind name `type/stage` is derived shorthand. The **controller** is the Python: `scripts/validate.py` admits only correctly constructed records (CI), and the render pipeline builds every **view** from the model. Views are never committed; they are rendered deterministically, in **demo mode** for now, into an ephemeral `build/demo/` (the plant simulated before the controller is turned on). CD publishes them only from a `main` that CI has passed: live mode publishes the wiki (WP5d, run by the supervisor; from CI in WP7), and issues come with WP6 | [WP5b](../work-packages/WP5b-scope-of-work.md), [WP5b-decisions](../work-packages/WP5b-decisions.md) |
 | Two kinds of error | A **construction error** (a malformed record, a broken key or join, broken software) is invalid: CI rejects it. A **compliance error** (a repository out of line with a policy) is the controller's error signal: valid, kept, and remediated through the feedback loop; never a CI failure. Construction controls are listed with their tests in `data/controls.yaml`; known compliance non-passes in `data/measured-gaps.yaml`; capabilities not built yet in `data/forthcoming.yaml` | [WP5b-decisions](../work-packages/WP5b-decisions.md) "Check-in" |
 | Scope | Through R1: show how the taxonomy and policies work on a pilot of real repositories, writing nothing to them; get five maintainer approvals | [WP0](../work-packages/WP0-scope-of-work.md) |
 | Citations | Core: CISA *OSS Security Principles and Practices* (2026), NIST SP 800-37 Rev. 2 (RMF) with SP 800-53, and OpenSSF (its project lifecycle, the source of the stages, and its security baseline, the backbone for policies). Secondary: CNCF lifecycle, ISO/IEC/IEEE 12207:2026 by clause only | [WP0-decisions](../work-packages/WP0-decisions.md) "NIST RMF as a second core citation"; [WP2](../work-packages/WP2-scope-of-work.md); [WP1-decisions](../work-packages/WP1-decisions.md) "Secondary citations"; [WP1-amendment-3](../work-packages/WP1-amendment-3.md) |
@@ -42,7 +42,7 @@
 | Operators | A repository's operators are its CODEOWNERS, sensed from the repo; every repo in a tier that needs an owner (high, medium, low) needs one, and only a code owner's attestation counts | WP0 R-17; [WP0-decisions](../work-packages/WP0-decisions.md) "Sweep gap 1" |
 | Named maintainers | `aftimg` (Chris Delp), `mzargham` (Michael Zargham), `rkarban` (Robert Karban), `HuiJun` (Jason Han; OpenSysML release authority); a starting target of 5 | `data/maintainers.yaml` |
 | Privacy | Concealed org members are counted, never named; the match check never reveals a concealed role | [WP3-decisions](../work-packages/WP3-decisions.md) "OD1"; `scripts/privacy_check.py` |
-| Wiki (WP7) | Pages per kind, tier and policy, and views by each; no page per repo; colors and issue links per repo | [WP0-decisions](../work-packages/WP0-decisions.md) "Wiki downscope" |
+| Wiki | Two layers on one wiki, both views. **The review pack (WP5d):** the what and why of compliance, so the maintainers can agree on the taxonomy and the policies: the taxonomy in plain words, every repository's kind, tier and source, every policy with where it is in effect and its SOP, and the sources each policy comes from; every row links to its model file, and a change is a pull request to it. Published by the supervisor from a validated `main` (`scripts/render.py --mode live`). **The compliance dashboard (WP7):** extends the pack with status, aware of each repository's state against the controls (colors per repository and policy, from WP6's sensing), and how to come into demonstrable compliance; it builds on the pack's definitions. Pages per kind, tier and policy, with views by each; no page per repo | [WP0-decisions](../work-packages/WP0-decisions.md) "Wiki downscope"; [WP5d-decisions](../work-packages/WP5d-decisions.md) |
 | Pilot | A pilot of real repositories, kept as a model table (`data/pilot.yaml`, WP5b OD6): written once by the pilot rule, changed only by a governed pull request; everything else on the exclude list (`data/exclude.yaml`) with a reason. The rule's current proposal and the pilot briefing are views | [WP4](../work-packages/WP4-scope-of-work.md); `data/pilot-rule.yaml` |
 
 ## The five maintainer approvals (WP8)
@@ -68,9 +68,9 @@
 | WP5 | Meta-rule checks in CI; move to Open-MBEE | accepted 6938aa5 ([#1](https://github.com/Open-MBEE/repo-registry/pull/1)) |
 | WP5b | The model, its integrity, and views out of the model (MVC, demo mode) | accepted 9e14099 ([#6](https://github.com/Open-MBEE/repo-registry/pull/6)) |
 | WP5c | Taxonomy refinements from WP4's fit analysis | accepted 42ecec0 ([#9](https://github.com/Open-MBEE/repo-registry/pull/9)) |
-| **WP5d** | The maintainer review pack, published to the wiki | **scoped**, approved by the merge of its scope PR ([WP5d-scope-of-work](../work-packages/WP5d-scope-of-work.md)) |
+| **WP5d** | The maintainer review pack, published to the wiki: the what and why of compliance | **in delivery**; scope approved by the supervisor's verbal approval, then the merge of [#10](https://github.com/Open-MBEE/repo-registry/pull/10) ([WP5d-scope-of-work](../work-packages/WP5d-scope-of-work.md)) |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
-| WP7 | Wiki | planned |
+| WP7 | The compliance dashboard: the wiki extended with each repository's status against the controls, and how to come into compliance (builds on WP5d and WP6) | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
 
 ## Known gaps and candidates
@@ -82,6 +82,9 @@
 - **Taxonomy:** the fit report view (`build/demo/fit-report.md`) gives the unclassified repositories by reason. After
   WP5c: mirrors (forks with no changes of ours), live repositories with no type signal, and archived ones with no type.
   Code owners can classify theirs with an `openmbee-<type>` topic.
+- **Candidate policy (raised at WP5d):** contributor and maintainer sourcing, so that OpenMBEE can name and enforce
+  whom it accepts commits from, given its aerospace and defense users and sanctioned jurisdictions; possibly varying by
+  tier. Needs canonical sources first (a research spike), then its own package.
 - **Open for the maintainers:** the off-list and missing licenses (the license view); the should-be-archived
   repositories; maintenance of the heavily used `exec-*` tools.
 
@@ -105,6 +108,14 @@ To see every view, as it would be published (demo mode writes only into `build/d
 
 ```bash
 uv run python scripts/render.py
+```
+
+The wiki pages are in `build/demo/wiki/`. To publish them to the wiki (the supervisor runs it, from a clean `main`
+equal to `origin/main` that validates; anything else is refused; it fetches `origin/main` first, which writes
+nothing to GitHub):
+
+```bash
+uv run python scripts/render.py --mode live
 ```
 
 A change of kind is one edit to `registry.yaml`; nothing needs regenerating, because views are rendered from the model
