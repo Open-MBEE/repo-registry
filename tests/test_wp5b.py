@@ -128,6 +128,21 @@ class ViewTests(unittest.TestCase):
             src = (ROOT / "scripts" / step).read_text()
             self.assertNotRegex(src, r'"gh"|api\.github\.com|requests\.', step)
 
+    def test_R5_renders_another_tree_given_by_a_relative_path(self):
+        """R-5: CI renders the base branch's views from a worktree given by a relative path (build/base), with this
+        change's renderer driving the base's own steps; the render resolves both paths, so each step finds its script
+        and writes where it was asked to."""
+        with tempfile.TemporaryDirectory(dir=ROOT) as t:
+            rel = pathlib.Path(t).relative_to(ROOT)
+            subprocess.run(["git", "worktree", "add", "-q", "--detach", str(rel / "base"), "HEAD"], cwd=ROOT, check=True)
+            try:
+                run = subprocess.run([sys.executable, "scripts/render.py", "--root", str(rel / "base"),
+                                      "--out", str(rel / "views")], cwd=ROOT, capture_output=True, text=True)
+                self.assertEqual(run.returncode, 0, run.stderr)
+                self.assertTrue((pathlib.Path(t) / "views/pilot-briefing.md").exists())
+            finally:
+                subprocess.run(["git", "worktree", "remove", "--force", str(rel / "base")], cwd=ROOT, check=True)
+
     def test_R6_no_stored_value_is_derivable(self):
         """R-6: no model table stores the kind name, or a column the model doesn't declare; the pilot stores no kind."""
         for name, t in DECLARED["tables"].items():

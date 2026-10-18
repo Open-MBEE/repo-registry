@@ -37,7 +37,8 @@ jobs:
         run: |
           git worktree add --detach build/base "$BASE"
           if [ -f build/base/scripts/render.py ]; then
-            uv run --frozen python build/base/scripts/render.py --root build/base --out build/base-views
+            # this change's renderer drives the base's own view steps (scripts/render.py runs root/scripts/<step>)
+            uv run --frozen python scripts/render.py --root build/base --out build/base-views
           fi
           uv run --frozen python scripts/view_diff.py build/base-views build/demo >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
