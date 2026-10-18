@@ -4,9 +4,10 @@
 
 The canonical kind list is the one file that says which kind each repo is. It is `registry.yaml`, at the root of
 this repo. It holds only enough to look up each repo's kind, and the kind of the organization's own administration.
-A kind gives a repo its type, lifecycle and tier, and policies attach to those (WP0 A1). The rest of the chain lives elsewhere: the kind's tier
-is in [kinds.yaml](../data/taxonomy/kinds.yaml), and the tier's policies come in WP2. Evidence for a recommended kind
-goes in the recommendation report (`data/reports/kind-recommendations.yaml`), never in the kind list.
+A kind gives a repo its type, lifecycle and tier, and policies attach to any of those three (WP0 A1). The rest lives
+elsewhere: the kind's tier is in [kinds.yaml](../data/taxonomy/kinds.yaml), and which policies are in effect for each
+kind is in [policy-applicability.md](policy-applicability.md) (WP2 D-5). Evidence for a recommended kind goes in
+the recommendation report (`data/reports/kind-recommendations.yaml`), never in the kind list.
 
 YAML is the starting point (WP0), not a decision. The machine-readable schema is
 [kind-list.schema.yaml](../data/schema/kind-list.schema.yaml).
@@ -28,7 +29,7 @@ repos:
     kind: governance/sandbox                # assigned by decision, see data/assignments.yaml
   "fprime":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; ..."
 ```
 
 ## Meta-rules
@@ -57,7 +58,8 @@ is **invalid** and must not reach `main`. A repo being out of compliance with it
 
 ## Changing a repo's kind
 
-A change of kind is a one-line edit to one entry (WP0 R-12), proposed by a PR to this repo and merged by governors.
+A change of kind is a one-line edit to one entry (WP0 R-12), proposed by a PR to this repo and merged by any
+maintainer (WP4b OD3).
 For example, when a tool releases `1.0.0` and moves from Sandbox to Incubating:
 
 ```diff

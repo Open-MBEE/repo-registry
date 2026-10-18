@@ -930,7 +930,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -944,7 +944,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -973,7 +973,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1143,7 +1143,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1157,7 +1157,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1171,7 +1171,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1201,7 +1201,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1215,7 +1215,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1244,7 +1244,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1549,7 +1549,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1701,7 +1701,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1761,7 +1761,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1791,7 +1791,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1926,7 +1926,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1940,7 +1940,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -1954,7 +1954,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2045,7 +2045,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2101,7 +2101,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: true
@@ -2115,7 +2115,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: true
@@ -2145,7 +2145,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2159,7 +2159,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2216,7 +2216,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2370,7 +2370,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2473,7 +2473,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false
@@ -2734,7 +2734,7 @@ repos:
     kind: unclassified
     tier: null
     matched: []
-    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
+    reason: A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md).
     flags: []
     evidence:
       archived: false

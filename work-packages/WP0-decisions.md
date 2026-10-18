@@ -416,3 +416,18 @@ The scope is approved (merge 1dccb62). These changes need a new approval by merg
 - **A2. A governance type.** Its only members are this repo (governance/experimental) and the administration of the
   GitHub org (governance/maintained). Every governance kind maps to high. It adds a Direction item, and high now
   mentions governance.
+
+## The model, stated precisely *(raised by supervisor at the docs sweep)*
+
+- **Supervisor (mzargham, typed by agent):** "i think the chain "repo → kind → tier → policies." is an over
+  simplification. its good for explaining at a high level but we when dig in its not quite that linear. we use create
+  attributes type, lifecycle and tier from various attestations and measurements then use those 3 categorical
+  variables to determine which policies are in effect for a given repo."
+- **Outcome:** Documents state the model as: measurements and attestations → three categorical attributes (type,
+  lifecycle stage, tier) → applies-if rules → the policies in effect. "repo → kind → tier → policies" is kept only as a
+  labelled high-level summary.
+- **Supervisor (mzargham, typed by agent):** "so in this new model kind is really just a point in the attribute space with
+  the 3 categorical dimensions."
+- **Outcome:** Stated in `docs/current-state.md`. A kind is a named point in the (type, stage, tier) space; tier is
+  determined by type and stage, so the defined kinds are a small set of valid points. A policy is a region of the space
+  (its applies-if rule), and a repository's policies are the regions its point falls in.

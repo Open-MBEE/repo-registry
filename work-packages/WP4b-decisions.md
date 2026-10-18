@@ -34,3 +34,11 @@ mzargham's.
 ## Summary
 
 The open list is empty: 3 decided, 0 deferred, 1 raised.
+
+# Acceptance review (WP4b-review.md)
+
+## Observations
+
+- **Answer (mzargham, typed by agent):** "Accept as is"
+- **Outcome:** Long lines and historical counts are accepted. Generating or diff-testing `policy-basis-review.md`'s
+  tables is a WP5 candidate.

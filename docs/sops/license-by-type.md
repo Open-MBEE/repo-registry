@@ -22,7 +22,9 @@ Every live repository has a license that OpenMBEE accepts for its type of conten
    for its main content in the root `LICENSE` file, because that is the one GitHub detects and the registry checks.
    License the rest in its own folder (for example `docs/LICENSE` with CC-BY-4.0), and say so in the README. Don't put
    two license files at the root: GitHub then can't recognize the license, and the check shows red.
-5. If you need a different license (for example because you depend on code under another license), ask the maintainers for an exception. They record it in `data/deviations.yaml` with the reason, and the check then shows green, marked as an exception.
+5. If you need a different license (for example because you depend on code under another license), ask the maintainers for an exception. It is
+   recorded in `data/deviations.yaml` with the reason, by a pull request that an owner merges (WP4b OD3). The check
+   then shows green, marked as an exception.
 6. Changing a license that contributors have already used can need their agreement. If in doubt, get legal advice, as CISA recommends.
 
 ## Automated checks

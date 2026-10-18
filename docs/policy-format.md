@@ -22,6 +22,8 @@ applies_if:                              # a rule on type, lifecycle and tier on
 github:
   mechanism: Secret scanning push protection (repository security settings)
   docs: [https://docs.github.com/...]
+  available_on: [free, team, enterprise]  # GitHub plans that provide the mechanism
+  needs_research: [...]                   # optional: features whose availability isn't confirmed yet
 checks:
   automated:                             # what the registry reads, and the permission it needs
     - {id: push-protection-on, reads: "GET /repos/{owner}/{repo} -> ...", permission: "Administration: read"}
@@ -35,6 +37,10 @@ cites:
 secondary_notes: ...                     # optional: CNCF or OpenSSF lifecycle expectations
 sop: docs/sops/secret-protection.md
 ```
+
+One policy, `license-by-type`, also carries `allowed_licenses`: for each type, the SPDX identifiers it accepts.
+`scripts/licenses.py` reads it, and `tests/test_wp2a.py` checks that it has an entry for every type in the taxonomy
+(WP2a R-3).
 
 `applies_if` uses the predicate language of `data/taxonomy/kinds.yaml` (`all`, `any`, `not`, and `attr` with `eq` or
 `in`), over exactly three attributes of a kind: `type`, `lifecycle` and `tier`.
@@ -59,6 +65,12 @@ sop: docs/sops/secret-protection.md
 10. **ISO by reference only.** `cites.iso12207` holds clause numbers only. No text from the standard is committed.
 11. **SOP.** The file at `sop` exists and has the three sections `## Set up`, `## Automated checks` and
     `## Attested checks`.
+12. **The org's plan.** `github.available_on` includes the org's plan (`plan` in `data/sources/github-plan.yaml`,
+    today `free`). A feature the plan lacks belongs in `data/policies/_future.yaml` `features`, never in a policy
+    (WP3 G-3).
+13. **Unconfirmed features are listed.** Every feature named in `github.needs_research` is listed under
+    `needs_research` in `data/policies/_future.yaml` (empty today: immutable releases and rulesets are confirmed for
+    the org, see `confirmed_in_org` in `github-plan.yaml`; WP3 G-3 follow-ups).
 
 ## Reading a check's result
 

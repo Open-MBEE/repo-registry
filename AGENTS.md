@@ -12,14 +12,18 @@ from it being deterministic, legible and explainable, so these rules take preced
 
 ## How work proceeds
 
-1. **Specs before code.** Design lives in [docs/](docs/). Do not write code for behavior that has no requirement.
-2. **Every behavior traces to a requirement ID** (X-, FM-, TX-, PO-, IF-, CL-). Cite the ID in code comments,
-   tests and PR descriptions.
+1. **Specs before code.** The contract is [WP0](work-packages/WP0-scope-of-work.md) and the approved work-package
+   scopes in [work-packages/](work-packages/); where they differ from the early DRAFT design docs in [docs/](docs/),
+   they win. Do not write code for behavior that has no requirement.
+2. **Every behavior traces to a requirement ID**, normally a WP0 or WPn R-ID (the tests in `tests/test_wp*.py`
+   cite them). The early design IDs (X-, FM-, TX-, PO-, IF-, CL-) are stable handles into the DRAFT docs; cite them
+   as design IDs, not as WP0's. Cite the ID in code comments, tests and PR descriptions.
 3. **Provisional data is marked as provisional.** When the work needs data the maintainers haven't approved yet (for
    example the kind list), draft it, but mark it clearly as provisional, in a way the program can check, until the
    maintainer approval for that data. Authority to set such data belongs to the maintainers.
-4. **Discussion is not canon.** Everything in `docs/` is DRAFT until mzargham says "lock." Don't promote a draft
-   statement to a rule yourself.
+4. **Discussion is not canon.** The early design docs in `docs/` (design, roadmap, testing, requirements) are DRAFT
+   until mzargham says "lock." Docs marked PROVISIONAL are accepted work-package deliverables waiting for the
+   maintainers' approval. Don't promote a draft statement to a rule yourself.
 5. **Smallest change that addresses the point.** Name the blast radius (files, callers, docs) before editing.
    Run every command you write into a doc or help text.
 
@@ -34,7 +38,7 @@ the decision loop, before asking the supervisor anything):
 4. `work-acceptance`: write `work-packages/WPn-review.md` and stop at the acceptance gate.
 
 - **Supervisor:** mzargham.
-- **This repo is local only** (no remote) until it moves to Open-MBEE during R1 (WP0). The move happens only when
+- **This repo is local only** (no remote) until it moves to Open-MBEE during R1, in WP5. The move happens only when
   mzargham says so. Until then:
   - **Approval** is mzargham's `git merge --no-ff` of the scope branch into `main`.
   - **Acceptance** is his `git merge --no-ff` of the work branch into `main`.
@@ -42,17 +46,25 @@ the decision loop, before asking the supervisor anything):
 - Never perform the approval or acceptance merge yourself. Verify that it exists before starting execution or
   calling a package done.
 
-Where things stand: [docs/status.md](docs/status.md).
+Start with [docs/current-state.md](docs/current-state.md). Where things stand: [docs/status.md](docs/status.md).
 
 ## Hard constraints
 
 - **No LLM in the loop.** Sensing, classifying, deciding and acting are deterministic code (X-1).
-- **Taxonomy and policy are data, not code.** Code names no class and no attribute (FM-2).
+- **Taxonomy and policy are data, not code.** The engine names no kind, type, stage, tier, policy or signal (WP1
+  R-7, WP2 R-10). Code names the three kind attributes (`type`, `lifecycle`, `tier`) on purpose, because policies
+  attach to them (WP0 A1).
+- **The model.** Measurements and attestations about a repository give its type, lifecycle stage and tier; each
+  policy's applies-if rule reads only those three, and decides whether the policy is in effect. A kind is a named
+  point in that space. "repo → kind → tier → policies" is only a high-level summary (WP0-decisions, "The model,
+  stated precisely").
 - **Never reimplement what git or GitHub provides.** Identity, permissions, review and audit are GitHub-native
   (X-5, X-7, X-8). Policies are GitHub configurations that this repo references and checks (PO-6, PO-7).
-- **Respect the roles and planes.** Readers use the wiki. Operators work in their own repos. The only thing they do here is open
-  kind-change PRs. Governors work here
+- **Respect the roles and planes.** Readers use the wiki. Operators, who are each repo's CODEOWNERS (WP0 R-17), work
+  in their own repos; the only thing they do here is open kind-change PRs. Governors (the maintainers) work here
   (FM-9, [design](docs/design.md#roles-planes-and-interfaces)).
+- **Who merges what (WP4b OD3).** A kind change: any maintainer. The maintainer list and maintainers' powers: an
+  owner. An accepted exception: an owner.
 - **No deletion.** Nothing in this system deletes a repository (X-3).
 - **Tools:** `gh` for sensing and actuation, plus `git` for publishing the wiki (FM-10). Nothing else touches GitHub.
 - **Fail safe.** If inputs can't be trusted, take no action (X-10).
@@ -62,8 +74,15 @@ Where things stand: [docs/status.md](docs/status.md).
 ## Map
 
 - [README.md](README.md): plain-language overview for everyone
+- [docs/current-state.md](docs/current-state.md): the place to start: what is decided, where, and what is next
 - [docs/status.md](docs/status.md): where things stand and the next step
-- [docs/design.md](docs/design.md): architecture, roles, cross-cutting requirements, decisions, evidence, parked items
+- [work-packages/](work-packages/): scopes, decision records, reviews and summaries (the record)
+- `data/`: taxonomy, policies, sources, snapshots, pilot and reports (PROVISIONAL)
+- [docs/policy-applicability.md](docs/policy-applicability.md) (generated), [docs/sops/](docs/sops/), and
+  [docs/pilot-briefing.md](docs/pilot-briefing.md) (generated): the current deliverables
+- Early design (DRAFT inputs): [docs/design.md](docs/design.md): architecture, roles, cross-cutting requirements,
+  decisions, evidence, parked items
 - [docs/roadmap.md](docs/roadmap.md): R1–R5 with exit tests
-- [docs/testing-and-demonstration.md](docs/testing-and-demonstration.md): the hypothetical case
+- [docs/testing-and-demonstration.md](docs/testing-and-demonstration.md): the early test plan (the hypothetical
+  case, superseded by the pilot of real repos)
 - [docs/requirements/](docs/requirements/): formal model, taxonomy, policy, interfaces, closed-loop behavior

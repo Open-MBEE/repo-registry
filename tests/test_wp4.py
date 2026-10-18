@@ -51,7 +51,7 @@ class PilotTests(unittest.TestCase):
         cats = {r["category"] for r in repos.values()}
         for cat in RULE["categories"]:
             self.assertIn(cat["id"], cats)
-        self.assertLessEqual(set(RULE["must_include"]), set(repos))
+        self.assertLessEqual(set(RULE["must_include"]) | set(RULE.get("self_registered", [])), set(repos))
 
     def test_R4_every_public_repo_in_pilot_or_excluded(self):
         """R-4: pilot and exclude list partition the registry; every exclusion has a reason; no private repo."""

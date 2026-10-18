@@ -137,15 +137,15 @@ repos:
     kind: tool/sandbox
   "fprime":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "helix":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "homebrew-tap":
     kind: tool/sandbox
   "IAlf":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "jl_scxml":
     kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
@@ -169,26 +169,26 @@ repos:
     kind: tool/sandbox
   "L4YAML":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "langserver.github.io":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "language-server-protocol":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "Livingstone":
     kind: tool/sandbox
   "lsp-mode":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "lsp4ij":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "lunar-lander-simulation":
     kind: research/sandbox
   "mason-registry":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "mathematica-mdk":
     kind: tool/archived
   "mathematica-mdk-core":
@@ -234,7 +234,7 @@ repos:
     kind: tool/archived
   "mms-python-client-feedstock":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "mms-rdf":
     kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
@@ -257,7 +257,7 @@ repos:
     reason: "Archived, with no type signal. Inert whatever its type."
   "nvim-lspconfig":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "OMGSpecifications":
     kind: media/incubating
   "oosem.github.io":
@@ -266,12 +266,12 @@ repos:
     kind: media/incubating
   "openapi-generator":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "openapi-graph-extractor":
     kind: tool/sandbox
   "opencode":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "openmbee-graphic-assets":
     kind: media/incubating
   "openmbee-workshops.github.io":
@@ -290,13 +290,13 @@ repos:
     kind: media/incubating
   "opentelemetry-demo":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "opentelemetry-proto":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "opentelemetry-specification":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "opl":
     kind: tool/incubating
   "pane-layout":
@@ -309,7 +309,7 @@ repos:
     kind: research/sandbox
   "PropertyKindCalculus":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "python-mdk":
     kind: tool/archived
   "readthedocs":
@@ -318,18 +318,18 @@ repos:
     kind: governance/sandbox
   "sbt-license-plugin":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "sbt-pack":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "scxml4py":
     kind: tool/sandbox
   "staged-recipes":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "staged-recipes-opensysml":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "starkit":
     kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
@@ -340,7 +340,7 @@ repos:
     kind: tool/sandbox
   "swagger-codegen":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "swagger-codegen-mathematica-client":
     kind: tool/sandbox
   "swagger-codegen-matlab-client":
@@ -361,7 +361,7 @@ repos:
     kind: tool/sandbox
   "sysmlv2-rdf-ontology":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "sysmlv2-testing":
     kind: tool/sandbox
   "sysmlv2-web-modeler":
@@ -377,7 +377,7 @@ repos:
     reason: "No type signal. No media or research words, and no programming language."
   "syson":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "testrail-cli":
     kind: tool/incubating
   "testrail-client-wrapper":
@@ -414,7 +414,7 @@ repos:
     reason: "No type signal. No media or research words, and no programming language."
   "winget-pkgs":
     kind: unclassified
-    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
+    reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "zzProjectWiki":
     kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
