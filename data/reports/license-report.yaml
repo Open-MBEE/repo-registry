@@ -1,0 +1,588 @@
+status: provisional
+policy: license-by-type
+counts:
+  green: 77
+  red: 38
+red_by_license:
+  BSD-3-Clause: 1
+  CC0-1.0: 1
+  MPL-2.0: 1
+  NOASSERTION: 3
+  none: 32
+repos:
+  .github:
+    kind: media/incubating
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  _OpenMBEE-Documentation:
+    kind: media/incubating
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  aircraftengine-simulation:
+    kind: research/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  airflow-provider-opensysml:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  apv:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  arch_model:
+    kind: media/incubating
+    license: MIT
+    status: green
+    detail: allowed for its type
+  architecture-based-risk-analysis:
+    kind: tool/sandbox
+    license: MPL-2.0
+    status: red
+    detail: not in the allowed set for tool (Apache-2.0, MIT); needs a change or an exception
+  bae:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  bae2_3_1:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  ChatGPT-Prompts:
+    kind: research/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  Comodo:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  concept-definition-stage:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  configuration-management-plugin:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  confluence-mdk:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  des-ex-toolset:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  DesertKite.sysml:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  dis:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  docs:
+    kind: media/incubating
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  doors-ng-mdk:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  Dragon-Architecture-Model:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  enhancement-proposals:
+    kind: media/incubating
+    license: BSD-3-Clause
+    status: red
+    detail: not in the allowed set for media (CC-BY-4.0, Apache-2.0, MIT); needs a change or an exception
+  exec-cameo-mdk:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  exec-mdk-systems-reasoner:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  exec-mms:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  exec-mms-migration-cameo2022x:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  exec-mms-python-client-example:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  exec-mmsri:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  exec-ve:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-cli-client:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-cli-sysmlv2-plugin:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-conflict-resolution-policy-research:
+    kind: research/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-graphql:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-auth-service:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-deployment:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-jama-sdk:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-mms-layer0-dashboard:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-layer1-mcp:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-mms-layer1-openapi:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-mms-layer1-service:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-sso-auth-service:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-store-service:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-sysmlv2:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-mms-sysmlv2-mcp:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-mms.openmbee.org:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  flexo-performance-test:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo-sysml2-adapter-experiment:
+    kind: research/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  flexo_syside:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  homebrew-tap:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  junit-xml-parser:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  K:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  k2mms:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  k_webeditor:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  klang:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  kservices:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  Livingstone:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  lunar-lander-simulation:
+    kind: research/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  mbple-featureide:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  MBSEPlugin:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  mcf:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  mcf-model-import-export:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  md-cst-montecarlo:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  mdk-expression:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  mms-adapter-plugin:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  mms-doc-convert:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  mms-helm-chart:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  mms3-to-mms4-json:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  mpspi:
+    kind: tool/sandbox
+    license: NOASSERTION
+    status: red
+    detail: no license GitHub can recognize
+  MSE:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  mtip-cameo:
+    kind: tool/incubating
+    license: NOASSERTION
+    status: red
+    detail: no license GitHub can recognize
+  mtip-sparx:
+    kind: tool/incubating
+    license: NOASSERTION
+    status: red
+    detail: no license GitHub can recognize
+  OMGSpecifications:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  oosem.github.io:
+    kind: media/incubating
+    license: CC0-1.0
+    status: red
+    detail: not in the allowed set for media (CC-BY-4.0, Apache-2.0, MIT); needs a change or an exception
+  open-mbee.github.io:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  openapi-graph-extractor:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  openmbee-graphic-assets:
+    kind: media/incubating
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  openmbee-workshops.github.io:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  OpenSE-Cookbook:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  OpenSysML:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  OpenSysML-Extensions-Library:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  OpenSysML-FAQ:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  OpenSysML-REDK-Skills:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  opensysml.github.io:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  opl:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  pane-layout:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  perseverance-modelica:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  pmc-fdir:
+    kind: research/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  readthedocs:
+    kind: media/incubating
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  scxml4py:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  structured-usecase-editor:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  swagger-codegen-mathematica-client:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  swagger-codegen-matlab-client:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sync-service:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysml:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  SysML-LoRD:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysml-sdk:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysml-toolkit:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  SysML-v2-Applications-and-Examples:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysmlv2-python-client:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysmlv2-testing:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysmlv2-web-modeler:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysmlv2_dls:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysmlv2_excel:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  sysmlv2x:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  testrail-cli:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  testrail-client-wrapper:
+    kind: tool/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  text2text:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  TMT-SysML-Model:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  toaster:
+    kind: media/incubating
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  tree-sitter-sysml:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  user-forum:
+    kind: media/incubating
+    license: MIT
+    status: green
+    detail: allowed for its type
+  util:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  ve-confluence:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  ve-confluence-app:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+  ve-diagram-generator:
+    kind: tool/sandbox
+    license: null
+    status: red
+    detail: no license GitHub can recognize
+  view-service:
+    kind: tool/sandbox
+    license: Apache-2.0
+    status: green
+    detail: allowed for its type
+snapshot: data/snapshots/2026-10-18

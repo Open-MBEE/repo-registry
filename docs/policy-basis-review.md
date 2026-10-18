@@ -53,7 +53,8 @@ fields. The dependency-graph SBOM endpoint closes after 2026-11-13, so `release-
 | [contributing](sops/contributing.md) | tool/incubating, tool/graduated, media/incubating, media/graduated, governance/sandbox | CONTRIBUTING file, detected by GitHub's community profile | 1 / 1 |
 | [dependency-management](sops/dependency-management.md) | tool/incubating, tool/graduated, governance/sandbox | Dependabot alerts (with the dependency graph, always on for public repos) | 1 / 2 |
 | [history-protection](sops/history-protection.md) | tool/incubating, tool/graduated, governance/sandbox | Ruleset or branch protection rules that block force pushes (non_fast_forward) and deletion on the default branch | 2 / 0 |
-| [project-files](sops/project-files.md) | tool/sandbox, tool/incubating, tool/graduated, media/sandbox, media/incubating, media/graduated, research/sandbox, research/incubating, research/graduated, governance/sandbox | Repository files README and LICENSE, detected by GitHub's community profile and license detection | 2 / 0 |
+| [project-files](sops/project-files.md) | every live repo | A README file, detected by GitHub's community profile | 1 / 0 |
+| [license-by-type](sops/license-by-type.md) | every live repo | A LICENSE file, detected by GitHub's license detection (SPDX identifier) | 1 / 0 |
 | [release-integrity](sops/release-integrity.md) | tool/graduated | Release assets, immutable releases and artifact attestations | 2 / 2 |
 | [secret-protection](sops/secret-protection.md) | tool/incubating, tool/graduated, governance/sandbox | Secret scanning push protection (repository security settings) | 1 / 0 |
 | [security-design](sops/security-design.md) | tool/graduated, governance/sandbox | None: a document in the repository, attested by its code owners | 0 / 1 |
@@ -215,3 +216,34 @@ breaking changes and light process. Incubation expects stable, versioned APIs an
 production use and comprehensive security. CNCF's archiving guidance separates a mature, feature-complete project
 from an inactive one, which matches keeping maintenance duties (`dependency-management`, `vulnerability-remediation`)
 as policies on incubating and graduated kinds, not as a lifecycle stage. No CNCF expectation contradicts the set.
+
+## License basis (WP2a)
+
+`license-by-type` sets which licenses OpenMBEE accepts for each type of content. It was added after WP2, because
+`project-files` only required that some license existed.
+
+| Type | Allowed (SPDX) | Grounded in |
+|---|---|---|
+| tool | Apache-2.0, MIT | OpenSSF charter: software code is Apache-2.0 or MIT. CISA: prefer a permissive license (p. 16) |
+| media | CC-BY-4.0, Apache-2.0, MIT | OpenSSF charter: documentation is CC-BY-4.0. Apache-2.0 or MIT where the media is mostly code |
+| research | Apache-2.0, MIT, CC-BY-4.0, CDLA-Permissive-2.0, CDLA-Sharing-1.0 | OpenSSF charter: code Apache-2.0 or MIT, documentation CC-BY-4.0, data a Community Data License Agreement |
+| governance | Apache-2.0 | As for tools. This repository is code and data |
+
+- **OpenSSF:** the charter clause is quoted in the project lifecycle (`ossf/tac` d019efe): "unless otherwise approved by
+  the Governing Board". Specifications under the Community Specification License 1.0 aren't a separate type here. A
+  repository that is a specification can record an exception.
+- **NumFOCUS,** OpenMBEE's fiscal sponsor, was researched first (WP2a OD2). Its project-support page
+  (numfocus.org/projects-overview, read 2026-10-18):
+  - expects projects to be "published under a standard open source license", and lists an OSI-approved license among
+    the signs of an open project;
+  - gives, as an example of a project not approved, one whose repositories use different licenses, some unlicensed;
+  - says nothing about documentation or data licenses, and its application form only asks for the license.
+
+  Apache-2.0 and MIT are OSI-approved, so there is no conflict. NumFOCUS's concern about mixed and missing licenses is
+  one more reason for this policy.
+- **Exceptions:** any other license, for example MPL-2.0, BSD-3-Clause or CC0-1.0, needs an accepted exception in
+  `data/deviations.yaml`, with the reason and the approving maintainer (WP0 PO-8).
+- **Forks** have no kind, so the policy doesn't apply to them, and they keep their upstream license.
+- **Today** (`data/reports/license-report.yaml`): of 115 live, classified repositories, 77 are green and 38 red. The red
+  ones are 32 with no license, 3 with a license GitHub can't recognize, and 3 with an off-list license
+  (`architecture-based-risk-analysis` MPL-2.0, `enhancement-proposals` BSD-3-Clause, `oosem.github.io` CC0-1.0).

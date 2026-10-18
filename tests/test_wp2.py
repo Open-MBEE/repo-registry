@@ -148,8 +148,8 @@ class ApplicabilityTests(unittest.TestCase):
             if k.endswith("/archived"):
                 self.assertEqual(v, ["archive-notice"], k)
             if k.endswith("/sandbox") and not k.startswith("governance"):
-                self.assertEqual(set(v), {"codeowners", "project-files"}, k)
-        self.assertLessEqual(max(n[k] for k in n if k.startswith("research/")), 2)
+                self.assertEqual(set(v), {"codeowners", "project-files", "license-by-type"}, k)  # WP2a added the license
+        self.assertLessEqual(max(n[k] for k in n if k.startswith("research/")), 3)
 
     def test_R9_applicability_replays(self):
         """R-9: the same taxonomy and policies always give the same table, matching the committed one."""
