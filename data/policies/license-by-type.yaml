@@ -8,7 +8,7 @@ meaning: 'Every live repository has a license that OpenMBEE accepts for its type
   Any other license needs a recorded exception.'
 applies_if:
   not:
-    attr: lifecycle
+    attr: stage
     eq: archived
 allowed_licenses:
   tool:

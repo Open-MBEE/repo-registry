@@ -4,7 +4,7 @@
 
 Tools from version 1.0 number their releases with semantic versioning, so that the version says whether an update is a fix, a feature or a breaking change. Graduated tools also say which releases get fixes, and for how long.
 
-**Applies to:** tool at incubating, tool at graduated. Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+**Applies to:** tool at incubating, tool at graduated. Your repository's type and stage are in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

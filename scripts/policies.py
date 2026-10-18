@@ -3,7 +3,7 @@
 
 WP2 D-4 and D-5. Deterministic, no language model (WP0 R-1). Policies are data (WP2 R-10): this file names no
 policy, kind, type, stage or tier. Applies-if rules use the predicate language of scripts/recommend.py, over
-exactly three attributes of a kind: `type`, `lifecycle` and `tier` (WP0 A1, WP2 R-2).
+exactly three attributes of a kind: `type`, `stage` and `tier` (WP0 A1, WP2 R-2; WP4e names the stage attribute).
 
 Usage:
   python3 scripts/policies.py [--policies data/policies] [--kinds data/taxonomy/kinds.yaml] \
@@ -22,7 +22,7 @@ import yaml
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from recommend import TaxonomyError, check_taxonomy, evaluate  # noqa: E402
 
-KIND_ATTRS = ("type", "lifecycle", "tier")
+KIND_ATTRS = ("type", "stage", "tier")
 REQUIRED = ("status", "id", "name", "meaning", "applies_if", "github", "checks", "cites", "sop")
 SOP_HEADINGS = ("## Set up", "## Automated checks", "## Attested checks")
 CLAUSE = re.compile(r"^\d+(\.\d+)*$")
@@ -38,7 +38,7 @@ def attrs_used(pred):
     if "attr" in pred:
         return {pred["attr"]}
     if "signal" in pred:
-        raise TaxonomyError("applies-if rules may not use signals; use type, lifecycle and tier only")
+        raise TaxonomyError("applies-if rules may not use signals; use type, stage and tier only")
     out = set()
     for key in ("all", "any"):
         for p in pred.get(key, []):
@@ -65,7 +65,7 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
     problems = []
     values = {
         "type": set(kinds_doc["types"]),
-        "lifecycle": set(kinds_doc["lifecycles"]),
+        "stage": set(kinds_doc["stages"]),
         "tier": set(tiers_doc["tiers"]),
     }
     items = set(baseline["items"])
@@ -88,7 +88,7 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
             problems.append(f"{where}: {e}")
             used = set()
         if used - set(KIND_ATTRS):
-            problems.append(f"{where}: applies_if reads {sorted(used - set(KIND_ATTRS))}; only type, lifecycle, tier")
+            problems.append(f"{where}: applies_if reads {sorted(used - set(KIND_ATTRS))}; only type, stage, tier")
         for v in _literals(p["applies_if"]):
             attr, val = v
             if attr in values and val not in values[attr]:

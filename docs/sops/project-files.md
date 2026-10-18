@@ -4,7 +4,7 @@
 
 Every live repository has a README that says what it is and how to use it. (Its license is covered by [license-by-type](license-by-type.md).)
 
-**Applies to:** tool at sandbox, tool at incubating, tool at graduated, media at sandbox, media at incubating, media at graduated, research at sandbox, research at incubating, research at graduated, governance at sandbox (repo-registry today), governance at incubating (nothing yet), governance at graduated (the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source). Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+**Applies to:** tool at sandbox, tool at incubating, tool at graduated, media at sandbox, media at incubating, media at graduated, research at sandbox, research at incubating, research at graduated, governance at sandbox (repo-registry today), governance at incubating (nothing yet), governance at graduated (the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source). Your repository's type and stage are in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

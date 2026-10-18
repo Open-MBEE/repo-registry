@@ -9,7 +9,7 @@ applies_if:
   all:
   - attr: type
     eq: tool
-  - attr: lifecycle
+  - attr: stage
     eq: graduated
 github:
   mechanism: Release assets, immutable releases and artifact attestations

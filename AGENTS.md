@@ -52,7 +52,7 @@ Start with [docs/current-state.md](docs/current-state.md). Where things stand: [
 
 - **No LLM in the loop.** Sensing, classifying, deciding and acting are deterministic code (X-1).
 - **Taxonomy and policy are data, not code.** The engine names no kind, type, stage, tier, policy or signal (WP1
-  R-7, WP2 R-10). Code names the three kind attributes (`type`, `lifecycle`, `tier`) on purpose, because policies
+  R-7, WP2 R-10). Code names the three kind attributes (`type`, `stage`, `tier`) on purpose, because policies
   attach to them (WP0 A1).
 - **The model.** Measurements and attestations about a repository give its type, lifecycle stage and tier; each
   policy's applies-if rule reads only those three, and decides whether the policy is in effect. A kind is a named

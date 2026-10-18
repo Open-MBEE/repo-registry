@@ -30,9 +30,10 @@ class GovernanceKindTests(unittest.TestCase):
         kinds = load("data/taxonomy/kinds.yaml")
         self.assertIn("governance/incubating", kinds["kinds"])
         self.assertNotIn("governance/incubating", kinds.get("omitted", {}))
-        self.assertEqual(load("registry.yaml")["org"]["kind"], "governance/graduated")
-        self.assertEqual(load("registry.yaml")["repos"]["repo-registry"]["kind"], "governance/sandbox")
-        self.assertEqual(load("data/assignments.yaml")["repos"]["repo-registry"]["kind"], "governance/sandbox")
+        gov = lambda e: (e["type"], e["stage"])  # noqa: E731 (the kind list holds type and stage, WP4e)
+        self.assertEqual(gov(load("registry.yaml")["org"]), ("governance", "graduated"))
+        self.assertEqual(gov(load("registry.yaml")["repos"]["repo-registry"]), ("governance", "sandbox"))
+        self.assertEqual(gov(load("data/assignments.yaml")["repos"]["repo-registry"]), ("governance", "sandbox"))
 
     def test_R2_graduated_carries_org_and_repository_policies(self):
         """R-2: governance/graduated takes the 5 org policies and every policy governance/sandbox took before WP4c."""

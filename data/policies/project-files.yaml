@@ -6,7 +6,7 @@ name: README
 meaning: Every live repository has a README that says what it is and how to use it. (Its license is covered by license-by-type.)
 applies_if:
   not:
-    attr: lifecycle
+    attr: stage
     eq: archived
 github:
   mechanism: A README file, detected by GitHub's community profile

@@ -10,7 +10,7 @@ applies_if:
   all:
   - attr: type
     eq: governance
-  - attr: lifecycle
+  - attr: stage
     eq: graduated
 github:
   mechanism: Public organization membership

@@ -7,7 +7,7 @@ meaning: Every live repository names the people who look after it, in a CODEOWNE
   of the repository's operators.
 applies_if:
   not:
-    attr: lifecycle
+    attr: stage
     eq: archived
 github:
   mechanism: CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS

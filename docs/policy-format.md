@@ -16,7 +16,7 @@ id: secret-protection                    # equals the file name
 name: Block secrets from being pushed    # short, plain
 meaning: >-                              # one or two plain sentences, for anyone
   ...
-applies_if:                              # a rule on type, lifecycle and tier only (WP0 A1)
+applies_if:                              # a rule on type, stage and tier only (WP0 A1)
   any:
     - all: [{attr: type, eq: tool}, {attr: lifecycle, in: [incubating, graduated]}]
 github:
@@ -43,14 +43,14 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
 (WP2a R-3).
 
 `applies_if` uses the predicate language of `data/taxonomy/kinds.yaml` (`all`, `any`, `not`, and `attr` with `eq` or
-`in`), over exactly three attributes of a kind: `type`, `lifecycle` and `tier`.
+`in`), over exactly three attributes of a kind: `type`, `stage` (its stage in the lifecycle) and `tier`.
 
 ## Meta-rules
 
 1. **One file per policy.** `id` equals the file name and is lower-case words joined by hyphens.
 2. **Every field is present:** `status`, `id`, `name`, `meaning`, `applies_if`, `github`, `checks`, `cites`, `sop`.
 3. **Provisional is marked.** `provisional_until` is present exactly when `status` is `provisional`.
-4. **Applies-if reads only type, lifecycle and tier,** and names only values that exist in the taxonomy. It uses no
+4. **Applies-if reads only type, stage and tier,** and names only values that exist in the taxonomy. It uses no
    signals.
 5. **GitHub-native.** `github` names the mechanism (or says it is attested because GitHub has no setting for it) and
    links at least one GitHub documentation page.

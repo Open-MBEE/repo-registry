@@ -6,7 +6,7 @@ name: Clear end of support
 meaning: Before a repository is archived, its README says that support has ended and points to any known active forks. Repositories
   archived before this policy existed count as compliant as they are.
 applies_if:
-  attr: lifecycle
+  attr: stage
   eq: archived
 github:
   mechanism: Repository archiving, with an end-of-support note in the README

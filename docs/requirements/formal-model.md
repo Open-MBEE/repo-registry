@@ -8,13 +8,13 @@
 
 The formal model is an abstract architecture: observe → classify → compare → correct. It names no kind, type,
 signal, sensor or actuator. It becomes realizable only when a taxonomy, a policy, sensors and actuators fill its
-slots. The engine does name the three kind attributes (type, lifecycle, tier) that every applies-if rule reads
+slots. The engine does name the three kind attributes (type, stage, tier) that every applies-if rule reads
 *(updated: WP0 A1; WP1 R-7)*.
 
 | ID | Requirement | Src | Assessed by |
 |---|---|---|---|
 | FM-1 | Plant and controller are separate. The controller affects the plant only through declared actuators. | M | Architecture doc review |
-| FM-2 | The model names no kind, type, signal, sensor or actuator. Those are slots. It names only the three kind attributes, type, lifecycle and tier *(updated: WP0 A1; WP1 R-7)*. | M | Toy-taxonomy swap needs zero code change |
+| FM-2 | The model names no kind, type, signal, sensor or actuator. Those are slots. It names only the three kind attributes, type, stage and tier *(updated: WP0 A1; WP1 R-7; WP4e)*. | M | Toy-taxonomy swap needs zero code change |
 | FM-3 | Every check's result can be "can't tell" (yellow). Anything unmeasurable is yellow, never green *(updated: WP0 R-13)*. | M | Test with a credential lacking admin |
 | FM-4 | Classification is total and pure: every repo gets exactly one inferred kind, or `unclassified` (no kind fits) with a reason. There is no `unknown` kind *(updated: WP0 OD3; WP1 R-5)*. | M | Property test over generated observations |
 | FM-5 | Each check on a repo has a status: green (known compliant), yellow (can't tell) or red (known non-compliant); an accepted exception (PO-8) is green, marked; a policy that doesn't apply is not in effect *(updated: WP0 R-13, A1)*. The taxonomy, the policies, a repo's kind and the exclude list all change only in the policy plane (governors), by PR *(updated: WP0 OD3; WP4b OD3)*. | M | Unit tests; plane-permission check |

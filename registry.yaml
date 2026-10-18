@@ -1,420 +1,514 @@
 # PROVISIONAL. NOT APPROVED. Kinds recommended by rule, plus kinds assigned by recorded decisions
 # (data/assignments.yaml). Drafted by scripts/recommend.py (WP1 D-5).
 # Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).
-# Format: docs/kind-list-format.md. One entry per repo. Changing a repo's kind is a one-line edit.
+# Format: docs/kind-list-format.md. One entry per repo: its type and stage, or only a reason. Changing a
+# repo's stage (or type) is a one-line edit.
 status: provisional
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
 org:
   name: Open-MBEE
-  kind: governance/graduated
+  type: governance
+  stage: graduated
 snapshot: data/snapshots/2026-10-18
 repos:
   ".github":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "_OpenMBEE-Documentation":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "aircraftengine-simulation":
-    kind: research/sandbox
+    type: research
+    stage: sandbox
   "airflow-provider-opensysml":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "amazonaws":
-    kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
   "apv":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "apv-mdk":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "arch_model":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "architecture-based-risk-analysis":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "bae":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "bae2_3_1":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "ChatGPT-Prompts":
-    kind: research/sandbox
+    type: research
+    stage: sandbox
   "Comodo":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "concept-definition-stage":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "configuration-management-plugin":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "confluence-mdk":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "des-ex-toolset":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "DesertKite.sysml":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "dis":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "docbook":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "docbookgen":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "DocGenServer":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "docs":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "docweb-service":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "doors-ng-client":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "doors-ng-mdk":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "Dragon-Architecture-Model":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "ems-config":
-    kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
   "EMS-Repo":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "EMS-Share":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "enhancement-proposals":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "exec-cameo-mdk":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "exec-mdk-systems-reasoner":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "exec-mms":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "exec-mms-migration-cameo2022x":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "exec-mms-python-client-example":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "exec-mmsri":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "exec-ve":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "flexo-cli-client":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-cli-sysmlv2-plugin":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-conflict-resolution-policy-research":
-    kind: research/sandbox
+    type: research
+    stage: sandbox
   "flexo-graphql":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-auth-service":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-deployment":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-jama-sdk":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-layer0-dashboard":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-layer1-mcp":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-layer1-openapi":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-layer1-service":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-ontology":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "flexo-mms-sso-auth-service":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-store-service":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-sysmlv2":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms-sysmlv2-mcp":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-mms.openmbee.org":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "flexo-performance-test":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "flexo-pr-manager":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "flexo-sysml2-adapter-experiment":
-    kind: research/sandbox
+    type: research
+    stage: sandbox
   "flexo-sysmlv2-swagger":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "flexo_syside":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "fprime":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "helix":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "homebrew-tap":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "IAlf":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "jl_scxml":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "jsonPath2":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "junit-xml-parser":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "jupyter-mdk":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "jupyterlab-mms":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "K":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "k2mms":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "k_webeditor":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "klang":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "kservices":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "L4YAML":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "langserver.github.io":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "language-server-protocol":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "Livingstone":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "lsp-mode":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "lsp4ij":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "lunar-lander-simulation":
-    kind: research/sandbox
+    type: research
+    stage: sandbox
   "mason-registry":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "mathematica-mdk":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mathematica-mdk-core":
-    kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
   "matlab-mdk":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mbple-featureide":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "MBSEPlugin":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "mcf":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "mcf-model-import-export":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "md-cst-montecarlo":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "md-cst-rabbitmq":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "mdk-expression":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "mms-adapter-plugin":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "mms-alfresco":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mms-autocref":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "mms-doc-convert":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "mms-extensions":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mms-helm-chart":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "mms-mathematica-client":
-    kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
   "mms-migration":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "MMS-Python-Adapter":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mms-python-client-feedstock":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "mms-rdf":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "mms-sparql-service":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mms3-to-mms4-json":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "mms5-consul":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "mpspi":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "MSE":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "mtip-cameo":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "mtip-sparx":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "mvn-repo":
-    kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
   "nvim-lspconfig":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "OMGSpecifications":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "oosem.github.io":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "open-mbee.github.io":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "openapi-generator":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "openapi-graph-extractor":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "opencode":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "openmbee-graphic-assets":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "openmbee-workshops.github.io":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "OpenSE-Cookbook":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "OpenSysML":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "OpenSysML-Extensions-Library":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "OpenSysML-FAQ":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "OpenSysML-REDK-Skills":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "opensysml.github.io":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "opentelemetry-demo":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "opentelemetry-proto":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "opentelemetry-specification":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "opl":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "pane-layout":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "perseverance-modelica":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "pma":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "pmc-fdir":
-    kind: research/sandbox
+    type: research
+    stage: sandbox
   "PropertyKindCalculus":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "python-mdk":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "readthedocs":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "repo-registry":
-    kind: governance/sandbox
+    type: governance
+    stage: sandbox
   "sbt-license-plugin":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "sbt-pack":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "scxml4py":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "staged-recipes":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "staged-recipes-opensysml":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "starkit":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "structured-use-cases":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "structured-usecase-editor":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "swagger-codegen":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "swagger-codegen-mathematica-client":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "swagger-codegen-matlab-client":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sync-service":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysml":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "SysML-LoRD":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysml-sdk":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysml-toolkit":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "SysML-v2-Applications-and-Examples":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "sysmlv2-python-client":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysmlv2-rdf-ontology":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "sysmlv2-testing":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysmlv2-web-modeler":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysmlv2_dls":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysmlv2_excel":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysmlv2x":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "sysmod-sysmlv2-api":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "syson":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "testrail-cli":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "testrail-client-wrapper":
-    kind: tool/incubating
+    type: tool
+    stage: incubating
   "text2text":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "TMT-SysML-Model":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "toaster":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "trafo-v2-v1":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "tree-sitter-sysml":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "user-forum":
-    kind: media/incubating
+    type: media
+    stage: incubating
   "util":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "ve-confluence":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "ve-confluence-app":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "ve-diagram-generator":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "ve-mobile":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "view-service":
-    kind: tool/sandbox
+    type: tool
+    stage: sandbox
   "ViewEditor-Sesame":
-    kind: tool/archived
+    type: tool
+    stage: archived
   "websysml-core":
-    kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "winget-pkgs":
-    kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; see docs/fit-analysis.md)."
   "zzProjectWiki":
-    kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
