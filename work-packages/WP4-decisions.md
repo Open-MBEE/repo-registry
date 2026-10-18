@@ -31,3 +31,13 @@ mzargham's.
 ## Summary
 
 The open list is empty: 4 decided, 0 deferred.
+
+# Acceptance review (WP4-review.md)
+
+## G-2 — Factual errors
+
+- **Answer (mzargham, typed by agent):** "Fix as proposed"
+
+## G-1 and G-3 — Plain language and the OpenSysML explanation
+
+- **Answer (mzargham, typed by agent):** "Fix as proposed"

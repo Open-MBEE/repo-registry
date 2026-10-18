@@ -64,10 +64,11 @@ fields. The dependency-graph SBOM endpoint closes after 2026-11-13, so `release-
 | [vulnerability-remediation](sops/vulnerability-remediation.md) | tool/graduated, governance/sandbox | Dependabot alerts and code scanning alerts, with their ages | 2 / 1 |
 | [workflow-least-privilege](sops/workflow-least-privilege.md) | tool/incubating, tool/graduated, governance/sandbox | Actions default workflow permissions set to read | 1 / 1 |
 
-**Friction follows the tiers (WP2 R-7).** Sandbox kinds carry only `project-files` and `codeowners`. Those come
-from the OpenSSF and CNCF lifecycle entry expectations (license and IP clearance, at least one maintainer), not from
-the Sandbox security baseline, whose two items are departed below (2FA moves to the org policy in WP3). Incubating
-tools carry 10 policies, graduated tools 14, archived repositories 1. Media and research stay at 2 or 3.
+**Friction follows the tiers (WP2 R-7).** Sandbox kinds carry only `project-files` (a README), `codeowners` and
+`license-by-type` (added in WP2a). Those come from the OpenSSF and CNCF lifecycle entry expectations (license and IP
+clearance, at least one maintainer), not from the Sandbox security baseline, whose two items are departed or moved
+(two-factor authentication is an org policy since WP3). Incubating tools carry 11 policies, graduated tools 15,
+archived repositories 1. Media carries 3 or 4, and research 3.
 `repo-registry` (governance/sandbox, high) carries the strict set except the release policies, since it has no
 releases. Under WP0 its review friction rises only at R3, so `change-review` will show red until then. That is a
 visible, expected gap, not enforcement.
