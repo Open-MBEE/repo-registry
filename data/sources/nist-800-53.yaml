@@ -1,0 +1,65 @@
+# NIST SP 800-53 Rev. 5 controls cited by the policies, with official titles (WP2 D-1).
+# Policies cite these IDs in cites.nist; scripts/policies.py checks they exist. Add a control here before citing it.
+source:
+  catalog: NIST SP 800-53 Rev. 5 (release 5.2.0), OSCAL JSON
+  repo: usnistgov/oscal-content
+  path: nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json
+  commit: 78650f02ad9321bb7b817846f8fbd4f2bcd620de
+controls:
+  AC-6:
+    title: Least Privilege
+  CM-3:
+    title: Configuration Change Control
+  CM-5:
+    title: Access Restrictions for Change
+  CM-5(4):
+    title: Dual Authorization
+    parent: CM-5
+  CM-8:
+    title: System Component Inventory
+  CM-10(1):
+    title: Open-source Software
+    parent: CM-10
+  CM-14:
+    title: Signed Components
+  IA-2(1):
+    title: Multi-factor Authentication to Privileged Accounts
+    parent: IA-2
+  IA-5(7):
+    title: No Embedded Unencrypted Static Authenticators
+    parent: IA-5
+  PL-8:
+    title: Security and Privacy Architectures
+  RA-5:
+    title: Vulnerability Monitoring and Scanning
+  RA-5(11):
+    title: Public Disclosure Program
+    parent: RA-5
+  SA-8:
+    title: Security and Privacy Engineering Principles
+  SA-10:
+    title: Developer Configuration Management
+  SA-10(1):
+    title: Software and Firmware Integrity Verification
+    parent: SA-10
+  SA-10(6):
+    title: Trusted Distribution
+    parent: SA-10
+  SA-11:
+    title: Developer Testing and Evaluation
+  SA-11(1):
+    title: Static Code Analysis
+    parent: SA-11
+  SA-11(4):
+    title: Manual Code Reviews
+    parent: SA-11
+  SA-17:
+    title: Developer Security and Privacy Architecture and Design
+  SA-22:
+    title: Unsupported System Components
+  SI-2:
+    title: Flaw Remediation
+  SI-7:
+    title: Software, Firmware, and Information Integrity
+  SR-4:
+    title: Provenance

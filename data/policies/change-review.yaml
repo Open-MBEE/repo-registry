@@ -1,0 +1,44 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: change-review
+name: Reviewed changes
+meaning: High-tier repositories (graduated tools, and the registry) need at least one approving review from a code owner,
+  and passing checks, before a change is merged to the default branch.
+applies_if:
+  all:
+  - attr: tier
+    eq: high
+  - not:
+      all:
+      - attr: type
+        eq: governance
+      - attr: lifecycle
+        eq: graduated
+github:
+  mechanism: 'Ruleset or branch protection: pull request rule with required approvals and code-owner review, plus required
+    status checks'
+  docs:
+  - https://docs.github.com/en/rest/repos/rules
+  - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
+checks:
+  automated:
+  - id: review-required
+    reads: GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> a pull_request rule with required_approving_review_count
+      >= 1 and require_code_owner_review == true
+    permission: 'Metadata: read'
+  - id: checks-required
+    reads: GET /repos/{owner}/{repo}/rules/branches/{default_branch} -> a required_status_checks rule
+    permission: 'Metadata: read'
+  attested: []
+cites:
+  cisa:
+  - CISA-P-CODE-REVIEW
+  - CISA-C4-CONDUCT
+  nist:
+  - CM-5(4)
+  - SA-11(4)
+  - CM-3
+  openssf:
+  - TG-4
+sop: docs/sops/change-review.md

@@ -1,0 +1,48 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: contributing
+name: Contribution guide
+meaning: Tools from version 1.0, media in use, and the registry itself publish a contribution guide that keeps demands on
+  contributors small, says what kinds of contribution are welcome, and asks for tests with code.
+applies_if:
+  any:
+  - all:
+    - attr: type
+      in:
+      - tool
+      - media
+    - attr: lifecycle
+      in:
+      - incubating
+      - graduated
+  - all:
+    - attr: type
+      eq: governance
+    - attr: lifecycle
+      eq: sandbox
+github:
+  mechanism: CONTRIBUTING file, detected by GitHub's community profile
+  docs:
+  - https://docs.github.com/en/rest/metrics/community
+  - https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors
+checks:
+  automated:
+  - id: contributing-present
+    reads: GET /repos/{owner}/{repo}/community/profile -> files.contributing is not null
+    permission: 'Contents: read'
+  attested:
+  - id: contributing-content
+    statement: The contribution guide keeps requirements on contributors minimal, says which kinds of contribution are accepted,
+      and (for code) asks for tests with each change.
+cites:
+  cisa:
+  - CISA-P-CONTRIBUTING
+  - CISA-P-CONTRIB-MINIMAL
+  - CISA-P-CONTRIB-TYPES
+  - CISA-P-CONTRIB-TESTS
+  nist:
+  - SA-11
+  openssf: []
+secondary_notes: OpenSSF requires a contributor guide to enter Incubating (project lifecycle).
+sop: docs/sops/contributing.md

@@ -1,0 +1,39 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP2 D-2.
+status: provisional
+provisional_until: 'WP0 maintainer approval 2: the policies'
+id: codeowners
+name: Named owners
+meaning: Every live repository names the people who look after it, in a CODEOWNERS file. That file is the authoritative list
+  of the repository's operators.
+applies_if:
+  all:
+  - not:
+      attr: lifecycle
+      eq: archived
+  - not:
+      all:
+      - attr: type
+        eq: governance
+      - attr: lifecycle
+        eq: graduated
+github:
+  mechanism: CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS
+  docs:
+  - https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+checks:
+  automated:
+  - id: codeowners-present
+    reads: GET /repos/{owner}/{repo}/contents/{.github/CODEOWNERS|CODEOWNERS|docs/CODEOWNERS} -> first of these returns 200
+    permission: 'Contents: read'
+  - id: codeowners-valid
+    reads: GET /repos/{owner}/{repo}/codeowners/errors -> errors is empty
+    permission: 'Contents: read'
+  attested: []
+cites:
+  cisa:
+  - CISA-C4-COMMUNITY
+  nist:
+  - CM-5
+  openssf: []
+secondary_notes: OpenSSF requires at least one maintainer at Sandbox (project lifecycle).
+sop: docs/sops/codeowners.md
