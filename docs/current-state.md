@@ -69,7 +69,7 @@
 | WP5 | Meta-rule checks in CI; move to Open-MBEE | accepted 6938aa5 ([#1](https://github.com/Open-MBEE/repo-registry/pull/1)) |
 | WP5b | The model, its integrity, and views out of the model (MVC, demo mode) | accepted 9e14099 ([#6](https://github.com/Open-MBEE/repo-registry/pull/6)) |
 | WP5c | Taxonomy refinements from WP4's fit analysis | accepted 42ecec0 ([#9](https://github.com/Open-MBEE/repo-registry/pull/9)) |
-| **WP5d** | The maintainer review pack, published to the wiki: the what and why of compliance | **in delivery**; scope approved by the supervisor's verbal approval, then the merge of [#10](https://github.com/Open-MBEE/repo-registry/pull/10) ([WP5d-scope-of-work](../work-packages/WP5d-scope-of-work.md)) |
+| WP5d | The maintainer review pack, published to the wiki: the what and why of compliance | accepted c0d8979 ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)) |
 | **WP5e** | Verified code owners for high-tier repositories; every source quoted verbatim | **in delivery**; scope approved by the supervisor's statement ([WP5e-decisions](../work-packages/WP5e-decisions.md) "Approval"), reaching `main` with the delivery ([WP5e-scope-of-work](../work-packages/WP5e-scope-of-work.md)) |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | The compliance dashboard: the wiki extended with each repository's status against the controls, and how to come into compliance (builds on WP5d and WP6) | planned |

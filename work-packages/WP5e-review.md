@@ -4,7 +4,7 @@
 |---|---|
 | **Scope of work** | [WP5e-scope-of-work.md](WP5e-scope-of-work.md) |
 | **Scope approval verified** | The supervisor's statement, recorded verbatim in [WP5e-decisions.md](WP5e-decisions.md) "Approval": "let's keep the scope of work approved locally and then merge it with the PR that implements it" |
-| **Work reviewed** | `wp5e-work` at 4f91f3f, then the observation 3 fix (below), with this report |
+| **Work reviewed** | `wp5e-work` at 932f920 (rebased onto `main` at c0d8979, WP5d's acceptance; the tree is the one reviewed), with this report |
 | **Supervisor (accepts)** | mzargham |
 | **Acceptance record** | mzargham's merge, with a merge commit, of the delivery pull request into `main` (which also brings the scope to `main`) |
 
@@ -33,7 +33,7 @@
 | R-6 | met | The WP5d tests pass with the new pages (every link resolves; every row links to its file); the browser review below |
 | R-7 | met | Every quote checked word for word against its document's text: the memo 6, OFAC 560.204, SSDF 3 practices with 4 tasks, SP 800-161 2, CISA 98, OpenSSF 25; the SDN definition copied from OFAC's page. ISO/IEC/IEEE 12207 stays clause numbers and titles; the licensed-text test passes |
 
-On 4f91f3f: `scripts/validate.py` "valid: every table meets data/schema/model.yaml, and every view renders, the same
+On 932f920 (as fce4510, before the rebase): `scripts/validate.py` "valid: every table meets data/schema/model.yaml, and every view renders, the same
 twice"; 115 tests OK (expected failures=1); `scripts/audit.py`: all 16 findings return none; the privacy scans name no
 concealed member (186 files; 675 blobs and every commit message on `main`).
 
@@ -46,7 +46,7 @@ concealed member (186 files; 675 blobs and every commit message on `main`).
 ## Browser review (the definition of good)
 
 The new and changed pages were read in the local preview, as a maintainer would: the policy's SOP, the memo's Source
-page, the CISA page's C4 Community criterion, following links from the SOP's citations. Findings, fixed in 30f526f:
+page, the CISA page's C4 Community criterion, following links from the SOP's citations. Findings, fixed in 4e91e4c:
 
 | Finding | Fix |
 |---|---|
@@ -96,10 +96,14 @@ supervisor's request; the uncited items addressed now; §3.H, after one follow-u
 | Observations 1 and 2: the verification's age as a color; consent checked from the commit author | follow-up work package (WP6) | Both need the engine: a run against today's date, and the commit author's GitHub login from the API. Recorded in `docs/current-state.md` |
 | Observation 4: memo sections and SSDF practices cited by no policy | fix before acceptance | Supervisor: "i think we should address the cited by no policy gap now". A citation sweep: existing policies cite the new sources where they already ask for what a source says (memo §2.C(3) and §2.C(4) newly quoted for it); one policy change, with his explicit approval: `contributing` also asks how contributions are reviewed and tested, and cites §3.H. Every quoted item is now cited |
 | Observation 5: the old paraphrases replaced | accept as is | A result, not a gap |
-| The browser review's findings (F1, F2) | fixed in execution | Fixed in 30f526f |
+| The browser review's findings (F1, F2) | fixed in execution | Fixed in 4e91e4c |
 
 ## Recommendation
 
-RECOMMENDATION
+Recommend acceptance. Every deliverable and requirement is met with evidence: every quote checked word for word
+against its document, and the full suite, audit and privacy scans pass. The browser review met the definition of good,
+and its two findings were fixed. The observations were sorted as the supervisor asked: one fixed, two left to WP6,
+one addressed now by the citation sweep with his explicit approval for the one policy change, and one accepted as
+is. No verification is recorded yet, so XF-3 stays red until the owners make the first ones.
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.
