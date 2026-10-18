@@ -349,7 +349,7 @@ repos:
     stage: incubating
   "OpenSysML":
     type: tool
-    stage: sandbox
+    stage: beta
   "OpenSysML-Extensions-Library":
     type: tool
     stage: sandbox
