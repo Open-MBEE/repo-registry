@@ -31,7 +31,8 @@ the decision loop, before asking the supervisor anything):
 4. `work-acceptance`: write `work-packages/WPn-review.md` and stop at the acceptance gate.
 
 - **Supervisor:** mzargham.
-- **This repo is local only** (no remote) until the first milestone, when it moves to Open-MBEE. Until then:
+- **This repo is local only** (no remote) until it moves to Open-MBEE during R1 (WP0). The move happens only when
+  mzargham says so. Until then:
   - **Approval** is mzargham's `git merge --no-ff` of the scope branch into `main`.
   - **Acceptance** is his `git merge --no-ff` of the work branch into `main`.
   - **Decision records** go in `work-packages/WPn-decisions.md`.
@@ -46,12 +47,14 @@ Where things stand: [docs/status.md](docs/status.md).
 - **Taxonomy and policy are data, not code.** Code names no class and no attribute (FM-2).
 - **Never reimplement what git or GitHub provides.** Identity, permissions, review and audit are GitHub-native
   (X-5, X-7, X-8). Policies are GitHub configurations that this repo references and checks (PO-6, PO-7).
-- **Respect the roles and planes.** Readers use the wiki. Operators work in their own repos. Governors work here
+- **Respect the roles and planes.** Readers use the wiki. Operators work in their own repos. The only thing they do here is open
+  kind-change PRs. Governors work here
   (FM-9, [design](docs/design.md#roles-planes-and-interfaces)).
 - **No deletion.** Nothing in this system deletes a repository (X-3).
 - **Tools:** `gh` for sensing and actuation, plus `git` for publishing the wiki (FM-10). Nothing else touches GitHub.
 - **Fail safe.** If inputs can't be trusted, take no action (X-10).
-- **Ask before touching other repositories.** During design and R1, nothing writes to the live org.
+- **Ask before touching other repositories.** During design and R1, nothing writes to the live org, except to this
+  repo once it has moved there.
 
 ## Map
 

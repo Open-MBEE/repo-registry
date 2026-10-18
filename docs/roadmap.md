@@ -41,7 +41,8 @@ Each stage has an exit test, written as what must be true. The stages are cumula
 - A newcomer finds the highlighted repos, and who to ask, from the wiki index page (IF-2).
 - *Exit:* the maintainers ratify it, and **its first release makes it canonical**. At that release the
   "calibrating" banner is removed, `repo-registry` moves to a class at least as strict as the strictest class (X-9),
-  and governance switches to high friction (IF-9).
+  and governance switches to high friction (IF-9): merging to `main` then needs CODEOWNERS (OpenMBEE
+  maintainers) approval.
 
 ## R4 — Desired steady state
 
