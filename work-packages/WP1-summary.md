@@ -12,12 +12,12 @@ repo is in `data/reports/kind-recommendations.yaml`.
 | Kind | Tier | Repos |
 |---|---|---|
 | tool/active-development | high | 1 |
-| tool/maintained | high | 0 |
+| tool/maintained | high | 14 |
 | tool/experimental | medium | 9 |
 | tool/unreleased | low | 63 |
 | tool/archived | none | 21 |
-| media/active-development | medium | 7 |
-| media/maintained | medium | 4 |
+| media/active-development | medium | 11 |
+| media/maintained | medium | 11 |
 | media/experimental | low | 0 *(only the maintainers choose it)* |
 | media/archived | none | 0 |
 | research/experimental | low | 6 |
@@ -26,9 +26,9 @@ repo is in `data/reports/kind-recommendations.yaml`.
 | research/archived | none | 0 |
 | governance/experimental | high | 1 *(assigned: `repo-registry`, not yet in the org)* |
 | governance/maintained | high | the org's own administration *(assigned; not a repo)* |
-| unclassified | — | 70 |
+| unclassified | — | 45 |
 
-By tier, that is 2 high (counting `repo-registry`), 20 medium, 69 low and 21 none, plus 70 unclassified.
+By tier, that is 16 high (counting `repo-registry`), 31 medium, 69 low and 21 none, plus 45 unclassified.
 The org's administration is governance/maintained (high).
 
 Governance kinds are assigned by decision (`data/assignments.yaml`), never recommended, and only these two exist.
@@ -43,11 +43,8 @@ with no semver release had nowhere to land. This kind is that landing place. `un
 lifecycle, for tools only. If you'd rather not add a lifecycle, the alternative is to map tool/experimental to low,
 but that breaks "0.x stays medium".
 
-## Unclassified repos, and why (70)
+## Unclassified repos, and why (45)
 
-- **25 repos that aren't being maintained.** They are tools at version 1.0 or later, or media, with no changes
-  in the last year. Maintenance is active, so they don't count as maintained. The choice is to archive them, or for a
-  maintainer to say who looks after them. They include `exec-mms`, `exec-ve`, `exec-cameo-mdk`, `mcf` and `opl`.
 - **25 forks.** The taxonomy has no kind for forks yet (WP0 parked item). Forks are shown, not forced into a kind
   (TX-4). Examples: `fprime`, `helix`, `syson`, `opencode`, `winget-pkgs`.
 - **14 live repos with no type signal.** They have no media or research words and no programming language, for
@@ -56,14 +53,16 @@ but that breaks "0.x stays medium".
 
 ## Things worth your attention
 
-1. **Almost nothing is in the high tier by the rules:** only `mtip-cameo` (v1.0.9, changed in the last 3 months),
-   plus `repo-registry` by assignment. `OpenSysML` and `sysml-toolkit` stay experimental (medium) until they release
-   1.0.0 (WP1 A3).
-2. **No tool counts as maintained today.** Every 1.0-or-later tool other than `mtip-cameo` has had no changes in a
-   year. That is the clearest list for WP4's "repos that should be archived", or for maintainers to claim.
+1. **A kind is a category, not a compliance verdict.** The 14 tools at version 1.0 or later with no changes in a year
+   are tool/maintained, because that is their stage. Whether anyone actually does the upkeep (tracking dependencies,
+   fixing reported security flaws) is checked by the maintained-lifecycle policies in WP2, not by the kind. Until
+   those policies exist, nothing can be out of compliance with them.
+2. **Little is in active development by the rules:** only `mtip-cameo` (v1.0.9). `OpenSysML` and `sysml-toolkit`
+   stay experimental (medium) until they release 1.0.0 (WP1 A3).
 3. **Maintenance duties carried to WP2:** tracking dependencies and handling reported security flaws (CVEs), as
    policies attached to the maintained lifecycle.
-4. **74 live repos are flagged as archive candidates** (no commits in 12 months). The flag never changes a kind.
+4. **74 live repos are flagged as archive candidates** (no commits in 12 months). The flag is a hint for WP4 and never
+   changes a kind.
 5. **Type rules lean on names and descriptions,** because almost no repo sets GitHub topics (26 distinct topics across
    the whole org). The word lists are data in `kinds.yaml`, so they're easy to tune.
 

@@ -10,11 +10,9 @@ org:
 snapshot: data/snapshots/2026-10-18
 repos:
   ".github":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "_OpenMBEE-Documentation":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "aircraftengine-simulation":
     kind: research/experimental
   "airflow-provider-opensysml":
@@ -28,8 +26,7 @@ repos:
     kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "arch_model":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "architecture-based-risk-analysis":
     kind: tool/unreleased
   "bae":
@@ -49,10 +46,9 @@ repos:
   "des-ex-toolset":
     kind: tool/unreleased
   "DesertKite.sysml":
-    kind: media/maintained
+    kind: media/active-development
   "dis":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "docbook":
     kind: tool/archived
   "docbookgen":
@@ -60,8 +56,7 @@ repos:
   "DocGenServer":
     kind: tool/archived
   "docs":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "docweb-service":
     kind: tool/archived
   "doors-ng-client":
@@ -69,7 +64,7 @@ repos:
   "doors-ng-mdk":
     kind: tool/unreleased
   "Dragon-Architecture-Model":
-    kind: media/maintained
+    kind: media/active-development
   "ems-config":
     kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
@@ -78,27 +73,21 @@ repos:
   "EMS-Share":
     kind: tool/archived
   "enhancement-proposals":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "exec-cameo-mdk":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "exec-mdk-systems-reasoner":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "exec-mms":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "exec-mms-migration-cameo2022x":
     kind: tool/unreleased
   "exec-mms-python-client-example":
     kind: tool/unreleased
   "exec-mmsri":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "exec-ve":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "flexo-cli-client":
     kind: tool/unreleased
   "flexo-cli-sysmlv2-plugin":
@@ -212,8 +201,7 @@ repos:
   "MBSEPlugin":
     kind: tool/unreleased
   "mcf":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "mcf-model-import-export":
     kind: tool/unreleased
   "md-cst-montecarlo":
@@ -222,19 +210,16 @@ repos:
     kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "mdk-expression":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "mms-adapter-plugin":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "mms-alfresco":
     kind: tool/archived
   "mms-autocref":
     kind: unclassified
     reason: "No type signal. No media or research words, and no programming language."
   "mms-doc-convert":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "mms-extensions":
     kind: tool/archived
   "mms-helm-chart":
@@ -266,8 +251,7 @@ repos:
   "mtip-cameo":
     kind: tool/active-development
   "mtip-sparx":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "mvn-repo":
     kind: unclassified
     reason: "Archived, with no type signal. Inert whatever its type."
@@ -275,8 +259,7 @@ repos:
     kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
   "OMGSpecifications":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "oosem.github.io":
     kind: media/active-development
   "open-mbee.github.io":
@@ -294,14 +277,13 @@ repos:
   "openmbee-workshops.github.io":
     kind: media/active-development
   "OpenSE-Cookbook":
-    kind: media/maintained
+    kind: media/active-development
   "OpenSysML":
     kind: tool/experimental
   "OpenSysML-Extensions-Library":
     kind: tool/unreleased
   "OpenSysML-FAQ":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "OpenSysML-REDK-Skills":
     kind: tool/unreleased
   "opensysml.github.io":
@@ -316,13 +298,11 @@ repos:
     kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
   "opl":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "pane-layout":
     kind: tool/unreleased
   "perseverance-modelica":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "pma":
     kind: tool/archived
   "pmc-fdir":
@@ -333,8 +313,7 @@ repos:
   "python-mdk":
     kind: tool/archived
   "readthedocs":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "repo-registry":
     kind: governance/experimental
   "sbt-license-plugin":
@@ -377,8 +356,7 @@ repos:
   "sysml-toolkit":
     kind: tool/experimental
   "SysML-v2-Applications-and-Examples":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "sysmlv2-python-client":
     kind: tool/experimental
   "sysmlv2-rdf-ontology":
@@ -401,15 +379,13 @@ repos:
     kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
   "testrail-cli":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "testrail-client-wrapper":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: tool/maintained
   "text2text":
     kind: tool/unreleased
   "TMT-SysML-Model":
-    kind: media/maintained
+    kind: media/active-development
   "toaster":
     kind: media/active-development
   "trafo-v2-v1":
@@ -418,8 +394,7 @@ repos:
   "tree-sitter-sysml":
     kind: tool/unreleased
   "user-forum":
-    kind: unclassified
-    reason: "No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it."
+    kind: media/maintained
   "util":
     kind: tool/unreleased
   "ve-confluence":

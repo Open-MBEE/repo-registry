@@ -145,3 +145,33 @@ The WP1 scope is approved (merge 3bb8ee8). These changes need a new approval by 
   governance/maintained, every governance kind maps to high, and the other governance kinds are omitted with a reason.
   R-3 now allows omitted kinds, with a reason. R-6 and D-2 were updated.
 - **A3.** Recommendations are guidance and governors assign. OpenSysML and sysml-toolkit stay experimental until 1.0.0.
+
+## Third review pass — R-4's stopping point (raised by the agent, a level up)
+
+- **Question:** R-4 is checked by a cold read, and a model stand-in finds a new, smaller layer each pass. What should
+  count as meeting R-4 for WP1?
+- **Answer (mzargham, typed by agent):** "Fix 1-5, then stop"
+- **Outcome:** Fix the third pass's five items, accept the two minor ones (version numbers, "controls"), and treat
+  stand-in reads as advisory. The real cold read by a person happens at the WP8 demonstrations.
+
+## Maintained means active upkeep *(raised by supervisor, during the fixes)*
+
+- **Supervisor (mzargham, typed by agent):** "maintenance is active not passive"
+- **Supervisor (mzargham, typed by agent):** "repos being maintained need to be aware of their dependencies. as well as
+  CVEs and other ongoing work to keep their stable software safe and reliable"
+- **Outcome:** The meaning of maintained now says it is actively looked after: tracking dependencies, watching for
+  publicly reported security flaws (CVEs) and fixing them. Recommendation rules (agent's inner-loop detail): active
+  development means changes in the last 3 months, and maintained means changes in the last 12 months but not the last
+  3. A 1.0-or-later tool, or media, with no changes in a year is unclassified, with the reason "isn't being maintained:
+  archive it, or a maintainer says who looks after it". Carried to WP2: policies attached to the maintained lifecycle
+  for dependency tracking and vulnerability (CVE) handling (WP0 A1 allows lifecycle-attached policies).
+
+## Lifecycle is a category, not compliance *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "you also may be confusing the lifecycle category with compliance to
+  controls. these repos wouldn't be in compliance with controls that don't exist"
+- **Outcome:** The agent had made "no changes in a year" leave a repo unclassified as "not maintained". That judged
+  compliance through the kind. Reverted: lifecycle recommendations use the 12-month split again (changes in the last
+  year means active development, otherwise maintained), and the "not maintained" reason is gone. The maintained
+  meaning now states the category and its expected upkeep, and says that whether the upkeep happens is checked by the
+  maintained-lifecycle policies (WP2), not by the kind.

@@ -4,10 +4,11 @@ snapshot: data/snapshots/2026-10-18
 repos:
   .github:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -19,10 +20,11 @@ repos:
       commits_last_3_months: 0
   _OpenMBEE-Documentation:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -109,10 +111,11 @@ repos:
       commits_last_3_months: 0
   arch_model:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -266,10 +269,10 @@ repos:
       commits_last_3_months: 0
   DesertKite.sysml:
     assigned: false
-    kind: media/maintained
+    kind: media/active-development
     tier: medium
     matched:
-    - media/maintained
+    - media/active-development
     reason: null
     flags: []
     evidence:
@@ -281,10 +284,11 @@ repos:
       commits_last_3_months: 0
   dis:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -341,10 +345,11 @@ repos:
       commits_last_3_months: 0
   docs:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -402,10 +407,10 @@ repos:
       commits_last_3_months: 0
   Dragon-Architecture-Model:
     assigned: false
-    kind: media/maintained
+    kind: media/active-development
     tier: medium
     matched:
-    - media/maintained
+    - media/active-development
     reason: null
     flags: []
     evidence:
@@ -461,10 +466,11 @@ repos:
       commits_last_3_months: 0
   enhancement-proposals:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -476,10 +482,11 @@ repos:
       commits_last_3_months: 0
   exec-cameo-mdk:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -491,10 +498,11 @@ repos:
       commits_last_3_months: 0
   exec-mdk-systems-reasoner:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -506,10 +514,11 @@ repos:
       commits_last_3_months: 0
   exec-mms:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -553,10 +562,11 @@ repos:
       commits_last_3_months: 0
   exec-mmsri:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -568,10 +578,11 @@ repos:
       commits_last_3_months: 0
   exec-ve:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1319,10 +1330,11 @@ repos:
       commits_last_3_months: 0
   mcf:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1381,10 +1393,11 @@ repos:
       commits_last_3_months: 0
   mdk-expression:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1396,10 +1409,11 @@ repos:
       commits_last_3_months: 0
   mms-adapter-plugin:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1441,10 +1455,11 @@ repos:
       commits_last_3_months: 0
   mms-doc-convert:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1653,10 +1668,11 @@ repos:
       commits_last_3_months: 1
   mtip-sparx:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1696,10 +1712,11 @@ repos:
       commits_last_3_months: 96
   OMGSpecifications:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1815,10 +1832,10 @@ repos:
       commits_last_3_months: 18
   OpenSE-Cookbook:
     assigned: false
-    kind: media/maintained
+    kind: media/active-development
     tier: medium
     matched:
-    - media/maintained
+    - media/active-development
     reason: null
     flags: []
     evidence:
@@ -1860,10 +1877,11 @@ repos:
       commits_last_3_months: 196
   OpenSysML-FAQ:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1947,10 +1965,11 @@ repos:
       commits_last_3_months: 99
   opl:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -1977,10 +1996,11 @@ repos:
       commits_last_3_months: 0
   perseverance-modelica:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -2051,10 +2071,11 @@ repos:
       commits_last_3_months: 0
   readthedocs:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -2314,10 +2335,11 @@ repos:
       commits_last_3_months: 11
   SysML-v2-Applications-and-Examples:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -2461,10 +2483,11 @@ repos:
       commits_last_3_months: 105
   testrail-cli:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -2476,10 +2499,11 @@ repos:
       commits_last_3_months: 0
   testrail-client-wrapper:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: tool/maintained
+    tier: high
+    matched:
+    - tool/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:
@@ -2507,10 +2531,10 @@ repos:
       commits_last_3_months: 0
   TMT-SysML-Model:
     assigned: false
-    kind: media/maintained
+    kind: media/active-development
     tier: medium
     matched:
-    - media/maintained
+    - media/active-development
     reason: null
     flags: []
     evidence:
@@ -2566,10 +2590,11 @@ repos:
       commits_last_3_months: 6
   user-forum:
     assigned: false
-    kind: unclassified
-    tier: null
-    matched: []
-    reason: No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
+    kind: media/maintained
+    tier: medium
+    matched:
+    - media/maintained
+    reason: null
     flags:
     - archive-candidate
     evidence:

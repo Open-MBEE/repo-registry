@@ -33,13 +33,12 @@ lifecycles:
     Early and still changing. For a tool, its releases are numbered below 1.0 (for example 0.4.2). When a tool
     releases version 1.0, it moves on: to active development if it is still changing, or to maintained if not.
   active-development: >-
-    Being worked on now: it has had changes in the last three months. For a tool, it has also released version 1.0
-    or later.
+    Being worked on now. For a tool, it has also released version 1.0 or later.
   maintained: >-
-    Actively looked after, even if little new is being added. Someone keeps it safe and reliable: they keep track of
-    the other software it depends on, watch for publicly reported security flaws in it, and fix what they find. For a
-    tool or media, it has had changes in the last year, but not in the last three months. A repository with no
-    changes at all in a year isn't maintained.
+    Stable and offered for use, with little new being added. Maintenance is active work: someone is expected to keep
+    it safe and reliable, by keeping track of the other software it depends on, watching for publicly reported
+    security flaws in it, and fixing what they find. Whether that work is actually being done is checked by the
+    policies for maintained repositories, not by the repository's kind.
   unreleased: >-
     Tools only. A tool that has never published a numbered release (such as 1.2.0). It needs a named person to look
     after it, and nothing more, until it starts releasing.
@@ -85,21 +84,20 @@ kinds:
     lifecycle: active-development
     tier: high
     meaning: >-
-      A tool at version 1.0 or later that people depend on and that has changed in the last three months. Every
-      release needs careful control, so it gets the strictest controls.
+      A tool at version 1.0 or later that people depend on and that is still being changed. Every release needs
+      careful control, so it gets the strictest controls.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_3_months}]
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months}]
   tool/maintained:
     type: tool
     lifecycle: maintained
     tier: high
     meaning: >-
-      A stable tool at version 1.0 or later that someone actively looks after: they keep track of what it depends on
-      and fix reported security flaws. It has had changes in the last year, but not in the last three months. It gets
-      the strictest controls because people rely on its releases.
+      A stable tool at version 1.0 or later that people rely on, and that someone is expected to look after actively:
+      tracking what it depends on and fixing reported security flaws. It gets the strictest controls because people
+      rely on its releases.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months},
-            {not: {signal: commits_last_3_months}}]
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: commits_last_12_months}}]
   tool/experimental:
     type: tool
     lifecycle: experimental
@@ -136,18 +134,17 @@ kinds:
     lifecycle: active-development
     tier: medium
     meaning: >-
-      Media that many people rely on, such as the website, that has changed in the last three months.
+      Media that many people rely on, such as the website, that is still being changed.
     recommend_when:
-      all: [{signal: is_media}, {signal: live}, {signal: commits_last_3_months}]
+      all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}]
   media/maintained:
     type: media
     lifecycle: maintained
     tier: medium
     meaning: >-
-      Media that people still use and that someone actively looks after, with changes in the last year but not in the
-      last three months.
+      Stable media that people still use, and that someone is expected to look after.
     recommend_when:
-      all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}, {not: {signal: commits_last_3_months}}]
+      all: [{signal: is_media}, {signal: live}, {not: {signal: commits_last_12_months}}]
   media/experimental:
     type: media
     lifecycle: experimental
@@ -223,10 +220,6 @@ omitted:
 unclassified_reasons:
   - when: {signal: fork}
     reason: A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item).
-  - when: {all: [{any: [{signal: is_tool}, {signal: is_media}]}, {signal: live}, {not: {signal: commits_last_12_months}},
-                 {any: [{signal: semver_1_or_later}, {signal: is_media}]}]}
-    reason: >-
-      No changes in the last year, so it isn't being maintained. Archive it, or a maintainer says who looks after it.
   - when: {all: [{signal: media_words}, {signal: research_words}]}
     reason: Its name or description reads as both media and research.
   - when: {all: [{signal: archived}, {not: {any: [{signal: media_words}, {signal: research_words}, {signal: code_language}]}}]}
