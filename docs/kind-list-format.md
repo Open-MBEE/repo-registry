@@ -19,13 +19,13 @@ status: provisional                         # provisional | approved
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
 org:
   name: Open-MBEE
-  kind: governance/maintained              # the administration of the GitHub org itself (WP1 A2)
+  kind: governance/graduated               # the administration of the GitHub org itself (WP1 A2, A4)
 snapshot: data/snapshots/2026-10-18         # the snapshot the recommendations came from (optional)
 repos:
   "exec-mms":
-    kind: tool/maintained
+    kind: tool/incubating
   "repo-registry":
-    kind: governance/experimental           # assigned by decision, see data/assignments.yaml
+    kind: governance/sandbox                # assigned by decision, see data/assignments.yaml
   "fprime":
     kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."
@@ -58,12 +58,12 @@ is **invalid** and must not reach `main`. A repo being out of compliance with it
 ## Changing a repo's kind
 
 A change of kind is a one-line edit to one entry (WP0 R-12), proposed by a PR to this repo and merged by governors.
-For example, when a tool reaches `1.0.0`:
+For example, when a tool releases `1.0.0` and moves from Sandbox to Incubating:
 
 ```diff
    "OpenSysML":
--    kind: tool/experimental
-+    kind: tool/active-development
+-    kind: tool/sandbox
++    kind: tool/incubating
 ```
 
 Moving an unclassified repo into a kind also removes its `reason` line. That is still one entry, and the change is

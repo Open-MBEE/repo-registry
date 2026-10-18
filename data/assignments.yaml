@@ -5,10 +5,10 @@ status: provisional
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
 
 org:
-  kind: governance/maintained
-  decision: "WP1-decisions.md, Acceptance review, G-2 (governance type)"
+  kind: governance/graduated
+  decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md"
 
 repos:
   repo-registry:
-    kind: governance/experimental
-    decision: "WP1-decisions.md, Acceptance review, G-2 (governance type). Not in the org yet; it moves there in WP5."
+    kind: governance/sandbox
+    decision: "WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md. Not in the org yet; it moves there in WP5."

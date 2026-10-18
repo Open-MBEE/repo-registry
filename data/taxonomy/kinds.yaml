@@ -28,25 +28,24 @@ types:
     holds these rules, and the administration of the GitHub organization. The administration isn't a repository,
     but it gets a kind in the same way, so that its controls can be checked too.
 
+# Lifecycle stages are adopted from the CNCF and OpenSSF project lifecycles (WP0/WP1 amendment A4).
+# The map from their documents, with sources, is docs/lifecycle-stage-map.md.
 lifecycles:
-  experimental: >-
-    Early and still changing. For a tool, its releases are numbered below 1.0 (for example 0.4.2). When a tool
-    releases version 1.0, it moves on: to active development if it is still changing, or to maintained if not.
-  active-development: >-
-    New features are being added. For a tool, it has released version 1.0 or later, and its recent releases add
-    features (they raise the first or second number of the version, for example 2.3.0 to 2.4.0).
-  maintained: >-
-    Stable and offered for use, with no new features being added. For a tool, its recent releases only fix things
-    (they raise just the last number of the version, for example 2.4.0 to 2.4.1), or it hasn't released lately.
-    Maintenance is still active work: someone is expected to keep
-    it safe and reliable, by keeping track of the other software it depends on, watching for publicly reported
-    security flaws in it, and fixing what they find. Whether that work is actually being done is checked by the
-    policies for maintained repositories, not by the repository's kind.
-  unreleased: >-
-    Tools only. A tool that has never published a numbered release (such as 1.2.0). It needs a named person to look
-    after it, and nothing more, until it starts releasing.
+  sandbox: >-
+    The first stage, for early and experimental work. Big changes, including ones that break things for users, are
+    expected. One person working alone is fine. For a tool, it has no numbered release yet, or its releases are still
+    numbered below 1.0 (for example 0.4.2). Same stage name and meaning as the CNCF and OpenSSF "Sandbox".
+  incubating: >-
+    The middle stage. The work is past the experimental phase and becoming stable, with fewer breaking changes, and
+    people are starting to use it. For a tool, it has released version 1.0 or later. Same stage as the CNCF and
+    OpenSSF "Incubating".
+  graduated: >-
+    The most mature stage. Widely used in real work, with several maintainers, settled governance, and steady,
+    careful releases. The rules never suggest this stage. The maintainers who run the OpenMBEE organization on GitHub
+    give it, based on evidence of that use and governance. Same stage as the CNCF and OpenSSF "Graduated".
   archived: >-
-    Finished. The repository is archived on GitHub, so nobody can change it any more. This is the last stage.
+    Finished. The repository is archived on GitHub, so nobody can change it any more. This is the last stage. Same
+    stage as the CNCF and OpenSSF "Archived".
 
 # Signals are named building blocks the kinds share. They are data, not code.
 signals:
@@ -56,7 +55,6 @@ signals:
   semver_1_or_later: {attr: latest_semver_major, gte: 1}
   commits_last_3_months: {attr: commits_last_3_months, gt: 0}
   commits_last_12_months: {attr: commits_last_12_months, gt: 0}
-  feature_release_last_12_months: {attr: feature_release_last_12_months, eq: true}
   media_words:
     any:
       - attr: name
@@ -83,47 +81,33 @@ signals:
 
 kinds:
   # --- tools ---
-  tool/active-development:
+  tool/sandbox:
     type: tool
-    lifecycle: active-development
-    tier: high
+    lifecycle: sandbox
+    tier: low
     meaning: >-
-      A tool at version 1.0 or later that people depend on and that is still gaining new features. Every release
-      needs careful control, so it gets the strictest controls.
+      A tool that is still experimenting: no numbered release yet, or releases still numbered below 1.0. It needs a
+      named person to look after it, and controls are kept light so that experiments stay easy. When it releases
+      version 1.0, it becomes an incubating tool.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: feature_release_last_12_months}]
-  tool/maintained:
+      all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_1_or_later}}]
+  tool/incubating:
     type: tool
-    lifecycle: maintained
-    tier: high
-    meaning: >-
-      A stable tool at version 1.0 or later that people rely on, and that someone is expected to look after actively:
-      tracking what it depends on and fixing reported security flaws. It gets the strictest controls because people
-      rely on its releases.
-    recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: feature_release_last_12_months}}]
-  tool/experimental:
-    type: tool
-    lifecycle: experimental
+    lifecycle: incubating
     tier: medium
     meaning: >-
-      A tool whose releases are still numbered below 1.0. It can change fast. When it releases version 1.0, it
-      becomes a tool in active development (or maintained, if it has stopped changing), and its controls get stricter.
+      A tool at version 1.0 or later that people are starting to rely on. It gets moderate controls. It becomes a
+      graduated tool when the maintainers judge that it is widely used and well governed.
     recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {signal: semver_release}, {not: {signal: semver_1_or_later}}]
-  tool/unreleased:
+      all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}]
+  tool/graduated:
     type: tool
-    lifecycle: unreleased
-    tier: low
-    departure: >-
-      Not in the type x lifecycle cross product. Added because a tool can be in the low tier without semantic
-      versioning (supervisor, WP1 OD3), while the tools numbered below 1.0 are experimental (medium). Without this
-      kind, a tool that has never released has no low-tier kind to land in.
+    lifecycle: graduated
+    tier: high
     meaning: >-
-      A tool that has never published a numbered release. It needs a named person to look after it, and nothing more,
-      until it starts releasing.
-    recommend_when:
-      all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_release}}]
+      A mature tool that many people depend on in real work. Every release needs careful control, so it gets the
+      strictest controls. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+    recommend_when: false
   tool/archived:
     type: tool
     lifecycle: archived
@@ -133,27 +117,27 @@ kinds:
       all: [{signal: is_tool}, {signal: archived}]
 
   # --- media ---
-  media/active-development:
+  media/sandbox:
     type: media
-    lifecycle: active-development
-    tier: medium
-    meaning: >-
-      Media that many people rely on, such as the website, that is still gaining new content.
-    recommend_when:
-      all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}]
-  media/maintained:
-    type: media
-    lifecycle: maintained
-    tier: medium
-    meaning: >-
-      Stable media that people still use, and that someone is expected to look after.
-    recommend_when:
-      all: [{signal: is_media}, {signal: live}, {not: {signal: commits_last_12_months}}]
-  media/experimental:
-    type: media
-    lifecycle: experimental
+    lifecycle: sandbox
     tier: low
     meaning: Draft or trial media. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+    recommend_when: false
+  media/incubating:
+    type: media
+    lifecycle: incubating
+    tier: medium
+    meaning: >-
+      Media that people use and rely on, such as the website, documentation and teaching material.
+    recommend_when:
+      all: [{signal: is_media}, {signal: live}]
+  media/graduated:
+    type: media
+    lifecycle: graduated
+    tier: medium
+    meaning: >-
+      Mature media that the whole community depends on. Media gets at most moderate controls, so that it stays easy to
+      contribute to. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   media/archived:
     type: media
@@ -164,27 +148,28 @@ kinds:
       all: [{signal: is_media}, {signal: archived}]
 
   # --- research ---
-  research/experimental:
+  research/sandbox:
     type: research
-    lifecycle: experimental
+    lifecycle: sandbox
     tier: low
     meaning: >-
       Ideas being explored in public, often by one person. Controls are kept light on purpose, so that this kind of
       work stays easy.
     recommend_when:
       all: [{signal: is_research}, {signal: live}]
-  research/active-development:
+  research/incubating:
     type: research
-    lifecycle: active-development
+    lifecycle: incubating
     tier: low
-    meaning: Research being worked on toward a result. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+    meaning: Research that others are starting to use or build on. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
-  research/maintained:
+  research/graduated:
     type: research
-    lifecycle: maintained
+    lifecycle: graduated
     tier: low
     meaning: >-
-      Finished research kept available, for example alongside a paper. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      Finished, established research kept available, for example alongside a paper. Research stays lightly
+      controlled. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   research/archived:
     type: research
@@ -194,18 +179,19 @@ kinds:
     recommend_when:
       all: [{signal: is_research}, {signal: archived}]
 
-  # --- governance (WP0 A2, WP1 A2): always assigned, never recommended ---
-  governance/experimental:
+  # --- governance (WP0 A2, A4): always assigned, never recommended ---
+  governance/sandbox:
     type: governance
-    lifecycle: experimental
+    lifecycle: sandbox
     tier: high
     meaning: >-
-      Rules for the organization that are still being built. Only the repo-registry repository, which holds these rules, has this kind. It gets the
-      strictest controls, because whatever governs must be at least as strict as what it governs.
+      Rules for the organization that are still being built. Only the repo-registry repository, which holds these
+      rules, has this kind. It gets the strictest controls, because whatever governs must be at least as strict as
+      what it governs.
     recommend_when: false
-  governance/maintained:
+  governance/graduated:
     type: governance
-    lifecycle: maintained
+    lifecycle: graduated
     tier: high
     meaning: >-
       The administration of the GitHub organization itself: who can do what across all its repositories. It gets the
@@ -214,11 +200,8 @@ kinds:
 
 # Kinds in the type x lifecycle cross product that are deliberately left out, each with its reason (WP1 R-3).
 omitted:
-  governance/active-development: Only two things have the governance type, and neither is at this stage.
+  governance/incubating: Only two things have the governance type, and neither is at this stage.
   governance/archived: Only two things have the governance type, and neither is archived.
-  governance/unreleased: The unreleased stage is for tools only.
-  media/unreleased: The unreleased stage is for tools only.
-  research/unreleased: The unreleased stage is for tools only.
 
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:

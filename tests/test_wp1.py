@@ -67,28 +67,32 @@ class TaxonomyTests(unittest.TestCase):
         self.assertEqual(cross - defined, set(omitted), "a cross-product kind is neither defined nor omitted")
         for name, reason in omitted.items():
             self.assertTrue(reason.strip(), name)
-        self.assertTrue(self.kinds["kinds"]["tool/unreleased"].get("departure"))
+        self.assertEqual(set(self.kinds["lifecycles"]), {"sandbox", "incubating", "graduated", "archived"})
 
     def test_R6_one_tier_per_kind_and_fixed_map(self):
         """R-6: each kind has one tier; the fixed parts of the map hold; every tier is used."""
         recommend.check_taxonomy(self.kinds, self.tiers)
         k = self.kinds["kinds"]
-        self.assertEqual(k["tool/active-development"]["tier"], "high")
-        self.assertEqual(k["tool/maintained"]["tier"], "high")
+        self.assertEqual(k["tool/graduated"]["tier"], "high")
+        self.assertEqual(k["tool/incubating"]["tier"], "medium")
+        self.assertEqual(k["tool/sandbox"]["tier"], "low")
+        for name, kind in k.items():
+            if kind["lifecycle"] == "graduated":
+                self.assertIs(kind["recommend_when"], False, f"{name}: graduated is assigned only")
         for name, kind in k.items():
             if kind["type"] == "governance":
                 self.assertEqual(kind["tier"], "high", name)
                 self.assertIs(kind["recommend_when"], False, name)
             elif kind["lifecycle"] == "archived":
                 self.assertEqual(kind["tier"], "none", name)
-            elif not name.startswith("tool/") or kind["lifecycle"] not in ("active-development", "maintained"):
+            elif name != "tool/graduated":
                 self.assertIn(kind["tier"], ("low", "medium"), name)
 
     def test_R6_governance_assignments(self):
-        """R-6 (A2): repo-registry is governance/experimental and the org is governance/maintained."""
+        """R-6 (A2, A4): repo-registry is governance/sandbox and the org is governance/graduated."""
         doc = yaml.safe_load(REGISTRY.read_text())
-        self.assertEqual(doc["repos"]["repo-registry"]["kind"], "governance/experimental")
-        self.assertEqual(doc["org"]["kind"], "governance/maintained")
+        self.assertEqual(doc["repos"]["repo-registry"]["kind"], "governance/sandbox")
+        self.assertEqual(doc["org"]["kind"], "governance/graduated")
 
     def test_R4_every_kind_has_a_meaning(self):
         """R-4 (part): every kind and tier has a plain meaning. The cold read itself is a manual check."""
@@ -139,13 +143,14 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(names & quoted, set())
 
     def test_R9_release_maturity_rule(self):
-        """R-9: the 1.0.0 seam for semver tools; tools without semver can be low or archived."""
+        """R-9 (A4): below 1.0.0 or no release is Sandbox; 1.0.0 or later is Incubating; Graduated never by rule."""
         report = load(ROOT / "data/reports/kind-recommendations.yaml")["repos"]
         expected = {
-            "OpenSysML": "tool/experimental",           # v0.10.1, active
-            "mtip-cameo": "tool/maintained",            # v1.0.9, no feature release in 12 months
-            "exec-mms": "tool/maintained",              # 4.0.20, stable; whether upkeep happens is a policy check
-            "flexo-cli-client": "tool/unreleased",      # no semver release, low tier
+            "OpenSysML": "tool/sandbox",                # v0.10.1
+            "sysml-toolkit": "tool/sandbox",            # v0.10.10
+            "mtip-cameo": "tool/incubating",            # v1.0.9
+            "exec-mms": "tool/incubating",              # 4.0.20
+            "flexo-cli-client": "tool/sandbox",         # no semver release
             "EMS-Repo": "tool/archived",                # archived tool
         }
         for name, kind in expected.items():
@@ -162,14 +167,6 @@ class EngineTests(unittest.TestCase):
         d = recommend.derive(repo)
         self.assertEqual((d["has_semver_release"], d["latest_semver"], d["latest_semver_major"]), (True, "v1.4.0", 1))
 
-    def test_R9_feature_release_means_active_development(self):
-        """Active development vs maintained: a recent x.y.0 release is new features; a patch release is upkeep."""
-        since = "2026-01-01T00:00:00+00:00"
-        feat = {"releases": [{"tag": "v2.4.0", "prerelease": False, "published_at": "2026-03-01T00:00:00Z"}]}
-        patch = {"releases": [{"tag": "v2.4.1", "prerelease": False, "published_at": "2026-03-01T00:00:00Z"},
-                              {"tag": "v2.4.0", "prerelease": False, "published_at": "2025-06-01T00:00:00Z"}]}
-        self.assertTrue(recommend.derive(feat, since)["feature_release_last_12_months"])
-        self.assertFalse(recommend.derive(patch, since)["feature_release_last_12_months"])
         self.assertFalse(recommend.derive({"releases": [{"tag": "nightly", "prerelease": False}]})["has_semver_release"])
 
 
@@ -209,11 +206,11 @@ class KindListTests(unittest.TestCase):
 
     def test_R8_reclassification_is_one_entry(self):
         """R-8: changing a repo's kind is a one-line edit."""
-        after = self.text.replace('  "OpenSysML":\n    kind: tool/experimental\n',
-                                  '  "OpenSysML":\n    kind: tool/active-development\n')
+        after = self.text.replace('  "OpenSysML":\n    kind: tool/sandbox\n',
+                                  '  "OpenSysML":\n    kind: tool/incubating\n')
         changed = [l for l in difflib.unified_diff(self.text.splitlines(), after.splitlines(), lineterm="", n=0)
                    if l[:1] in "+-" and not l.startswith(("+++", "---"))]
-        self.assertEqual(changed, ["-    kind: tool/experimental", "+    kind: tool/active-development"])
+        self.assertEqual(changed, ["-    kind: tool/sandbox", "+    kind: tool/incubating"])
 
 
 if __name__ == "__main__":

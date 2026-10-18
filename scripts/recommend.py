@@ -18,9 +18,6 @@ Derived attributes, added to each snapshot record before the rules run:
   has_semver_release   true if any non-prerelease release tag is semantic versioning (vMAJOR.MINOR.PATCH)
   latest_semver        the highest such tag, or null
   latest_semver_major  its MAJOR number, or null
-  feature_release_last_12_months
-                       true if a semver release published in the snapshot's 12-month window is a feature release:
-                       its PATCH is 0 (x.y.0), so it raised MAJOR or MINOR. Patch-only releases are maintenance.
 """
 import argparse
 import json
@@ -37,21 +34,18 @@ class TaxonomyError(Exception):
     pass
 
 
-def derive(repo, since=None):
-    versions, feature = [], False
+def derive(repo):
+    versions = []
     for rel in repo.get("releases", []):
         m = SEMVER.match(rel["tag"] or "")
         if m and not rel.get("prerelease"):
             versions.append((tuple(int(x) for x in m.groups()), rel["tag"]))
-            if since and (rel.get("published_at") or "") >= since and int(m.group(3)) == 0:
-                feature = True
     best = max(versions) if versions else None
     return {
         **repo,
         "has_semver_release": bool(versions),
         "latest_semver": best[1] if best else None,
         "latest_semver_major": best[0][0] if best else None,
-        "feature_release_last_12_months": feature,
     }
 
 
@@ -133,12 +127,12 @@ def check_taxonomy(kinds_doc, tiers_doc):
         raise TaxonomyError("\n".join(problems))
 
 
-def recommend(repos, kinds_doc, assigned=None, since=None):
+def recommend(repos, kinds_doc, assigned=None):
     signals = kinds_doc["signals"]
     assigned = assigned or {}
     results = {}
     for repo in repos:
-        repo = derive(repo, since)
+        repo = derive(repo)
         matched = [n for n, k in kinds_doc["kinds"].items() if evaluate(k["recommend_when"], repo, signals)]
         flags = [n for n, f in kinds_doc.get("flags", {}).items() if evaluate(f["when"], repo, signals)]
         if len(matched) == 1:
@@ -166,7 +160,6 @@ def recommend(repos, kinds_doc, assigned=None, since=None):
                 "fork": repo["fork"],
                 "primary_language": repo["primary_language"],
                 "latest_semver": repo["latest_semver"],
-                "feature_release_last_12_months": repo["feature_release_last_12_months"],
                 "commits_last_12_months": repo["commits_last_12_months"],
                 "commits_last_3_months": repo["commits_last_3_months"],
             },
@@ -241,7 +234,7 @@ def main():
         check_taxonomy(kinds_doc, tiers_doc)
         if org_kind != "unclassified" and org_kind not in kinds_doc["kinds"]:
             raise TaxonomyError(f"org: assigned kind {org_kind} is not a kind")
-        results = recommend(repos, kinds_doc, assignments.get("repos") or {}, meta.get("window_12_months_since"))
+        results = recommend(repos, kinds_doc, assignments.get("repos") or {})
     except TaxonomyError as e:
         sys.exit(f"taxonomy error:\n{e}")
 
