@@ -83,3 +83,18 @@ mzargham's.
   (the what and why). Changed: `docs/current-state.md` (the wiki row, the packages table, the architecture row),
   `docs/status.md` (the breakdown, next step) and the README. The approved scopes, the decision records and the DRAFT
   design documents are left as they are.
+
+## A candidate policy: contributor sourcing *(raised by the supervisor during execution; outside WP5d)*
+
+- **Supervisor (mzargham, typed by agent):** "i am doing a little but of hunting around because i realized we recently
+  had a policy discussion that is not covered her about not accepting code commits from import/export controlled
+  countries. this is specifically relevant because openmbee serves the aerospace and defense industries so we need to
+  be able to name and enforce policies. we cannot export control but we can control our contributor base to avoid
+  sanctioned countries. though in order to add this to our policy model we need canonical sources. [...] my intuition
+  right now is do a research spike to identify 1 or 2 relevant sources related to govt acquistition of open source
+  software to determine if we need to add a policy. my gut is at minimum we want to control for the maintainers
+  country of origin (unclear how tightly) and that on a repo level we may have policies that differ by tier. [...] it
+  seems like this is exactly the kind of thing our current work should make transparent"
+- **Outcome:** Not part of WP5d (its non-goals exclude changing policies). A research spike for canonical sources
+  runs separately; a policy, if warranted, is its own package. Recorded as a candidate in `docs/current-state.md`.
+  (The quote omits the links he read and one sentence about a specific past contribution.)

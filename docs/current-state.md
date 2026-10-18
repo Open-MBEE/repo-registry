@@ -82,6 +82,9 @@
 - **Taxonomy:** the fit report view (`build/demo/fit-report.md`) gives the unclassified repositories by reason. After
   WP5c: mirrors (forks with no changes of ours), live repositories with no type signal, and archived ones with no type.
   Code owners can classify theirs with an `openmbee-<type>` topic.
+- **Candidate policy (raised at WP5d):** contributor and maintainer sourcing, so that OpenMBEE can name and enforce
+  whom it accepts commits from, given its aerospace and defense users and sanctioned jurisdictions; possibly varying by
+  tier. Needs canonical sources first (a research spike), then its own package.
 - **Open for the maintainers:** the off-list and missing licenses (the license view); the should-be-archived
   repositories; maintenance of the heavily used `exec-*` tools.
 
