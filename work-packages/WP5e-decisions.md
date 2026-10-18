@@ -35,3 +35,13 @@ contributor sourcing".
   2.C(1) long-term support ("who is contributing"), 2.C(2) trusted sources, 2.C(5) component integrity, 2.C(6)
   influence of foreign governments (OSS exempt from PL 115-232 §1655, but consumers weigh the project's review of
   contributions), and 3.H (publish how submissions are assessed). #11 (WP5d) is unchanged.
+
+## The research spike's other sources, kept
+
+- **Supervisor (mzargham, typed by agent):** "if there are other secondary sources we should keep from your research
+  spike let's make sure to track them with the other secondary sources and not lose them"
+- **Outcome:** Tracked in the sources table of `docs/policy-basis-review.md`, each marked *candidate (WP5e)* with what
+  was and wasn't verified: OFAC 31 CFR Chapter V and the SDN list; GitHub's trade-controls page; NIST SP 800-218
+  (SSDF) PS.1 to PS.3; NIST SP 800-161 Rev. 1 SR-4 and SR-6, with SP 1326; EAR §734.3(b)(3) and §734.7 (context); the
+  2025 SecDef memo (context, to verify). Set aside, with the reason: EPAAR 1552.239-71 and EAR Part 732. The WP5e
+  scope decides which are adopted.

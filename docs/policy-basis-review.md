@@ -21,6 +21,17 @@ coverage on every change.
 | Secondary | CNCF project lifecycle | `cncf/toc` commit d815451 |
 | Secondary | ISO/IEC/IEEE 12207:2026, clause numbers only (single-user licensed copy; no text committed) | 2026-04 edition |
 | Platform | GitHub documentation (docs.github.com), each page linked from the policy that uses it | read 2026-10-17 |
+| Core, candidate (WP5e) | DoD CIO, *Software Development and Open Source Software*, memorandum, Attachment 2 §2.C(1), (2), (5), (6) and §3.H; [PDF](https://dodcio.defense.gov/Portals/0/Documents/Library/SoftwareDev-OpenSource.pdf) | 2022-01-24, cleared for open publication 2022-01-26; read in full 2026-10-18 |
+| Secondary, candidate (WP5e) | OFAC sanctions regulations, 31 CFR Chapter V (for example §560.204 Iran, §515.505 Cuba), and the SDN list: the sanctions floor, by location or residence and listed-party status, not nationality | eCFR, current; from the research spike, not yet read in full |
+| Secondary, candidate (WP5e) | GitHub, *GitHub and trade controls* (how the platform applies OFAC rules: by location, not nationality) | docs.github.com, current; from the research spike |
+| Secondary, candidate (WP5e) | NIST SP 800-218, SSDF v1.1, PS.1 to PS.3 (protect code, verify integrity, keep provenance) | 2022-02; from the research spike |
+| Secondary, candidate (WP5e) | NIST SP 800-161 Rev. 1, SR-4 (provenance) and SR-6 (supplier assessment), with NIST SP 1326, *Due Diligence Assessment Quick-Start Guide* (foreign ownership, control or influence) | revision label and SP 1326 date to verify; from the research spike |
+| Context, candidate (WP5e) | EAR §734.3(b)(3) and §734.7: published open-source software is not subject to the EAR (published encryption, ECCN 5D002, still notifies under §742.15(b)); why the policy controls contributors, not exports | eCFR, current; from the research spike |
+| Context, candidate (WP5e) | Secretary of Defense, *Enhancing Security Protocols for the Department of Defense*: no procurement of software open to adversarial foreign influence; motivation only, no rule for OSS contributors | 2025-07-18; seen only in a press copy, to verify |
+
+Rows marked *candidate (WP5e)* are tracked for the contributor-sourcing package ([WP5e-decisions.md](../work-packages/WP5e-decisions.md));
+its scope decides which are adopted. Read and set aside: EPA's EPAAR 1552.239-71 (an EPA contract clause, binding EPA
+contractors only) and EAR Part 732 (the procedure for deciding whether the EAR applies).
 
 ## What GitHub can carry, and what it takes to read it
 
