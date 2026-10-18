@@ -35,8 +35,9 @@ and open `build/demo/wiki/`.
 Every change to the model is a **pull request** to this repository, and the pull request is where it is discussed.
 You don't need to be sure you're right to open one: a draft pull request is a good way to start a conversation.
 
-1. **Find the record.** Every row on the wiki links to the file and line that holds it, with an **edit** link.
-2. **Propose the change.** Click **edit**, or create a branch, change the record, and open a pull request that says
+1. **Find the record.** Every row on the wiki links to the file and line that holds it, with a **propose a change** link (it edits the model file
+   in this repository, never the wiki, which is rendered from code).
+2. **Propose the change.** Click **propose a change**, or create a branch, change the record, and open a pull request that says
    why. If you can't push a branch here, GitHub's edit link opens the pull request from your fork for you.
 3. **Discuss it in the pull request.** Its required check, `check`, validates the model, so a badly formed change
    can't be merged. The check's summary also shows how the change would alter the rendered pages.

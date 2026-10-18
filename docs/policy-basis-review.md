@@ -30,7 +30,7 @@ coverage on every change.
 | Context, candidate (WP5e) | EAR §734.3(b)(3) and §734.7: published open-source software is not subject to the EAR (published encryption, ECCN 5D002, still notifies under §742.15(b)); why the policy controls contributors, not exports | eCFR, current; from the research spike |
 | Context, candidate (WP5e) | Secretary of Defense, *Enhancing Security Protocols for the Department of Defense*: no procurement of software open to adversarial foreign influence; motivation only, no rule for OSS contributors | 2025-07-18; seen only in a press copy, to verify |
 
-Rows marked *(WP5e)* were adopted by the contributor-sourcing package ([WP5e-decisions.md](../work-packages/WP5e-decisions.md),
+Rows marked *(WP5e)* were adopted by the verified-code-owners package ([WP5e-decisions.md](../work-packages/WP5e-decisions.md),
 OD4); rows marked *candidate* are kept for later. Read and set aside: EPA's EPAAR 1552.239-71 (an EPA contract clause, binding EPA
 contractors only) and EAR Part 732 (the procedure for deciding whether the EAR applies).
 

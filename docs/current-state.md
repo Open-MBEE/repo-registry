@@ -85,10 +85,14 @@
 - **Taxonomy:** the fit report view (`build/demo/fit-report.md`) gives the unclassified repositories by reason. After
   WP5c: mirrors (forks with no changes of ours), live repositories with no type signal, and archived ones with no type.
   Code owners can classify theirs with an `openmbee-<type>` topic.
-- **Contributor sourcing (raised at WP5d, scoped as WP5e):** the `verified-code-owners` policy for the high tier.
+- **Who may approve changes (raised at WP5d as contributor sourcing; WP5e):** the `verified-code-owners` policy for
+  the high tier restricts who may approve and merge, not who may contribute: it is where the personnel control
+  resolves. `contributing` is about what is contributed, not who contributes.
   Every quoted item of the new sources is cited by a policy (a citation sweep; `contributing` also asks how
   contributions are reviewed and tested, with the supervisor's approval). Candidates for later: counsel's review of
-  the sanctions criterion; NIST SP 1326. For WP6 (the
+  the sanctions criterion; NIST SP 1326. **A sanctions floor for contributors** (for example, no contributions from
+  SDN-listed parties) was raised and declined for now: it is implementable only with a means of screening OpenMBEE is
+  prepared to opt into, and control at code review, by verified code owners, is adequate ([WP5e-decisions](../work-packages/WP5e-decisions.md)). For WP6 (the
   engine): turning a verification's age into its color (expired after 12 months), and checking that a maintainer's
   facts were added by their own commit (their consent), from the commit author's GitHub login.
 - **Open for the maintainers:** the off-list and missing licenses (the license view); the should-be-archived

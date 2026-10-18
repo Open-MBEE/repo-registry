@@ -142,3 +142,48 @@ contributor sourcing".
   `vulnerability-remediation` and `security-policy` (§2.C(4), newly quoted), `release-integrity` (§2.C(5), SSDF PS.2
   and PS.3, SP 800-161 SR-4), `verified-code-owners` (§2.C(1)). Every quoted item is now cited by a policy. This
   amends WP5e's non-goal "changing any other policy" for these citations and the one approved change.
+
+## Two policies: the contribution guide, and who may approve *(raised by the supervisor before the push)*
+
+- **Supervisor (mzargham, typed by agent):** "one more sanity check is whether we actually should have split out two
+  different policies for contributors, something that seperates having a contributors guidelines file from have a
+  restrictions on who can contribute. those seem like two different policies. i think i introduced that conflation and
+  i want to remediate it before we push"
+- **Asked to choose a remediation, the supervisor answered (typed by agent):** "reread the primary sources and propose
+  a maximully faithful two policy solution for me to review"
+- **The agent's proposal, from the sources:** Policy A, `contributing`, the guide: it publishes that submissions are
+  accepted and which kinds (memo §3.H; CISA CONTRIB-TYPES), every requirement on contributors, kept minimal (CISA
+  CONTRIB-MINIMAL), how submissions are assessed, tested and evaluated (memo §3.H), and tests with code (CISA
+  CONTRIB-TESTS); it restricts no one. Policy B, `verified-code-owners`: on the high tier, only verified maintainers
+  approve and merge (SSDF PS.1; CISA CODE-REVIEW, C4 Conduct and Community; memo §2.C(2), (6); SP 800-161 SR-6;
+  NIST PS-3; OFAC for the verification); it restricts approvers, not contributors. The memo's §2.C(1) moves to
+  `codeowners`. Left open by the sources: a sanctions floor for contributors.
+
+## No sanctions floor for contributors, at this time
+
+- **Question (from the proposal):** a sanctions floor for contributors: (a) none / (b) a floor as a policy choice
+  (no contributions from SDN-listed parties or persons in comprehensively sanctioned jurisdictions).
+- **Answer (mzargham, typed by agent):** "no contributor floor (at this time) but capture the fact that the subject was
+  raised and that setting a floor (such as excluding contributions on the basis of SDN listed parties in an option but
+  it would only be implementable if we had a means of screening we were prepared to opt into. at this time i chose no
+  floor on the basis of unrealistic to implement the screening and adequacy of control at the code review level
+  (controlling codeowners not code contributors)"
+- **Outcome:** No floor on contributors. Recorded as considered and declined, with the reasons: screening contributors
+  (for example against the SDN list) is unrealistic to implement without a screening means OpenMBEE is prepared to
+  opt into; and control at code review, by verified code owners, is adequate. A floor stays an option if such a means
+  is adopted. Stated in `verified-code-owners` and listed among the candidates in `docs/current-state.md`.
+
+## The split, as applied *(the supervisor's correction)*
+
+- **Question:** Apply the two-policy split as proposed (A: contributing also lists every requirement on contributors;
+  B: verified-code-owners states it restricts approvers, not contributors, and that no contributor floor is set)?
+- **Answer (mzargham, typed by agent):** "Apply both"
+- **Then, before the change was committed (typed by agent):** "strike that let's not overload contributing. that is
+  about what is contributed not who contributes. that would a different policy and i think we just determined we don't
+  have a contributors floor so we don't have another policy yet. the verified code-owners is where the personnel
+  control resolves"
+- **Outcome:** `contributing` is unchanged by the split: it governs what is contributed (its §3.H change, approved
+  earlier, stands). A policy on who may contribute would be a separate policy, and with no contributor floor there is
+  none yet. `verified-code-owners` is where the personnel control resolves: it states that it restricts who may
+  approve and merge, not who may contribute, and records the declined floor. The memo's §2.C(1) moves to
+  `codeowners` (a citation).
