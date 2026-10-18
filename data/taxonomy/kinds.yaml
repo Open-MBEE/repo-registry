@@ -24,8 +24,8 @@ types:
   media: The website, documentation, teaching material, example models, and the organization's shared pages and images.
   research: Ideas explored in public, often by one person working alone. Often archived once work on it stops.
   governance: >-
-    The rules for the organization itself. Only two things are this type: the repo-registry repository, which
-    holds these rules, and the administration of the GitHub organization. The administration isn't a repository,
+    How the organization itself is governed. Only two things are this type: the repo-registry repository, which
+    holds the organization's rules for its repositories, and the administration of the GitHub organization. The administration isn't a repository,
     but it gets a kind in the same way, so that its controls can be checked too.
 
 # Lifecycle stages are adopted from the CNCF and OpenSSF project lifecycles (WP0/WP1 amendment A4).
@@ -34,18 +34,22 @@ lifecycles:
   sandbox: >-
     The first stage, for early and experimental work. Big changes, including ones that break things for users, are
     expected. One person working alone is fine. For a tool, it has no numbered release yet, or its releases are still
-    numbered below 1.0 (for example 0.4.2). Same stage name and meaning as the CNCF and OpenSSF "Sandbox".
+    numbered below 1.0 (for example 0.4.2). This stage, like the other three, is taken from two large open-source
+    foundations, the Cloud Native Computing Foundation (CNCF) and the Open Source Security Foundation (OpenSSF),
+    which call it "Sandbox".
   incubating: >-
     The middle stage. The work is past the experimental phase and becoming stable, with fewer breaking changes, and
-    people are starting to use it. For a tool, it has released version 1.0 or later. Same stage as the CNCF and
-    OpenSSF "Incubating".
+    people are starting to use it. For a tool, it has released version 1.0 or later. The open-source foundations
+    CNCF and OpenSSF call this stage "Incubating".
   graduated: >-
-    The most mature stage. Widely used in real work, with several maintainers, settled governance, and steady,
-    careful releases. The rules never suggest this stage. The maintainers who run the OpenMBEE organization on GitHub
-    give it, based on evidence of that use and governance. Same stage as the CNCF and OpenSSF "Graduated".
+    The most mature stage. For software or media, it is widely used in real work, with several maintainers, settled
+    governance and steady, careful releases. For the administration of the organization, it means governance that is
+    settled and in everyday use. The automatic recommendations never suggest this stage. The maintainers who run the
+    OpenMBEE organization on GitHub give it, based on evidence. The open-source foundations CNCF and OpenSSF call
+    this stage "Graduated".
   archived: >-
     Finished. The repository is archived on GitHub, so nobody can change it any more. This is the last stage. Same
-    stage as the CNCF and OpenSSF "Archived".
+    stage as the open-source foundations CNCF and OpenSSF call "Archived".
 
 # Signals are named building blocks the kinds share. They are data, not code.
 signals:
@@ -106,7 +110,7 @@ kinds:
     tier: high
     meaning: >-
       A mature tool that many people depend on in real work. Every release needs careful control, so it gets the
-      strictest controls. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      strictest controls. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   tool/archived:
     type: tool
@@ -121,7 +125,7 @@ kinds:
     type: media
     lifecycle: sandbox
     tier: low
-    meaning: Draft or trial media. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+    meaning: Draft or trial media. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   media/incubating:
     type: media
@@ -137,7 +141,7 @@ kinds:
     tier: medium
     meaning: >-
       Mature media that the whole community depends on. Media gets at most moderate controls, so that it stays easy to
-      contribute to. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      contribute to. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   media/archived:
     type: media
@@ -161,15 +165,15 @@ kinds:
     type: research
     lifecycle: incubating
     tier: low
-    meaning: Research that others are starting to use or build on. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+    meaning: Research that others are starting to use or build on. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   research/graduated:
     type: research
     lifecycle: graduated
     tier: low
     meaning: >-
-      Finished, established research kept available, for example alongside a paper. Research stays lightly
-      controlled. The rules never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
+      Established research that others rely on, kept available, for example alongside a paper. Research stays
+      lightly controlled. The automatic recommendations never suggest this kind. The maintainers who run the OpenMBEE organization on GitHub choose it directly.
     recommend_when: false
   research/archived:
     type: research
@@ -185,8 +189,8 @@ kinds:
     lifecycle: sandbox
     tier: high
     meaning: >-
-      Rules for the organization that are still being built. Only the repo-registry repository, which holds these
-      rules, has this kind. It gets the strictest controls, because whatever governs must be at least as strict as
+      Governance for the organization that is still being set up. Only the repo-registry repository, which holds the
+      organization's rules for its repositories, has this kind. It gets the strictest controls, because whatever governs must be at least as strict as
       what it governs.
     recommend_when: false
   governance/graduated:

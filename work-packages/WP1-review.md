@@ -138,10 +138,24 @@ active development means new features (read from feature releases, x.y.0).
 | Outside the scope | — | `data/assignments.yaml` (supports D-5 and the G-2 fix). Accepted with G-4's out-of-scope files |
 | Non-goals | not touched | No policies defined (semantic versioning, dependency and CVE upkeep are carried to WP2), nothing written outside this repo, no language model |
 
+## Review after amendment 2 (872a558)
+
+Rerun from step 1 against the amended scope. Approvals: the WP1 scope (3bb8ee8), amendment 1 (3c72b7d) and amendment
+2 (3edae32) are all mzargham's `--no-ff` merges.
+
+| Item | Verdict | Evidence |
+|---|---|---|
+| D-1 to D-5 | met | Kinds are type × {sandbox, incubating, graduated, archived}. `registry.yaml` has 182 entries plus the org (governance/graduated) and `repo-registry` (governance/sandbox) |
+| R-1, R-2, R-5, R-7, R-8, R-10 | met | 16 tests OK. Replay identical (`cmp`) |
+| R-3 | met | The adopted stages and the cross product: 14 kinds defined, 2 omitted with reasons (`test_R3_…`) |
+| R-6 | met | tool/graduated high, tool/incubating medium, tool/sandbox low, governance high, archived none, graduated assigned only (`test_R6_…`) |
+| R-9 | met | OpenSysML and sysml-toolkit → tool/sandbox; mtip-cameo and exec-mms → tool/incubating; flexo-cli-client → tool/sandbox; EMS-Repo → tool/archived |
+| R-4 | not met | Advisory stand-in read, confirmed by the agent: (1) the medium tier says "tools … with releases numbered below 1.0" (tiers.yaml:16-17), but those are tool/sandbox (low); (2) the high tier says "tools at version 1.0 or later" (tiers.yaml:11), but those are tool/incubating (medium), and only graduated tools are high; (3) "CNCF and OpenSSF" are not explained (kinds.yaml:37 ff.); (4) graduated research is called "Finished", the word that defines archived (kinds.yaml:171); (5) "the rules" means both the recommendation rules and the organization's rules (kinds.yaml:27, 44); (6) the graduated stage's "steady, careful releases" doesn't fit the org's administration, which isn't software (kinds.yaml:28, 44) |
+| Non-goals | not touched | No policies defined, nothing written outside this repo |
+
 ## Recommendation
 
-**Recommend acceptance with the listed gaps noted.** Every deliverable, requirement and good-enough item is met after
-the fixes. G-1, G-2 and G-3 were fixed. G-4 and the minor R-4 items are accepted as is, by the supervisor's decisions.
-The taxonomy and kind list stay PROVISIONAL until the maintainers approve them (WP0 approvals 1 and 4).
+**Do not recommend acceptance yet.** R-4 isn't met after the stage rework. Items 1 and 2 are real inconsistencies:
+the tier meanings contradict the kinds. Items 3 to 6 are smaller wording problems. Disposition pending.
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.

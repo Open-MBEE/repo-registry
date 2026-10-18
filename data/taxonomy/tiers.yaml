@@ -8,17 +8,18 @@ tiers:
   high:
     order: 1
     meaning: >-
-      The strictest controls. For tools at version 1.0 or later that people depend on, where every release must be
-      carefully controlled, and for anything that governs the organization itself.
+      The strictest controls. For mature, graduated tools that many people depend on in real work, where every release
+      must be carefully controlled, and for anything that governs the organization itself.
   medium:
     order: 2
     meaning: >-
-      Moderate controls. For media that many people rely on, such as the website, and for tools that are still
-      early, with releases numbered below 1.0.
+      Moderate controls. For media that many people rely on, such as the website, and for tools that have released
+      version 1.0 or later but are not yet graduated.
   low:
     order: 3
     meaning: >-
-      Light controls. The repository needs a named person who looks after it, and nothing more.
+      Light controls. The repository needs a named person who looks after it, and nothing more. This includes tools
+      that are still experimenting, with no release yet or releases numbered below 1.0.
   none:
     order: 4
     meaning: >-
