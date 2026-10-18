@@ -81,7 +81,8 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the compliance dashboard: the wiki that WP5d publishes, extended with status, aware of each repository's
    state against the controls (from WP6's sensing), and how to come into demonstrable compliance. WP5d gives the
-   what and why of compliance; WP7 gives the current snapshot and the way there.
+   what and why of compliance; WP7 gives the current snapshot and the way there. WP7 also publishes the wiki
+   automatically from CI after each merge; until then an owner runs live mode by hand.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
