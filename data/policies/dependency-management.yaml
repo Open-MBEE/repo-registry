@@ -6,19 +6,15 @@ name: Know and watch your dependencies
 meaning: 'Tools from version 1.0, and the registry, turn on Dependabot alerts and publish a short dependency policy: how new
   dependencies are chosen and how they are kept up to date. Services the project provides pin their direct dependencies.'
 applies_if:
-  any:
-  - all:
-    - attr: type
-      eq: tool
-    - attr: lifecycle
-      in:
-      - incubating
-      - graduated
-  - all:
-    - attr: type
-      eq: governance
-    - attr: lifecycle
-      eq: sandbox
+  all:
+  - attr: type
+    in:
+    - tool
+    - governance
+  - attr: lifecycle
+    in:
+    - incubating
+    - graduated
 github:
   mechanism: Dependabot alerts (with the dependency graph, always on for public repos)
   docs:

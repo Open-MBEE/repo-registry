@@ -20,13 +20,13 @@ status: provisional                         # provisional | approved
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
 org:
   name: Open-MBEE
-  kind: governance/graduated               # the administration of the GitHub org itself (WP1 A2, A4)
+  kind: governance/graduated               # the administration of the GitHub org itself (WP1 A2, A4, amendment 3)
 snapshot: data/snapshots/2026-10-18         # the snapshot the recommendations came from (optional)
 repos:
   "exec-mms":
     kind: tool/incubating
   "repo-registry":
-    kind: governance/sandbox                # assigned by decision, see data/assignments.yaml
+    kind: governance/sandbox                # assigned by decision, see data/assignments.yaml (low until calibrated)
   "fprime":
     kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (a parked item in design.md; ..."

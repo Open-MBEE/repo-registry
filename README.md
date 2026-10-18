@@ -25,12 +25,14 @@ whether each repository follows those rules, and it tells the right people when 
 
 ## The guidance we follow
 
-This registry is designed to bring OpenMBEE into line with two pieces of guidance:
+This registry is designed to bring OpenMBEE into line with three pieces of guidance:
 
 - CISA, [*Open Source Software: Security Principles and Practices*](https://www.cisa.gov/sites/default/files/2026-08/open-source-software-security-principles-and-practices.pdf)
   (July 2026).
 - NIST, [SP 800-37 Rev. 2, *Risk Management Framework for Information Systems and Organizations*](https://csrc.nist.gov/pubs/sp/800/37/r2/final)
   (December 2018).
+- OpenSSF, the [project lifecycle](https://github.com/ossf/tac/blob/main/process/project-lifecycle.md) (where our stages come from: Sandbox, Incubating, Graduated, Archived) and
+  the [security baseline](https://baseline.openssf.org/) (the backbone of our policies, by stage).
 
 It does this through **minimum viable policy making and controls**:
 
@@ -41,10 +43,12 @@ It does this through **minimum viable policy making and controls**:
   Authority is spread out to each repository's CODEOWNERS, who govern their own repository.
 - **Clear release controls by tier.** Every kind of repository sits in one of four tiers, and each tier makes clear
   which release controls its CODEOWNERS need to put in place:
-  - **High:** graduated tools that need rigorous release control, and the governance of the organization itself.
-  - **Medium:** load-bearing media, such as the website, and incubating tools (version 1.0 or later, not yet graduated).
+  - **High:** graduated tools that need rigorous release control, and established governance: the administration
+    of the organization itself, and this registry once it is the canonical source.
+  - **Medium:** load-bearing media, such as the website, incubating tools (version 1.0 or later, not yet graduated),
+    and governance the maintainers are calibrating together.
   - **Low:** repositories that need an owner but have no formal controls beyond someone who looks after them,
-    including sandbox tools that are still experimenting.
+    including sandbox tools that are still experimenting, and this registry while it is being set up.
   - **None:** archived material, which is read-only once archived.
 
 ## What it is, and what it is not

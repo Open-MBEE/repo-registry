@@ -20,11 +20,11 @@
 | Topic | Now | Recorded in |
 |---|---|---|
 | Scope | Through R1: show how the taxonomy and policies work on a pilot of real repositories, writing nothing to them; get five maintainer approvals | [WP0](../work-packages/WP0-scope-of-work.md) |
-| Citations | Core: CISA *OSS Security Principles and Practices* (2026) and NIST SP 800-37 Rev. 2 (RMF) with SP 800-53. Secondary: OpenSSF security baseline (the backbone for policies) and lifecycle, CNCF lifecycle, ISO/IEC/IEEE 12207:2026 by clause only | [WP0-decisions](../work-packages/WP0-decisions.md) "NIST RMF as a second core citation"; [WP2](../work-packages/WP2-scope-of-work.md); [WP1-decisions](../work-packages/WP1-decisions.md) "Secondary citations" |
+| Citations | Core: CISA *OSS Security Principles and Practices* (2026), NIST SP 800-37 Rev. 2 (RMF) with SP 800-53, and OpenSSF (its project lifecycle, the source of the stages, and its security baseline, the backbone for policies). Secondary: CNCF lifecycle, ISO/IEC/IEEE 12207:2026 by clause only | [WP0-decisions](../work-packages/WP0-decisions.md) "NIST RMF as a second core citation"; [WP2](../work-packages/WP2-scope-of-work.md); [WP1-decisions](../work-packages/WP1-decisions.md) "Secondary citations"; [WP1-amendment-3](../work-packages/WP1-amendment-3.md) |
 | The model | Measurements and attestations about a repository yield **three categorical attributes**: its **type**, its **lifecycle stage**, and its **tier** (derived from type and stage). Each policy's applies-if rule reads only those three, so together they determine which policies are in effect (A1). A **kind** is a named point in that three-dimensional attribute space; because the tier is determined by type and stage, the defined kinds are a small set of valid points. **A policy is a region of the space** (its applies-if rule), and a repository's policies are the regions its point falls in. "repo → kind → tier → policies" is the high-level summary only; the real dependency isn't that linear | WP0 A1; [WP1](../work-packages/WP1-scope-of-work.md); supervisor at the docs sweep |
-| Types | tool, media, research, governance (governance: only `repo-registry` and the org's administration) | WP0 A2 |
+| Types | tool, media, research, governance (governance: `repo-registry` and the org's administration, the same type at different stages: the org is graduated, `repo-registry` is in sandbox) | WP0 A2; [WP1-amendment-3](../work-packages/WP1-amendment-3.md) |
 | Stages | Sandbox, Incubating, Graduated, Archived, adopted from CNCF and OpenSSF. A tool moves Sandbox → Incubating at 1.0.0. Graduated is never recommended; maintainers assign it | WP0/WP1 A4; [lifecycle-stage-map](lifecycle-stage-map.md) |
-| Tiers | high (graduated tools, governance), medium (incubating tools, media people rely on), low (named owner only), none (archived) | A4; `data/taxonomy/tiers.yaml` |
+| Tiers | high (graduated tools, governance/graduated), medium (incubating tools, media people rely on, governance/incubating), low (named owner only, including governance/sandbox), none (archived). Governance friction rises with the stage; governance/graduated carries the org policies and the repository policies | A4; [WP1-amendment-3](../work-packages/WP1-amendment-3.md); `data/taxonomy/tiers.yaml` |
 | Kind assignment | Inferred initial kind (guidance). Changed by a pull request to this repo, merged by any maintainer; an operator's only action here | [WP0-decisions](../work-packages/WP0-decisions.md) "OD3"; WP1 A3; [WP4b-decisions](../work-packages/WP4b-decisions.md) "OD3" |
 | A kind is not a compliance verdict | Lifecycle is a category; whether its duties are done is checked by policies | [WP1-decisions](../work-packages/WP1-decisions.md) |
 | Policies | 21: 16 repository policies (including `license-by-type`) and 5 org policies; each with an SOP, citations and an applies-if rule | `data/policies/`; [policy-applicability](policy-applicability.md); [policy-basis-review](policy-basis-review.md) |
@@ -55,7 +55,9 @@
 | WP3 | Org governance | accepted 3c0ba20 |
 | WP4 | Fit analysis and pilot | accepted 1408259 |
 | WP4b | Docs sweep and checkpoint | accepted 3f2c557 |
-| **WP5** | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | **next**, not yet scoped |
+| **WP4c** | The governance kinds; OpenSSF as a core citation | **delivered** on `wp4c-work`, waiting for acceptance (scope approved 8fb2070) |
+| WP4d | The attestations file | scope on `wp4d-scope`, waiting for approval |
+| WP5 | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | in progress, **paused** on `wp5-work` until WP4c and WP4d are accepted |
 | WP6 | Engine: sensing, status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |

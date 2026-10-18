@@ -6,15 +6,8 @@ name: Reviewed changes
 meaning: High-tier repositories (graduated tools, and the registry) need at least one approving review from a code owner,
   and passing checks, before a change is merged to the default branch.
 applies_if:
-  all:
-  - attr: tier
-    eq: high
-  - not:
-      all:
-      - attr: type
-        eq: governance
-      - attr: lifecycle
-        eq: graduated
+  attr: tier
+  eq: high
 github:
   mechanism: A ruleset (preferred) or a branch protection rule requiring an approving code-owner review and passing status
     checks

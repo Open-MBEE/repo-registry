@@ -17,8 +17,9 @@
 | research/incubating | low |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  |  |  |  |  | 3 |
 | research/graduated | low |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  |  |  |  |  | 3 |
 | research/archived | none | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 1 |
-| governance/sandbox | high |  | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |  |  | ✓ |  | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | 13 |
-| governance/graduated | high |  |  |  |  |  | ✓ |  |  | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |  |  |  |  | 5 |
+| governance/sandbox | low |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  | ✓ |  |  |  |  |  |  |  |  | 3 |
+| governance/incubating | medium |  |  | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |  |  | ✓ |  | ✓ |  | ✓ |  | ✓ |  | ✓ | 10 |
+| governance/graduated | high |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | 18 |
 
 ## Policies
 

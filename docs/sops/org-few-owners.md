@@ -4,7 +4,7 @@
 
 The organization has two or three owners, no more. Owners can do anything to every repository and to the organization itself, so the role is kept small.
 
-**Applies to:** the administration of the Open-MBEE GitHub organization (kind governance/graduated). See [policy-applicability.md](../policy-applicability.md).
+**Applies to:** governance at graduated: the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source. See [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

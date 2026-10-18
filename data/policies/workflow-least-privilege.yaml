@@ -6,19 +6,15 @@ name: Least-privilege automation
 meaning: Tools from version 1.0, and the registry, give their GitHub Actions workflows read-only access by default, and set
   up workflows following GitHub's hardening guidance.
 applies_if:
-  any:
-  - all:
-    - attr: type
-      eq: tool
-    - attr: lifecycle
-      in:
-      - incubating
-      - graduated
-  - all:
-    - attr: type
-      eq: governance
-    - attr: lifecycle
-      eq: sandbox
+  all:
+  - attr: type
+    in:
+    - tool
+    - governance
+  - attr: lifecycle
+    in:
+    - incubating
+    - graduated
 github:
   mechanism: Actions default workflow permissions set to read
   docs:

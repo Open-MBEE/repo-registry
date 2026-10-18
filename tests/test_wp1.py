@@ -80,8 +80,9 @@ class TaxonomyTests(unittest.TestCase):
             if kind["lifecycle"] == "graduated":
                 self.assertIs(kind["recommend_when"], False, f"{name}: graduated is assigned only")
         for name, kind in k.items():
-            if kind["type"] == "governance":
-                self.assertEqual(kind["tier"], "high", name)
+            if kind["type"] == "governance":  # friction rises with the stage (WP4c OD2; WP1 amendment 3)
+                expected = {"sandbox": "low", "incubating": "medium", "graduated": "high"}[kind["lifecycle"]]
+                self.assertEqual(kind["tier"], expected, name)
                 self.assertIs(kind["recommend_when"], False, name)
             elif kind["lifecycle"] == "archived":
                 self.assertEqual(kind["tier"], "none", name)

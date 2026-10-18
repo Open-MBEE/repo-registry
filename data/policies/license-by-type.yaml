@@ -7,16 +7,9 @@ meaning: 'Every live repository has a license that OpenMBEE accepts for its type
   CC-BY-4.0, Apache-2.0 or MIT for media; Apache-2.0, MIT, CC-BY-4.0 or a CDLA license for research; Apache-2.0 for governance.
   Any other license needs a recorded exception.'
 applies_if:
-  all:
-  - not:
-      attr: lifecycle
-      eq: archived
-  - not:
-      all:
-      - attr: type
-        eq: governance
-      - attr: lifecycle
-        eq: graduated
+  not:
+    attr: lifecycle
+    eq: archived
 allowed_licenses:
   tool:
   - Apache-2.0

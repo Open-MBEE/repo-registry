@@ -4,7 +4,7 @@
 
 The organization requires two-factor authentication for every member and outside collaborator.
 
-**Applies to:** the administration of the Open-MBEE GitHub organization (kind governance/graduated). See [policy-applicability.md](../policy-applicability.md).
+**Applies to:** governance at graduated: the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source. See [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

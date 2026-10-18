@@ -2088,14 +2088,14 @@ repos:
   repo-registry:
     assigned: true
     kind: governance/sandbox
-    tier: high
+    tier: low
     matched: []
     reason: null
     flags: []
     evidence:
       note: Not in the snapshot.
-      decision: WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md. Not in the org yet;
-        it moves there in WP5.
+      decision: WP1-decisions.md, Acceptance review, G-2 (governance type); stage per WP1-amendment-2.md and WP1-amendment-3.md
+        (sandbox until the maintainers calibrate it). Not in the org yet; it moves there in WP5.
   sbt-license-plugin:
     assigned: false
     kind: unclassified

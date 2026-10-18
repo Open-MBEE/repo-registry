@@ -37,6 +37,8 @@ Each stage has an exit test, written as what must be true. The stages are cumula
   WP4b OD3)*.
 - Actuation is limited to issues, capped per run, and enabled per kind by a governor (CL-5, CL-6). *(Draft.)*
 - Governance is still low friction, so calibration fixes land quickly (IF-9).
+- If the maintainers buy in and work together to calibrate it, `repo-registry` is assigned governance/incubating
+  (medium) *(updated: WP1 amendment 3)*.
 - Calibration: wrong kinds and spurious verdicts are logged and fixed through governance PRs.
 - *Exit (draft):* agreed calibration targets met, for example operators agree with their repos' kinds, and N
   consecutive runs produce no spurious issues. The attestation round trip (IF-5) has worked on real repos.
@@ -55,8 +57,9 @@ Each stage has an exit test, written as what must be true. The stages are cumula
 - A newcomer finds the highlighted repos, and who to ask, from the wiki index page (IF-2).
 - *Exit:* the maintainers ratify it, and **its first release makes it canonical**. At that release the
   "calibrating" banner is removed and governance switches to high friction (IF-9): merging to `main` then needs
-  CODEOWNERS (OpenMBEE maintainers) approval. `repo-registry` is already governance/sandbox, which is high tier; only
-  its review friction changes here (X-9, expected gap XF-2) *(updated: WP1-decisions G-2; A4)*.
+  CODEOWNERS (OpenMBEE maintainers) approval. `repo-registry` is assigned governance/graduated (high) here, having
+  passed through governance/incubating while it was calibrated (X-9, expected gap XF-2) *(updated: WP1-decisions G-2;
+  A4; WP1 amendment 3)*.
 
 ## R4 — Desired steady state
 

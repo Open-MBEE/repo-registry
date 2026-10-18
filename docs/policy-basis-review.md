@@ -16,8 +16,8 @@ coverage on every change.
 | Core | CISA, *Open Source Software: Security Principles and Practices* (2026-07-30), `data/sources/cisa-practices.yaml` | PDF fetched 2026-10-17, page numbers from its footers |
 | Core | NIST SP 800-53 Rev. 5 (release 5.2.0), OSCAL catalog, `data/sources/nist-800-53.yaml` | `usnistgov/oscal-content` commit 78650f0 |
 | Core | NIST SP 800-37 Rev. 2 (RMF) | official PDF; the step map is in WP0 |
-| Backbone | OpenSSF security baseline by stage, `data/sources/openssf-security-baseline.yaml` | `ossf/tac` commit 098faba |
-| Secondary | OpenSSF project lifecycle | `ossf/tac` commit d019efe |
+| Core, backbone | OpenSSF security baseline by stage, `data/sources/openssf-security-baseline.yaml` | `ossf/tac` commit 098faba |
+| Core | OpenSSF project lifecycle (the stages) | `ossf/tac` commit d019efe |
 | Secondary | CNCF project lifecycle | `cncf/toc` commit d815451 |
 | Secondary | ISO/IEC/IEEE 12207:2026, clause numbers only (single-user licensed copy; no text committed) | 2026-04 edition |
 | Platform | GitHub documentation (docs.github.com), each page linked from the policy that uses it | read 2026-10-17 |
@@ -51,41 +51,44 @@ and the permission needed for some GraphQL fields. The dependency-graph SBOM end
 ## The proposed policy set
 
 21 policies: 16 repository policies (WP2, and `license-by-type` from WP2a) and 5 org policies (WP3).
-The org policies apply to governance/graduated, the administration of the GitHub org itself.
+The org policies apply to governance/graduated: the administration of the GitHub org itself, and `repo-registry`
+once it is accepted as the canonical source (WP4c).
 
 | Policy | Scope | In effect for | GitHub mechanism | Automated / attested checks |
 |---|---|---|---|---|
 | [archive-notice](sops/archive-notice.md) | repository | tool/archived, media/archived, research/archived | Repository archiving, with an end-of-support note in the README | 1 / 1 |
-| [change-review](sops/change-review.md) | repository | tool/graduated, governance/sandbox | A ruleset (preferred) or a branch protection rule requiring an approving code-owner review and passing status checks | 2 / 0 |
-| [codeowners](sops/codeowners.md) | repository | every live kind except governance/graduated | CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS | 2 / 0 |
-| [contributing](sops/contributing.md) | repository | tool/incubating, tool/graduated, media/incubating, media/graduated, governance/sandbox | CONTRIBUTING file, detected by GitHub's community profile | 1 / 1 |
-| [dependency-management](sops/dependency-management.md) | repository | tool/incubating, tool/graduated, governance/sandbox | Dependabot alerts (with the dependency graph, always on for public repos) | 1 / 2 |
+| [change-review](sops/change-review.md) | repository | tool/graduated, governance/graduated | A ruleset (preferred) or a branch protection rule requiring an approving code-owner review and passing status checks | 2 / 0 |
+| [codeowners](sops/codeowners.md) | repository | every live kind | CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS | 2 / 0 |
+| [contributing](sops/contributing.md) | repository | tool/incubating, tool/graduated, media/incubating, media/graduated, governance/incubating, governance/graduated | CONTRIBUTING file, detected by GitHub's community profile | 1 / 1 |
+| [dependency-management](sops/dependency-management.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Dependabot alerts (with the dependency graph, always on for public repos) | 1 / 2 |
 | [governance-roles-named](sops/governance-roles-named.md) | org | governance/graduated | Public organization membership | 2 / 0 |
-| [history-protection](sops/history-protection.md) | repository | tool/incubating, tool/graduated, governance/sandbox | A ruleset (preferred) or a branch protection rule that blocks force pushes and deletion on the default branch | 2 / 0 |
-| [license-by-type](sops/license-by-type.md) | repository | every live kind except governance/graduated | A LICENSE file, detected by GitHub's license detection (SPDX identifier) | 1 / 0 |
+| [history-protection](sops/history-protection.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | A ruleset (preferred) or a branch protection rule that blocks force pushes and deletion on the default branch | 2 / 0 |
+| [license-by-type](sops/license-by-type.md) | repository | every live kind | A LICENSE file, detected by GitHub's license detection (SPDX identifier) | 1 / 0 |
 | [maintainers-match](sops/maintainers-match.md) | org | governance/graduated | Organization owner role and this repository's CODEOWNERS | 1 / 1 |
 | [org-base-permission](sops/org-base-permission.md) | org | governance/graduated | Organization setting: base permissions for members | 1 / 0 |
 | [org-few-owners](sops/org-few-owners.md) | org | governance/graduated | Organization owner role | 1 / 0 |
 | [org-two-factor](sops/org-two-factor.md) | org | governance/graduated | Organization setting: require two-factor authentication | 1 / 0 |
-| [project-files](sops/project-files.md) | repository | every live kind except governance/graduated | A README file, detected by GitHub's community profile | 1 / 0 |
+| [project-files](sops/project-files.md) | repository | every live kind | A README file, detected by GitHub's community profile | 1 / 0 |
 | [release-integrity](sops/release-integrity.md) | repository | tool/graduated | Release assets, immutable releases and artifact attestations | 2 / 2 |
-| [secret-protection](sops/secret-protection.md) | repository | tool/incubating, tool/graduated, governance/sandbox | Secret scanning push protection (repository security settings) | 1 / 0 |
-| [security-design](sops/security-design.md) | repository | tool/graduated, governance/sandbox | None: a document in the repository, attested by its code owners | 0 / 1 |
-| [security-policy](sops/security-policy.md) | repository | tool/incubating, tool/graduated, governance/sandbox | SECURITY.md security policy and private vulnerability reporting | 2 / 1 |
+| [secret-protection](sops/secret-protection.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Secret scanning push protection (repository security settings) | 1 / 0 |
+| [security-design](sops/security-design.md) | repository | tool/graduated, governance/graduated | None: a document in the repository, attested by its code owners | 0 / 1 |
+| [security-policy](sops/security-policy.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | SECURITY.md security policy and private vulnerability reporting | 2 / 1 |
 | [semantic-versioning](sops/semantic-versioning.md) | repository | tool/incubating, tool/graduated | Release tags | 1 / 1 |
-| [static-analysis](sops/static-analysis.md) | repository | tool/incubating, tool/graduated, governance/sandbox | Code scanning (CodeQL default or advanced setup) | 2 / 0 |
-| [vulnerability-remediation](sops/vulnerability-remediation.md) | repository | tool/graduated, governance/sandbox | Dependabot alerts and code scanning alerts, with their ages | 2 / 1 |
-| [workflow-least-privilege](sops/workflow-least-privilege.md) | repository | tool/incubating, tool/graduated, governance/sandbox | Actions default workflow permissions set to read | 1 / 1 |
+| [static-analysis](sops/static-analysis.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Code scanning (CodeQL default or advanced setup) | 2 / 0 |
+| [vulnerability-remediation](sops/vulnerability-remediation.md) | repository | tool/graduated, governance/graduated | Dependabot alerts and code scanning alerts, with their ages | 2 / 1 |
+| [workflow-least-privilege](sops/workflow-least-privilege.md) | repository | tool/incubating, tool/graduated, governance/incubating, governance/graduated | Actions default workflow permissions set to read | 1 / 1 |
 
 **Friction follows the tiers (WP2 R-7).** Sandbox kinds carry only `project-files` (a README), `codeowners` and
 `license-by-type` (added in WP2a). Those come from the OpenSSF and CNCF lifecycle entry expectations (license and IP
 clearance, at least one maintainer), not from the Sandbox security baseline, whose two items are departed or moved
 (two-factor authentication is an org policy since WP3). Incubating tools carry 11 policies, graduated tools 15,
 archived repositories 1. Media carries 3 or 4, and research 3.
-`repo-registry` (governance/sandbox, high) carries the strict set except the release policies, since it has no
-releases. Under WP0 its review friction rises only at R3, so `change-review` will show red until then. That is a
-visible, expected gap (XF-2 in `data/expected-gaps.yaml`), not enforcement. The org's administration
-(governance/graduated) carries the 5 org policies.
+Governance friction rises with the stage, as for tools (WP4c). `repo-registry` (governance/sandbox, low) carries
+the 3 policies of a sandbox tool while it is being set up. governance/incubating (medium), for when the maintainers
+calibrate it together, carries an incubating tool's policies except `semantic-versioning`: 10. governance/graduated
+(high) carries the 5 org policies and the strict repository set, 18 in all: the org's administration has it today,
+and `repo-registry` takes it on when it is accepted as the canonical source. Its review friction rises only then
+(XF-2 in `data/expected-gaps.yaml`).
 
 **Simplest set (WP2 R-6).** Each policy carries one job. No two automated checks read the same thing (a test checks
 this). Items that GitHub can't check and that serve the same goal are folded into one policy's attested checks, for
