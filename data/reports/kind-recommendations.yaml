@@ -3,6 +3,7 @@ note: Evidence for each recommended kind. Flags never change a kind.
 snapshot: data/snapshots/2026-10-18
 repos:
   .github:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -18,6 +19,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   _OpenMBEE-Documentation:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -33,6 +35,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   aircraftengine-simulation:
+    assigned: false
     kind: research/experimental
     tier: low
     matched:
@@ -47,6 +50,7 @@ repos:
       commits_last_12_months: 7
       commits_last_3_months: 7
   airflow-provider-opensysml:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -61,6 +65,7 @@ repos:
       commits_last_12_months: 16
       commits_last_3_months: 16
   amazonaws:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -74,6 +79,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   apv:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -89,6 +95,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   apv-mdk:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -103,6 +110,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   arch_model:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -118,6 +126,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   architecture-based-risk-analysis:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -133,6 +142,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   bae:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -148,6 +158,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   bae2_3_1:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -163,6 +174,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   ChatGPT-Prompts:
+    assigned: false
     kind: research/experimental
     tier: low
     matched:
@@ -178,6 +190,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   Comodo:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -192,6 +205,7 @@ repos:
       commits_last_12_months: 20
       commits_last_3_months: 20
   concept-definition-stage:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -206,6 +220,7 @@ repos:
       commits_last_12_months: 64
       commits_last_3_months: 23
   configuration-management-plugin:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -221,6 +236,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   confluence-mdk:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -236,6 +252,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   des-ex-toolset:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -251,6 +268,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   DesertKite.sysml:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -265,6 +283,7 @@ repos:
       commits_last_12_months: 2
       commits_last_3_months: 0
   dis:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -280,6 +299,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   docbook:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -294,6 +314,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   docbookgen:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -308,6 +329,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   DocGenServer:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -322,6 +344,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   docs:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -337,6 +360,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   docweb-service:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -351,6 +375,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   doors-ng-client:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -365,6 +390,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   doors-ng-mdk:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -380,6 +406,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   Dragon-Architecture-Model:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -394,6 +421,7 @@ repos:
       commits_last_12_months: 2
       commits_last_3_months: 0
   ems-config:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -407,6 +435,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   EMS-Repo:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -421,6 +450,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   EMS-Share:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -435,6 +465,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   enhancement-proposals:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -450,6 +481,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-cameo-mdk:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -465,6 +497,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mdk-systems-reasoner:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -480,6 +513,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mms:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -495,6 +529,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mms-migration-cameo2022x:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -510,6 +545,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mms-python-client-example:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -525,6 +561,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-mmsri:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -540,6 +577,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   exec-ve:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -555,6 +593,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-cli-client:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -569,6 +608,7 @@ repos:
       commits_last_12_months: 44
       commits_last_3_months: 0
   flexo-cli-sysmlv2-plugin:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -583,6 +623,7 @@ repos:
       commits_last_12_months: 26
       commits_last_3_months: 0
   flexo-conflict-resolution-policy-research:
+    assigned: false
     kind: research/experimental
     tier: low
     matched:
@@ -597,6 +638,7 @@ repos:
       commits_last_12_months: 74
       commits_last_3_months: 0
   flexo-graphql:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -612,6 +654,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-auth-service:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -627,6 +670,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-deployment:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -641,6 +685,7 @@ repos:
       commits_last_12_months: 4
       commits_last_3_months: 0
   flexo-mms-jama-sdk:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -656,6 +701,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-layer0-dashboard:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -670,6 +716,7 @@ repos:
       commits_last_12_months: 19
       commits_last_3_months: 19
   flexo-mms-layer1-mcp:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -684,6 +731,7 @@ repos:
       commits_last_12_months: 7
       commits_last_3_months: 0
   flexo-mms-layer1-openapi:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -699,6 +747,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-layer1-service:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -713,6 +762,7 @@ repos:
       commits_last_12_months: 238
       commits_last_3_months: 42
   flexo-mms-ontology:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -727,6 +777,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-mms-sso-auth-service:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -741,6 +792,7 @@ repos:
       commits_last_12_months: 12
       commits_last_3_months: 10
   flexo-mms-store-service:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -755,6 +807,7 @@ repos:
       commits_last_12_months: 4
       commits_last_3_months: 4
   flexo-mms-sysmlv2:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -769,6 +822,7 @@ repos:
       commits_last_12_months: 58
       commits_last_3_months: 0
   flexo-mms-sysmlv2-mcp:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -783,6 +837,7 @@ repos:
       commits_last_12_months: 10
       commits_last_3_months: 0
   flexo-mms.openmbee.org:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -797,6 +852,7 @@ repos:
       commits_last_12_months: 11
       commits_last_3_months: 11
   flexo-performance-test:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -811,6 +867,7 @@ repos:
       commits_last_12_months: 7
       commits_last_3_months: 0
   flexo-pr-manager:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -824,6 +881,7 @@ repos:
       commits_last_12_months: 2
       commits_last_3_months: 0
   flexo-sysml2-adapter-experiment:
+    assigned: false
     kind: research/experimental
     tier: low
     matched:
@@ -839,6 +897,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   flexo-sysmlv2-swagger:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -852,6 +911,7 @@ repos:
       commits_last_12_months: 3
       commits_last_3_months: 0
   flexo_syside:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -866,6 +926,7 @@ repos:
       commits_last_12_months: 98
       commits_last_3_months: 2
   fprime:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -879,6 +940,7 @@ repos:
       commits_last_12_months: 777
       commits_last_3_months: 354
   helix:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -892,6 +954,7 @@ repos:
       commits_last_12_months: 746
       commits_last_3_months: 11
   homebrew-tap:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -906,6 +969,7 @@ repos:
       commits_last_12_months: 38
       commits_last_3_months: 38
   IAlf:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -919,6 +983,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   jl_scxml:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -933,6 +998,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   jsonPath2:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -947,6 +1013,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   junit-xml-parser:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -962,6 +1029,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   jupyter-mdk:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -976,6 +1044,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   jupyterlab-mms:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -990,6 +1059,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   K:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1005,6 +1075,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   k2mms:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1020,6 +1091,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   k_webeditor:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1035,6 +1107,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   klang:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1050,6 +1123,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   kservices:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1065,6 +1139,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   L4YAML:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1078,6 +1153,7 @@ repos:
       commits_last_12_months: 1814
       commits_last_3_months: 16
   langserver.github.io:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1091,6 +1167,7 @@ repos:
       commits_last_12_months: 16
       commits_last_3_months: 2
   language-server-protocol:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1104,6 +1181,7 @@ repos:
       commits_last_12_months: 75
       commits_last_3_months: 19
   Livingstone:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1119,6 +1197,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   lsp-mode:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1132,6 +1211,7 @@ repos:
       commits_last_12_months: 147
       commits_last_3_months: 3
   lsp4ij:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1145,6 +1225,7 @@ repos:
       commits_last_12_months: 234
       commits_last_3_months: 34
   lunar-lander-simulation:
+    assigned: false
     kind: research/experimental
     tier: low
     matched:
@@ -1159,6 +1240,7 @@ repos:
       commits_last_12_months: 7
       commits_last_3_months: 7
   mason-registry:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1172,6 +1254,7 @@ repos:
       commits_last_12_months: 4975
       commits_last_3_months: 914
   mathematica-mdk:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1186,6 +1269,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mathematica-mdk-core:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1199,6 +1283,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   matlab-mdk:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1213,6 +1298,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mbple-featureide:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1227,6 +1313,7 @@ repos:
       commits_last_12_months: 5
       commits_last_3_months: 0
   MBSEPlugin:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1242,6 +1329,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mcf:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -1257,6 +1345,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mcf-model-import-export:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1272,6 +1361,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   md-cst-montecarlo:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1287,6 +1377,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   md-cst-rabbitmq:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1301,6 +1392,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mdk-expression:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -1316,6 +1408,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-adapter-plugin:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -1331,6 +1424,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-alfresco:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1345,6 +1439,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-autocref:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1359,6 +1454,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-doc-convert:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -1374,6 +1470,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-extensions:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1388,6 +1485,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-helm-chart:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1403,6 +1501,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-mathematica-client:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1416,6 +1515,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-migration:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1430,6 +1530,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   MMS-Python-Adapter:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1444,6 +1545,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-python-client-feedstock:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1457,6 +1559,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-rdf:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1471,6 +1574,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms-sparql-service:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1485,6 +1589,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms3-to-mms4-json:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1500,6 +1605,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mms5-consul:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1514,6 +1620,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mpspi:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1529,6 +1636,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   MSE:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -1544,6 +1652,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mtip-cameo:
+    assigned: false
     kind: tool/active-development
     tier: high
     matched:
@@ -1558,6 +1667,7 @@ repos:
       commits_last_12_months: 12
       commits_last_3_months: 1
   mtip-sparx:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -1573,6 +1683,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   mvn-repo:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1586,6 +1697,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   nvim-lspconfig:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1599,6 +1711,7 @@ repos:
       commits_last_12_months: 573
       commits_last_3_months: 96
   OMGSpecifications:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -1614,6 +1727,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   oosem.github.io:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -1628,6 +1742,7 @@ repos:
       commits_last_12_months: 7
       commits_last_3_months: 7
   open-mbee.github.io:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -1642,6 +1757,7 @@ repos:
       commits_last_12_months: 18
       commits_last_3_months: 2
   openapi-generator:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1655,6 +1771,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   openapi-graph-extractor:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1670,6 +1787,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   opencode:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1683,6 +1801,7 @@ repos:
       commits_last_12_months: 12484
       commits_last_3_months: 688
   openmbee-graphic-assets:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -1697,6 +1816,7 @@ repos:
       commits_last_12_months: 46
       commits_last_3_months: 12
   openmbee-workshops.github.io:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -1711,6 +1831,7 @@ repos:
       commits_last_12_months: 18
       commits_last_3_months: 18
   OpenSE-Cookbook:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -1725,6 +1846,7 @@ repos:
       commits_last_12_months: 3
       commits_last_3_months: 0
   OpenSysML:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -1739,6 +1861,7 @@ repos:
       commits_last_12_months: 13808
       commits_last_3_months: 13808
   OpenSysML-Extensions-Library:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1753,6 +1876,7 @@ repos:
       commits_last_12_months: 196
       commits_last_3_months: 196
   OpenSysML-FAQ:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -1768,6 +1892,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   OpenSysML-REDK-Skills:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1782,6 +1907,7 @@ repos:
       commits_last_12_months: 6
       commits_last_3_months: 6
   opensysml.github.io:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -1796,6 +1922,7 @@ repos:
       commits_last_12_months: 36
       commits_last_3_months: 33
   opentelemetry-demo:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1809,6 +1936,7 @@ repos:
       commits_last_12_months: 941
       commits_last_3_months: 321
   opentelemetry-proto:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1822,6 +1950,7 @@ repos:
       commits_last_12_months: 121
       commits_last_3_months: 43
   opentelemetry-specification:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1835,6 +1964,7 @@ repos:
       commits_last_12_months: 388
       commits_last_3_months: 99
   opl:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -1850,6 +1980,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   pane-layout:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -1864,6 +1995,7 @@ repos:
       commits_last_12_months: 1
       commits_last_3_months: 0
   perseverance-modelica:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -1879,6 +2011,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   pma:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1893,6 +2026,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   pmc-fdir:
+    assigned: false
     kind: research/experimental
     tier: low
     matched:
@@ -1907,6 +2041,7 @@ repos:
       commits_last_12_months: 3
       commits_last_3_months: 0
   PropertyKindCalculus:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1920,6 +2055,7 @@ repos:
       commits_last_12_months: 461
       commits_last_3_months: 355
   python-mdk:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -1934,6 +2070,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   readthedocs:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -1948,7 +2085,18 @@ repos:
       latest_semver: null
       commits_last_12_months: 0
       commits_last_3_months: 0
+  repo-registry:
+    assigned: true
+    kind: governance/experimental
+    tier: high
+    matched: []
+    reason: null
+    flags: []
+    evidence:
+      note: Not in the snapshot.
+      decision: WP1-decisions.md, Acceptance review, G-2 (governance type). Not in the org yet; it moves there in WP5.
   sbt-license-plugin:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1962,6 +2110,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   sbt-pack:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -1975,6 +2124,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   scxml4py:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -1990,6 +2140,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   staged-recipes:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2003,6 +2154,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   staged-recipes-opensysml:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2016,6 +2168,7 @@ repos:
       commits_last_12_months: 5611
       commits_last_3_months: 0
   starkit:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2029,6 +2182,7 @@ repos:
       commits_last_12_months: 3
       commits_last_3_months: 3
   structured-use-cases:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2042,6 +2196,7 @@ repos:
       commits_last_12_months: 29
       commits_last_3_months: 29
   structured-usecase-editor:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2056,6 +2211,7 @@ repos:
       commits_last_12_months: 12
       commits_last_3_months: 12
   swagger-codegen:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2069,6 +2225,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   swagger-codegen-mathematica-client:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2084,6 +2241,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   swagger-codegen-matlab-client:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2099,6 +2257,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   sync-service:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2114,6 +2273,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   sysml:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2129,6 +2289,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   SysML-LoRD:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2143,6 +2304,7 @@ repos:
       commits_last_12_months: 32
       commits_last_3_months: 32
   sysml-sdk:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -2157,6 +2319,7 @@ repos:
       commits_last_12_months: 7
       commits_last_3_months: 7
   sysml-toolkit:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -2171,6 +2334,7 @@ repos:
       commits_last_12_months: 11
       commits_last_3_months: 11
   SysML-v2-Applications-and-Examples:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -2186,6 +2350,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   sysmlv2-python-client:
+    assigned: false
     kind: tool/experimental
     tier: medium
     matched:
@@ -2200,6 +2365,7 @@ repos:
       commits_last_12_months: 31
       commits_last_3_months: 8
   sysmlv2-rdf-ontology:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2213,6 +2379,7 @@ repos:
       commits_last_12_months: 2
       commits_last_3_months: 2
   sysmlv2-testing:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2227,6 +2394,7 @@ repos:
       commits_last_12_months: 41
       commits_last_3_months: 41
   sysmlv2-web-modeler:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2241,6 +2409,7 @@ repos:
       commits_last_12_months: 13
       commits_last_3_months: 10
   sysmlv2_dls:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2255,6 +2424,7 @@ repos:
       commits_last_12_months: 68
       commits_last_3_months: 6
   sysmlv2_excel:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2269,6 +2439,7 @@ repos:
       commits_last_12_months: 6
       commits_last_3_months: 0
   sysmlv2x:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2283,6 +2454,7 @@ repos:
       commits_last_12_months: 1
       commits_last_3_months: 0
   sysmod-sysmlv2-api:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2296,6 +2468,7 @@ repos:
       commits_last_12_months: 26
       commits_last_3_months: 0
   syson:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2309,6 +2482,7 @@ repos:
       commits_last_12_months: 554
       commits_last_3_months: 105
   testrail-cli:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -2324,6 +2498,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   testrail-client-wrapper:
+    assigned: false
     kind: tool/maintained
     tier: high
     matched:
@@ -2339,6 +2514,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   text2text:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2354,6 +2530,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   TMT-SysML-Model:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -2368,6 +2545,7 @@ repos:
       commits_last_12_months: 1
       commits_last_3_months: 0
   toaster:
+    assigned: false
     kind: media/active-development
     tier: medium
     matched:
@@ -2382,6 +2560,7 @@ repos:
       commits_last_12_months: 795
       commits_last_3_months: 795
   trafo-v2-v1:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2395,6 +2574,7 @@ repos:
       commits_last_12_months: 1
       commits_last_3_months: 1
   tree-sitter-sysml:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2409,6 +2589,7 @@ repos:
       commits_last_12_months: 6
       commits_last_3_months: 6
   user-forum:
+    assigned: false
     kind: media/maintained
     tier: medium
     matched:
@@ -2424,6 +2605,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   util:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2439,6 +2621,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-confluence:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2454,6 +2637,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-confluence-app:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2469,6 +2653,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-diagram-generator:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2484,6 +2669,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   ve-mobile:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -2498,6 +2684,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   view-service:
+    assigned: false
     kind: tool/unreleased
     tier: low
     matched:
@@ -2513,6 +2700,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   ViewEditor-Sesame:
+    assigned: false
     kind: tool/archived
     tier: none
     matched:
@@ -2527,6 +2715,7 @@ repos:
       commits_last_12_months: 0
       commits_last_3_months: 0
   websysml-core:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2540,6 +2729,7 @@ repos:
       commits_last_12_months: 2
       commits_last_3_months: 2
   winget-pkgs:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []
@@ -2553,6 +2743,7 @@ repos:
       commits_last_12_months: 114984
       commits_last_3_months: 30081
   zzProjectWiki:
+    assigned: false
     kind: unclassified
     tier: null
     matched: []

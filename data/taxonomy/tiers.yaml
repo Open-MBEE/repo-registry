@@ -1,6 +1,6 @@
 # PROVISIONAL until the maintainers approve the taxonomy (WP0, maintainer approval 1).
-# WP1 D-3. The four tiers and what they mean (WP0, "Four tiers across the kinds").
-# A tier says how strict the controls are. Which policies a tier carries is WP2's job.
+# WP1 D-3. The four tiers and what they mean. A tier says how strict the controls are.
+# Which policies apply is decided separately, by each policy's own rule (WP0 A1).
 status: provisional
 provisional_until: "WP0 maintainer approval 1: the taxonomy"
 
@@ -8,17 +8,19 @@ tiers:
   high:
     order: 1
     meaning: >-
-      Core tools that need rigorous release control. Semantic versioning is required (carried to WP2).
+      The strictest controls. For the main tools that people depend on, where every release must be carefully
+      controlled, and for anything that governs the organization itself.
   medium:
     order: 2
     meaning: >-
-      Load-bearing media, such as the website, and tools that are ancillary or experimental.
-      Semantic versioning is required (carried to WP2).
+      Moderate controls. For media that many people rely on, such as the website, and for tools that are still
+      early or that play a supporting role.
   low:
     order: 3
     meaning: >-
-      Repos that need an owner but have no formal controls beyond someone who looks after them.
+      Light controls. The repository needs a named person who looks after it, and nothing more.
   none:
     order: 4
     meaning: >-
-      Archived material. Read-only once its archived status has been verified, so it is inert.
+      No controls. For archived repositories: once a repository is archived, nobody can change it, so there is
+      nothing left to control.

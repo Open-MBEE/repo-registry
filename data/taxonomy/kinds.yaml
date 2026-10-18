@@ -1,9 +1,10 @@
 # PROVISIONAL until the maintainers approve the taxonomy (WP0, maintainer approval 1).
 # WP1 D-2. The kinds: type x lifecycle (WP1 R-3), each mapped to exactly one tier (WP1 R-6, WP0 R-17).
-# The chain is repo -> kind -> tier -> policies. Nothing here gives a repo a tier directly.
+# A repo has a kind. A kind gives the repo three attributes: its type, its lifecycle and its tier. Policies attach
+# to a type, a lifecycle or a tier (WP0 A1). Nothing here gives a repo a tier directly.
 #
 # `recommend_when` is a deterministic predicate over snapshot attributes (WP1 R-5). It only RECOMMENDS a
-# repo's initial kind. Authority to set a repo's kind belongs to the maintainers and governors (WP0).
+# repo's initial kind, as guidance. Governors assign kinds (WP1 A3).
 # The rules must be mutually exclusive: a repo that matches two kinds, or none, is shown as unclassified.
 #
 # Predicate language (read by scripts/recommend.py, which names no kind, type or signal; WP1 R-7):
@@ -12,19 +13,32 @@
 #   `matches` is a case-insensitive regex search; on a list attribute it is true if any element matches.
 #   `recommend_when: false` means the rules never recommend that kind; only a governor assigns it.
 # Attributes are the snapshot fields plus the derived ones listed in scripts/recommend.py.
+#
+# The `meaning` texts are written for anyone to read (WP0 R-4). In them, a "governor" is one of the OpenMBEE
+# maintainers, who decide each repository's kind.
 status: provisional
 provisional_until: "WP0 maintainer approval 1: the taxonomy"
 
 types:
-  tool: Software that people install, run or build on.
-  media: The website, documentation, educational material, example models, org-level pages and assets.
-  research: Exploratory work in public, often by a single committer, often archived when it goes stale.
+  tool: Software that people install, run, or build on.
+  media: The website, documentation, teaching material, example models, and the organization's shared pages and images.
+  research: Ideas explored in public, often by one person working alone. Often archived once work on it stops.
+  governance: The rules for the organization itself. Only two things are this type, this repository and the
+    administration of the GitHub organization.
 
 lifecycles:
-  experimental: Exploring. For a tool, only 0.x releases (below the 1.0.0 seam).
-  active-development: Being actively developed. For a tool, 1.0.0 or later with commits in the last 12 months.
-  maintained: Stable and looked after, with little recent change.
-  archived: Terminal state. Read-only.
+  experimental: >-
+    Early and still changing. For a tool, its releases are numbered below 1.0 (for example 0.4.2). A tool moves on
+    to active development when it releases version 1.0.
+  active-development: >-
+    Being worked on now. For a tool, it has released version 1.0 or later and has had changes in the last year.
+  maintained: >-
+    Stable, still offered for use, and looked after, with few recent changes.
+  unreleased: >-
+    Tools only. A tool that has never published a numbered release (such as 1.2.0). It needs a named person to look
+    after it, and nothing more, until it starts releasing.
+  archived: >-
+    Finished. The repository is archived on GitHub, so nobody can change it any more. This is the last stage.
 
 # Signals are named building blocks the kinds share. They are data, not code.
 signals:
@@ -64,21 +78,27 @@ kinds:
     type: tool
     lifecycle: active-development
     tier: high
-    meaning: A tool at 1.0.0 or later that is still being developed. Core tools that need rigorous release control.
+    meaning: >-
+      A tool at version 1.0 or later that people depend on and that is still being changed. Every release needs
+      careful control, so it gets the strictest controls.
     recommend_when:
       all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {signal: commits_last_12_months}]
   tool/maintained:
     type: tool
     lifecycle: maintained
     tier: high
-    meaning: A tool at 1.0.0 or later with no commits in the last 12 months, still offered for use.
+    meaning: >-
+      A tool at version 1.0 or later with no changes in the last year that people may still install and depend on.
+      It gets the strictest controls because people may still rely on its releases.
     recommend_when:
       all: [{signal: is_tool}, {signal: live}, {signal: semver_1_or_later}, {not: {signal: commits_last_12_months}}]
   tool/experimental:
     type: tool
     lifecycle: experimental
     tier: medium
-    meaning: A tool with only 0.x releases. At 1.0.0 it becomes a tool in active development.
+    meaning: >-
+      A tool whose releases are still numbered below 1.0. It can change fast. When it releases version 1.0 it
+      becomes a tool in active development, and its controls get stricter.
     recommend_when:
       all: [{signal: is_tool}, {signal: live}, {signal: semver_release}, {not: {signal: semver_1_or_later}}]
   tool/unreleased:
@@ -87,16 +107,18 @@ kinds:
     tier: low
     departure: >-
       Not in the type x lifecycle cross product. Added because a tool can be in the low tier without semantic
-      versioning (supervisor, WP1 OD3), while medium and high require it and the 0.x tools are experimental
-      (medium). Without this kind, a tool with no semver release has no low-tier kind to land in.
-    meaning: A tool with no semantic-versioned release. It needs an owner and nothing more until it releases.
+      versioning (supervisor, WP1 OD3), while the tools numbered below 1.0 are experimental (medium). Without this
+      kind, a tool that has never released has no low-tier kind to land in.
+    meaning: >-
+      A tool that has never published a numbered release. It needs a named person to look after it, and nothing more,
+      until it starts releasing.
     recommend_when:
       all: [{signal: is_tool}, {signal: live}, {not: {signal: semver_release}}]
   tool/archived:
     type: tool
     lifecycle: archived
     tier: none
-    meaning: An archived tool. Read-only and inert.
+    meaning: An archived tool. Nobody can change it any more.
     recommend_when:
       all: [{signal: is_tool}, {signal: archived}]
 
@@ -105,27 +127,29 @@ kinds:
     type: media
     lifecycle: active-development
     tier: medium
-    meaning: Load-bearing media that changed in the last 12 months, such as the website.
+    meaning: >-
+      Media that many people rely on, such as the website, that has changed in the last year.
     recommend_when:
       all: [{signal: is_media}, {signal: live}, {signal: commits_last_12_months}]
   media/maintained:
     type: media
     lifecycle: maintained
     tier: medium
-    meaning: Load-bearing media with no change in the last 12 months that is still offered.
+    meaning: >-
+      Media that people still use but that hasn't changed in the last year.
     recommend_when:
       all: [{signal: is_media}, {signal: live}, {not: {signal: commits_last_12_months}}]
   media/experimental:
     type: media
     lifecycle: experimental
     tier: low
-    meaning: Draft or trial media. The rules don't recommend it; a governor assigns it.
+    meaning: Draft or trial media. Only a governor gives a repository this kind.
     recommend_when: false
   media/archived:
     type: media
     lifecycle: archived
     tier: none
-    meaning: Archived media. Read-only and inert.
+    meaning: Archived media. Nobody can change it any more.
     recommend_when:
       all: [{signal: is_media}, {signal: archived}]
 
@@ -134,28 +158,57 @@ kinds:
     type: research
     lifecycle: experimental
     tier: low
-    meaning: Exploring ideas in public, often a single committer. Lax by design; we don't want to stop it.
+    meaning: >-
+      Ideas being explored in public, often by one person. Controls are kept light on purpose, so that this kind of
+      work stays easy.
     recommend_when:
       all: [{signal: is_research}, {signal: live}]
   research/active-development:
     type: research
     lifecycle: active-development
     tier: low
-    meaning: Research being actively developed toward a result. The rules don't recommend it; a governor assigns it.
+    meaning: Research being worked on toward a result. Only a governor gives a repository this kind.
     recommend_when: false
   research/maintained:
     type: research
     lifecycle: maintained
     tier: low
-    meaning: Finished research kept available, for example alongside a paper. The rules don't recommend it.
+    meaning: >-
+      Finished research kept available, for example alongside a paper. Only a governor gives a repository this kind.
     recommend_when: false
   research/archived:
     type: research
     lifecycle: archived
     tier: none
-    meaning: Archived research. Read-only and inert.
+    meaning: Archived research. Nobody can change it any more.
     recommend_when:
       all: [{signal: is_research}, {signal: archived}]
+
+  # --- governance (WP0 A2, WP1 A2): always assigned, never recommended ---
+  governance/experimental:
+    type: governance
+    lifecycle: experimental
+    tier: high
+    meaning: >-
+      Rules for the organization that are still being built. Only this repository has this kind. It gets the
+      strictest controls, because whatever governs must be at least as strict as what it governs.
+    recommend_when: false
+  governance/maintained:
+    type: governance
+    lifecycle: maintained
+    tier: high
+    meaning: >-
+      The administration of the GitHub organization itself: who can do what across all its repositories. It gets the
+      strictest controls, because whatever governs must be at least as strict as what it governs.
+    recommend_when: false
+
+# Kinds in the type x lifecycle cross product that are deliberately left out, each with its reason (WP1 R-3).
+omitted:
+  governance/active-development: Only two things have the governance type, and neither is at this stage (WP1 A2).
+  governance/archived: Only two things have the governance type, and neither is archived (WP1 A2).
+  governance/unreleased: The unreleased stage is for tools only.
+  media/unreleased: The unreleased stage is for tools only.
+  research/unreleased: The unreleased stage is for tools only.
 
 # Why a repo is unclassified: the first `when` that holds gives the reason. Data, so the engine names nothing.
 unclassified_reasons:

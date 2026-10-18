@@ -22,17 +22,19 @@ KINDS = ROOT / "data/taxonomy/kinds.yaml"
 TIERS = ROOT / "data/taxonomy/tiers.yaml"
 REGISTRY = ROOT / "registry.yaml"
 FIXTURES = ROOT / "tests/fixtures"
+ASSIGNMENTS = ROOT / "data/assignments.yaml"
 
 
 def load(path):
     return yaml.safe_load(pathlib.Path(path).read_text())
 
 
-def run_recommend(tmp, kinds=KINDS, tiers=TIERS):
+def run_recommend(tmp, kinds=KINDS, tiers=TIERS, assignments=ASSIGNMENTS):
     reg, rep = pathlib.Path(tmp) / "registry.yaml", pathlib.Path(tmp) / "report.yaml"
     subprocess.run(
         [sys.executable, str(ROOT / "scripts/recommend.py"), "--snapshot", str(SNAPSHOT.relative_to(ROOT)),
-         "--kinds", str(kinds), "--tiers", str(tiers), "--registry", str(reg), "--report", str(rep)],
+         "--kinds", str(kinds), "--tiers", str(tiers), "--assignments", str(assignments or ""),
+         "--registry", str(reg), "--report", str(rep)],
         cwd=ROOT, check=True, capture_output=True, text=True,
     )
     return reg.read_text(), load(rep)
@@ -58,12 +60,14 @@ class TaxonomyTests(unittest.TestCase):
         self.kinds, self.tiers = load(KINDS), load(TIERS)
 
     def test_R3_type_x_lifecycle_with_stated_departures(self):
-        """R-3: kinds start from type x lifecycle; any departure states a reason."""
+        """R-3: kinds start from type x lifecycle; every added or omitted kind states a reason."""
         cross = {f"{t}/{l}" for t in self.kinds["types"] for l in self.kinds["lifecycles"]}
-        defined = set(self.kinds["kinds"])
-        for name in defined - cross:
-            self.assertTrue(self.kinds["kinds"][name].get("departure"), f"{name} departs without a reason")
-        self.assertEqual(cross - defined, set(), "a cross-product kind is missing")
+        defined, omitted = set(self.kinds["kinds"]), self.kinds.get("omitted", {})
+        self.assertEqual(defined - cross, set(), "a kind outside the cross product")
+        self.assertEqual(cross - defined, set(omitted), "a cross-product kind is neither defined nor omitted")
+        for name, reason in omitted.items():
+            self.assertTrue(reason.strip(), name)
+        self.assertTrue(self.kinds["kinds"]["tool/unreleased"].get("departure"))
 
     def test_R6_one_tier_per_kind_and_fixed_map(self):
         """R-6: each kind has one tier; the fixed parts of the map hold; every tier is used."""
@@ -72,10 +76,19 @@ class TaxonomyTests(unittest.TestCase):
         self.assertEqual(k["tool/active-development"]["tier"], "high")
         self.assertEqual(k["tool/maintained"]["tier"], "high")
         for name, kind in k.items():
-            if kind["lifecycle"] == "archived":
+            if kind["type"] == "governance":
+                self.assertEqual(kind["tier"], "high", name)
+                self.assertIs(kind["recommend_when"], False, name)
+            elif kind["lifecycle"] == "archived":
                 self.assertEqual(kind["tier"], "none", name)
             elif not name.startswith("tool/") or kind["lifecycle"] not in ("active-development", "maintained"):
                 self.assertIn(kind["tier"], ("low", "medium"), name)
+
+    def test_R6_governance_assignments(self):
+        """R-6 (A2): repo-registry is governance/experimental and the org is governance/maintained."""
+        doc = yaml.safe_load(REGISTRY.read_text())
+        self.assertEqual(doc["repos"]["repo-registry"]["kind"], "governance/experimental")
+        self.assertEqual(doc["org"]["kind"], "governance/maintained")
 
     def test_R4_every_kind_has_a_meaning(self):
         """R-4 (part): every kind and tier has a plain meaning. The cold read itself is a manual check."""
@@ -107,7 +120,8 @@ class EngineTests(unittest.TestCase):
     def test_R5_overlap_is_reported_not_hidden(self):
         """R-5: if two kinds' rules overlap, the repo is unclassified and the overlap is named."""
         with tempfile.TemporaryDirectory() as t:
-            _, report = run_recommend(t, kinds=FIXTURES / "overlap-kinds.yaml", tiers=FIXTURES / "toy-tiers.yaml")
+            _, report = run_recommend(t, kinds=FIXTURES / "overlap-kinds.yaml", tiers=FIXTURES / "toy-tiers.yaml",
+                                      assignments=None)
         first = next(iter(report["repos"].values()))
         self.assertEqual(first["kind"], "unclassified")
         self.assertIn("more than one kind", first["reason"])
@@ -115,7 +129,8 @@ class EngineTests(unittest.TestCase):
     def test_R7_toy_taxonomy_swap_needs_no_code_change(self):
         """R-7: a different taxonomy runs through the same engine, and the engine names no kind, type or tier."""
         with tempfile.TemporaryDirectory() as t:
-            _, report = run_recommend(t, kinds=FIXTURES / "toy-kinds.yaml", tiers=FIXTURES / "toy-tiers.yaml")
+            _, report = run_recommend(t, kinds=FIXTURES / "toy-kinds.yaml", tiers=FIXTURES / "toy-tiers.yaml",
+                                      assignments=None)
         self.assertEqual({r["kind"] for r in report["repos"].values()}, {"thing/busy", "thing/quiet"})
         src = (ROOT / "scripts/recommend.py").read_text()
         kinds = load(KINDS)
@@ -159,13 +174,15 @@ class KindListTests(unittest.TestCase):
         self.assertTrue(self.text.startswith("# PROVISIONAL"))
         self.assertEqual(self.doc["status"], "provisional")
         self.assertTrue(self.doc["provisional_until"].strip())
-        for path in (KINDS, TIERS):
+        for path in (KINDS, TIERS, ASSIGNMENTS):
             self.assertEqual(load(path)["status"], "provisional", path)
 
     def test_D4_meta_rules(self):
         """D-4 meta-rules 1-8 and 10 hold on the provisional kind list (WP5 will enforce them in CI)."""
         kinds = load(KINDS)["kinds"]
         self.assertLessEqual(set(self.doc), {"status", "org", "repos", "snapshot", "provisional_until"})
+        self.assertEqual(set(self.doc["org"]), {"name", "kind"})
+        self.assertIn(self.doc["org"]["kind"], kinds)
         names = list(self.doc["repos"])
         self.assertEqual(len({n.lower() for n in names}), len(names))
         self.assertEqual(names, sorted(names, key=str.lower))
@@ -176,9 +193,10 @@ class KindListTests(unittest.TestCase):
         recommend.check_taxonomy(load(KINDS), load(TIERS))
 
     def test_D5_covers_every_snapshot_repo(self):
-        """D-5: every snapshot repo has an entry."""
+        """D-5: every snapshot repo has an entry, plus the assigned repos not yet in the org."""
         repos = json.loads((SNAPSHOT / "repos.json").read_text())
-        self.assertEqual(set(self.doc["repos"]), {r["name"] for r in repos})
+        assigned = set(load(ASSIGNMENTS)["repos"])
+        self.assertEqual(set(self.doc["repos"]), {r["name"] for r in repos} | assigned)
 
     def test_R8_reclassification_is_one_entry(self):
         """R-8: changing a repo's kind is a one-line edit."""

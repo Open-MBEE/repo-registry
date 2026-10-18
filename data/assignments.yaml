@@ -1,0 +1,14 @@
+# PROVISIONAL until the maintainers approve the assigned kinds (WP0, maintainer approval 4).
+# Kinds assigned by a decision, not recommended by the rules. scripts/recommend.py writes them into registry.yaml
+# in place of any recommendation. Each one cites the decision it comes from.
+status: provisional
+provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
+
+org:
+  kind: governance/maintained
+  decision: "WP1-decisions.md, Acceptance review, G-2 (governance type)"
+
+repos:
+  repo-registry:
+    kind: governance/experimental
+    decision: "WP1-decisions.md, Acceptance review, G-2 (governance type). Not in the org yet; it moves there in WP5."

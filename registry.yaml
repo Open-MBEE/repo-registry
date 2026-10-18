@@ -1,9 +1,12 @@
-# PROVISIONAL. NOT APPROVED. Recommended kinds only, drafted by scripts/recommend.py (WP1 D-5).
+# PROVISIONAL. NOT APPROVED. Kinds recommended by rule, plus kinds assigned by recorded decisions
+# (data/assignments.yaml). Drafted by scripts/recommend.py (WP1 D-5).
 # Authority to initialize this list belongs to the maintainers (WP0, maintainer approval 4).
 # Format: docs/kind-list-format.md. One entry per repo. Changing a repo's kind is a one-line edit.
 status: provisional
 provisional_until: "WP0 maintainer approval 4: the assigned kind of each repo in the registry"
-org: Open-MBEE
+org:
+  name: Open-MBEE
+  kind: governance/maintained
 snapshot: data/snapshots/2026-10-18
 repos:
   ".github":
@@ -311,6 +314,8 @@ repos:
     kind: tool/archived
   "readthedocs":
     kind: media/maintained
+  "repo-registry":
+    kind: governance/experimental
   "sbt-license-plugin":
     kind: unclassified
     reason: "A fork of an upstream project. The taxonomy has no kind for forks yet (WP0 parked item)."

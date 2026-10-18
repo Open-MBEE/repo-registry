@@ -24,16 +24,24 @@ repo is in `data/reports/kind-recommendations.yaml`.
 | research/active-development | low | 0 *(only a governor assigns it)* |
 | research/maintained | low | 0 *(only a governor assigns it)* |
 | research/archived | none | 0 |
+| governance/experimental | high | 1 *(assigned: `repo-registry`, not yet in the org)* |
+| governance/maintained | high | the org's own administration *(assigned; not a repo)* |
 | unclassified | — | 45 |
 
-By tier, that is 15 high, 31 medium, 69 low and 21 none, plus 45 unclassified.
+By tier, that is 16 high (counting `repo-registry`), 31 medium, 69 low and 21 none, plus 45 unclassified. The org's
+administration is governance/maintained (high).
 
-## One departure from type × lifecycle
+Governance kinds are assigned by decision (`data/assignments.yaml`), never recommended, and only these two exist.
+The other governance kinds, and `unreleased` for anything but tools, are listed under `omitted` in `kinds.yaml`,
+each with its reason.
+
+## One added lifecycle: unreleased
 
 **tool/unreleased (low).** You said a tool can be in the low tier without semantic versioning, while medium and high
 require it and 0.x tools are experimental (medium). The 12-kind cross product has no low-tier tool kind, so a tool
-with no semver release had nowhere to land. This kind is that landing place. If you'd rather not add a lifecycle,
-the alternative is to map tool/experimental to low, but that breaks "0.x stays medium".
+with no semver release had nowhere to land. This kind is that landing place. `unreleased` is now defined as a
+lifecycle, for tools only. If you'd rather not add a lifecycle, the alternative is to map tool/experimental to low,
+but that breaks "0.x stays medium".
 
 ## Unclassified repos, and why (45)
 
@@ -48,21 +56,20 @@ the alternative is to map tool/experimental to low, but that breaks "0.x stays m
 
 ## Things worth your attention
 
-1. **Only one tool is in active development by the rules** (`mtip-cameo`, v1.0.9). The most active tool,
-   `OpenSysML`, is at v0.10.1, so it is experimental (medium) until it reaches 1.0.0. That is your seam working as
-   designed, but it means very little sits in high today apart from the 14 maintained tools.
+1. **Only one tool is in active development by the rules** (`mtip-cameo`, v1.0.9). `OpenSysML` (v0.10.1) and
+   `sysml-toolkit` (v0.10.10) stay experimental (medium) until they release 1.0.0, as you decided (WP1 A3). Their
+   rapid development stays unblocked, and their controls tighten at 1.0.0.
 2. **All 14 maintained tools had no commits in the last 12 months.** They include `exec-mms`, `exec-ve` and
    `exec-cameo-mdk`. The rule calls them maintained (high). Some may really be archive candidates.
 3. **74 live repos are flagged as archive candidates** (no commits in 12 months). The flag never changes a kind, but
    it's a ready list for WP4's "repos that should be archived".
-4. **`repo-registry` isn't in the snapshot,** because it isn't in the org yet (it moves in WP5). Its kind should map
-   to high (WP1 Direction). Because it has no 1.0.0 release, the rules would recommend tool/unreleased (low), so its
-   kind will need a governed assignment rather than the recommendation.
+4. **`repo-registry` isn't in the snapshot,** because it isn't in the org yet (it moves in WP5). It is in the kind
+   list anyway, as governance/experimental (high), by assignment.
 5. **Type rules lean on names and descriptions,** because almost no repo sets GitHub topics (26 distinct topics across the
    whole org). The word lists are data in `kinds.yaml`, so they're easy to tune. Adding topics to repos would make type
    detection much more reliable.
 
 ## Checks
 
-`python3 -m unittest discover -s tests` runs 15 checks covering R-1 to R-10 and D-4 and D-5. All pass. Two checks
+`python3 -m unittest discover -s tests` runs 16 checks covering R-1 to R-10 and D-4 and D-5. All pass. Two checks
 need a person: R-1's code review of `scripts/snapshot.py`, and R-4's cold read of the kind and tier meanings.
