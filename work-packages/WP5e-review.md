@@ -33,7 +33,7 @@
 | R-6 | met | The WP5d tests pass with the new pages (every link resolves; every row links to its file); the browser review below |
 | R-7 | met | Every quote checked word for word against its document's text: the memo 6, OFAC 560.204, SSDF 3 practices with 4 tasks, SP 800-161 2, CISA 98, OpenSSF 25; the SDN definition copied from OFAC's page. ISO/IEC/IEEE 12207 stays clause numbers and titles; the licensed-text test passes |
 
-On 932f920 (as fce4510, before the rebase): `scripts/validate.py` "valid: every table meets data/schema/model.yaml, and every view renders, the same
+On a61f4d8: `scripts/validate.py` "valid: every table meets data/schema/model.yaml, and every view renders, the same
 twice"; 115 tests OK (expected failures=1); `scripts/audit.py`: all 16 findings return none; the privacy scans name no
 concealed member (186 files; 675 blobs and every commit message on `main`).
 

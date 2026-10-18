@@ -109,7 +109,7 @@ contributor sourcing".
 
 - **Supervisor (mzargham, typed by agent):** "let's keep the scope of work approved locally and then merge it with the
   PR that implements it"
-- **Outcome:** WP5e's scope (ead036d, with this record) is approved by this statement. There is no separate scope pull
+- **Outcome:** WP5e's scope (7dbe813 after the rebase onto `main`, with this record) is approved by this statement. There is no separate scope pull
   request; the scope and its records go to `main` in the delivery pull request, whose merge is also the acceptance
   record. Execution runs on `wp5e-work`.
 
