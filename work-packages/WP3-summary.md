@@ -66,9 +66,8 @@ Each provision is cross-checked against OpenSSF (lifecycle and baseline), CNCF's
 
 ## For your attention
 
-1. **My reading: owners are a subset of the maintainers.** OpenSSF's 2 to 3 owners and your target of 5 maintainers
-   both hold only if every owner is a maintainer but not every maintainer is an owner. The match check and the policy
-   use that reading.
+1. **Owners are a subset of the maintainers (confirmed by you).** Owners are the root authority, 2 to 3 of them.
+   Maintainers can be more, and the owners check the maintainers' powers.
 2. **Privacy holds.** No concealed member is named anywhere (the live check covers all 71 concealed members). The
    match check never reveals the role of a listed person whose membership isn't public. A test shows its output
    doesn't change either way.
