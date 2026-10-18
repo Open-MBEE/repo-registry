@@ -104,3 +104,11 @@ contributor sourcing".
   but i accept the others."
 - **Outcome:** Defaults 1 to 4 and 6 to 8 approved; default 5 reversed from paraphrase to verbatim quotes (as written
   in the scope); the CISA quotes made verbatim (D-8).
+
+## Approval *(stated by the supervisor; the scope reaches `main` with the delivery)*
+
+- **Supervisor (mzargham, typed by agent):** "let's keep the scope of work approved locally and then merge it with the
+  PR that implements it"
+- **Outcome:** WP5e's scope (ead036d, with this record) is approved by this statement. There is no separate scope pull
+  request; the scope and its records go to `main` in the delivery pull request, whose merge is also the acceptance
+  record. Execution runs on `wp5e-work`.

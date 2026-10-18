@@ -5,7 +5,7 @@
 | **Status** | DRAFT. Approved only by the recorded act below. Nothing in this package is executed before then. |
 | **Supervisor (accountable)** | mzargham |
 | **Repository** | [Open-MBEE/repo-registry](https://github.com/Open-MBEE/repo-registry) |
-| **Approval record** | mzargham's merge, with a merge commit, of the pull request that adds this document into `main` (WP5 OD3) |
+| **Approval record** | The supervisor's statement, recorded verbatim in [WP5e-decisions.md](WP5e-decisions.md) "Approval"; this document reaches `main` with the delivery pull request |
 | **Acceptance record** | mzargham's merge, with a merge commit, of the delivery pull request into `main` |
 
 ## Purpose
