@@ -3,7 +3,7 @@ status: provisional
 provisional_until: "never: test fixture"
 types:
   thing: Anything.
-lifecycles:
+stages:
   busy: Commits in the last 12 months.
   quiet: No commits in the last 12 months.
 signals:
@@ -11,13 +11,13 @@ signals:
 kinds:
   thing/busy:
     type: thing
-    lifecycle: busy
+    stage: busy
     tier: strict
     meaning: Busy things.
     recommend_when: {signal: recent}
   thing/quiet:
     type: thing
-    lifecycle: quiet
+    stage: quiet
     tier: loose
     meaning: Quiet things.
     recommend_when: {not: {signal: recent}}

@@ -16,19 +16,19 @@ import sys
 import yaml
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from recommend import evaluate  # noqa: E402
+from recommend import evaluate, kind_of  # noqa: E402
 
 
 def attributes(name, repo, entry, kinds, flags, usage, weights):
-    kind = kinds.get(entry["kind"], {})
+    kind = kinds.get(kind_of(entry), {})
     u = usage.get(name, {})
     clones = u.get("clones_14d", {})
     score = (weights["release_downloads"] * (u.get("release_downloads") or 0)
              + weights["clone_uniques_14d"] * (clones.get("uniques", 0) if clones.get("readable") else 0)
              + weights["stars"] * (repo.get("stars") or 0) + weights["forks"] * (repo.get("forks") or 0))
     return {
-        "name": name, "description": repo.get("description"), "kind": entry["kind"],
-        "type": kind.get("type"), "lifecycle": kind.get("lifecycle"), "tier": kind.get("tier"),
+        "name": name, "description": repo.get("description"), "kind": kind_of(entry),
+        "type": kind.get("type"), "stage": kind.get("stage"), "tier": kind.get("tier"),
         "fork": repo.get("fork", False), "archived": repo.get("archived", False),
         "commits_last_3_months": repo.get("commits_last_3_months") or 0,
         "commits_last_12_months": repo.get("commits_last_12_months") or 0,

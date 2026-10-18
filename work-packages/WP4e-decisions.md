@@ -36,3 +36,11 @@ mzargham's. The scope document carries only the outcomes ([WP4e-scope-of-work.md
   ordering; generated files show the computed kind; WP1-amendment-4.md; main merged into wp5-work again) as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## Acceptance review — observations
+
+- **Question:** Every deliverable and requirement is met. Four observations (validate.py on wp5-work updated after
+  the next merge; status docs; "lifecycle stage" in prose; the toy-only org entry). Accept these as is, or pick any
+  to act on?
+- **Answer (mzargham, typed by agent):** "Accept as is"
+- **Outcome:** All four accepted as is. See [WP4e-review.md](WP4e-review.md).

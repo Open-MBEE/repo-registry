@@ -26,7 +26,9 @@ POLICY = load(ROOT / "data/policies/license-by-type.yaml")
 
 def run(repo_license, kind="tool/incubating", deviations=()):
     repos = {"r": {"name": "r", "license": repo_license}}
-    return licenses.evaluate(repos, {"r": {"kind": kind}}, KINDS, POLICY, list(deviations))["repos"]["r"]
+    type_, stage = kind.split("/")
+    return licenses.evaluate(repos, {"r": {"type": type_, "stage": stage}}, KINDS, POLICY,
+                             list(deviations))["repos"]["r"]
 
 
 class LicenseTests(unittest.TestCase):

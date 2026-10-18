@@ -58,7 +58,8 @@
 | WP4b | Docs sweep and checkpoint | accepted 3f2c557 |
 | WP4c | The governance kinds; OpenSSF as a core citation | accepted 4cad812 |
 | WP4d | The attestations file | accepted caaca38 |
-| **WP5** | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | **in progress** on `wp5-work`, resuming |
+| **WP4e** | Type and stage in the kind list | **delivered** on `wp4e-work`, waiting for acceptance (scope approved f405aa4) |
+| WP5 | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | in progress on `wp5-work`, waiting for WP4e |
 | WP6 | Engine: sensing, status, status log, sample issues | planned |
 | WP7 | Wiki | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |

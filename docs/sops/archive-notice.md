@@ -4,7 +4,7 @@
 
 Before a repository is archived, its README says that support has ended and points to any known active forks. Repositories archived before this policy existed count as compliant as they are.
 
-**Applies to:** tool at archived, media at archived, research at archived. Your repository's kind is in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
+**Applies to:** tool at archived, media at archived, research at archived. Your repository's type and stage are in [registry.yaml](../../registry.yaml); the stages are explained in [lifecycle-stage-map.md](../lifecycle-stage-map.md), and the full table is in [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

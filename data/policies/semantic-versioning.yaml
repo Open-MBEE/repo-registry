@@ -9,7 +9,7 @@ applies_if:
   all:
   - attr: type
     eq: tool
-  - attr: lifecycle
+  - attr: stage
     in:
     - incubating
     - graduated

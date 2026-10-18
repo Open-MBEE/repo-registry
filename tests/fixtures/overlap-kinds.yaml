@@ -3,10 +3,10 @@ status: provisional
 provisional_until: "never: test fixture"
 types:
   thing: Anything.
-lifecycles:
+stages:
   a: A.
   b: B.
 signals: {}
 kinds:
-  thing/a: {type: thing, lifecycle: a, tier: strict, meaning: A., recommend_when: true}
-  thing/b: {type: thing, lifecycle: b, tier: loose, meaning: B., recommend_when: true}
+  thing/a: {type: thing, stage: a, tier: strict, meaning: A., recommend_when: true}
+  thing/b: {type: thing, stage: b, tier: loose, meaning: B., recommend_when: true}

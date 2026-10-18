@@ -10,7 +10,7 @@ applies_if:
     in:
     - tool
     - governance
-  - attr: lifecycle
+  - attr: stage
     in:
     - incubating
     - graduated

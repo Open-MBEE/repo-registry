@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, at the WP4d acceptance gate. Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP4e delivery. Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -27,8 +27,11 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     [WP1-amendment-3.md](../work-packages/WP1-amendment-3.md).
   - **WP4d** (the attestations file): accepted in caaca38. Review:
     [WP4d-review.md](../work-packages/WP4d-review.md); the change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
-  - **WP5** (meta-rule checks in CI, and the move): in progress on `wp5-work`, resuming now that WP4c and WP4d
-    are accepted. Nothing has been written to the org.
+  - **WP4e** (type and stage in the kind list): scope approved in f405aa4
+    ([WP4e-scope-of-work.md](../work-packages/WP4e-scope-of-work.md)); delivered on `wp4e-work`, waiting for
+    acceptance. The change is recorded in [WP1-amendment-4.md](../work-packages/WP1-amendment-4.md).
+  - **WP5** (meta-rule checks in CI, and the move): in progress on `wp5-work`, waiting for WP4e. Nothing has been
+    written to the org.
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
@@ -38,7 +41,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - the provisional kind list (`registry.yaml`);
   - 16 repository policies (including `license-by-type`) with SOPs (`data/policies/`, `docs/sops/`). Each has an
     applies-if rule on type, stage or tier, and is grounded in [policy-basis-review.md](policy-basis-review.md)
-    (CISA and NIST core; the OpenSSF baseline as backbone; CNCF and ISO/IEC/IEEE 12207 secondary);
+    (CISA, NIST and OpenSSF core, with the OpenSSF baseline as backbone; CNCF and ISO/IEC/IEEE 12207 secondary);
   - five org policies, a provisional named-maintainer list (`data/maintainers.yaml`: Chris Delp, Michael Zargham,
     Robert Karban, Jason Han), a proposed CODEOWNERS, and the maintainer policy
     ([maintainer-policy.md](maintainer-policy.md)); concealed org members are counted, never named;
@@ -60,6 +63,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 3. WP3, org governance: **accepted**.
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
    kinds: **accepted**. WP4d, the attestations file: **accepted**.
+   WP4e, type and stage in the kind list: **delivered**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
@@ -67,5 +71,5 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
+Review **WP4e** and take it to the acceptance gate. Then resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
 supervisor the move commands (WP5 OD4).

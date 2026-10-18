@@ -12,8 +12,12 @@ import argparse
 import collections
 import json
 import pathlib
+import sys
 
 import yaml
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from recommend import kind_of  # noqa: E402
 
 POLICY = "license-by-type"
 
@@ -23,9 +27,9 @@ def evaluate(repos, registry, kinds, policy, deviations):
     excepted = {(d["repo"], d["policy"]): d for d in deviations if d.get("policy") == POLICY}
     rows = {}
     for name, entry in sorted(registry.items(), key=lambda kv: kv[0].lower()):
-        kind = kinds.get(entry["kind"])
+        kind = kinds.get(kind_of(entry))
         repo = repos.get(name)
-        if kind is None or repo is None or kind["lifecycle"] == "archived":
+        if kind is None or repo is None or kind["stage"] == "archived":
             continue
         spdx = repo.get("license")
         ok_set = allowed.get(kind["type"], [])
@@ -37,7 +41,7 @@ def evaluate(repos, registry, kinds, policy, deviations):
             status, detail = "red", "no license GitHub can recognize"
         else:
             status, detail = "red", f"not in the allowed set for {kind['type']} ({', '.join(ok_set)}); needs a change or an exception"
-        rows[name] = {"kind": entry["kind"], "license": spdx, "status": status, "detail": detail}
+        rows[name] = {"kind": kind_of(entry), "license": spdx, "status": status, "detail": detail}
     counts = collections.Counter(r["status"] for r in rows.values())
     by_license = collections.Counter((r["license"] or "none") for r in rows.values() if r["status"] == "red")
     return {"status": "provisional", "policy": POLICY,
