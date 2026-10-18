@@ -153,9 +153,26 @@ Rerun from step 1 against the amended scope. Approvals: the WP1 scope (3bb8ee8),
 | R-4 | not met | Advisory stand-in read, confirmed by the agent: (1) the medium tier says "tools … with releases numbered below 1.0" (tiers.yaml:16-17), but those are tool/sandbox (low); (2) the high tier says "tools at version 1.0 or later" (tiers.yaml:11), but those are tool/incubating (medium), and only graduated tools are high; (3) "CNCF and OpenSSF" are not explained (kinds.yaml:37 ff.); (4) graduated research is called "Finished", the word that defines archived (kinds.yaml:171); (5) "the rules" means both the recommendation rules and the organization's rules (kinds.yaml:27, 44); (6) the graduated stage's "steady, careful releases" doesn't fit the org's administration, which isn't software (kinds.yaml:28, 44) |
 | Non-goals | not touched | No policies defined, nothing written outside this repo |
 
+## Final check after the fixes (7fb7820)
+
+The supervisor's disposition: "Fix all six". A final check was run against just these six items, with no new
+stand-in pass.
+
+| Item | Verdict | Evidence |
+|---|---|---|
+| 1 Medium tier text | met | It now names "tools that have released version 1.0 or later but are not yet graduated". No "below 1.0" in medium |
+| 2 High tier text | met | It now names "mature, graduated tools" and governance. No "1.0 or later" in high |
+| 3 CNCF and OpenSSF | met | Spelled out in the sandbox stage text ("Cloud Native Computing Foundation (CNCF)", "Open Source Security Foundation (OpenSSF)") |
+| 4 "Finished" | met | It appears only in the archived stage text |
+| 5 "The rules" | met | No reader-facing text uses "The rules". The recommendation logic is called "the automatic recommendations" |
+| 6 Graduated vs the administration | met | The graduated stage says what it means for the organization's administration |
+| Tests and replay | met | 16 tests OK. `registry.yaml` and the report are regenerated and unchanged in content (meanings aren't in them) |
+
 ## Recommendation
 
-**Do not recommend acceptance yet.** R-4 isn't met after the stage rework. Items 1 and 2 are real inconsistencies:
-the tier meanings contradict the kinds. Items 3 to 6 are smaller wording problems. Disposition pending.
+**Recommend acceptance with the listed gaps noted.** Every deliverable, requirement and good-enough item of the
+amended WP1 scope (amendments 1 and 2) is met. The fixed gaps are G-1, G-2 and G-3 and the six R-4 items after
+amendment 2. Accepted as is: G-4, and the minor R-4 items from the third pass. The taxonomy and kind list stay
+PROVISIONAL until the maintainers approve them (WP0 approvals 1 and 4).
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.
