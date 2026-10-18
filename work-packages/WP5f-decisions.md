@@ -66,3 +66,13 @@ mzargham's.
   co-founders, with no recommendation, ranking or proposed names. Everything now in the repository, including
   `data/maintainers.yaml`, is demonstrative: drawn from data, meant to be realistic, not a decision. This scope pull
   request carries its own status update.
+
+## The decision brief's form *(a follow-up on OD5)*
+
+- **Question (the agent's clarification):** Should WP5f produce a decision brief for the co-founders at all? (Options:
+  keep it, factual / drop it.)
+- **Answer (mzargham, typed by agent):** "we're showing the shape of the decision brief with a hypothetical but being
+  clear is not the proposed decision just the shape."
+- **Outcome:** The brief shows its shape with a hypothetical example, labelled throughout as hypothetical: not the
+  proposed decision, and naming no real person as an owner or maintainer. The co-founders' actual decision is recorded
+  separately, by the supervisor (D-3).

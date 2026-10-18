@@ -43,7 +43,7 @@ intent to be realistic, but not a decision (OD5).
 | ID | Deliverable | Serves |
 |---|---|---|
 | D-1 | The policies that determine who governs: the maintainer policy (`docs/maintainer-policy.md`) and the org policies (`org-few-owners`, `maintainers-match`, `governance-roles-named`, `verified-code-owners`) reviewed and amended as decided, including how owners and maintainers are chosen (OD1) | G1 |
-| D-2 | A decision brief for the co-founders (OD1): what the policies ask of owners and maintainers, a factual summary of public activity in the organization, and the choices to make, with no recommendation (OD5); then their decision on the owners (2 or 3), recorded by the supervisor. Owners not kept are to become members (OD2); carrying that out is later work (OD3) | G2 |
+| D-2 | The shape of a decision brief for the co-founders (OD1): what the policies ask of owners and maintainers, the facts to weigh, and the choices to make, shown with a hypothetical example, labelled as hypothetical and not the proposed decision (OD5); then their decision on the owners (2 or 3), recorded by the supervisor. Owners not kept are to become members (OD2); carrying that out is later work (OD3) | G2 |
 | D-3 | The maintainers: the co-founders' decision recorded by the supervisor in `data/maintainers.yaml` and `data/proposed-codeowners`, replacing the placeholder, each person with consent to be named (OD4) | G3 |
 | D-4 | The roadmap: `docs/status.md` and `docs/current-state.md` (this package, critical path, ahead of WP6; the fifth approval first) | G4 |
 | D-5 | Tests and the documents, in the same pull requests | G1–G4 |
@@ -80,9 +80,9 @@ record above.
 - D-1's change to the maintainer policy is a record, not a new rule: it says how the first owners and maintainers were
   chosen (OD1). Otherwise the policies stay as written (OD4).
 - The decision brief (`work-packages/WP5f-decision-brief.md`) decides nothing about who is an owner or maintainer,
-  and recommends, ranks and proposes no one *(changed by the supervisor, OD5)*. It summarizes public activity in the
-  organization's repositories (commits and reviews in the last 12 months), never marks anyone's membership or role,
-  and changes no record.
+  and recommends, ranks and proposes no one *(changed by the supervisor, OD5)*. It shows its shape with a
+  hypothetical example, labelled as such throughout, naming no real person as an owner or maintainer, and changes no
+  record.
 
 ## Open decisions (for the supervisor)
 
@@ -98,5 +98,6 @@ record above.
   recommends nothing), everything now in the repository treated as demonstrative, and this pull request carrying its
   own status update.*
 
-None remain open. Every item was resolved through the decision loop: 5 decided (OD1 to OD5), 0 deferred, 0 raised.
+None remain open. Every item was resolved through the decision loop: 5 decided (OD1 to OD5, OD5 with one
+follow-up on the brief's form), 0 deferred, 0 raised.
 The records are in [WP5f-decisions.md](WP5f-decisions.md).
