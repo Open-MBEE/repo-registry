@@ -121,6 +121,10 @@ Governors are the OpenMBEE maintainers. They work **in this repository**:
 - Questions that need a decision (for example, a repository that fits no kind) come up as issues here.
 - Every pull request shows what its change would do to the organization before anyone approves it.
 
+Every pull request here runs one required check. It fails if the change would leave any data badly formed (for
+example a kind that doesn't exist, or a maintainer list that doesn't match the proposed CODEOWNERS), and nobody can
+merge past it. A change that shows a repository breaking a rule is still accepted: that is how gaps are found.
+
 While the design is being built and tested, changes here are deliberately easy to make. From the
 first release that makes this the official source of truth, only the OpenMBEE maintainers (as
 CODEOWNERS) may approve changes. How many approvals are needed is not decided yet.

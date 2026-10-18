@@ -1,0 +1,11 @@
+# The environment the scripts and tests run in, locked in uv.lock so that every machine and CI run the same thing
+# (WP5 review, G-1). Run anything with `uv run`, for example `uv run python scripts/validate.py`.
+[project]
+name = "repo-registry"
+version = "0.0.0"
+description = "Policy and governance registry for the Open-MBEE GitHub organization (PROVISIONAL)"
+requires-python = "==3.10.*"
+dependencies = ["pyyaml==6.0.3"]
+
+[tool.uv]
+package = false

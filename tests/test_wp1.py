@@ -105,13 +105,17 @@ class TaxonomyTests(unittest.TestCase):
 
 class EngineTests(unittest.TestCase):
     def test_R2_replay(self):
-        """R-2: the rules applied to the stored snapshot give the same result every time, and match registry.yaml."""
+        """R-2: the rules applied to the stored snapshot give the same result every time, and cover registry.yaml.
+
+        Since WP5 the kind list is edited by people, one entry at a time (WP0 R-12), so it no longer has to equal
+        what the rules draft; it has to cover the same repositories.
+        """
         with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
             reg_a, rep_a = run_recommend(a)
             reg_b, rep_b = run_recommend(b)
         self.assertEqual(reg_a, reg_b)
         self.assertEqual(rep_a, rep_b)
-        self.assertEqual(reg_a, REGISTRY.read_text())
+        self.assertEqual(set(yaml.safe_load(reg_a)["repos"]), set(yaml.safe_load(REGISTRY.read_text())["repos"]))
 
     def test_R5_rules_are_exclusive_on_the_snapshot(self):
         """R-5: no repo matches two kinds; unclassified repos carry a reason."""
