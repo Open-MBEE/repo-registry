@@ -15,11 +15,35 @@ whether each repository follows those rules, and it tells the right people when 
   history. Newcomers, contributors and our community manager need to see which is which at a glance.
 - **To show that we follow our own rules.** Many organizations that use OpenMBEE work in regulated
   industries. They need to see that who may change what, and who approves a release, follow written
-  rules. We aim to line up with CISA's *Open Source Software: Security Principles and Practices* (2026).
+  rules. We aim to line up with CISA's guidance and NIST's Risk Management Framework (see
+  [The guidance we follow](#the-guidance-we-follow)).
 - **To add friction only where it is needed, and to be clear about it.** Tools get the strictest rules. Media
   (the website, the wiki, educational material) and research get lighter ones, so they stay easy to
   contribute to. For every repository you can see which controls apply, which don't, and whether the
   ones that apply are really in effect.
+
+## The guidance we follow
+
+This registry is designed to bring OpenMBEE into line with two pieces of guidance:
+
+- CISA, [*Open Source Software: Security Principles and Practices*](https://www.cisa.gov/sites/default/files/2026-08/open-source-software-security-principles-and-practices.pdf)
+  (July 2026).
+- NIST, [SP 800-37 Rev. 2, *Risk Management Framework for Information Systems and Organizations*](https://csrc.nist.gov/pubs/sp/800/37/r2/final)
+  (December 2018).
+
+It does this through **minimum viable policy making and controls**:
+
+- **Easy to show, cheap to run.** Showing that we follow our own policies should be as easy as possible, and the
+  overhead as small as possible. We name a small set of policies, and say which apply to which kind of repository.
+  We don't try to cover everything GitHub can do.
+- **A light load at the center.** The maintainers, who govern the organization as a whole, keep their load light.
+  Authority is spread out to each repository's CODEOWNERS, who govern their own repository.
+- **Clear release controls by tier.** Every kind of repository sits in one of four tiers, and each tier makes clear
+  which release controls its CODEOWNERS need to put in place:
+  - **High:** core tools that need rigorous release control.
+  - **Medium:** load-bearing media, such as the website, and tools that are ancillary or experimental.
+  - **Low:** repositories that need an owner but have no formal controls beyond someone who looks after them.
+  - **None:** archived material, which is read-only once archived.
 
 ## What it is, and what it is not
 
@@ -46,11 +70,13 @@ You may hold more than one role. Each role has one place to go.
 
 Use the **wiki of this repository**. It is generated automatically and never edited by hand. It has:
 - an **index page** that lists the highlighted repositories first (under active development, or
-  trusted and maintained), then every repository with its kind, owner and release officer;
-- **one page per kind of repository**, which says what puts a repository in that kind, which controls
-  apply to it and which deliberately don't, and who is responsible;
-- **one page per repository**, which shows which rules it meets, which it doesn't yet, and any
-  accepted exceptions.
+  trusted and maintained), then every repository with its kind and its CODEOWNERS;
+- **one page per kind of repository**, which says what puts a repository in that kind and which tier it is in;
+- **one page per tier**, which says which policies are in effect for it and which deliberately aren't;
+- **one page per policy**, which holds the policy and its standard operating procedure;
+- **views of the registry by kind, by tier and by policy**. Each repository is shown with a red, yellow or green
+  status (out of compliance, can't tell, in compliance), a link to the repository, and a link to its open issues
+  from this system.
 
 ### Operator: you look after a repository
 
@@ -65,7 +91,8 @@ issue there. The issue says what to do, why (which rule, and what was seen), and
 For the more strictly overseen kinds of repository, the operators (owner and release officer) must also be
 listed in that repository's CODEOWNERS, so their review is required by GitHub itself.
 
-You never need to edit this repository to do your part.
+The only thing you ever do in this repository is propose a change to your repository's kind, by a pull
+request that the governors review.
 
 ### Governor: you set the rules
 

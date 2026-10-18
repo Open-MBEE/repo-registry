@@ -223,6 +223,184 @@ mzargham's.
 
 - **Answer (mzargham, typed by agent):** "Approve"
 
+## Change before approval: a pilot of real repos instead of a made-up org
+
+WP0 had not been merged, so it was revised on the scope branch rather than amended.
+
+- **Supervisor (mzargham, typed by agent):** "i want to make a change. we don't need a made up org, we need to use a
+  scoped subset of the openmbee repos. we can exercise our exclusion role so that we only have about 25 repos in our
+  initial registry sampled to meet two key requirements heavily used and actively developed tools included, also the
+  website and other media examples, some research related repos, some examples of repos that should be archived.
+  basically we want to be able to show how the taxonomy and policy system works. in practice. you can create samples
+  of the issues it would write but do not write them to the repos yet. these are demonstrations of what would be
+  written. the focus is on showing what would happen if we turned it on. what we actually need from the maintainers is
+  the following * approve the taxonomy * approve the policies (based on the taxonomy) * approve an initial subset of
+  repos to be in the registry * approve the assigned kind for each repo in the registry once we have all of that we can
+  move forward with a bounded PoC to calibrate towards a trusted source of truth and bring out repos into policy
+  alignment."
+- **Follow-up:** With the registry now a subset, what happens to D-6, the fit report on all repos?
+- **Answer (mzargham, typed by agent):** "these are two different tasks. we still want the analysis of how it fits all
+  183, but the pilot is scoped to something in the 2 to 3 dozen range to balance the level of effort against the need
+  to prove value"
+- **Outcome:** D-5 is now the pilot: 24 to 36 real repos, everything else excluded, run read-only. The sample issues
+  are not posted. D-6 is the fit analysis of all repos, a separate task. Good enough now lists the four maintainer
+  approvals, and the R2 proof of concept is named in Purpose. Raised OD4 (three new agent defaults).
+
+## OD4 *(raised by the pilot change)* — Three pilot defaults
+
+- **Answer (mzargham, typed by agent):** "Approve all three"
+
+## Named maintainers *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "almost ready. we need to add one more thing the maintainers need to do,
+  and that is figure out who the named maintainers are. they become the codeowners for this repo. as of right now we
+  have a leadership but its not necessarily mapped to technical leadership and as far as i can tell from the github
+  org configuration we don't have a clear indication of who has admin authority and what powers they have which is
+  really important for complying with the cisa guidance"
+- **Follow-up:** Should WP0 deliver something about admin authority?
+- **Answer (mzargham, typed by agent):** "i think its the codeowner for this repo and the admins for the github org. we
+  should apply the same principle for the org as a whole that we applied for repos. we should be clear what the policy
+  is and have means of measuring whats measureable and attesting what is not measurable to ensure our state list
+  maintainers maps to the list of people with governance power over the github org"
+- **Outcome:** Added a fifth maintainer approval (the named maintainers, who become this repo's CODEOWNERS), a direction
+  item, D-8 (org governance), R-15 and their grid column and row. Raised OD5 and OD6.
+
+## OD5 *(raised by named maintainers)* — D-8, R-15 and the D-8 column
+
+- **Answer (mzargham, typed by agent):** "Approve"
+
+## OD6 *(raised by named maintainers)* — Two defaults and the R-15 cells
+
+- **Answer (mzargham, typed by agent):** "Approve all"
+
+## Kinds and policies as dimensionality reduction *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "one more thing i want to discuss. in order to keep the complexity of this
+  repo from exploding i want to be clear that policies kinds and policies are dimensionality reducing techniques. we do
+  not need to directly support all possible policies that can be created in github we need to name policies, document
+  the configurations of those policies and clear state which policies are in effect for which kinds. Each policy needs
+  to have an SOP for complying with it that covers how to set it up, as well as how what its measurable (and thus
+  automatable) checks are and what its attested checks are. to be in compliance a repo needs to pass its automated
+  checks and have up to date attestations from an operator (the party accountable for the repo). for exploratory
+  research repos these are pretty lax, by design in some cases we have single committers just exploring ideas in
+  public, these repos often get archived when they go stale but the point is we don't want to stop that activity.
+  furthermore archived repos are read only so they by definition are compliant once they've been transitioned into
+  archive state. one of the main goals here is to create rigorous controls on repos that need it while allowing a lot
+  of low friction work elsewhere"
+- **Follow-up:** What status does a repo get when its automated checks pass but an attestation is out of date or was
+  never given?
+- **Answer (mzargham, typed by agent):** "red if we compute a missing attestation thats required given a policy. out of
+  date is non conformant but my intuition is that we can provide a template for attestation in the readmes of our repos
+  as trailers so they don't fall behind releases. updating your attestation becomes part of the SOP. for repos that
+  don't require any attestations Green can happen with no attestations present.I suspect the latter will be the case
+  for some repo kinds."
+- **Outcome:** Added direction items (dimensionality reduction, SOP per policy, compliance, low friction for
+  research, archived repos green), a non-goal, a revised D-1, R-13 wording and R-16 with its grid row. Raised OD7.
+
+## OD7 *(raised by named policies)* — R-16, its grid row, revised D-1, the attestation-freshness default
+
+- **Answer (mzargham, typed by agent):** "i approve these. i also want to add a second core citation to our repo
+  alongside the cisa guidance. we should be citing NIST RMF 2. and i'd like you to sweep our current scope of work to
+  make sure we're not obviously violating or missing anything relevant to what we're doing"
+- **Outcome:** OD7 approved. Raised: NIST RMF as a second core citation, and a sweep of WP0.
+
+## Sweep of WP0: small fixes made without a decision
+
+- G5 now lists all five maintainer approvals (it was missing the named maintainers).
+- "Class pages" became "Kind pages" in the grid.
+- G2 and G4 now say how R1 shows them (on the pilot, and with sample issues).
+
+## NIST RMF as a second core citation
+
+- **Question:** How should WP0 cite NIST SP 800-37 Rev. 2 (RMF) alongside CISA?
+- **Answer (mzargham, typed by agent):** "Map plus per policy"
+- **Outcome:** Added a direction item with the RMF step map. G2, D-1 and R-16 now cite RMF, and each policy names the
+  CISA practice and the RMF task or SP 800-53 control it serves, or "none". The agent read "NIST RMF 2" as
+  SP 800-37 Rev. 2, and the supervisor didn't pick the "different document" option.
+
+## Sweep gap 1 — Where each repo's operators are named
+
+- **Answer (mzargham, typed by agent):** "in each repo. the repos are all locally governed by their codeowners, or they
+  are low enough tier kind that we don't need formal tracking. we honestly expect to have 4 tiers across our many
+  kinds. high, medium, low and none. high is core tools that need rigorous release control. medium for load bearing
+  media like the website or tools which are ancillary or experimental, low stuff that needs an owner but has no formal
+  controls beyond someone who looks after it and non for archived materials since they are read only once they've been
+  verified as archived status."
+- **Outcome:** Added a four-tier direction item and an operators-in-each-repo item, revised G3, and added R-17 with its
+  grid row. Defaults: where a tier needs an owner, the owner is the repo's CODEOWNERS, and only a CODEOWNER's
+  attestation counts.
+
+## Sweep gap 2 — Archiving and CISA end-of-support
+
+- **Answer (mzargham, typed by agent):** "Archive SOP"
+- **Outcome:** Added a named archive policy: before archiving, the README states that support has ended and points to
+  known forks. Default: repos archived before the policy existed are compliant as they are.
+
+## Sweep gap 3 — Org-wide settings (common controls)
+
+- **Answer (mzargham, typed by agent):** "Include in org policy"
+- **Outcome:** The org policy and D-8 now cover a few org-wide settings, inherited by every repo and checked like any
+  policy. Which settings is left to the policy drafting. (The agent's question said CISA asks for these. That claim is
+  not verified against the CISA text and is not written into WP0.)
+
+## Sweep gap 4 — AGENTS.md and README conflicts
+
+- **Answer (mzargham, typed by agent):** "Update now"
+- **Outcome:** AGENTS.md (local until the move during R1; operators' only action here is kind-change PRs; no writes
+  to the live org except this repo once moved) and README (the operator's only action here) were edited on the scope
+  branch, approved by the same merge.
+
+## R-17, its grid row and three defaults
+
+- **Answer (mzargham, typed by agent):** "yes and our registry repo should be able to read codeowners from the other
+  repos tracked in the registry so we have that data in our wiki. its just important that the repos codeowners are the
+  authoritative source of truth for a given repo."
+- **Outcome:** Approved. WP0 now says the registry reads every tracked repo's CODEOWNERS and shows them in the wiki,
+  and that each repo's own CODEOWNERS is the authoritative source.
+
+## README: links to the guidance and the design intent *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "one more thing. we need to include in the readme links to the NIST RMF and
+  CISA document. it should be clear that this registry is designed to allow us to come into alignment with this
+  guidance through minimum viable policy making, and controls. maximizing ease of demonstrating compliance with our
+  policies and minimizing overhead. keep maintainers centralized org level load light and distributing authority to
+  repo level code owners, and making it clear what release controls they need to implement by tier."
+- **Outcome:** README gained a "The guidance we follow" section with links to the CISA PDF (cisa.gov) and NIST's
+  SP 800-37 Rev. 2 page (csrc.nist.gov), the minimum-viable-policy intent, and the four tiers. WP0's citation item now
+  links both.
+
+## Wiki downscope, and the chain from kind to tier to policy *(raised by supervisor)*
+
+- **Supervisor (mzargham, typed by agent):** "i think we can downscope D3, registry doesn't need a page for every repo. it
+  needs a page for every kind, policy and tier. and it needs to have views on the registry by kind, by policy and by
+  tier. it should have color codes by repo, and it should support links to the repos and links to views on the
+  outstanding issues in those repos filtered by the tags we used when we wrote the issues programmatically. this wiki
+  is specifically for this registry, it covers the registry's status information, and what the kinds and tiers mean,
+  and it contains the policies. we'll be classifying kinds from rich data about repos, then kinds map to tiers and
+  tiers map to policies. so repos pilot count is dozens but full scope is low hundreds. kinds are a relatively low
+  cardinality taxonomy, tiers is 4, and policies are more than 4 since multiple policies can be in effect for the same
+  tier but they are defined at a level configurable in github so i suspect it will be important for you to review the
+  github security features and documentation, and to cross check that with the NIST and CISA frameworks to ensure we
+  have the simplest set of policies that achieves our security objectives."
+- **Outcome:** D-3 was downscoped (no page per repo; pages per kind, policy and tier; views by each; color codes and
+  links). Added the repo → kind → tier → policies chain, with policies now mapped to tiers rather than kinds (D-1,
+  R-16, issues and non-goals updated). Added D-9 (policy basis review) and R-18 (repo and issue links), with their grid
+  cells. Raised OD8 and OD9.
+
+## OD8 *(raised by the wiki downscope)* — Revised D-3 and its column
+
+- **Answer (mzargham, typed by agent):** "Approve"
+
+## OD9 *(raised by the wiki downscope)* — D-9, R-18, their cells, the issue-label default
+
+- **Answer (mzargham, typed by agent):** "Approve all"
+
 ## Summary
 
-The open list is empty: 39 decided, 0 deferred, 10 raised.
+The open list is empty: 55 decided, 0 deferred. Raised items are marked *raised* above.
+
+## README reader section brought in line with the D-3 downscope
+
+- A small fix made without a decision. The README's reader section no longer promises a page per repository. It
+  lists pages per kind, tier and policy, plus the views and their red / yellow / green status and links. The index
+  shows each repo's CODEOWNERS rather than "owner and release officer".
