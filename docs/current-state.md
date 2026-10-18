@@ -49,7 +49,7 @@
 ## The five maintainer approvals (WP8)
 
 1. The taxonomy (`data/taxonomy/`). 2. The policies (`data/policies/`). 3. The pilot subset (`data/pilot.yaml`).
-4. Each pilot repository's kind (`registry.yaml`, `data/assignments.yaml`). 5. The named maintainers
+4. Each pilot repository's kind (`registry.yaml`). 5. The named maintainers
 (`data/maintainers.yaml`), who become this repository's CODEOWNERS (`data/proposed-codeowners`, not live yet).
 
 ## Packages
