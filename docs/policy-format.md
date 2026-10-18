@@ -79,9 +79,11 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
   endpoints return 404 both for "off" and for "you may not see this", so the checker needs *Administration: read*.
 - An attested check is answered in the repository's `ATTESTATIONS.yaml` ([attestations-format.md](attestations-format.md);
   WP4d). The registry reads the file at one commit: the commit of the latest release's tag (published, not a draft or
-  pre-release), or, for a repository with no release, the latest commit on the default branch. Then:
+  pre-release), or, for a repository with no release, the latest commit on the default branch. An archived
+  repository is read at its final commit on the default branch, whatever its releases, since its last attestation
+  is made just before it is archived (WP4d review, G-1). Then:
   - **green:** the file has one entry for the policy and check, its `release` names that release (or is `none` when
-    there is no release), and the last commit that changed the file, up to that commit, was made by a code owner of
+    there is no release; for an archived repository, any value), and the last commit that changed the file, up to that commit, was made by a code owner of
     the repository at that commit. With no release, the entry doesn't go out of date.
   - **red:** there is a release but its commit has no such entry, or the entry names another release; the entry is
     missing; the file doesn't meet its schema; or the last change to the file wasn't made by a code owner. A

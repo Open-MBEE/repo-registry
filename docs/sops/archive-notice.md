@@ -9,7 +9,7 @@ Before a repository is archived, its README says that support has ended and poin
 ## Set up
 
 1. Before archiving, add a note at the top of the README saying that support has ended, with the date, and naming any known active forks.
-2. In the same commit, add the attestation entry below to the repository's `ATTESTATIONS.yaml`. Once a repository is archived, nobody can commit to it, so this has to come first.
+2. In the same commit, add the attestation entry below to the repository's `ATTESTATIONS.yaml`. Once a repository is archived, nobody can commit to it, so this has to come first. An archived repository is read at this final commit, so no release is needed for it.
 3. Then archive the repository (Settings, then General, then Archive this repository).
 4. Repositories archived before this policy existed need nothing more.
 

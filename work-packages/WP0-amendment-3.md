@@ -28,6 +28,8 @@ release commit so a release always comes with attestations bound to it rather th
 - **Named per release (WP4d OD1):** an entry counts for a release only if its `release` names that release, so every
   release is attested afresh.
 - **No release (WP4d OD2):** the file on the default branch counts, with `release: none`, and doesn't go out of date.
+- **Archived (WP4d review, G-1):** an archived repository is read at its final commit on the default branch, whatever
+  its releases, because its last attestation is made just before it is archived.
 - **Who:** an entry counts only if the last commit that changed the file, up to the commit read, was made by a code
   owner (WP0 R-17, unchanged). Who committed is read from git.
 - **The org:** its attested checks are answered in this repository's `ATTESTATIONS.yaml`.

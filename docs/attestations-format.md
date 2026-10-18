@@ -46,6 +46,9 @@ you prepare a release:
 A repository with no release yet keeps its entries on the default branch, with `release: none`. They don't go out of
 date until there is a release; from the first release on, the release rule applies.
 
+An archived repository is read at its final commit on the default branch, whatever its releases: its last
+attestation (for example that its README says support has ended) is made in the commit just before it is archived.
+
 ## When an entry counts
 
 An entry counts only if the last commit that changed `ATTESTATIONS.yaml`, up to the commit being read, was made by

@@ -44,3 +44,14 @@ mzargham's. The scope document carries only the outcomes ([WP4d-scope-of-work.md
   binding through GitHub's release, tag and commit) as one item?
 - **Answer (mzargham, typed by agent):** "Approve all"
 - **Outcome:** Approved as written.
+
+## Acceptance review — G-1, archived repositories with releases
+
+- **Question:** archive-notice asks for an attestation in the last commit before archiving, which usually comes after
+  the last release, but the rule read the file at the latest release's commit, so a repository with releases archived
+  later would stay red unless it cut a final release. How should this be handled? (Options: fix before acceptance /
+  follow-up package / accept as is.)
+- **Answer (mzargham, typed by agent):** "Fix before acceptance"
+- **Outcome:** Fixed under the same scope: an archived repository is read at its final commit on the default branch,
+  whatever its releases (`docs/policy-format.md`, `docs/attestations-format.md`, the archive-notice SOP, WP0
+  amendment 3). The whole review is rerun.
