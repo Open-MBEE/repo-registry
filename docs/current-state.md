@@ -78,26 +78,28 @@
 
 ## How to check everything
 
+Everything runs in one locked environment: Python 3.10 and PyYAML 6.0.3, pinned in `pyproject.toml`, `.python-version`
+and `uv.lock` (WP5 review, G-1), so every machine and CI run the same thing. Install it once with `uv sync --frozen`.
 The required check on every pull request runs these two commands (`.github/workflows/check.yml`):
 
 ```bash
-python3 scripts/validate.py
-python3 -m unittest discover -s tests
+uv run python scripts/validate.py
+uv run python -m unittest discover -s tests
 ```
 
 `validate.py` checks every data file against its meta-rules (invalid fails; out of compliance passes), then replays
-every generator from the stored snapshot and fails if a generated file differs. 64 tests (including a check that
+every generator from the stored snapshot and fails if a generated file differs. 78 tests (including a check that
 every relative link resolves, and that every cited commit resolves), 2 expected failures.
 
 After changing a kind in `registry.yaml` (or any data a generated file is built from), regenerate the files built
 from it, in this order:
 
 ```bash
-python3 scripts/policies.py
-python3 scripts/licenses.py --snapshot data/snapshots/2026-10-18
-python3 scripts/org.py --snapshot data/snapshots/2026-10-18/org.json
-python3 scripts/pilot.py --snapshot data/snapshots/2026-10-18
-python3 scripts/briefing.py --snapshot data/snapshots/2026-10-18
+uv run python scripts/policies.py
+uv run python scripts/licenses.py --snapshot data/snapshots/2026-10-18
+uv run python scripts/org.py --snapshot data/snapshots/2026-10-18/org.json
+uv run python scripts/pilot.py --snapshot data/snapshots/2026-10-18
+uv run python scripts/briefing.py --snapshot data/snapshots/2026-10-18
 ```
 
 `scripts/recommend.py` only drafts the kind list; the kind list itself is edited by hand, one entry at a time

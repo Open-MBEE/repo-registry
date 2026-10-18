@@ -140,6 +140,21 @@ class ComplianceTests(unittest.TestCase):
             self.assertIn("data/reports/license-report.yaml", stale)
 
 
+class EnvironmentTests(unittest.TestCase):
+    def test_R4_environment_is_locked(self):
+        """R-4 (WP5 review, G-1): Python 3.10 and PyYAML 6.0.3 are pinned and locked, and CI runs the locked set."""
+        pyproject = (ROOT / "pyproject.toml").read_text()
+        self.assertIn('requires-python = "==3.10.*"', pyproject)
+        self.assertIn('dependencies = ["pyyaml==6.0.3"]', pyproject)
+        self.assertEqual((ROOT / ".python-version").read_text().strip(), "3.10")
+        lock = (ROOT / "uv.lock").read_text()
+        self.assertRegex(lock, r'name = "pyyaml"\nversion = "6\.0\.3"')
+        workflow = (ROOT / ".github/workflows/check.yml").read_text()
+        self.assertIn("uv sync --frozen", workflow)
+        self.assertEqual(len(re.findall(r"uv run --frozen python", workflow)), 2)
+        self.assertNotIn("pip install", workflow)
+
+
 class HistoryPrivacyTests(unittest.TestCase):
     def test_R6_history_scan_finds_a_name_only_in_an_old_commit(self):
         """R-6: a concealed login in an earlier commit, since removed, is found; the scan prints no login."""

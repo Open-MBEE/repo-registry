@@ -54,7 +54,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   `scripts/org_snapshot.py`, `scripts/org.py` and `scripts/privacy_check.py` (org governance), and
   `scripts/usage_snapshot.py`, `scripts/pilot.py` and `scripts/briefing.py` (usage, pilot and briefing, WP4), and
   `scripts/validate.py` (the meta-rule check) and `scripts/history_privacy_check.py` (WP5).
-  The required check: `python3 scripts/validate.py` and `python3 -m unittest discover -s tests`.
+  The required check: `uv run python scripts/validate.py` and `uv run python -m unittest discover -s tests`, in the environment locked in `uv.lock` (Python 3.10, PyYAML 6.0.3).
 - **Remote:** [Open-MBEE/repo-registry](https://github.com/Open-MBEE/repo-registry), public. `main` takes changes
   only through pull requests that pass the required check, with no bypass (WP5 OD3).
 
