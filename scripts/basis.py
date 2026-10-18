@@ -47,7 +47,7 @@ def render(root, out):
                  f"{n_auto} / {n_att} |")
     adopted = cited_by(pols, "openssf")
     L += ["", "## Trace: OpenSSF security baseline (backbone, WP2 R-13)", "",
-          "| Item | Stage | Baseline item (paraphrased) | Adopted by | Or departed because |", "|---|---|---|---|---|"]
+          "| Item | Stage | Baseline item (our title; its words are in the source file) | Adopted by | Or departed because |", "|---|---|---|---|---|"]
     for item, row in src("openssf-security-baseline.yaml")["items"].items():
         why = " ".join(str((departures.get("openssf") or {}).get(item, "")).split())
         L.append(f"| {item} | {row['stage']} ({row['when']}) | {row['title']} | {', '.join(adopted.get(item, []))} | {why} |")

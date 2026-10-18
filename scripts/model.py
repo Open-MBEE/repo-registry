@@ -163,8 +163,19 @@ def rows(table, root=ROOT):
     if table == "deviation":
         return load("data/deviations.yaml", root)["deviations"] or []
     if table == "maintainer":
-        return [{"user_id": uid, **{k: v for k, v in m.items() if k != "release_authority"}}
+        return [{"user_id": uid, **{k: v for k, v in m.items() if k not in ("release_authority", "verification")}}
                 for uid, m in load("data/maintainers.yaml", root)["maintainers"].items()]
+    if table == "maintainer_verification":
+        return [{"user_id": uid, **m["verification"]} for uid, m in load("data/maintainers.yaml", root)["maintainers"].items()
+                if m.get("verification") is not None]
+    if table == "dodcio_section":
+        return _keyed(src("dod-cio-oss-memo.yaml")["sections"], "section")
+    if table == "ofac_item":
+        return _keyed(src("ofac.yaml")["items"], "item")
+    if table == "ssdf_practice":
+        return _keyed(src("nist-800-218.yaml")["practices"], "practice")
+    if table == "c_scrm_control":
+        return _keyed(src("nist-800-161.yaml")["controls"], "control")
     if table == "release_authority":
         return [{"user_id": uid, **r} for uid, m in load("data/maintainers.yaml", root)["maintainers"].items()
                 for r in m.get("release_authority") or []]

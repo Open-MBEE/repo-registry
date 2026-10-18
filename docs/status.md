@@ -37,9 +37,12 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP5c** (the taxonomy refinements from WP4's fit analysis): accepted by mzargham's merge of
     [#9](https://github.com/Open-MBEE/repo-registry/pull/9), 42ecec0 ([WP5c-scope-of-work.md](../work-packages/WP5c-scope-of-work.md)).
     Review: [WP5c-review.md](../work-packages/WP5c-review.md). The change is recorded in [WP1-amendment-6.md](../work-packages/WP1-amendment-6.md).
-  - **WP5d** (the maintainer review pack, published to the wiki): scope approved by the supervisor's verbal approval,
-    then the merge of [#10](https://github.com/Open-MBEE/repo-registry/pull/10)
-    ([WP5d-scope-of-work.md](../work-packages/WP5d-scope-of-work.md)); delivered in this pull request, for review.
+  - **WP5d** (the maintainer review pack, published to the wiki): accepted by mzargham's merge of
+    [#11](https://github.com/Open-MBEE/repo-registry/pull/11), c0d8979
+    ([WP5d-scope-of-work.md](../work-packages/WP5d-scope-of-work.md)). Review: [WP5d-review.md](../work-packages/WP5d-review.md).
+  - **WP5e** (verified code owners for high-tier repositories; every source quoted verbatim): scope approved by the
+    supervisor's statement ([WP5e-decisions.md](../work-packages/WP5e-decisions.md) "Approval"); the scope and the
+    work reach `main` together, in its delivery pull request ([WP5e-scope-of-work.md](../work-packages/WP5e-scope-of-work.md)).
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
   [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
@@ -74,16 +77,17 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
    WP4e, type and stage in the kind list: **accepted**.
 5. WP5, meta-rule checks in CI, and the move to Open-MBEE: **accepted**. WP5b, the model and views: **accepted** by
    the merge of its delivery pull request. WP5c, the taxonomy refinements: **accepted** by the merge of its delivery pull request. **WP5d, the maintainer
-   review pack: scoped.**
+   review pack: accepted ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)). WP5e, verified code owners: in delivery.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the compliance dashboard: the wiki that WP5d publishes, extended with status, aware of each repository's
    state against the controls (from WP6's sensing), and how to come into demonstrable compliance. WP5d gives the
-   what and why of compliance; WP7 gives the current snapshot and the way there.
+   what and why of compliance; WP7 gives the current snapshot and the way there. WP7 also publishes the wiki
+   automatically from CI after each merge; until then an owner runs live mode by hand.
 8. WP8, demonstrations and the five maintainer approvals.
 
 ## Next step
 
-Review and accept **WP5d** by merging its delivery pull request. Then the supervisor creates the wiki's first page once
-in the web app and publishes from the validated `main`: `uv run python scripts/render.py --mode live`. The maintainers
-review the pack and propose changes by pull request. WP6 (the engine) follows; WP7 then extends the wiki into the
-compliance dashboard.
+Publish the wiki (WP5d's acceptance record): create its first page once in the web app, then run
+`uv run python scripts/render.py --mode live` from the validated `main`. Review and accept **WP5e** by merging its
+delivery pull request (its scope rides with it), then republish. After that, the owners record the first
+verifications (XF-3), and WP6 (the engine) follows.

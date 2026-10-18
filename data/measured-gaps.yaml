@@ -5,6 +5,15 @@
 # software, is invalid, and CI rejects it: data/controls.yaml.) Until the engine measures (WP6), a row here records a
 # non-pass that is known by design, with where it comes from. Each row names its subject (the repository), its policy and its check.
 measured:
+  XF-3:
+    repo_id: 713039071
+    name: ".github"
+    policy: verified-code-owners
+    check: verified-owners
+    color: red
+    reason: "No named maintainer has a verification record yet (WP5e): the owners make the first verifications once the policy is accepted."
+    known_from: "data/maintainers.yaml: no entry has a `verification` (WP5e D-5)"
+    closes_in: "when each code owner of .github has a verification dated within the last 12 months"
   XF-2:
     repo_id: 1424079165
     name: "repo-registry"

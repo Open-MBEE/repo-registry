@@ -24,8 +24,8 @@ REPO = "https://github.com/Open-MBEE/repo-registry/blob/main"
 GOVERNANCE_NOTE = {  # how a governance kind reads in prose: who holds it (WP4c); data about the kinds, kept here
     "governance/sandbox": "repo-registry today",
     "governance/incubating": "nothing yet",
-    "governance/graduated": "the administration of the Open-MBEE GitHub organization, and repo-registry once it is "
-                            "accepted as the canonical source",
+    "governance/graduated": "the administration of the Open-MBEE GitHub organization and its .github repository "
+                            "(WP5c OD4), and repo-registry once it is accepted as the canonical source",
 }
 
 
@@ -94,6 +94,13 @@ def render(p, in_effect_for, table=("policy-applicability.md", "../policy-applic
     if cites.get("openssf"):
         L.append(f"- OpenSSF security baseline: {fmt(cites['openssf'], 'openssf')} "
                  "(see `data/sources/openssf-security-baseline.yaml`)")
+    for key, label, path in (("dodcio", "DoD CIO, Software Development and Open Source Software (2022), Attachment 2",
+                               "dod-cio-oss-memo.yaml"),
+                              ("ofac", "OFAC sanctions", "ofac.yaml"),
+                              ("ssdf", "NIST SP 800-218 (SSDF)", "nist-800-218.yaml"),
+                              ("c_scrm", "NIST SP 800-161 Rev. 1 (C-SCRM)", "nist-800-161.yaml")):  # WP5e
+        if cites.get(key):
+            L.append(f"- {label}: {fmt(cites[key], key)} (see `data/sources/{path}`)")
     for clause in cites.get("iso12207") or []:
         L.append(f"- ISO/IEC/IEEE 12207:2026 clause {cite('iso12207', str(clause))} (cited by reference)")
     if p.get("secondary_notes"):

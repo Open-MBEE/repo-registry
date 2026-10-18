@@ -1,176 +1,150 @@
 # repo-registry
 
-> **Status: PROVISIONAL.** Nothing here is in effect yet. This repository holds the design and provisional data
-> (kinds, policies with their SOPs, a proposed pilot), plus the scripts and tests that check them, all waiting for
-> the OpenMBEE maintainers' approval. Start with [docs/current-state.md](docs/current-state.md).
+`repo-registry` is the proposed governance registry for the [Open-MBEE](https://github.com/Open-MBEE) GitHub
+organization. It keeps one record of every repository: what kind of repository it is, how strict its controls should
+be, which policies apply to it, and where each policy comes from. Later it will check each repository against those
+policies and tell the right people when something needs doing.
 
-`repo-registry` keeps one record of every repository in the
-[Open-MBEE](https://github.com/Open-MBEE) GitHub organization. For each one it records what kind of
-repository it is, who is responsible for it, and which rules apply to it. It then checks, on a schedule,
-whether each repository follows those rules, and it tells the right people when one doesn't.
+> **Status: sandbox, and PROVISIONAL.** This repository is itself at the Sandbox stage. Nothing here is in effect:
+> no repository is checked, no issue is opened, and no rule is enforced. What exists is a first draft of the model
+> (the taxonomy, the policies with their sources, and each repository's proposed kind), built so the OpenMBEE
+> maintainers can understand it, question it and change it before any of it is adopted.
+
+## Start here: the review pack
+
+The review pack is on this repository's **[wiki](https://github.com/Open-MBEE/repo-registry/wiki)**. It is rendered
+from the model in this repository and never edited by hand, and it is meant to be read in a few minutes. Each page's
+sidebar names the commit it was rendered from:
+
+| Page | What it answers |
+|---|---|
+| [Taxonomy](https://github.com/Open-MBEE/repo-registry/wiki/Taxonomy) | What the types, stages, tiers and kinds mean, and how a repository gets its kind, in plain words |
+| [Repositories](https://github.com/Open-MBEE/repo-registry/wiki/Repositories) | Every repository with its proposed kind and tier, and where that came from |
+| [Policies](https://github.com/Open-MBEE/repo-registry/wiki/Policies) | What each policy asks, when it is in effect, and its step-by-step SOP |
+| [Sources](https://github.com/Open-MBEE/repo-registry/wiki/Sources) | Where each policy comes from, quoted in the source's own words |
+
+We would like to hear from you, especially before the pack is approved: what is wrong, unclear or missing, and
+where a policy asks too much or too little. Reading the sources first helps: each policy cites the guidance it
+follows, and the [Sources](https://github.com/Open-MBEE/repo-registry/wiki/Sources) page shows the passages.
+
+If the wiki isn't published yet, render the same pages locally (see [How to check everything](#how-to-check-everything))
+and open `build/demo/wiki/`.
+
+## How to take part: branches and pull requests
+
+Every change to the model is a **pull request** to this repository, and the pull request is where it is discussed.
+You don't need to be sure you're right to open one: a draft pull request is a good way to start a conversation.
+
+1. **Find the record.** Every row on the wiki links to the file and line that holds it, with a **propose a change** link (it edits the model file
+   in this repository, never the wiki, which is rendered from code).
+2. **Propose the change.** Click **propose a change**, or create a branch, change the record, and open a pull request that says
+   why. If you can't push a branch here, GitHub's edit link opens the pull request from your fork for you.
+3. **Discuss it in the pull request.** Its required check, `check`, validates the model, so a badly formed change
+   can't be merged. The check's summary also shows how the change would alter the rendered pages.
+4. **Decide.** The maintainers decide in the pull request. After a merge, an owner republishes the wiki from `main`.
+
+**Publishing the wiki is manual for now.** An owner runs `uv run python scripts/render.py --mode live` from an
+up-to-date `main`; it refuses unless the tree is clean, equal to `origin/main`, and valid. So the wiki can lag `main`
+until that is run: the sidebar's commit says which version you are reading. Publishing it automatically after each
+merge, from CI, is planned for WP7.
+
+What to edit, by kind of change:
+
+| You want to change | Edit | Notes |
+|---|---|---|
+| **The taxonomy**: a type, stage, tier or kind, its meaning, or the rules that propose a kind | [`data/taxonomy/kinds.yaml`](data/taxonomy/kinds.yaml), [`data/taxonomy/tiers.yaml`](data/taxonomy/tiers.yaml) | The rules are data, read in plain words on the Taxonomy page |
+| **A policy**: what it asks, when it applies, its SOP steps or its citations | [`data/policies/<policy>.yaml`](data/policies/) | The SOP is rendered from the same file |
+| **A repository's label**: its type and stage (its kind) | [`registry.yaml`](registry.yaml) | Any maintainer may merge a kind change. A repository's code owners can also declare its type with one topic: `openmbee-tool`, `openmbee-media`, `openmbee-research` or `openmbee-governance` |
+| **A source**: a quoted passage or a new source | [`data/sources/`](data/sources/) | Quotes are verbatim; the licensed ISO standard is cited by clause number only |
+| **The maintainers**, or their powers | [`data/maintainers.yaml`](data/maintainers.yaml) | Merged by an owner |
+
+For a question that isn't ready to be a proposal, open an issue here.
 
 ## Why it exists
 
-- **To help people find their way.** OpenMBEE has a lot of repositories. Some are experiments (Sandbox), some
-  are established and versioned (Incubating), some are mature and widely relied on (Graduated), and some are kept
-  only for history (Archived). Newcomers, contributors and our community manager need to see which is which at a glance.
-- **To show that we follow our own rules.** Many organizations that use OpenMBEE work in regulated
-  industries. They need to see that who may change what, and who approves a release, follow written
-  rules. We aim to line up with CISA's guidance and NIST's Risk Management Framework (see
-  [The guidance we follow](#the-guidance-we-follow)).
-- **To add friction only where it is needed, and to be clear about it.** Graduated tools and the governance of
-  the organization get the strictest rules. Sandbox tools, media (the website, the wiki, educational material) and
-  research get lighter ones, so they stay easy to contribute to. For every repository you can see which controls
-  apply, which don't, and whether the ones that apply are really in effect.
+- **To help people find their way.** OpenMBEE has many repositories: some are experiments (Sandbox), some are
+  established and versioned (Incubating), some are mature and widely relied on (Graduated), and some are kept for
+  history (Archived). Newcomers and contributors need to see which is which.
+- **To show that we follow our own rules.** Many organizations that use OpenMBEE work in regulated industries,
+  including aerospace and defense. They need to see that who may change what, and who approves a release, follow
+  written rules.
+- **To add friction only where it is needed.** Graduated tools and the governance of the organization get the
+  strictest controls; experiments, media and research stay easy to contribute to. Each policy says where it applies
+  and why.
 
 ## The guidance we follow
 
-This registry is designed to bring OpenMBEE into line with three pieces of guidance:
+Every policy cites its sources, and every source is quoted in its own words in [`data/sources/`](data/sources/):
 
-- CISA, [*Open Source Software: Security Principles and Practices*](https://www.cisa.gov/sites/default/files/2026-08/open-source-software-security-principles-and-practices.pdf)
-  (July 2026).
-- NIST, [SP 800-37 Rev. 2, *Risk Management Framework for Information Systems and Organizations*](https://csrc.nist.gov/pubs/sp/800/37/r2/final)
-  (December 2018).
-- OpenSSF, the [project lifecycle](https://github.com/ossf/tac/blob/main/process/project-lifecycle.md) (where our stages come from: Sandbox, Incubating, Graduated, Archived) and
-  the [security baseline](https://baseline.openssf.org/) (the backbone of our policies, by stage).
+- **Core:** CISA, *Open Source Software: Security Principles and Practices* (2026); NIST SP 800-37 Rev. 2 (the Risk
+  Management Framework) with SP 800-53; OpenSSF, the project lifecycle (our stages) and the security baseline (the
+  backbone of our policies); the DoD CIO memorandum *Software Development and Open Source Software* (2022).
+- **Secondary:** the CNCF project lifecycle; ISO/IEC/IEEE 12207:2026, by clause number only; OFAC's sanctions
+  regulations; NIST SP 800-218 (SSDF); NIST SP 800-161 Rev. 1.
 
-It does this through **minimum viable policy making and controls**:
+The approach is **minimum viable policy**: a small set of policies, each cheap to show compliance with, using what
+GitHub already provides on the Free plan; authority spread to each repository's code owners, with a light load on
+the maintainers.
 
-- **Easy to show, cheap to run.** Showing that we follow our own policies should be as easy as possible, and the
-  overhead as small as possible. We name a small set of policies, and say which apply to which kind of repository.
-  We don't try to cover everything GitHub can do.
-- **A light load at the center.** The maintainers, who govern the organization as a whole, keep their load light.
-  Authority is spread out to each repository's CODEOWNERS, who govern their own repository.
-- **Clear release controls by tier.** Every kind of repository sits in one of four tiers, and each tier makes clear
-  which release controls its CODEOWNERS need to put in place:
-  - **High:** graduated tools that need rigorous release control, and established governance: the administration
-    of the organization itself, and this registry once it is the canonical source.
-  - **Medium:** load-bearing media, such as the website, incubating tools (version 1.0 or later, not yet graduated),
-    and governance the maintainers are calibrating together.
-  - **Low:** repositories that need an owner but have no formal controls beyond someone who looks after them,
-    including sandbox tools that are still experimenting, and this registry while it is being set up.
-  - **None:** archived material, which is read-only once archived.
+## How it works, in brief
 
-## What it is, and what it is not
+A repository has a **type** (tool, media, research or governance) and a **stage** in its lifecycle (Sandbox,
+Incubating, Graduated or Archived). Together they name its **kind**, and the kind gives its **tier** (high, medium,
+low or none), which says how strict its controls are. Each policy says, with a rule over type, stage and tier, where
+it is in effect. A kind says what a repository is, not whether its duties are done; that is what the policies check.
 
-**It is** a small, predictable program plus the rules it applies, all kept in this repository. It looks at the
-repositories, reads the decisions people have recorded, works out which kind of repository each one is, checks the
-rules, and says what needs doing. It is meant to run in GitHub Actions and open GitHub issues. For now (R1) it runs
-read-only on stored snapshots, and its issue texts are local files that are not posted.
+The repository is built as a model, a controller and views:
 
-How it decides which rules apply: measurements of a repository, and attestations by its code owners, give it three
-attributes: its **type** (tool, media, research or governance), its **lifecycle stage** (Sandbox, Incubating,
-Graduated or Archived) and its **tier** (high, medium, low or none, set by type and stage). Each policy says which
-of those it applies to, so the three together decide which policies are in effect. A **kind** is a named
-combination of the three, such as tool/incubating. In short: repo → kind → tier → policies (a summary only, since a
-policy can attach to the type or stage as well as the tier).
+- **The model** is the YAML records, declared as database tables in
+  [`data/schema/model.yaml`](data/schema/model.yaml).
+- **The controller** is the Python in [`scripts/`](scripts/). `scripts/validate.py` admits only well-formed records,
+  on every pull request.
+- **The views** are rendered from the model and never committed. They include the wiki pages and, later, the issues
+  the registry will open.
 
-**It is not:**
-- an AI agent. No language model takes part in any decision.
-- a project tracker.
-- a replacement for each repository's own contributing guide.
-- a way to delete repositories. It never deletes anything. Repositories are archived or made private instead.
-- the authority on a repository's status. People (the governors, below) decide that.
-- its own identity or permission system. Everyone is a GitHub user, and permissions are GitHub's own
-  (teams, roles, CODEOWNERS, rulesets). This system uses them, and its rules can say how they should be
-  used. It never rebuilds what git or GitHub already provides.
+A repository out of line with a policy is not an error in the model; it is what the registry exists to find.
 
-## How to use it: pick your role
-
-You may hold more than one role. Each role has one place to go.
-
-### Reader: you want to find or understand a repository
-
-Use the **wiki of this repository**. It is generated automatically and never edited by hand. It has:
-- an **index page** that lists the highlighted repositories first (incubating or graduated), then every
-  repository with its kind and its CODEOWNERS;
-- **one page per kind of repository**, which says what puts a repository in that kind and which tier it is in;
-- **one page per tier**, which says which kinds are in it (policies can attach to type, stage or tier, so the kind
-  page is where to see every policy in effect for a repository);
-- **one page per policy**, which holds the policy and its standard operating procedure;
-- **views of the registry by kind, by tier and by policy**. Each repository is shown with a red, yellow or green
-  status (out of compliance, can't tell, in compliance), a link to the repository, and a link to its open issues
-  from this system.
-
-### Operator: you look after a repository
-
-Look at the **issues in your own repository**. When something needs doing, the system opens an
-issue there. The issue says what to do, why (which rule, and what was seen), and who is asked.
-
-- If it asks you to **change something** (for example, add a `SECURITY.md` or turn on required
-  reviews), make the change in your repository and close the issue. The next check confirms it.
-- If it asks you a **question** (a fact the system can't see for itself), answer it in one file,
-  `ATTESTATIONS.yaml`, at the root of your repository, committed by a code owner, and point to it from your README.
-  The policy's SOP shows the entry to copy. Each release carries its own attestations: the file is read as it is in
-  the release, and each entry names the release it was made for, so you renew your entries as part of each release
-  ([attestations-format.md](docs/attestations-format.md)).
-
-A repository's operators **are** its CODEOWNERS. Every repository in a tier that needs an owner (high, medium or
-low) must have a CODEOWNERS file, and only a code owner's attestation counts.
-
-In your own repository you can declare its type with one GitHub topic: `openmbee-tool`, `openmbee-media`,
-`openmbee-research` or `openmbee-governance`. A topic beats the registry's guess, and a maintainer's decision beats a
-topic. Otherwise, the only thing you ever do in this repository is propose a change to your repository's kind, by a
-pull request that any maintainer may merge.
-
-### Governor: you set the rules
-
-Governors are the OpenMBEE maintainers. They work **in this repository**:
-- Changes to the kinds of repository, the rules, which kind each repository is, accepted exceptions,
-  and the program itself all go through pull requests here. A change of a repository's kind is merged by any
-  maintainer. Changes to the list of maintainers or their powers, and accepted exceptions, are merged by an owner
-  (one of the two or three maintainers who hold the organization's owner role).
-- Questions that need a decision (for example, a repository that fits no kind) come up as issues here.
-- Every pull request shows what its change would do to the organization before anyone approves it.
-
-Every pull request here runs one required check. It fails if the change would leave any data badly formed (for
-example a kind that doesn't exist, or a maintainer list that doesn't match the proposed CODEOWNERS), and nobody can
-merge past it. A change that shows a repository breaking a rule is still accepted: that is how gaps are found.
-
-While the design is being built and tested, changes here are deliberately easy to make. From the
-first release that makes this the official source of truth, only the OpenMBEE maintainers (as
-CODEOWNERS) may approve changes. How many approvals are needed is not decided yet.
-
-## Expect a lot of open items at first
-
-When it is first switched on, many repositories won't yet meet the rules for their kind. That is
-expected, not a failure. What matters is that every gap is visible, has a named person responsible,
-and has a clear next step.
+**It is not** an AI agent (no language model takes part in any decision), a project tracker, a replacement for each
+repository's own contributing guide, or its own permission system: it uses GitHub's teams, roles, CODEOWNERS and
+rulesets. It never deletes a repository.
 
 ## Roadmap in brief
 
-1. **Demonstrate:** run read-only on a pilot of real OpenMBEE repositories (32 proposed), so the maintainers can
-   see what the proposed rules would do. It ends with five maintainer approvals: the taxonomy, the policies, the
-   pilot subset, each pilot repository's kind, and the named maintainers.
-2. **Switch on and calibrate:** run against the real organization, marked "calibrating, not yet the
-   source of truth," and fix what it gets wrong.
-3. **Make it official:** once ratified, the first release makes it the source of truth, and its own
-   rules tighten.
-4. **Steady state:** every gap between what a repository should be and what it is gets found and routed.
-5. **Later:** nice-to-haves that are not on the critical path.
+1. **Agree on the model** (now): the maintainers review the pack and give five approvals: the taxonomy, the policies,
+   the pilot (31 repositories), each pilot repository's kind, and the named maintainers.
+2. **Sense and show status**: read the organization (read-only), show each repository's status against its policies
+   on the wiki (a compliance dashboard), publish the wiki automatically from CI, and draft the issues it would open.
+3. **Switch on and calibrate**, marked "calibrating, not yet the source of truth", and fix what it gets wrong.
+4. **Make it official**: the first release makes this the source of truth, and its own rules tighten.
 
-Details: [docs/roadmap.md](docs/roadmap.md).
+Details: [docs/status.md](docs/status.md) and [docs/roadmap.md](docs/roadmap.md).
+
+## How to check everything
+
+Everything runs in one locked environment (Python 3.10, PyYAML). Install it once with `uv sync --frozen`. The
+required check on every pull request runs:
+
+```bash
+uv run python scripts/validate.py
+uv run python -m unittest discover -s tests
+```
+
+To render every view, including the wiki pages, into `build/demo/` (ignored by git; nothing is written anywhere
+else):
+
+```bash
+uv run python scripts/render.py
+```
 
 ## Where to read more
 
-- [Current state](docs/current-state.md): **the place to start.** What is decided, where it is recorded, and what
-  is next
-- [Status](docs/status.md): where the work packages stand
-- The views: which policies are in effect for each kind, each policy's SOP, and the proposed pilot. They are
-  rendered from the data, never stored here: run `uv run python scripts/render.py` and open `build/demo/`. The
-  [wiki](https://github.com/Open-MBEE/repo-registry/wiki) publishes the review pack (WP5d): the taxonomy, the
-  repositories, the policies, their SOPs and their sources, for the maintainers to agree on. WP7 extends it into a
-  compliance dashboard. Each pull request's check also shows how its change would alter them.
-
-The scope of record is [WP0](work-packages/WP0-scope-of-work.md) and the later work-package scopes and decision
-records in [work-packages/](work-packages/). The early design documents below are DRAFT inputs; where they disagree
-with those records, the records win.
-
-- [Design overview](docs/design.md): architecture, roles, decisions, evidence
-- [Roadmap](docs/roadmap.md)
-- [Testing and demonstration](docs/testing-and-demonstration.md)
-- Requirements: [formal model](docs/requirements/formal-model.md) ·
-  [taxonomy](docs/requirements/taxonomy.md) · [policy](docs/requirements/policy.md) ·
-  [interfaces](docs/requirements/interfaces.md) · [closed-loop behavior](docs/requirements/closed-loop.md)
+- [docs/current-state.md](docs/current-state.md): **what is decided, and where it is recorded.** The place to start
+  for anyone working on this repository.
+- [docs/status.md](docs/status.md): where the work packages stand.
+- [work-packages/](work-packages/): each package's scope, its decision records (the supervisor's answers, quoted)
+  and its review.
+- The early design documents ([design](docs/design.md), [roadmap](docs/roadmap.md),
+  [testing](docs/testing-and-demonstration.md), [requirements](docs/requirements/)) are DRAFT inputs; where they
+  disagree with the records, the records win.
 
 If you work on this repository with an AI coding assistant, start with [AGENTS.md](AGENTS.md).

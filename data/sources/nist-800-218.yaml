@@ -1,0 +1,38 @@
+# NIST SP 800-218, the Secure Software Development Framework (SSDF) v1.1: the practices the policies cite, quoted
+# verbatim (WP5e D-2, OD4, OD6). A U.S. government work. Policies cite these IDs in cites.ssdf.
+source:
+  title: 'Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software
+    Vulnerabilities'
+  publisher: NIST
+  document: NIST SP 800-218
+  date: 2022-02
+  url: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf
+  note: Each practice's definition and its tasks, verbatim; the notional implementation examples are not quoted. Page numbers
+    are the printed ones.
+practices:
+  PS.1:
+    page: '9'
+    title: Protect All Forms of Code from Unauthorized Access and Tampering
+    text: Help prevent unauthorized changes to code, both inadvertent and intentional, which could circumvent or negate
+      the intended security characteristics of the software. For code that is not intended to be publicly accessible, this
+      helps prevent theft of the software and may make it more difficult or time-consuming for attackers to find vulnerabilities
+      in the software.
+    tasks:
+      PS.1.1: Store all forms of code – including source code, executable code, and configuration-as-code – based on the
+        principle of least privilege so that only authorized personnel, tools, services, etc. have access.
+  PS.2:
+    page: '10'
+    title: Provide a Mechanism for Verifying Software Release Integrity
+    text: Help software acquirers ensure that the software they acquire is legitimate and has not been tampered with.
+    tasks:
+      PS.2.1: Make software integrity verification information available to software acquirers.
+  PS.3:
+    page: '10'
+    title: Archive and Protect Each Software Release
+    text: Preserve software releases in order to help identify, analyze, and eliminate vulnerabilities discovered in the
+      software after release.
+    tasks:
+      PS.3.1: Securely archive the necessary files and supporting data (e.g., integrity verification information, provenance
+        data) to be retained for each software release.
+      PS.3.2: Collect, safeguard, maintain, and share provenance data for all components of each software release (e.g.,
+        in a software bill of materials [SBOM]).

@@ -1,0 +1,39 @@
+# NIST SP 800-161 Rev. 1 (Update 1), Cybersecurity Supply Chain Risk Management: the controls' supplemental C-SCRM
+# guidance the policies cite, quoted verbatim (WP5e D-2, OD4, OD6). A U.S. government work. Cited in cites.c_scrm.
+source:
+  title: Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations
+  publisher: NIST
+  document: NIST SP 800-161r1-upd1
+  date: "2022-05; Update 1 (the PDF read was last modified 2024-10-30)"
+  url: https://doi.org/10.6028/NIST.SP.800-161r1-upd1
+  note: The Supplemental C-SCRM Guidance for each control, verbatim, without the page's running header. Page numbers are
+    the printed ones.
+controls:
+  SR-4:
+    page: '159'
+    title: Provenance
+    text: Provenance should be documented for systems, system components, and associated data throughout the SDLC. Enterprises
+      should consider producing SBOMs for applicable and appropriate classes of software, including purchased software,
+      open source software, and in-house software. SBOMs should be produced using only NTIA-supported SBOM formats that
+      can satisfy [NTIA SBOM] EO 14028 NTIA minimum SBOM elements. Enterprises producing SBOMs should use [NTIA SBOM] minimum
+      SBOM elements as framing for the inclusion of primary components. SBOMs should be digitally signed using a verifiable
+      and trusted key. SBOMs can play a critical role in enabling organizations to maintain provenance. However, as SBOMs
+      mature, organizations should ensure they do not deprioritize existing C-SCRM capabilities (e.g., vulnerability management
+      practices, vendor risk assessments) under the mistaken assumption that SBOM replaces these activities. SBOMs and the
+      improved transparency that they are meant to provide for organizations are a complementary, not substitutive, capability.
+      Organizations that are unable to appropriately ingest, analyze, and act on the data that SBOMs provide likely will
+      not improve their overall C-SCRM posture. Federal agencies should refer to Appendix F to implement this guidance in
+      accordance with Executive Order 14028 on Improving the Nation's Cybersecurity.
+  SR-6:
+    page: 159-160
+    title: Supplier Assessments and Reviews
+    text: In general, an enterprise should consider any information pertinent to the security, integrity, resilience, quality,
+      trustworthiness, or authenticity of the supplier or their provided services or products. Enterprises should consider
+      applying this information against a consistent set of core baseline factors and assessment criteria to facilitate
+      equitable comparison (between suppliers and over time). Depending on the specific context and purpose for which the
+      assessment is being conducting, the enterprise may select additional factors. The quality of information (e.g., its
+      relevance, completeness, accuracy, etc.) relied upon for an assessment is also an important consideration. Reference
+      sources for assessment information should also be documented. The C-SCRM PMO can help define requirements, methods,
+      and tools for the enterprise’s supplier assessments. Departments and agencies should refer to Appendix E for further
+      guidance concerning baseline risk factors and the documentation of assessments and Appendix F to implement this guidance
+      in accordance with Executive Order 14028, Improving the Nation’s Cybersecurity.

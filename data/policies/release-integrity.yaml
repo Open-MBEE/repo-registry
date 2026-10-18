@@ -47,6 +47,13 @@ cites:
   - TG-6
   - TG-7
   - TG-8
+  dodcio:
+  - 2.C(5)
+  ssdf:
+  - PS.2
+  - PS.3
+  c_scrm:
+  - SR-4
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - 'Build releases in CI (continuous integration: the automated build that runs on GitHub Actions). If you don''t have a release workflow yet, start from GitHub''s Actions guide for your language.'
 - 'In that workflow, generate an SBOM (a software bill of materials: a list of everything the release contains, in SPDX or CycloneDX format), and attach it to each release.'

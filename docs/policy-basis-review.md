@@ -13,14 +13,26 @@ coverage on every change.
 
 | Role | Source | Version read |
 |---|---|---|
-| Core | CISA, *Open Source Software: Security Principles and Practices* (2026-07-30), `data/sources/cisa-practices.yaml` | PDF fetched 2026-10-17, page numbers from its footers |
+| Core | CISA, *Open Source Software: Security Principles and Practices* (2026-07-30), `data/sources/cisa-practices.yaml`, quoted verbatim (WP5e) | PDF fetched 2026-10-17, page numbers from its footers |
 | Core | NIST SP 800-53 Rev. 5 (release 5.2.0), OSCAL catalog, `data/sources/nist-800-53.yaml` | `usnistgov/oscal-content` commit 78650f0 |
 | Core | NIST SP 800-37 Rev. 2 (RMF) | official PDF; the step map is in WP0 |
-| Core, backbone | OpenSSF security baseline by stage, `data/sources/openssf-security-baseline.yaml` | `ossf/tac` commit 098faba |
+| Core, backbone | OpenSSF security baseline by stage, `data/sources/openssf-security-baseline.yaml`, each item's words quoted (CC-BY 4.0; WP5e) | `ossf/tac` commit 098faba |
 | Core | OpenSSF project lifecycle (the stages) | `ossf/tac` commit d019efe |
 | Secondary | CNCF project lifecycle | `cncf/toc` commit d815451 |
 | Secondary | ISO/IEC/IEEE 12207:2026, clause numbers only (single-user licensed copy; no text committed) | 2026-04 edition |
 | Platform | GitHub documentation (docs.github.com), each page linked from the policy that uses it | read 2026-10-17 |
+| Core (WP5e) | DoD CIO, *Software Development and Open Source Software*, memorandum, Attachment 2 §2.C, (1), (2), (5), (6) and §3.H, quoted verbatim in `data/sources/dod-cio-oss-memo.yaml`; [PDF](https://dodcio.defense.gov/Portals/0/Documents/Library/SoftwareDev-OpenSource.pdf) | 2022-01-24, cleared for open publication 2022-01-26; read in full 2026-10-18 |
+| Secondary (WP5e) | OFAC sanctions: the SDN list and 31 CFR Chapter V (§560.204 quoted as the archetype of a comprehensively sanctioned jurisdiction), quoted verbatim in `data/sources/ofac.yaml`: by location or residence and listed-party status, not nationality | eCFR as of 2026-10-01; the SDN list page read 2026-10-18 |
+| Platform (WP5e) | GitHub, *GitHub and trade controls* (how the platform applies OFAC rules: by location, not nationality), linked from `verified-code-owners` | docs.github.com, current |
+| Secondary (WP5e) | NIST SP 800-218, SSDF v1.1, PS.1 to PS.3 (protect code, verify integrity, keep provenance), quoted verbatim in `data/sources/nist-800-218.yaml` | 2022-02, the NIST PDF |
+| Secondary (WP5e) | NIST SP 800-161 Rev. 1, Update 1, SR-4 (provenance) and SR-6 (supplier assessment), quoted verbatim in `data/sources/nist-800-161.yaml` | the NIST PDF, NIST.SP.800-161r1-upd1 |
+| Secondary, candidate | NIST SP 1326, *Due Diligence Assessment Quick-Start Guide* (foreign ownership, control or influence) | from the research spike; date to verify |
+| Context, candidate (WP5e) | EAR §734.3(b)(3) and §734.7: published open-source software is not subject to the EAR (published encryption, ECCN 5D002, still notifies under §742.15(b)); why the policy controls contributors, not exports | eCFR, current; from the research spike |
+| Context, candidate (WP5e) | Secretary of Defense, *Enhancing Security Protocols for the Department of Defense*: no procurement of software open to adversarial foreign influence; motivation only, no rule for OSS contributors | 2025-07-18; seen only in a press copy, to verify |
+
+Rows marked *(WP5e)* were adopted by the verified-code-owners package ([WP5e-decisions.md](../work-packages/WP5e-decisions.md),
+OD4); rows marked *candidate* are kept for later. Read and set aside: EPA's EPAAR 1552.239-71 (an EPA contract clause, binding EPA
+contractors only) and EAR Part 732 (the procedure for deciding whether the EAR applies).
 
 ## What GitHub can carry, and what it takes to read it
 

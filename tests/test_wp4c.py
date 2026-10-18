@@ -42,8 +42,9 @@ class GovernanceKindTests(unittest.TestCase):
         before = {"change-review", "codeowners", "contributing", "dependency-management", "history-protection",
                   "license-by-type", "project-files", "secret-protection", "security-design", "security-policy",
                   "static-analysis", "vulnerability-remediation", "workflow-least-privilege"}
+        added_since = {"verified-code-owners"}  # WP5e: in effect for the high tier
         _, t = table()
-        self.assertEqual(set(t["governance/graduated"]), ORG | before)
+        self.assertEqual(set(t["governance/graduated"]), ORG | before | added_since)
 
     def test_R3_friction_rises_with_the_stage(self):
         """R-3: sandbox like tool/sandbox; incubating like tool/incubating minus semantic-versioning; no org policy

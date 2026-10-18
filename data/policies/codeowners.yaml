@@ -31,6 +31,8 @@ cites:
   nist:
   - CM-5
   openssf: []
+  dodcio:
+  - 2.C(1)
 secondary_notes: OpenSSF requires at least one maintainer at Sandbox (project lifecycle).
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - Create `.github/CODEOWNERS` (or `CODEOWNERS` at the root, or `docs/CODEOWNERS`).

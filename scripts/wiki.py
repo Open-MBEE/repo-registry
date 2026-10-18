@@ -43,10 +43,19 @@ SOURCES = [
      "read": "ossf/tac commit d019efe", "doc": "docs/lifecycle-stage-map.md"},
     {"id": "cncf-lifecycle", "role": "Secondary", "name": "CNCF project lifecycle (the stages)",
      "read": "cncf/toc commit d815451", "doc": "docs/lifecycle-stage-map.md"},
+    {"id": "dodcio", "short": "DoD CIO OSS memo", "file": "data/sources/dod-cio-oss-memo.yaml", "items": "sections",
+     "role": "Core", "name": "DoD CIO, Software Development and Open Source Software (2022), Attachment 2"},
+    {"id": "ofac", "short": "OFAC sanctions", "file": "data/sources/ofac.yaml", "items": "items", "role": "Secondary",
+     "name": "OFAC sanctions: the SDN list and 31 CFR Chapter V"},
+    {"id": "ssdf", "short": "NIST SP 800-218 (SSDF)", "file": "data/sources/nist-800-218.yaml", "items": "practices",
+     "role": "Secondary", "name": "NIST SP 800-218, the Secure Software Development Framework (SSDF) v1.1"},
+    {"id": "c_scrm", "short": "NIST SP 800-161r1", "file": "data/sources/nist-800-161.yaml", "items": "controls",
+     "role": "Secondary", "name": "NIST SP 800-161 Rev. 1, Cybersecurity Supply Chain Risk Management"},
     {"id": "iso12207", "short": "ISO/IEC/IEEE 12207", "file": "data/sources/iso12207-clauses.yaml", "items": "clauses", "role": "Secondary",
      "name": "ISO/IEC/IEEE 12207:2026, by clause number and title only (no text of the standard is committed)"},
 ]
-ITEM_WORD = {"cisa": "practice", "nist": "control", "openssf": "item", "iso12207": "clause"}
+ITEM_WORD = {"cisa": "practice", "nist": "control", "openssf": "item", "iso12207": "clause", "dodcio": "section",
+             "ofac": "item", "ssdf": "practice", "c_scrm": "control"}
 
 
 def anchor(heading):
@@ -77,7 +86,12 @@ def line_of(root, rel, *patterns):
 def held_in(rel, line=None, label=None):
     """Where a row is held: the model file (at its line), and GitHub's edit link for a pull request."""
     where = f"{BLOB}/{rel}" + (f"#L{line}" if line else "")
-    return f"[{label or rel.split('/')[-1]}]({where}) · [edit]({EDIT}/{rel})"
+    return f"[{label or rel.split('/')[-1]}]({where}) · {propose(rel)}"
+
+
+def propose(rel):
+    """The link that starts a pull request to the model file. It never edits this wiki, which is rendered from code."""
+    return f'[propose a change]({EDIT}/{rel} "Opens a pull request to {rel} in the repository; this wiki is not edited")'
 
 
 def header(title, what):
@@ -182,7 +196,9 @@ class Pack:
         L = header("OpenMBEE repository registry: the review pack",
                    "The model it shows is in [Open-MBEE/repo-registry](" + REPO + ").")
         L += ["This wiki summarizes the registry's model for the maintainers' review: what kinds and tiers mean, what "
-              "each repository is and why, what each policy asks and of whom, and where each policy comes from.", "",
+              "each repository is and why, what each policy asks and of whom, and where each policy comes from. "
+              "Nothing here is in effect yet: no repository is checked and no rule is enforced. The registry is at the "
+              "sandbox stage, and this is a draft for the maintainers to question and change.", "",
               "| Page | What it shows |", "|---|---|",
               "| [Taxonomy](Taxonomy) | The types, stages and tiers; every kind, its tier, and how a repository gets it "
               "(the rules' heuristics in words, a type topic, or a maintainer's decision) |",
@@ -204,16 +220,20 @@ class Pack:
               "it. A kind says what a repository is, not whether its duties are done: that is checked by the "
               "policies, later (WP6).", "",
               "## How to propose a change", "",
-              "Every row on these pages links to the file in the repository that holds it, with an **edit** link. A "
+              "Every row on these pages links to the file in the repository that holds it, with a **propose a change** "
+              "link. That link edits the model file, never this wiki, which is rendered from code. A "
               "change is a pull request to that file:", "",
               "1. Read the row's source first: the [Taxonomy](Taxonomy) says how a kind is given, and the "
               "[Sources](Sources) say where each policy comes from.",
-              "2. Click **edit** on the row, change the record, and open a pull request with your reason.",
-              "3. The check `check` validates the model on every pull request; an invalid change can't be merged. The "
-              "pull request's checks also show how the change would alter these pages.",
+              "2. Click **propose a change** on the row, change the record, and open a pull request with your reason.",
+              "3. The required check (named `check`) validates the model on every pull request, so an invalid change "
+              "can't be merged. Its summary also shows how the change would alter these pages. Discuss the change in "
+              "the pull request; a draft pull request is a good way to start a conversation, and an issue in the "
+              "repository suits a question that isn't a proposal yet.",
               "4. Who merges: a kind change, any maintainer; the maintainer list and maintainers' powers, an owner "
-              f"([current-state.md]({BLOB}/docs/current-state.md)). The wiki is republished from `main` after the "
-              "merge.", "",
+              f"([current-state.md]({BLOB}/docs/current-state.md)). After a merge, an owner republishes "
+              "the wiki from `main` by hand (`scripts/render.py --mode live`); until WP7 publishes it from CI, the "
+              "wiki can lag `main`, and the sidebar names the commit you are reading.", "",
               "A repository's code owners can also declare its type themselves, with one `openmbee-<type>` GitHub "
               "topic ([Taxonomy](Taxonomy#how-a-type-is-declared))."]
         return L
@@ -353,7 +373,7 @@ class Pack:
             rule = rule_words(p["applies_if"])
             rows.append(f"| [{cell(p['name'])}](#{anchor(p['name'])}) | {cell(p['meaning'])} | {cell(rule)} | {tiers} |")
             cites = []
-            for s in ("cisa", "nist", "openssf", "iso12207"):
+            for s in ("cisa", "nist", "openssf", "iso12207", "dodcio", "ofac", "ssdf", "c_scrm"):
                 refs = p["cites"].get(s)
                 if isinstance(refs, list) and refs:
                     cites.append(f"- {self.sources[s]['short']}: " + ", ".join(self.cite(s, str(r)) for r in refs))
@@ -379,7 +399,7 @@ class Pack:
         body = body[1:] if body[0].startswith("# ") else body
         return header(f"SOP: {self.pols[pid]['name']}",
                       f"From [`data/policies/{pid}.yaml`]({BLOB}/data/policies/{pid}.yaml) "
-                      f"([edit]({EDIT}/data/policies/{pid}.yaml)).") + body
+                      f"({propose(f'data/policies/{pid}.yaml')}).") + body
 
     def sources_page(self):
         L = header("Sources", "From `data/sources/` and `data/policies/_departures.yaml`.")
@@ -401,20 +421,29 @@ class Pack:
     def version(self, s):
         head = model.load(s["file"], self.root).get("source") or {}
         if s["id"] == "cisa":
-            return f"[{head['date']}]({head['url']}); {head.get('note', '')}"
+            return f"[{head['date']}]({head['url']})"
         if s["id"] == "nist":
             return (f"{head['catalog']}, [{head['repo']} {head['commit'][:7]}]"
                     f"(https://github.com/{head['repo']}/blob/{head['commit']}/{head['path']})")
         if s["id"] == "openssf":
             return f"[{head['repo']} {head['commit']}](https://github.com/{head['repo']}/blob/{head['commit']}/{head['path']})"
-        return f"{head.get('standard')}, edition {head.get('edition')}"
+        if s["id"] == "iso12207":
+            return f"{head.get('standard')}, edition {head.get('edition')}"
+        if s["id"] == "dodcio":
+            return f"[{head['date']}]({head['url']}), cleared {head['cleared']}"
+        if s["id"] == "ofac":
+            return f"{head['regulations']}; [the SDN list]({head['sdn_list'].split(',')[0]})"
+        return f"{head['document']}, {head['date']}, [{head['url'].split('/')[-1]}]({head['url']})"
 
     def source_page(self, sid):
         s, items = self.sources[sid], self.items[sid]
         adopted, departed = self.cited_by(sid), self.departures.get(sid) or {}
         word = ITEM_WORD[sid]
         L = header(f"Source: {s['name']}", f"From `{s['file']}`.")
-        L += [f"{s['role']} source. Version read: {self.version(s)}. Back to [Sources](Sources).", "",
+        note = (model.load(s["file"], self.root).get("source") or {}).get("note")
+        L += [f"{s['role']} source. Version read: {self.version(s)}. Back to [Sources](Sources).", ""]
+        L += [f"*About this source:* {cell(note)}", ""] if note else []
+        L += [
               f"{len(items)} {word}s: {sum(1 for i in items if i in adopted)} adopted by a policy, "
               f"{sum(1 for i in items if i in departed)} departed from with a reason"
               + (f", {sum(1 for i in items if i not in adopted and i not in departed)} cited by no policy, each with its context"
@@ -427,7 +456,7 @@ class Pack:
             L.append(f"| [{ref}](#{anchor(ref)}) | {cell(what)} | {by} |")
         L.append("")
         for ref, row in items.items():
-            pat = re.compile(rf'^  "?{re.escape(ref)}"?:')
+            pat = re.compile(rf"^  [\"']?{re.escape(ref)}[\"']?:")
             line = next(i + 1 for i, ln in enumerate((self.root / s["file"]).read_text().splitlines()) if pat.match(ln))
             L += [f"### {ref}", "", self.describe(sid, row), "", f"Held in: {held_in(s['file'], line)}", ""]
             if ref in adopted:
@@ -442,11 +471,17 @@ class Pack:
 
     def describe(self, sid, row):
         if sid == "cisa":
-            return f"{cell(row['practice'])} (page {row['page']}, {cell(row['section'])})"
+            quotes = "\n>\n".join(f"> {cell(x['text'])} *(p. {x['page']})*" for x in row["quotes"])
+            return (f"**{cell(row['section'])}** (page {row['page']}), verbatim:\n\n{quotes}"
+                    + (f"\n\n{cell(row['note'])}" if row.get("note") else ""))
         if sid == "openssf":
-            return f"{cell(row['title'])} (stage {row['stage']}, {row['when']})"
+            return f"**{cell(row['title'])}** (stage {row['stage']}, {row['when']}), verbatim:\n\n> {cell(row['quote'])}"
         if sid == "nist":
             return cell(row["title"]) + (f" (an enhancement of {row['parent']})" if row.get("parent") else "")
+        if sid in ("dodcio", "ofac", "ssdf", "c_scrm"):  # quoted verbatim (WP5e OD6)
+            where = f"page {row['page']}" if row.get("page") else f"[source]({row['where']})"
+            quote = [f"> {cell(row['text'])}"] + [f">\n> **{t}:** {cell(x)}" for t, x in (row.get("tasks") or {}).items()]
+            return f"**{cell(row['title'])}** ({where}), verbatim:\n\n" + "\n".join(quote)
         return cell(row["title"])
 
     def sidebar(self):

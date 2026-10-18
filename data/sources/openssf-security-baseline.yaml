@@ -1,4 +1,6 @@
-# The OpenSSF security baseline, item by item, paraphrased (WP2 backbone, OD1).
+# The OpenSSF security baseline, item by item: a short title of ours, and the baseline's own words in `quote`
+# (WP2 backbone, OD1; quoted verbatim in WP5e, OD6). The baseline's documentation is licensed CC-BY 4.0 (ossf/tac
+# LICENSE); quotes keep link text without URLs, with <br /> as a space.
 # Source: ossf/tac, process/security_baseline.md, commit 098faba (2025-06-27).
 #   https://github.com/ossf/tac/blob/098faba/process/security_baseline.md
 # Each item is adopted by one of our policies (its `cites.openssf` lists the item) or departed from in
@@ -9,28 +11,28 @@ source:
   commit: 098faba
 
 items:
-  SB-1: {stage: sandbox, when: once, title: "New projects or components use a memory-safe language (or C/C++ compiler hardening)"}
-  SB-2: {stage: sandbox, when: once, title: "Two-factor authentication for interactive repository access"}
-  TI-1: {stage: incubating, when: to-become, title: "Onboard to OpenSSF Scorecard (Scorecard GitHub Action)"}
-  TI-2: {stage: incubating, when: to-become, title: "No hard-coded active secrets in the repository"}
-  TI-3: {stage: incubating, when: to-become, title: "Credentials have minimal permissions (least privilege, workflow tokens, few owners and admins)"}
-  TI-4: {stage: incubating, when: to-become, title: "Security insights metadata file (SECURITY_INSIGHTS.yml)"}
-  TI-5: {stage: incubating, when: to-become, title: "A dependencies policy is published, maintained and followed"}
-  TI-6: {stage: incubating, when: to-become, title: "Direct dependencies are pinned in services the project provides"}
-  OI-1: {stage: incubating, when: once, title: "GitHub Actions workflows are set up securely"}
-  OI-2: {stage: incubating, when: once, title: "Static code analysis runs in CI and critical exploitable findings are fixed promptly"}
-  OI-3: {stage: incubating, when: once, title: "A security policy for vulnerability disclosure and response is published and followed; private vulnerability reporting enabled"}
-  OI-4: {stage: incubating, when: once, title: "Data in transit is protected cryptographically"}
-  TG-1: {stage: graduated, when: to-become, title: "An architecture design with up-to-date security controls is maintained"}
-  TG-2: {stage: graduated, when: to-become, title: "No medium or higher severity findings from static analysis"}
-  TG-3: {stage: graduated, when: to-become, title: "Known vulnerabilities fixed: critical promptly, medium or high within 60 days"}
-  TG-4: {stage: graduated, when: to-become, title: "Merging to the main branch needs at least one maintainer approval and passing status checks"}
-  TG-5: {stage: graduated, when: to-become, title: "No generated executable artifacts in the source repository"}
-  TG-6: {stage: graduated, when: to-become, title: "An SBOM is generated and published with each release"}
-  TG-7: {stage: graduated, when: to-become, title: "Release artifacts are cryptographically signed"}
-  TG-8: {stage: graduated, when: to-become, title: "SLSA v1.0 Build Level 3 provenance is published with releases"}
-  TG-9: {stage: graduated, when: to-become, title: "Security events are logged (for internet or infrastructure services run for the foundation)"}
-  TG-10: {stage: graduated, when: to-become, title: "Security events are monitored (for internet or infrastructure services run for the foundation)"}
-  TG-11: {stage: graduated, when: to-become, title: "An initial third-party security audit, with findings addressed (for services run for the foundation)"}
-  OG-1: {stage: graduated, when: once, title: "Known vulnerabilities are fixed and released in coordination with consumers, within the same deadlines"}
-  OG-2: {stage: graduated, when: once, title: "Security audits as needed after the initial one (for services run for the foundation)"}
+  SB-1: {stage: sandbox, when: once, title: "New projects or components use a memory-safe language (or C/C++ compiler hardening)", quote: "A memory-safe language is adopted for new projects or new components."}
+  SB-2: {stage: sandbox, when: once, title: "Two-factor authentication for interactive repository access", quote: "Two-factor authentication (2FA) is enabled for repository interactive access."}
+  TI-1: {stage: incubating, when: to-become, title: "Onboard to OpenSSF Scorecard (Scorecard GitHub Action)", quote: "At this stage, projects MUST onboard to OpenSSF Scorecard by following the installation instructions of Scorecard GitHub Action."}
+  TI-2: {stage: incubating, when: to-become, title: "No hard-coded active secrets in the repository", quote: "There are no hard-coded active secrets in the project source repository."}
+  TI-3: {stage: incubating, when: to-become, title: "Credentials have minimal permissions (least privilege, workflow tokens, few owners and admins)", quote: "Credentials are provisioned with minimal permissions."}
+  TI-4: {stage: incubating, when: to-become, title: "Security insights metadata file (SECURITY_INSIGHTS.yml)", quote: "An initial set of metadata is established for gaining security insights into the project."}
+  TI-5: {stage: incubating, when: to-become, title: "A dependencies policy is published, maintained and followed", quote: "A dependencies policy is published, maintained and followed."}
+  TI-6: {stage: incubating, when: to-become, title: "Direct dependencies are pinned in services the project provides", quote: "Direct dependencies are pinned in internet or infrastructure services and applications your project provides."}
+  OI-1: {stage: incubating, when: once, title: "GitHub Actions workflows are set up securely", quote: "GitHub actions and workflows, if any, are set up securely and remain secure."}
+  OI-2: {stage: incubating, when: once, title: "Static code analysis runs in CI and critical exploitable findings are fixed promptly", quote: "Static code analysis is run in CI/CD pipeline, if code exists, and critical severity exploitable vulnerabilities MUST be fixed promptly."}
+  OI-3: {stage: incubating, when: once, title: "A security policy for vulnerability disclosure and response is published and followed; private vulnerability reporting enabled", quote: "A security policy is published and followed for vulnerability disclosure and response."}
+  OI-4: {stage: incubating, when: once, title: "Data in transit is protected cryptographically", quote: "Data in transit must be protected by cryptographic means."}
+  TG-1: {stage: graduated, when: to-become, title: "An architecture design with up-to-date security controls is maintained", quote: "Architecture design is created with up-to-date security controls for software-based projects."}
+  TG-2: {stage: graduated, when: to-become, title: "No medium or higher severity findings from static analysis", quote: "Project has no medium or higher severity vulnerabilities from SAST scan."}
+  TG-3: {stage: graduated, when: to-become, title: "Known vulnerabilities fixed: critical promptly, medium or high within 60 days", quote: "Publicly known vulnerabilities of critical severity are fixed promptly. Fixes are released promptly. Publicly known vulnerabilities of medium or high severity are fixed. Fixes are released within 60 days."}
+  TG-4: {stage: graduated, when: to-become, title: "Merging to the main branch needs at least one maintainer approval and passing status checks", quote: "Merging into the main branch requires a minimum of one maintainer approval (not including the PR submitter) and all CI/CD status checks passing."}
+  TG-5: {stage: graduated, when: to-become, title: "No generated executable artifacts in the source repository", quote: "Source repository is free of generated executable artifacts."}
+  TG-6: {stage: graduated, when: to-become, title: "An SBOM is generated and published with each release", quote: "If release artifacts are created, SBOM is generated and distributed as a release artifact."}
+  TG-7: {stage: graduated, when: to-become, title: "Release artifacts are cryptographically signed", quote: "If release artifacts are created, release artifacts are cryptographically signed."}
+  TG-8: {stage: graduated, when: to-become, title: "SLSA v1.0 Build Level 3 provenance is published with releases", quote: "If release artifacts are created, SLSA v1.0 Build Level 3 artifact attestation is generated and distributed as a release artifact."}
+  TG-9: {stage: graduated, when: to-become, title: "Security events are logged (for internet or infrastructure services run for the foundation)", quote: "Logging of security events is implemented if your project provides internet or infrastructure service on behalf of the foundation."}
+  TG-10: {stage: graduated, when: to-become, title: "Security events are monitored (for internet or infrastructure services run for the foundation)", quote: "Monitoring of security events is implemented if your project provides internet or infrastructure service on behalf of the foundation."}
+  TG-11: {stage: graduated, when: to-become, title: "An initial third-party security audit, with findings addressed (for services run for the foundation)", quote: "If your project provides internet or infrastructure service on behalf of the foundation, an initial security audit is conducted. Audit findings are addressed."}
+  OG-1: {stage: graduated, when: once, title: "Known vulnerabilities are fixed and released in coordination with consumers, within the same deadlines", quote: "Publicly known vulnerabilities of critical severity are fixed and released in coordination with project consumers promptly. Publicly known vulnerabilities of medium or high severity are fixed and released in coordination with project consumers within 60 days."}
+  OG-2: {stage: graduated, when: once, title: "Security audits as needed after the initial one (for services run for the foundation)", quote: "If your project provides internet or infrastructure service on behalf of the foundation, a security audit is conducted on as-needed basis following the initial audit. Audit findings are addressed."}

@@ -133,6 +133,12 @@ class MetaRuleTests(unittest.TestCase):
             for clause in p["cites"].get("iso12207") or []:
                 self.assertRegex(str(clause), r"^\d+(\.\d+)*$")
         hashes = set(gzip.open(ROOT / "tests/fixtures/iso12207-2026-shingles.txt.gz", "rt").read().split())
+        # A public U.S. government title that the standard also cites, quoted by CISA (WP5e): runs wholly inside it
+        # are not the standard's text.
+        title = ("national institute of standards and technology nist sp 800 218 secure software development framework "
+                 "ssdf version 1 1")
+        hashes -= {hashlib.sha256(" ".join(title.split()[i:i + 8]).encode()).hexdigest()[:16]
+                   for i in range(len(title.split()) - 7)}
         self.assertGreater(len(hashes), 60000)
         files = subprocess.run(["git", "ls-files", "--cached", "--others", "--exclude-standard"], cwd=ROOT,
                                capture_output=True, text=True).stdout.split()

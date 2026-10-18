@@ -1,0 +1,72 @@
+# The DoD CIO memorandum on open source software: the sections the policies cite, quoted verbatim (WP5e D-1, OD6).
+# A U.S. government work (no copyright, 17 U.S.C. 105), cleared for open publication. Policies cite these IDs in
+# cites.dodcio; scripts/policies.py checks they exist. Section numbers are Attachment 2's.
+source:
+  title: Software Development and Open Source Software
+  issuer: Department of Defense, Chief Information Officer (John B. Sherman)
+  date: '2022-01-24'
+  cleared: 2022-01-26, for open publication (DoD Office of Prepublication and Security Review)
+  url: https://dodcio.defense.gov/Portals/0/Documents/Library/SoftwareDev-OpenSource.pdf
+  note: Quoted verbatim from Attachment 2, from the PDF's text layer checked against its page images; page numbers are the
+    printed ones.
+sections:
+  2.C:
+    page: '4'
+    title: '2. USE OF OPEN SOURCE SOFTWARE, paragraph C (its heading; the paragraph has no title)'
+    text: 'Because of the collaborative nature of OSS development, supply chain risk management has unique challenges for
+      OSS components. Program managers, in consultation with support engineers, Authorizing Officials, and agency Chief
+      Information Officers (CIOs) must consider these challenges when determining suitability of OSS:'
+  2.C(1):
+    page: '4'
+    title: Long-Term Support
+    text: 'Long-Term Support: Because of the wide array of business models for creating and maintaining OSS compared to
+      proprietary software, a suitability analysis for OSS must consider risk factors that indicate whether a software module
+      will be adequately supported over the life of the program and how those risks could be mitigated. An analysis of risk
+      factors is essentially an assessment of the "health" of the open source project that maintains that component. For
+      example, "is the OSS project active and/or stable," "when was the last time this OSS project was updated," and "who
+      is contributing to this OSS." Risk mitigations might include consideration of commercial or in-house support for the
+      OSS component, or availability of feasible alternatives (MOSA) if the component should need replacement in the future.'
+  2.C(2):
+    page: '4'
+    title: Trusted Sources
+    text: 'Trusted Sources: The collaborative development model of OSS often results in many versions of the same software
+      being available from disparate sources. Before using OSS, careful consideration must be made regarding the source
+      from which that software is obtained, and a determination of the trustworthiness of that source. For example, software
+      that is actively maintained and distributed by an established consortium or commercial entity is generally lower risk
+      than a version of that component distributed by an untrusted individual. Adopting a never trust, always verify using
+      a rigorous software assurance approach reduces risk as well. For even trusted sources, program managers should maintain
+      continuous awareness of source compromises and be prepared to respond to sudden loss of trust in a repository. Testing
+      should include dynamic code analysis and penetration testing after integration of the updated versions to ensure that
+      updates do not expose DoD systems to new vulnerabilities.'
+  2.C(3):
+    page: '5'
+    title: Dependencies
+    text: "Dependencies: Because of its modular nature, software is often dependent on sub-components, (e.g., libraries, plug-ins, extensions, and other package modules) that may introduce additional risks. This is particularly true for OSS, which often reuses existing components. Software is higher risk, for example, if it relies on versions of sub-components that are out of date or have publicly known vulnerabilities. Assessment of a software component should also consider security risks of the sub-component dependencies, as well as any legal issues regarding the licenses of sub-components. A related concern is the availability of information related to component libraries, dependencies, and sub-components (such as a software bill-of-materials) that can be used to evaluate such risks."
+  2.C(4):
+    page: '5'
+    title: Component Security
+    text: "Component Security: Any software project that actively works to reduce security vulnerabilities is less risky. Because of the open development process used to develop OSS, it can be easier to assess evidence of this activity (or the lack of it) compared to closed development processes. Positive indicators include the use of tools, both out-of-band and in the OSS project's integration pipeline that look for security vulnerabilities (to detect and fix issues before deployment), transparent reporting of security vulnerabilities, history of security reviews, cyber testing (especially third-party audits, tests, or assessments), problems-addressed, and a history of timely vulnerability remediation. The NIST SSDF (reference (k)) includes additional guidance on component security."
+  2.C(5):
+    page: '5'
+    title: Component Integrity
+    text: 'Component Integrity: Any software project that actively maintains cryptographically protected integrity verification
+      for released code, scripts, configuration files, and associated documentation to reduce security risks (e.g., digitally
+      signed hashes of code) is less risky. Software integrity is particularly critical for OSS programs, which because
+      of the availability of source code, are more subject to the creation and distribution of modified, possibly-untrusted
+      versions.'
+  2.C(6):
+    page: '5'
+    title: Influence of Foreign Governments
+    text: 'Influence of Foreign Governments: Public Law 115-232, Section 1655 (reference (l)) requires certain actions to
+      mitigate risks posed by suppliers of information technology and services who have obligations to foreign governments.
+      OSS is specifically exempt from these requirements, but program managers must be cognizant of the potential for influence
+      on OSS projects by foreign governments, and consider what internal reviews of code contributions are conducted by
+      the OSS project, and what external reviews or audits may be necessary to counteract the potential for malicious interference
+      with the project.'
+  3.H:
+    page: '8'
+    title: '3. USE OF OPEN SOURCE DEVELOPMENT APPROACH, paragraph H (its heading; the paragraph has no title)'
+    text: Projects releasing code as open source software to the public or mission partners should publish their intention
+      and ability to accept submissions of proposed enhancements (patches). If the project team accepts submissions from
+      the general public, they must also publish how they will assess, test, and evaluate those submissions for possible
+      incorporation into the managed software baseline.

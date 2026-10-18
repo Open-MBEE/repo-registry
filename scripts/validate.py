@@ -16,6 +16,7 @@ with a policy) is never checked here; it is the controller's error signal, kept 
 Usage: python3 scripts/validate.py [--root .] [--no-render]   (exit 1, naming each problem; exit 0 when valid)
 """
 import argparse
+import datetime
 import filecmp
 import pathlib
 import re
@@ -133,6 +134,7 @@ def type_ok(tables, spec, value):
               "text": lambda v: isinstance(v, str) and v.strip() != "",
               "mapping": lambda v: isinstance(v, dict),
               "predicate": lambda v: isinstance(v, (dict, bool)),
+              "date": lambda v: isinstance(v, datetime.date) or bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(v))),
               "path": lambda v: (tables.root / str(v)).exists(),
               "test": lambda v: test_exists(tables.root, v)}
     if spec not in checks:
@@ -209,11 +211,17 @@ def check_rules(tables):
                        "(WP5c OD1)")
     for s in sorted(tables.keys("signal") - tables.keys("signal_explanation")):
         out.append(f"data/taxonomy/kinds.yaml: signal {s} has no explanation in `explain` (WP5d D-1)")
-    cited = {r["ref"] for r in tables.rows("policy_cite") if r["source"] == "nist"}
-    for r in tables.rows("nist_control"):
-        if r["control_id"] not in cited and not str(r.get("context") or "").strip():
-            out.append(f"data/sources/nist-800-53.yaml: {r['control_id']} is cited by no policy and states no context "
-                       "(WP5d)")
+    for r in tables.rows("maintainer_verification"):
+        if r.get("verified_by") == r.get("user_id"):
+            out.append(f"data/maintainers.yaml: {r.get('user_id')}: a maintainer can't verify themself (WP5e)")
+    for source, table, key in (("nist", "nist_control", "control_id"), ("dodcio", "dodcio_section", "section"),
+                               ("ofac", "ofac_item", "item"), ("ssdf", "ssdf_practice", "practice"),
+                               ("c_scrm", "c_scrm_control", "control")):  # WP5d (NIST), WP5e (the rest)
+        cited = {str(r["ref"]) for r in tables.rows("policy_cite") if r["source"] == source}
+        for r in tables.rows(table):
+            if str(r[key]) not in cited and not str(r.get("context") or "").strip():
+                out.append(f"{tables.m['tables'][table]['rows'].split(',')[0]}: {r[key]} is cited by no policy and "
+                           "states no context")
     covered = tables.keys("pilot_member") | tables.keys("excluded")
     for rid in sorted(set(reg) - covered):
         out.append(f"data/exclude.yaml: {reg[rid].get('name')} is neither in the pilot nor excluded (TX-5)")

@@ -45,6 +45,8 @@ cites:
   - RA-5(11)
   openssf:
   - OI-3
+  dodcio:
+  - 2.C(4)
 setup:                                   # the SOP's set-up steps, in order (WP5b: SOPs are rendered from this file)
 - Add `SECURITY.md` (at the root, in `.github/` or in `docs/`) saying how to report a vulnerability and who responds.
 - Go to Settings, then Advanced Security, and turn on Private vulnerability reporting.

@@ -1,278 +1,587 @@
-# CISA practices that bear on a producer of open source repos, paraphrased with section and page (WP2 D-1).
-# Policies cite these IDs in cites.cisa; scripts/policies.py checks they exist.
+# CISA practices that bear on a producer of open source repos, quoted verbatim with section and page (WP2 D-1;
+# requoted verbatim in WP5e, OD6). Policies cite these IDs in cites.cisa; scripts/policies.py checks they exist.
 source:
   title: 'Open Source Software: Security Principles and Practices'
   publisher: CISA
   date: '2026-07-30'
   url: https://www.cisa.gov/sites/default/files/2026-08/open-source-software-security-principles-and-practices.pdf
-  note: Paraphrased. Page numbers are the document's printed 'Page N of 31' footers. Written for federal agencies; its federal
-    'must's read as 'should' for OpenMBEE.
+  note: 'Quoted verbatim (WP5e OD6): each practice is the guide''s own sentences, list items or table cells, from the PDF''s
+    text, with the printed page (''Page N of 31''); a quote across a page break gives both pages. List bullet glyphs are
+    dropped; footnote numbers inside a sentence are kept as extracted. Written for federal agencies; its federal ''must''s
+    read as ''should'' for OpenMBEE. A U.S. government work (TLP:CLEAR).'
 practices:
   CISA-P-DEFAULT-OPEN:
     page: '13'
     section: Producing OSS > Use the "Default Open Source" Approach
-    practice: 'Adopt "default open source" for custom-developed code: decide openness at design time and require a documented
-      exemption to *not* publish, instead of a justification to publish.'
+    quotes:
+    - page: '13'
+      text: Agencies should adopt a “default open source” approach to custom-developed software. This approach (1) shifts
+        the decision of whether the code should be made open source to the project design phase; and (2) requires justification
+        for why the code should not be open source rather than why it should.
+    - page: '13'
+      text: Instead of requiring staff to justify publishing code as OSS, agencies should require them to identify and document
+        any applicable exemption from OSS publication.
   CISA-P-OPEN-PRACTICES:
     page: 12-13
     section: Producing OSS (intro); Default Open Source
-    practice: Develop in the open from the start; knowing work will be public reduces credential leaks, sensitive comments
-      and architecture details in commit history, and avoids costly pre-release scrubbing.
+    quotes:
+    - page: '13'
+      text: Although software developed through closed development practices can be published as open source, starting with
+        open source development avoids expensive project review to remove sensitive data such as keys.
+    - page: '13'
+      text: Knowing that the work will be public can reduce credential leaks, sensitive comments, architecture details,
+        and other problems embedded throughout the commit history.
   CISA-P-HISTORY-ASSET:
     page: '12'
     section: Producing OSS (benefits list)
-    practice: Treat commit history as a security and audit asset (provenance supports security review, incident response,
-      design rationale).
+    quotes:
+    - page: '12'
+      text: 'Commit history as a security and audit asset: Full provenance of how the software evolved strengthens security
+        reviews, supports incident response, and clarifies design decisions.'
   CISA-P-INVENTORY:
     page: '13'
     section: Maintain Source Code Inventory
-    practice: 'Maintain a source code inventory of custom-developed code (required by OMB M-16-21), integrated with software
-      asset management: identify projects, assign usage type, gather metadata, create/verify/submit the file.'
+    quotes:
+    - page: '13'
+      text: An up-to-date source code inventory facilitates government-wide reuse of custom-developed code; additionally,
+        Office of Management and Budget (OMB) Memorandum (M) 16-21 requires agencies to maintain such inventories.
+    - page: '13'
+      text: 'Agencies should have a process for inventorying source code for custom-developed software that integrates with
+        their existing software asset management processes. These processes should include: Identify custom-developed source
+        code projects. Identify usage type for each project. Gather project metadata. Create, verify, and submit the file.'
   CISA-P-USAGE-TYPE:
     page: '14'
     section: Identify the Usage Type
-    practice: 'Assign each project a usage type before it begins: openSource, governmentWideReuse, or one of the exemptions
-      (exemptByLaw, ...NationalSecurity, ...AgencySystem, ...AgencyMission, ...CIO, ...PolicyDate). Usage type determines
-      access and required reviews.'
+    quotes:
+    - page: '14'
+      text: 'Agencies should determine the usage type of each custom-developed source code project before the project begins.
+        The metadata schema specification has three general usage types for software: open source, government reuse, and
+        exempt. The usage type determines who can access and use the code and the types of reviews the code must undergo.'
+    - page: '14'
+      text: 'Projects intended to be open source or released for government-wide reuse should be tagged as follows: openSource:
+        Project is intended for public release. governmentWideReuse: Project is intended for use only within the federal
+        government.'
+    - page: '14'
+      text: Projects that are not intended for public release should have an approved exemption as outlined in OMB M-16-21.
   CISA-P-USAGE-REVIEWS:
     page: '15'
     section: Identify the Usage Type, Table 1
-    practice: 'Usage type drives required process (Table 1): open source needs inventory, license, public availability and
-      security approval, no exemption; reuse needs exemption from open release and license; exempt needs inventory and exemption
-      only. OCIO, OGC, security offices oversee how usage types are assigned.'
+    quotes:
+    - page: '15'
+      text: A project’s usage type will determine the process it must undergo (see Table 1). For example, if a project is
+        intended to be open source, it should proactively undergo all necessary reviews and compliance checks prior to release.
+        Each agency’s OCIO, Office of the General Counsel (OGC), security, and other relevant offices should play an active
+        role in establishing and overseeing the processes by which developers assign usage types to their projects.
+    note: 'Not quoted (a table): Table 1 (p. 15) extracts as single Y/N cells and cannot be quoted as sentences. Its rows:
+      Open Source Y,N,Y,Y,Y; Govt Reuse Y,Y,Y,N,N; Exempt Y,Y,N,N,N (columns: Inventory, Exemption From Open Source Release,
+      License, Public Availability, Security Approval). The YAML omits that Govt Reuse also requires inventory.'
   CISA-P-METADATA:
     page: '15'
     section: Gather Project Metadata
-    practice: Record project metadata in a machine-processable format (e.g. JSON) with all mandatory schema fields; aim to
-      fill optional ones; automated harvesting is fine but must be checked and supplemented manually for mandatory fields.
+    quotes:
+    - page: '15'
+      text: Agencies should document custom-developed source code project metadata in a machine-processable data format,
+        such as JavaScript Object Notation (JSON). The metadata schema specification defines both mandatory and optional
+        metadata fields for source code projects. Source code project metadata must contain the mandatory metadata fields
+        as defined by the metadata schema specification.
+    - page: '15'
+      text: Source code projects should also aim to include any additional optional metadata schema specification metadata
+        fields.
+    - page: '15'
+      text: Agencies may use automated software tools to glean metadata from source code projects. If using an automated
+        tool, agencies should ensure that the tool’s output includes the required mandatory metadata fields and supplement
+        the tool’s output with manual input where necessary to complete the mandatory fields.
   CISA-P-METADATA-FILE:
     page: 15, 30
     section: Create, Verify, and Submit the File; App. C
-    practice: 'Have consistent guidelines for submitting metadata; one approach is a single agency-wide JSON file covering
-      all custom code (example: dhs.gov/code.json).'
+    quotes:
+    - page: '15'
+      text: Agencies should develop, document, and implement consistent guidelines for submission of JSON files for custom-developed
+        code written or maintained by that agency. One approach is to require the creation of a single JSON metadata file
+        documenting all custom-developed source code written or maintained by an agency.
+    - page: '30'
+      text: For reference, the Cybersecurity and Infrastructure Security Agency (CISA) metadata is available at https://dhs.gov/code.json.
   CISA-P-METADATA-FIELDS:
     page: 27-31
     section: Appendix B; Appendix C
-    practice: 'Example required fields (DHS SCIP): schema version, measurement method, agency, latest release per releasable
-      component (name, version, contractNumber, organization, one-line description even if exempt, usageType, license URL
-      pointing to the repo LICENSE file and license name for open source, at least one tag, contact email, repositoryURL for
-      open/reuse, laborHours, created/lastModified dates in YYYY-MM-DD).'
+    quotes:
+    - page: '27'
+      text: Source code inventory metadata requirements from the Department of Homeland Security (DHS) Source Code Inventory
+        Process (SCIP) are available as an example of required fields. Agencies may establish their own requirements for
+        their source code inventory metadata schema fields.
+    - page: '27'
+      text: This field is an array of multiple collections of fields. However, DHS programs only need to list the latest
+        release as of the time of submission. For IT programs that have separate releasable components, each component should
+        be listed. Note that at least one entry is required.
+    - page: '28'
+      text: This field should have a one-line description of the custom-developed code, even if the code is exempted.
+    - page: '28'
+      text: If the source code project has a usage type of “opensource,” this field must be set to the URL of the LICENSE
+        file in your repository. If the license is not yet known, or if this is not an open source project, the field “licenses”
+        can be set to null.
+    - page: '28'
+      text: This field must contain at least one tag describing the source code project.
+    - page: '29'
+      text: If the source code project has a usage type of “opensource” or “governmentWideReuse,” then this field must be
+        set to the corresponding repository URL, even if that URL is internal to DHS or a component.
+    - page: '29'
+      text: This should be the original creation date of the most recent release of this project in YYYY-MM-DD format.
+    note: 'About the quotes: quotes 2-7 are table cells for releases, releases.description, releases.permissions.licenses.URL,
+      releases.tags (first sentence), releases.repositoryURL, releases.date.created. Other fields (version, measurementType.method,
+      agency, name, contractNumber, organization, usageType, licenses.name, contact.email, laborHours, lastModified) are
+      further rows of the same table, pp. 27-29. Appendix B has no per-release ''version'' field; that appears only in the
+      Appendix C JSON example (p. 30).'
   CISA-P-PREPUB-REVIEW:
     page: 15-16
     section: Publish OSS Projects
-    practice: Review code carefully before publishing so secrets (API keys, database credentials) are not shared; default-open
-      does not reduce the duty to protect sensitive information.
+    quotes:
+    - page: 15-16
+      text: A shift to default open source does not absolve or reduce an agency’s obligation to safeguard sensitive information
+        and preserve critical functions. Agencies must carefully review code before publishing it so sensitive data, like
+        API keys or database credentials, does not get shared by mistake.
   CISA-P-LIFECYCLE-RESOURCES:
     page: '16'
     section: Publish OSS Projects
-    practice: Establish processes and allocate resources to maintain each published project for its whole lifecycle.
+    quotes:
+    - page: '16'
+      text: Agencies should also establish processes and allocate resources as appropriate to maintain the OSS project for
+        the duration of its lifecycle.
   CISA-P-SECRET-DETECT:
     page: '16'
     section: Follow Appropriate Security Practices for OSS
-    practice: Run secret detection in a CI pipeline to prevent publication of sensitive data.
+    quotes:
+    - page: '16'
+      text: Agencies should integrate automated processes—typically implemented using continuous integration tools—to detect
+        and help prevent sensitive data or vulnerabilities in all software, including OSS. For example, secret detection
+        in a continuous integration pipeline can prevent publication of sensitive data, and a dependency scan can identify
+        vulnerabilities.
   CISA-P-DEP-SCAN:
     page: '16'
     section: Follow Appropriate Security Practices for OSS
-    practice: Run dependency scanning (in CI) to identify vulnerabilities.
+    quotes:
+    - page: '16'
+      text: Agencies should integrate automated processes—typically implemented using continuous integration tools—to detect
+        and help prevent sensitive data or vulnerabilities in all software, including OSS. For example, secret detection
+        in a continuous integration pipeline can prevent publication of sensitive data, and a dependency scan can identify
+        vulnerabilities.
   CISA-P-SECURITY-REVIEW:
     page: '16'
     section: Follow Appropriate Security Practices for OSS
-    practice: Automation does not replace security reviews; complete them as an added layer before publication.
+    quotes:
+    - page: '16'
+      text: When agencies follow secure software development practices, they minimize the danger of spilling sensitive information
+        when publishing a project, but agencies must also complete security reviews as an added layer of protection.
   CISA-P-NO-SQUASH:
     page: '16'
     section: Follow Appropriate Security Practices for OSS
-    practice: 'Avoid squashing/removing commit history: it does not purge forks and signals weak commitment, deterring engagement.
-      If history must be squashed for security, keep the full history at the original source location for audit.'
+    quotes:
+    - page: '16'
+      text: 'Although removing the commit history from a project (“squashing”) may appear appealing from a security perspective,
+        agencies should avoid this practice for the following reasons: Squashing does not remove the commit history of derivative
+        project repositories forked from the original project and so may not be effective in containing sensitive information.
+        A lack of commitment to preserving history may discourage OSS stakeholders from engaging with the project after
+        it is published. If an agency must squash commit history for security reasons to publish the project, the agency
+        should preserve the full history in the original source location for audit purposes.'
   CISA-P-LICENSE-PERMISSIVE:
     page: '16'
     section: Determine Appropriate Licensing
-    practice: Use a permissive license (CC0, MIT, ISC, BSD-3) unless circumstances require otherwise; always identify a license;
-      consult legal counsel per project (export controls, privacy, contract terms).
+    quotes:
+    - page: '16'
+      text: Agencies should use a permissive license such as Creative Commons Zero (CC0), Massachusetts Institute of Technology
+        (MIT), Internet Systems Consortium (ISC), or Berkeley Software Distribution (BSD)-3, though circumstances may necessitate
+        a different license. Identifying a license for a project is an established best practice for all OSS projects. Agencies
+        should consult with legal counsel to determine the appropriate licensing for each custom-developed source code project.
+        Relevant legal considerations may include applicable export controls, privacy concerns, and contract terms.
   CISA-P-PUBLIC-HOST:
     page: '16'
     section: Release OSS Projects on Public Repository
-    practice: Publish code cleared for release on a widely used online code repository platform.
+    quotes:
+    - page: '16'
+      text: Agencies should publish source code identified for public release as an OSS project on a widely used online
+        code repository.
   CISA-P-STAFF-ACCOUNTS:
     page: '16'
     section: Release OSS Projects on Public Repository
-    practice: Staff doing official work use accounts tied to their .gov email, with name and agency affiliation in the profile
-      bio.
+    quotes:
+    - page: '16'
+      text: When conducting official business, agency staff should use accounts affiliated with their .gov email and include
+        their name and agency affiliation in their user biography.
   CISA-P-README:
     page: '16'
     section: Release OSS Projects on Public Repository
-    practice: Include README.md with a project overview and a statement that the project was developed by or with funding
-      from a U.S. federal agency.
+    quotes:
+    - page: '16'
+      text: 'To promote productive engagement, agency projects should include:'
+    - page: '16'
+      text: A README.md file that contains an overview of the project and states that the project was developed by or with
+        funding from a U.S. federal agency.
   CISA-P-LICENSE-FILE:
     page: '16'
     section: Release OSS Projects on Public Repository
-    practice: Include a LICENSE file identifying the project's license(s).
+    quotes:
+    - page: '16'
+      text: 'To promote productive engagement, agency projects should include:'
+    - page: '16'
+      text: A LICENSE file that identifies the project’s associated license(s).
   CISA-P-CONTRIBUTING:
     page: '16'
     section: Release OSS Projects on Public Repository
-    practice: Include CONTRIBUTING.md with contribution guidelines.
+    quotes:
+    - page: '16'
+      text: 'To promote productive engagement, agency projects should include:'
+    - page: '16'
+      text: A CONTRIBUTING.md file that outlines guidelines for contributing to the project.
   CISA-P-SECURITY-MD:
     page: '16'
     section: Release OSS Projects on Public Repository
-    practice: Include SECURITY.md containing the vulnerability disclosure policy and a security point-of-contact.
+    quotes:
+    - page: '16'
+      text: 'To promote productive engagement, agency projects should include:'
+    - page: '16'
+      text: A SECURITY.md file that includes the project’s vulnerability disclosure policy and lists contact information
+        for a security point of contact.
   CISA-P-SBOM-RELEASE:
     page: '17'
     section: Release OSS Projects on Public Repository
-    practice: Publish an SBOM as a release artifact with each software release (update frequency per CISA SBOM Minimum Elements,
-      "Frequency" element, fn 18).
+    quotes:
+    - page: '16'
+      text: 'To promote productive engagement, agency projects should include:'
+    - page: '17'
+      text: An SBOM published as a release artifact with each software release.
+    - page: '17'
+      text: See the Frequency Element in CISA’s Minimum Elements for a Software Bill of Materials for guidance on how often
+        to update an SBOM.
   CISA-P-VDP-BOD:
     page: '17'
     section: Release OSS Projects on Public Repository
-    practice: Comply with applicable CISA BODs/emergency directives; e.g. include a VDP in each OSS repo as required by BOD
-      20-01.
+    quotes:
+    - page: '17'
+      text: 'Agency-published OSS projects must adhere to applicable binding operational directives (BODs) and emergency
+        directives published by CISA. For example, agencies should include a VDP in their OSS project repositories, as required
+        by BOD-20-01: Develop and Publish a Vulnerability Disclosure Policy.'
   CISA-P-VDP-AI-REPORTS:
     page: 10-11
     section: Patch Management at Scale
-    practice: For agency-maintained projects, review and update the VDP/security policy to set expectations for AI-supported
-      and semi-automated vulnerability reports, to make triage of higher report volume manageable.
+    quotes:
+    - page: 10-11
+      text: For agency-maintained OSS projects, agencies should review each project’s VDP or security policy and update
+        it to address expectations for researchers submitting AI-supported and semi-automated vulnerability reports. Explicitly
+        outlining expectations for vulnerability reports can make triaging the increased volume of vulnerability reports
+        more manageable.
   CISA-P-SECURITY-CONTACT:
     page: '10'
     section: When There Is New Vulnerability Information but No Available Patch
-    practice: (Consumer side, implies producer duty) Reporters look for a VDP/security policy and security contact info, possibly
-      in SECURITY.md; unresponsive maintainers are read as a sign of end-of-support.
+    quotes:
+    - page: '10'
+      text: If an agency discovers a vulnerability in OSS with an associated CVE ID, the agency should follow the project’s
+        vulnerability disclosure policy (VDP) or security policy, if available.
+    - page: '10'
+      text: If a project does not have a published VDP, agencies should contact the maintainer(s) to report the vulnerability
+        and propose a fix, if possible. Security contact information may be in a SECURITY.md file.
+    - page: '10'
+      text: Lack of response to new vulnerability information from project maintainers should trigger a re-evaluation of
+        OSS component use. Unresponsive maintainers may indicate that the OSS project is end-of-support.
   CISA-P-CONTRIB-MINIMAL:
     page: '17'
     section: Release OSS Projects on Public Repository
-    practice: 'Contribution guidelines should meet agency needs while minimizing burden on contributors; requirements on external
-      contributors should be minimal (example: code.mil asks for a DCO sign-off attesting the contribution is the contributor''s
-      own).'
+    quotes:
+    - page: '17'
+      text: Contribution guidelines should aim to meet agency requirements while minimizing additional work imposed on potential
+        contributors.
+    - page: '17'
+      text: Agencies should also identify any requirements for external contributors, though these should be minimal. For
+        example, the code.mil site requires contributors to sign a Developer Certificate of Origin (DCO) indicating that
+        they attest that their contribution is wholly their own.
   CISA-P-CONTRIB-TYPES:
     page: '17'
     section: Release OSS Projects on Public Repository
-    practice: State which contribution types are accepted (e.g. bug reports only, no code changes).
+    quotes:
+    - page: '17'
+      text: Agencies should specify the type of acceptable contributions. For example, some projects accept bug reports
+        but do not accept code changes.
   CISA-P-CONTRIB-TESTS:
     page: '17'
     section: Release OSS Projects on Public Repository
-    practice: If code contributions are accepted, require tests with each code contribution and state any required documentation
-      or process.
+    quotes:
+    - page: '17'
+      text: If accepting code contributions, the project should require that contributors submit corresponding tests along
+        with their code contribution and specify any required documentation or process.
   CISA-P-CODE-REVIEW:
     page: '17'
     section: Release OSS Projects on Public Repository
-    practice: Code from external contributors is reviewed for suitability and goes through the CI pipeline, the same as any
-      internal change.
+    quotes:
+    - page: '17'
+      text: Code from external contributors should undergo review for suitability and go through the continuous integration
+        pipeline (as with any change, internal or external).
   CISA-P-RELEASE-MARK:
     page: '17'
     section: Maintain OSS Projects
-    practice: Clearly identify updates and new version releases, and run the source code inventory process for each update
-      or new version.
+    quotes:
+    - page: '17'
+      text: Agencies should clearly identify updates or new version releases and follow the agency’s source code inventory
+        process for each update or new version.
   CISA-P-MAINT-SCANS:
     page: '17'
     section: Maintain OSS Projects
-    practice: Apply normal maintenance practice (regular security scans and remediation) to OSS projects; see NIST SSDF.
+    quotes:
+    - page: '17'
+      text: Software maintenance best practices—such as regular security scans and remediation—also apply to OSS projects.
+        See the National Institute of Standards and Technology (NIST) Secure Software Development Framework (SSDF) for more
+        information.
   CISA-P-ACTIVE-DEF:
     page: '17'
     section: Archive End-of-Support OSS Projects
-    practice: A project counts as actively maintained only if none of its dependencies are EOS and security patches land within
-      BOD 26-04 remediation timelines (assume not publicly exposed, fn 20).
+    quotes:
+    - page: '17'
+      text: 'An agency-maintained OSS project is considered actively maintained if none of the project’s dependencies are
+        EOS and if security patches are applied by the BOD 26-04: Prioritizing Security Updates Based on Risk remediation
+        timeline 20.'
+    - page: '17'
+      text: 'In this case, agencies may assume “No” for the “Publicly Exposed” column of BOD 26-04 Table 1: Remediation
+        Timelines.'
   CISA-P-EOS-MARK:
     page: '17'
     section: Archive End-of-Support OSS Projects
-    practice: When the agency stops maintaining a project, state clearly in the repo that it is no longer maintained and unsupported
-      (e.g. GitHub "archive").
+    quotes:
+    - page: '17'
+      text: When an agency determines it will no longer maintain an OSS project, the agency should clearly indicate in the
+        project’s repository that the OSS project is no longer maintained and will be unsupported going forward. In GitHub,
+        for example, the agency would “archive” the project.
   CISA-P-EOS-PUBLISH:
     page: '17'
     section: Archive End-of-Support OSS Projects
-    practice: Optionally submit support info to endoflife.date and use the OpenEOX schema to publish support status to downstream
-      users.
+    quotes:
+    - page: '17'
+      text: Agencies may also consider submitting their project’s support information to the endoflife.date project and
+        using the OpenEOX 21 schema to share support status information with downstream users.
   CISA-P-EOS-FORKS:
     page: '18'
     section: Archive End-of-Support OSS Projects
-    practice: On withdrawal of support, identify any active forks the agency knows of.
+    quotes:
+    - page: '18'
+      text: Agencies should also identify any active forks of the project of which they are aware.
   CISA-P-CONTRACT-RIGHTS:
     page: '18'
     section: Secure Rights for Government Reuse for Contractor-Developed Software
-    practice: 'In custom-development contracts: secure unlimited government data rights; store code in a government-owned
-      modern VCS; attach a permissive license (MIT, ISC, BSD-3) pending review; require contractors to upstream fixes to OSS
-      libraries used; consider requiring open source unless exempted.'
+    quotes:
+    - page: '18'
+      text: 'When contracting for custom software development, agencies should secure and enforce the rights needed to allow
+        government-wide reuse of the code, as required by OMB M-16-21. Agencies should also consider requiring that contracts
+        for custom software development make the software open source unless specifically exempted by the agency. In executing
+        contracts for custom software development, agencies should aim to ensure that: The U.S. government has unlimited
+        data rights to use, distribute, and modify all deliverables, products, designs, data, documentation, tests, source
+        code, configuration, files, and other materials developed throughout the contract. Any software written will be
+        stored using a modern version control system owned and controlled by the government. Any code repositories have
+        a modern, permissive open source license attached; for example, MIT, ISC, or BSD-3 are suitable for public release
+        pending review and approval by the government. The contractor is required to submit any functional, security, or
+        quality corrections to OSS libraries used in the developed system back upstream to their origin source code repositories,
+        following that repository’s process for contributions and agency official guidance. Any exceptions must be approved
+        by the agency.'
   CISA-P-SSDF:
     page: '18'
     section: Follow Secure Development Lifecycle Best Practices
-    practice: Follow secure development lifecycle practice (NIST SP 800-218 SSDF v1.1; OpenSSF and OWASP guidance) when developing
-      and publishing OSS.
+    quotes:
+    - page: '18'
+      text: 'As with all software, agencies should follow secure software development practices when developing and publishing
+        OSS. The National Institute of Standards and Technology (NIST) SP 800-218: Secure Software Development Framework
+        (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities outlines secure software
+        development practices. OSS foundations publish guidance on secure software development for OSS.'
   CISA-P-CI-PATCH-AUTO:
     page: '10'
     section: Patch Management at Scale
-    practice: Automate dependency and patch management in CI/CD, including automated patch testing and generation of artifacts
-      such as SBOMs.
+    quotes:
+    - page: '10'
+      text: To benefit from the faster patch development and mitigate the impact of the newly discovered vulnerabilities,
+        agencies should automate dependency management and patch management workflows. Automated workflows for applying
+        and testing patches can be a part of a continuous integration/continuous delivery (CI/CD) pipeline.
+    - page: '10'
+      text: Such workflows can also automatically generate artifacts, such as SBOMs, that can further support software risk
+        management.
   CISA-P-DEV-GUIDES:
     page: 5, 13
     section: What Is OSS? (fn 5); Default Open Source (fn 16)
-    practice: For development practices the doc defers to the CISA GitHub "Development Guide" and OpenSSF "Best Practices
-      for Open Source Developers".
+    quotes:
+    - page: '5'
+      text: This document does not cover specific open source development practices in depth. Resources on open source development
+        best practices include the CISA GitHub repository Development Guide and OpenSSF’s Best Practices for Open Source
+        Developers.
+    - page: '13'
+      text: For examples of open source development best practices, see OpenSSF’s Best Practices for Open Source Developers
+        and the CISA GitHub repository Development Guide.
   CISA-C-UPSTREAM:
     page: 9, 11
     section: Follow Established Patching Principles; Contributing to OSS Projects
-    practice: Contribute to OSS you use; "collaborate, don't demand" and push fixes upstream.
+    quotes:
+    - page: '9'
+      text: 'In general, agencies should apply the following two principles in approaching fixes or patches for OSS: (1)
+        collaborate, don’t demand; (2) push fixes upstream.'
+    - page: '11'
+      text: Agencies should contribute to the OSS projects they use.
   CISA-C-INTERNAL-REVIEW:
     page: '11'
     section: Contributing to OSS Projects
-    practice: Public contributions need internal review processes suited to fast, high-volume OSS interaction; an OSPO is
-      a common vehicle.
+    quotes:
+    - page: '11'
+      text: Contributions to OSS projects are public and thus require internal agency review before publication. Agencies
+        should establish review processes that adhere to agency standards for public content review and that are sensitive
+        to an OSS-specific context. Contributions may be high volume with quick turnarounds, such as when participating
+        in asynchronous discussions or responding to questions. Many organizations have found that an Open Source Program
+        Office (OSPO) is an effective organizational tool for integrating these unique considerations into agency processes.
   CISA-C-LEGAL:
     page: 11-12
     section: Perform Legal Review
-    practice: Legal review of a project before contributing (licenses, non-technical contribution rules, contract scope);
-      once per project unless license or contribution criteria change.
+    quotes:
+    - page: '11'
+      text: 'Agency legal counsel should review a project for suitability for agency contribution. Legal review helps determine
+        whether the agency can contribute to the project in compliance with applicable legal requirements. The review may
+        include, but is not necessarily limited to, evaluation of:'
+    - page: '12'
+      text: The open source license(s) in use. Non-technical contribution guidelines and requirements. Compatibility with
+        scope of the contract (if contribution comes from a contractor). Legal review need only happen once for a given
+        OSS project unless there are changes to the project’s license or contribution criteria.
   CISA-C-PRIVACY:
     page: '12'
     section: Perform Privacy Review
-    practice: Privacy review and staff training; automated checks for keys, passwords, configuration, hostnames/IPs, credentials;
-      no sensitive data in test cases.
+    quotes:
+    - page: '12'
+      text: Agencies should review contributions to OSS projects for privacy concerns and train staff on what information
+        is appropriate to contribute. Security, development, and operations (SecDevOps) tools can conduct automated privacy
+        checks on contributions.
+    - page: '12'
+      text: For example, a test case written for a code change, which uses a piece of sensitive data as the basis for the
+        test, should not be committed upstream.
+    - page: '12'
+      text: 'Sensitive information that may be mistakenly included in a contribution includes: Security keys Passwords Configuration
+        information Hostnames and Internet Protocol addresses Authentication credentials'
   CISA-C-INCENTIVES:
     page: '11'
     section: Contributing to OSS Projects
-    practice: Incentivize contributions (CPAR notes, awards, upstream deliverables in goals and performance measures).
+    quotes:
+    - page: '11'
+      text: 'Agencies can use the following practices to incentivize OSS contributions: Note contributions to OSS projects
+        in Contractor Performance Assessment Reports (CPAR) for software development activities. Recognize outstanding engineering
+        by agency developers’ efforts through excellence awards. Include upstream deliverables as part of documented goals,
+        plans, and performance measures for programs and for individuals, where appropriate.'
   CISA-C4-CODEBASE:
     page: '24'
-    section: 'Source code and dependencies. Examples: date of most recent commit, presence of CVEs, out-of-date dependencies.'
-    practice: Codebase
+    section: 'Appendix A, the C4 Framework: Codebase'
+    quotes:
+    - page: '24'
+      text: 'Codebase: The source code and dependencies that make up the software component of interest;'
+    - page: '24'
+      text: 'Examples: Date of most recent commit, presence of Common Vulnerabilities and Exposures (CVE), out-of-date dependencies.'
   CISA-C4-COMMUNITY:
     page: '24'
-    section: 'The people/organization maintaining and contributing. Examples: number of maintainers, foundation membership,
-      maintainer affiliation with organizations of concern.'
-    practice: Community
+    section: 'Appendix A, the C4 Framework: Community'
+    quotes:
+    - page: '24'
+      text: 'Community: The organization or group of individuals that maintains and contributes to the project;'
+    - page: '24'
+      text: 'Examples: The number of maintainers, whether the project is part of a foundation, maintainers’ affiliation
+        with organizations of concern.'
   CISA-C4-CONDUCT:
     page: '24'
-    section: 'Expected behavior in project guidelines plus observed behavior in metadata. Examples: VDP present, code review
-      required, whether maintainers accept their own commits, the license, code of conduct.'
-    practice: Conduct
+    section: 'Appendix A, the C4 Framework: Conduct'
+    quotes:
+    - page: '24'
+      text: 'Conduct: Expected behavior from maintainers and contributors as outlined in the project’s guidelines and observed
+        behavior from project metadata;'
+    - page: '24'
+      text: 'Examples: Whether there is a vulnerability disclosure policy (VDP), whether the project requires code review,
+        whether maintainers accept their own commits, the associated license, code of conduct.'
   CISA-C4-CONFIG:
     page: '24'
-    section: 'The implementation(s). Examples: secure-by-default configuration, level of configuration supported.'
-    practice: Configuration
+    section: 'Appendix A, the C4 Framework: Configuration'
+    quotes:
+    - page: '24'
+      text: 'Configuration: The implementation(s) of the software component.'
+    - page: '24'
+      text: 'Examples: Whether the default configuration is secure, the level of configuration supported.'
   CISA-C4-HOLISTIC:
     page: 24-25
-    section: Categories are a starting point; judge holistically rather than on one data point.
-    practice: Use of categories
+    section: 'Appendix A, the C4 Framework: Use of categories'
+    quotes:
+    - page: 24-25
+      text: The four categories are a starting point for identifying what information about an OSS component would qualify
+        it as trustworthy or untrustworthy. Rather than use one single data point to determine whether a project is trustworthy
+        or not, this approach encourages software consumers to look holistically at the project before deciding.
   CISA-C4-S1-CRITERIA:
     page: '25'
-    section: 'Pick criteria from the four categories (NIST SSDF can help), with stakeholders. Criteria must be measurable:
-      e.g. not "follows transparency practices" but "includes an SBOM for each version".'
-    practice: 'Step 1: Identify Criteria'
+    section: 'Appendix A, the C4 Framework: Step 1: Identify Criteria'
+    quotes:
+    - page: '25'
+      text: '1. Identify Criteria: Select risk criteria from the C4 categories (codebase, community, conduct, configuration)
+        that will be the basis for evaluating software trustworthiness. The National Institute of Standards and Technology
+        (NIST) SP 800-218: Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the
+        Risk of Software Vulnerabilities can help organizations identify relevant criteria. The risk manager or project
+        manager should identify criteria in collaboration with their stakeholders through facilitation and elicitation of
+        requirements. Criteria must be measurable. An example of an unmeasurable criterion is “the project follows software
+        component transparency practices.” A measurable alternative is “the project includes a software bill of materials
+        (SBOM) for each version.”'
   CISA-C4-S2-TOLERANCE:
     page: '25'
-    section: Set tolerance per intended use and environment (PII-handling low, graphic design higher); weight each criterion
-      by impact; optionally mark red-flag criteria whose failure alone disqualifies.
-    practice: 'Step 2: Determine Risk Tolerance'
+    section: 'Appendix A, the C4 Framework: Step 2: Determine Risk Tolerance'
+    quotes:
+    - page: '25'
+      text: '2. Determine Risk Tolerance: Decide how much overall risk is acceptable given the intended use and deployed
+        environment of the component and assign weights to each individual criterion.'
+    - page: '25'
+      text: For example, risk tolerance for a component that will interact with personally identifiable information (PII)
+        may be relatively low, whereas risk tolerance for a component that will support graphic design development may have
+        a relatively high risk tolerance.
+    - page: '25'
+      text: Software choosers should assign each identified criterion a weight proportional to its impact on overall risk.
+    - page: '25'
+      text: This process can include selecting some criteria as red flags, meaning that failure of any one red flag criterion
+        renders the component not trustworthy, even if all other criteria are met.
   CISA-C4-S3-OBSERVE:
     page: '25'
-    section: 'Repeatable, consistent collection, manual or automated (Hipcheck, CHAOSS, OpenSSF Scorecard). Mind tool limits:
-      Scorecard checks SBOM presence, not contents.'
-    practice: 'Step 3: Collect Observations'
+    section: 'Appendix A, the C4 Framework: Step 3: Collect Observations'
+    quotes:
+    - page: '25'
+      text: '3. Collect Observations: Derive the metrics needed for each criterion. Information collection should be repeatable
+        and consistent across individual risk managers within the agency. The agency can collect information manually or
+        with automated tools.'
+    - page: '25'
+      text: Tools such as Hipcheck, CHAOSS, and Scorecard are freely available to gather information about some likely criteria
+        of interest.
+    - page: '25'
+      text: Software choosers should carefully consider the details of the information tools provide. Scorecard, for example,
+        can verify whether the project has an SBOM, but it will not look at the content of the SBOM.
   CISA-C4-S4-EVALUATE:
     page: 25-26
-    section: Pass/fail each criterion and document results (e.g. "at least two active maintainers" fails with one).
-    practice: 'Step 4: Evaluate Against Criteria'
+    section: 'Appendix A, the C4 Framework: Step 4: Evaluate Against Criteria'
+    quotes:
+    - page: 25-26
+      text: '4. Evaluate Against Criteria: Compare observations to each individual criterion and determine whether the component
+        satisfies or fails each one. Each individual criterion should be assessed and the results documented for later review.
+        For example, if one of the criteria is that there must be at least two active maintainers but there is only one,
+        the component failed that criteria.'
   CISA-C4-S5-COMPARE:
     page: '26'
-    section: 'Use weights and red flags to decide: use, avoid, gather more information, or proceed with safeguards.'
-    practice: 'Step 5: Compare Observed Risk to Risk Tolerance'
+    section: 'Appendix A, the C4 Framework: Step 5: Compare Observed Risk to Risk Tolerance'
+    quotes:
+    - page: '26'
+      text: '5. Compare Observed Risk to Risk Tolerance: Looking at how the component fared against the criteria, determine
+        whether the component’s risk meets or exceeds the identified risk tolerance.'
+    - page: '26'
+      text: In some cases, the results are clear, and it is obvious whether the component meets or exceeds the risk tolerance.
+        This can happen when the component fails a red flag criterion or when it either meets all criteria or fails all
+        of them. Using the criterion weights can help show whether the component’s overall risk is above or below the acceptable
+        level. Based on these results, agencies decide whether to use the component, avoid it, gather more information,
+        or move forward only with added safeguards.
   CISA-C4-REEVAL:
     page: 7-8, 10
-    section: Re-evaluate on a schedule and on trigger events such as new releases; maintainer unresponsiveness triggers re-evaluation;
-      last resort is maintaining a fork.
-    practice: Ongoing re-evaluation (body text)
+    section: 'Appendix A, the C4 Framework: Ongoing re-evaluation (body text)'
+    quotes:
+    - page: 7-8
+      text: Agencies should rigorously evaluate the trustworthiness of OSS components both before adoption and throughout
+        the time the component is in use. Ongoing re-evaluations are essential to maintaining strong software security practices
+        and ensuring vigilance against emerging risks. Agencies should determine a schedule for regular re-evaluation of
+        OSS already in use and identify events that trigger an immediate re-evaluation, such as new version releases.
+    - page: '10'
+      text: Lack of response to new vulnerability information from project maintainers should trigger a re-evaluation of
+        OSS component use.
+    - page: '10'
+      text: As a last resort, agencies may take on maintenance of a fork of the component until a suitable alternative is
+        identified.
