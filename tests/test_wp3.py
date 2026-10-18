@@ -41,12 +41,16 @@ class ReadOnlyTests(unittest.TestCase):
 
 class PolicyTests(unittest.TestCase):
     def test_R3_org_policies_pass_meta_rules_and_adopt_SB2(self):
-        """R-3: org policies meet WP2's meta-rules, apply only to the org's administration, and SB-2 is adopted."""
+        """R-3: org policies meet WP2's meta-rules, apply only to governance/graduated, and SB-2 is adopted.
+
+        Since WP4c, governance/graduated also carries the repository policies (WP4c OD1), so the org policies are a
+        subset of its row rather than the whole row.
+        """
         pols, deps = P.load_policies(ROOT / "data/policies")
         table = P.applicability(pols, load(ROOT / "data/taxonomy/kinds.yaml"))
         org_ids = {"org-two-factor", "org-few-owners", "org-base-permission", "maintainers-match",
                    "governance-roles-named"}
-        self.assertEqual(set(table["governance/graduated"]), org_ids)
+        self.assertLessEqual(org_ids, set(table["governance/graduated"]))
         for kind, ids in table.items():
             if kind != "governance/graduated":
                 self.assertEqual(set(ids) & org_ids, set(), kind)

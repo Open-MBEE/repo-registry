@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, at the WP4b acceptance gate. Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP4c delivery. Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -22,7 +22,13 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
   - **WP4b** (docs sweep and checkpoint): accepted in 3f2c557. Review:
     [WP4b-review.md](../work-packages/WP4b-review.md); drift report:
     [WP4b-drift-report.md](../work-packages/WP4b-drift-report.md).
-  - **WP5 to WP8:** planned (see the breakdown below), not yet scoped.
+  - **WP4c** (the governance kinds, and OpenSSF as a core citation): scope approved in 8fb2070
+    ([WP4c-scope-of-work.md](../work-packages/WP4c-scope-of-work.md)); delivered on `wp4c-work`, waiting for
+    acceptance. The change is recorded in [WP1-amendment-3.md](../work-packages/WP1-amendment-3.md).
+  - **WP4d** (the attestations file): scope on `wp4d-scope`, waiting for approval.
+  - **WP5** (meta-rule checks in CI, and the move): in progress, paused on `wp5-work` until WP4c and WP4d are
+    accepted. Nothing has been written to the org.
+  - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
   - a read-only snapshot of the org's 181 public repos (`data/snapshots/2026-10-18`);
   - kinds as type × lifecycle stage, with stages adopted from CNCF and OpenSSF
@@ -51,7 +57,8 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 1. WP1, kinds and tiers: **accepted**.
 2. WP2, policies: **accepted**. WP2a, license by type: **accepted**.
 3. WP3, org governance: **accepted**.
-4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**.
+4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
+   kinds: **delivered**. WP4d, the attestations file: **scoped**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
@@ -59,13 +66,6 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Scope **WP5 (meta-rule checks in CI, and the move to Open-MBEE)** with `scope-of-work`. It is the first package that writes to the org (creating
-this repository there), so the move happens only on the supervisor's explicit go-ahead.
-Inputs carried to it:
-- the meta-rules to enforce: the kind list (`docs/kind-list-format.md`), the policies (`docs/policy-format.md`), and
-  the data files that must stay valid (WP0 R-14: an invalid state never reaches `main`);
-- the tests to run in GitHub Actions on every pull request;
-- the proposed CODEOWNERS (`data/proposed-codeowners`) stays not live until the maintainers approve it, and review
-  friction rises only at R3;
-- expected gap XF-1 (the sensing credential) closes in WP6, and its setup may start with the move; expected gap
-  XF-2 (`repo-registry` passes `change-review`) closes at R3 (`data/expected-gaps.yaml`).
+Review **WP4c** and take it to the acceptance gate, then approve and build **WP4d** (the attestations file). Then
+resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
+supervisor the move commands (WP5 OD4).

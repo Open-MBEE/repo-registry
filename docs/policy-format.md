@@ -57,7 +57,8 @@ One policy, `license-by-type`, also carries `allowed_licenses`: for each type, t
 6. **Checks.** There is at least one check. Each automated check has an `id`, the exact `reads` (endpoint and field)
    and the `permission` it needs. Each attested check has an `id` and a `statement`.
 7. **Core citations.** `cites.cisa` and `cites.nist` are present: either a list of IDs that exist in
-   `data/sources/cisa-practices.yaml` and `data/sources/nist-800-53.yaml`, or `"none"`.
+   `data/sources/cisa-practices.yaml` and `data/sources/nist-800-53.yaml`, or `"none"`. `cites.openssf` is present
+   too, the third core citation (WP4c): a list of OpenSSF security-baseline items, empty when the policy adopts none.
 8. **OpenSSF baseline coverage.** Every item in `data/sources/openssf-security-baseline.yaml` is adopted by at least
    one policy (`cites.openssf`) or listed in `data/policies/_departures.yaml` with a reason, but not both.
 9. **CISA coverage.** Every practice in `data/sources/cisa-practices.yaml` is cited by at least one policy or listed in

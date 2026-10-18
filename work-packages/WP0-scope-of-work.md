@@ -32,6 +32,8 @@ the DRAFT design docs, these take precedence, and the docs are updated by a late
   (2026) and NIST [SP 800-37 Rev. 2](https://csrc.nist.gov/pubs/sp/800/37/r2/final), the *Risk Management Framework*
   (RMF, December 2018). The README links both and states the design intent: minimum viable policy making and controls. RMF is cited for the process, through the map below.
   Each policy also names the CISA practice and the RMF task or SP 800-53 control it serves, or says "none".
+  *(amended, WP1 amendment 3: OpenSSF is a third core citation, for its project lifecycle, from which the stages are
+  adopted, and its security baseline, the backbone of the policies. Each policy names the baseline items it adopts.)*
 
   | RMF step | In this system |
   |---|---|

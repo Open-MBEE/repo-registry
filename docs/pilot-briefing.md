@@ -18,8 +18,9 @@ where the supervisor has push access), stars and forks.
   - **incubating** means stabilizing and in use; for a tool, version 1.0 or later;
   - **graduated** means mature and widely used, given only by the maintainers;
   - **archived** means read-only.
-- **Tier** = how strict the controls are: **high** (graduated tools and governance), **medium** (tools at
-  incubating, and media people rely on), **low** (a named owner and little else), **none** (archived).
+- **Tier** = how strict the controls are: **high** (graduated tools, and established governance such as the
+  org's administration), **medium** (tools at incubating, and media people rely on), **low** (a named owner and
+  little else; this registry while it is being set up), **none** (archived).
 - **Policies** = the named policies a repository would carry, linked to their plain-language SOPs. The full
   table is [policy-applicability.md](policy-applicability.md). This briefing shows what *would* apply, not
   whether a repository meets it yet.
@@ -107,12 +108,12 @@ Named by the supervisor, outside the categories above.
 |---|---|---|---|---|---|
 | `flexo-mms-deployment` (must-include) | tool/sandbox | low | [codeowners](sops/codeowners.md), [license-by-type](sops/license-by-type.md), [project-files](sops/project-files.md) | Apache-2.0 (green) | 27 clone visitors in 14 days; 0 release downloads |
 | `flexo-mms-sysmlv2` (must-include) | tool/sandbox | low | [codeowners](sops/codeowners.md), [license-by-type](sops/license-by-type.md), [project-files](sops/project-files.md) | Apache-2.0 (green) | 35 clone visitors in 14 days; 0 release downloads |
-| `repo-registry` (registers itself) | governance/sandbox | high | [change-review](sops/change-review.md), [codeowners](sops/codeowners.md), [contributing](sops/contributing.md), [dependency-management](sops/dependency-management.md), [history-protection](sops/history-protection.md), [license-by-type](sops/license-by-type.md), [project-files](sops/project-files.md), [secret-protection](sops/secret-protection.md), [security-design](sops/security-design.md), [security-policy](sops/security-policy.md), [static-analysis](sops/static-analysis.md), [vulnerability-remediation](sops/vulnerability-remediation.md), [workflow-least-privilege](sops/workflow-least-privilege.md) | not covered | not measured |
+| `repo-registry` (registers itself) | governance/sandbox | low | [codeowners](sops/codeowners.md), [license-by-type](sops/license-by-type.md), [project-files](sops/project-files.md) | not covered | not measured |
 
 ## At a glance
 
 - **Kinds in the pilot:** governance/sandbox 1, media/incubating 6, research/sandbox 4, tool/incubating 8, tool/sandbox 11, unclassified 2.
-- **Tiers:** low 15, medium 14, unclassified 2, high 1.
+- **Tiers:** low 16, medium 14, unclassified 2.
 - **License red today:** 7 (`K`, `flexo-conflict-resolution-policy-research`, `flexo-sysml2-adapter-experiment`, `mtip-cameo`, `mtip-sparx`, `openmbee-graphic-assets`, `util`).
 - **No changes in a year:** 12 pilot repositories (`exec-cameo-mdk`, `exec-mdk-systems-reasoner`, `exec-mms`, `exec-mmsri`, `exec-ve`, `flexo-sysml2-adapter-experiment`, `K`, `mcf`, `mtip-sparx`, `openapi-graph-extractor`, `util`, `ve-confluence`). This includes the heavily used `exec-*` tools: they are still downloaded and cloned, so they need a
   maintenance decision (who looks after them) before any thought of graduating them.

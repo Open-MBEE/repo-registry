@@ -6,16 +6,9 @@ name: Named owners
 meaning: Every live repository names the people who look after it, in a CODEOWNERS file. That file is the authoritative list
   of the repository's operators.
 applies_if:
-  all:
-  - not:
-      attr: lifecycle
-      eq: archived
-  - not:
-      all:
-      - attr: type
-        eq: governance
-      - attr: lifecycle
-        eq: graduated
+  not:
+    attr: lifecycle
+    eq: archived
 github:
   mechanism: CODEOWNERS file at .github/CODEOWNERS, CODEOWNERS or docs/CODEOWNERS
   docs:

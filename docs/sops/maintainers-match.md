@@ -4,7 +4,7 @@
 
 The named maintainers (data/maintainers.yaml) are exactly this repository's code owners, and every owner of the organization is a named maintainer. Owners are a small subset of the maintainers.
 
-**Applies to:** the administration of the Open-MBEE GitHub organization (kind governance/graduated). See [policy-applicability.md](../policy-applicability.md).
+**Applies to:** governance at graduated: the administration of the Open-MBEE GitHub organization, and repo-registry once it is accepted as the canonical source. See [policy-applicability.md](../policy-applicability.md).
 
 ## Set up
 

@@ -6,15 +6,8 @@ name: Documented security design
 meaning: High-tier repositories keep a short design document that describes the security controls of what they build, and
   keep it current.
 applies_if:
-  all:
-  - attr: tier
-    eq: high
-  - not:
-      all:
-      - attr: type
-        eq: governance
-      - attr: lifecycle
-        eq: graduated
+  attr: tier
+  eq: high
 github:
   mechanism: 'None: a document in the repository, attested by its code owners'
   docs:

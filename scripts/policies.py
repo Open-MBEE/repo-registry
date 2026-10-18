@@ -121,6 +121,8 @@ def check(policies, departures, kinds_doc, tiers_doc, baseline, root, cisa=None,
                 for ref in value:
                     if ref not in known:
                         problems.append(f"{where}: cites.{core} names {ref}, which isn't in data/sources/")
+        if not isinstance(cites.get("openssf"), list):  # core since WP4c: present, empty when none is adopted
+            problems.append(f"{where}: cites.openssf is required (a list of baseline items, empty if none)")
         for item in cites.get("openssf") or []:
             if item not in items:
                 problems.append(f"{where}: cites unknown OpenSSF baseline item {item}")

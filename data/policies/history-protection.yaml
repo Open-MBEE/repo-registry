@@ -6,19 +6,15 @@ name: Keep the history
 meaning: Tools from version 1.0, and the registry, protect the default branch from force pushes and deletion, so that its
   history stays complete for review and audit.
 applies_if:
-  any:
-  - all:
-    - attr: type
-      eq: tool
-    - attr: lifecycle
-      in:
-      - incubating
-      - graduated
-  - all:
-    - attr: type
-      eq: governance
-    - attr: lifecycle
-      eq: sandbox
+  all:
+  - attr: type
+    in:
+    - tool
+    - governance
+  - attr: lifecycle
+    in:
+    - incubating
+    - graduated
 github:
   mechanism: A ruleset (preferred) or a branch protection rule that blocks force pushes and deletion on the default branch
   docs:

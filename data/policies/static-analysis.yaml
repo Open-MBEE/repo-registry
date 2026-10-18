@@ -5,19 +5,15 @@ id: static-analysis
 name: Code scanning
 meaning: Tools from version 1.0, and the registry, run code scanning on every change and fix critical findings promptly.
 applies_if:
-  any:
-  - all:
-    - attr: type
-      eq: tool
-    - attr: lifecycle
-      in:
-      - incubating
-      - graduated
-  - all:
-    - attr: type
-      eq: governance
-    - attr: lifecycle
-      eq: sandbox
+  all:
+  - attr: type
+    in:
+    - tool
+    - governance
+  - attr: lifecycle
+    in:
+    - incubating
+    - graduated
 github:
   mechanism: Code scanning (CodeQL default or advanced setup)
   docs:
