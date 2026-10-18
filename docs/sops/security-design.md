@@ -20,18 +20,18 @@ None. This policy is checked by attestation only.
 
 - **design-current**: A design document describes the security controls (the measures that protect the software and its users, such as who can sign in, how data is protected, and how input is checked) and is updated when they change.
 
-How to attest: add a block like this to the end of your `README.md`, one per attested check, and update it with each
-release. An attestation counts only if a code owner of the repository committed it, and it is out of date once it
-is older than the repository's latest release.
+How to attest: add this entry to your repository's `ATTESTATIONS.yaml`, at its root, and renew it for each release
+([attestations-format.md](../attestations-format.md)). An entry counts only if its `release` names the release being
+checked (or `none` before the first release), and the last change to the file was committed by a code owner of the repository. Point to
+the file from the README: "Attestations: see `ATTESTATIONS.yaml`."
 
-```markdown
-<!-- repo-registry attestation
-policy: security-design
-check: design-current
-attested-by: @your-github-username
-date: YYYY-MM-DD
-release: vX.Y.Z (or none)
--->
+```yaml
+attestations:
+  - policy: security-design
+    check: design-current
+    attested_by: your-github-username
+    date: YYYY-MM-DD
+    release: vX.Y.Z           # the release this is made for, or none if there is no release yet
 ```
 
 

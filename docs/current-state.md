@@ -29,6 +29,7 @@
 | A kind is not a compliance verdict | Lifecycle is a category; whether its duties are done is checked by policies | [WP1-decisions](../work-packages/WP1-decisions.md) |
 | Policies | 21: 16 repository policies (including `license-by-type`) and 5 org policies; each with an SOP, citations and an applies-if rule | `data/policies/`; [policy-applicability](policy-applicability.md); [policy-basis-review](policy-basis-review.md) |
 | Plans | OpenMBEE is on GitHub Free. Every policy declares `available_on`; immutable releases and rulesets are confirmed for the org; Enterprise-only features are listed for the future, never required | [WP3-decisions](../work-packages/WP3-decisions.md); `data/sources/github-plan.yaml`; `data/policies/_future.yaml` |
+| Attestations | One `ATTESTATIONS.yaml` per repository, at its root, pointed to from the README. Read at the commit of the latest release; an entry counts only if it names that release and the file's last change was by a code owner. With no release, the default branch counts and doesn't go out of date. The org's attestations are in this repository's file | [WP0-amendment-3](../work-packages/WP0-amendment-3.md); [attestations-format](attestations-format.md) |
 | Status colors | green known compliant, yellow can't tell, red known non-compliant; an accepted exception is green, marked | WP0 R-13; `data/deviations.yaml` |
 | Org governance | Owners are the root authority, 2 to 3 of them, a subset of the maintainers; maintainers can be more and are checked by the owners | [WP3-decisions](../work-packages/WP3-decisions.md); [maintainer-policy](maintainer-policy.md) |
 | Who merges what | A kind change: any maintainer. The maintainer list and maintainers' powers: an owner. An accepted exception (`data/deviations.yaml`): an owner | [WP4b-decisions](../work-packages/WP4b-decisions.md) "OD3" |
@@ -56,7 +57,7 @@
 | WP4 | Fit analysis and pilot | accepted 1408259 |
 | WP4b | Docs sweep and checkpoint | accepted 3f2c557 |
 | WP4c | The governance kinds; OpenSSF as a core citation | accepted 4cad812 |
-| WP4d | The attestations file | scope on `wp4d-scope`, waiting for approval |
+| **WP4d** | The attestations file | **delivered** on `wp4d-work`, waiting for acceptance (scope approved e8d085e) |
 | WP5 | Meta-rule checks in CI; move to Open-MBEE (explicit go-ahead) | in progress, **paused** on `wp5-work` until WP4c and WP4d are accepted |
 | WP6 | Engine: sensing, status, status log, sample issues | planned |
 | WP7 | Wiki | planned |

@@ -48,6 +48,6 @@ A scripted walkthrough on the same pilot, as three flows, one per role *(updated
 1. **Governors** (maintainers), to approve the taxonomy and policy before going live: "here is what these rules
    would do to these repos." Changing the draft rules and re-running shows the consequences (X-6).
 2. **Operators** (each repo's CODEOWNERS) *(updated: WP0 R-17)*: find a sample issue for their own repo, answer an
-   attested check in the README attestation block, propose a kind change by PR, and close an issue when done.
+   attested check in the repo's `ATTESTATIONS.yaml` *(updated: WP0 amendment 3)*, propose a kind change by PR, and close an issue when done.
 3. **Readers** (newcomers, contributors, the community manager): navigate the wiki pages and views by kind, tier
    and policy, and follow a repo's links to the repo and its open registry issues.

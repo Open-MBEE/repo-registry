@@ -1,0 +1,23 @@
+# PROVISIONAL until the maintainers approve the policies (WP0, maintainer approval 2). WP4d D-1.
+# JSON Schema (draft 2020-12), written in YAML, for a repository's ATTESTATIONS.yaml (docs/attestations-format.md).
+# It covers the file's shape. Which entries a repository needs, and whether they count, is the rule in
+# docs/policy-format.md, "Reading a check's result": it needs the policies in effect, the release and git.
+$schema: https://json-schema.org/draft/2020-12/schema
+title: repo-registry attestations file
+type: object
+additionalProperties: false
+required: [attestations]
+properties:
+  attestations:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [policy, check, attested_by, date, release]
+      properties:
+        policy: {type: string, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        check: {type: string, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        attested_by: {type: string, pattern: '^[A-Za-z0-9-]+$'}
+        date: {type: string, format: date}
+        release: {type: string, minLength: 1}
+        note: {type: string}
