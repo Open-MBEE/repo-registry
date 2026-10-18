@@ -15,9 +15,12 @@ from it being deterministic, legible and explainable, so these rules take preced
 1. **Specs before code.** Design lives in [docs/](docs/). Do not write code for behavior that has no requirement.
 2. **Every behavior traces to a requirement ID** (X-, FM-, TX-, PO-, IF-, CL-). Cite the ID in code comments,
    tests and PR descriptions.
-3. **Discussion is not canon.** Everything in `docs/` is DRAFT until mzargham says "lock." Don't promote a draft
+3. **Provisional data is marked as provisional.** When the work needs data the maintainers haven't approved yet (for
+   example the kind list), draft it, but mark it clearly as provisional, in a way the program can check, until the
+   maintainer approval for that data. Authority to set such data belongs to the maintainers.
+4. **Discussion is not canon.** Everything in `docs/` is DRAFT until mzargham says "lock." Don't promote a draft
    statement to a rule yourself.
-4. **Smallest change that addresses the point.** Name the blast radius (files, callers, docs) before editing.
+5. **Smallest change that addresses the point.** Name the blast radius (files, callers, docs) before editing.
    Run every command you write into a doc or help text.
 
 ## Work packages
