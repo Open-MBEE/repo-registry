@@ -457,9 +457,11 @@ class Pack:
 
     def describe(self, sid, row):
         if sid == "cisa":
-            return f"{cell(row['practice'])} (page {row['page']}, {cell(row['section'])})"
+            quotes = "\n>\n".join(f"> {cell(x['text'])} *(p. {x['page']})*" for x in row["quotes"])
+            return (f"**{cell(row['section'])}** (page {row['page']}), verbatim:\n\n{quotes}"
+                    + (f"\n\n{cell(row['note'])}" if row.get("note") else ""))
         if sid == "openssf":
-            return f"{cell(row['title'])} (stage {row['stage']}, {row['when']})"
+            return f"**{cell(row['title'])}** (stage {row['stage']}, {row['when']}), verbatim:\n\n> {cell(row['quote'])}"
         if sid == "nist":
             return cell(row["title"]) + (f" (an enhancement of {row['parent']})" if row.get("parent") else "")
         if sid in ("dodcio", "ofac", "ssdf", "c_scrm"):  # quoted verbatim (WP5e OD6)

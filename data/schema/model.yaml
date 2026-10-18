@@ -52,7 +52,7 @@ tables:
     role: source
     rows: data/sources/cisa-practices.yaml, practices
     key: [practice_id]
-    columns: {practice_id: name, page: text, section: text, practice: text}
+    columns: {practice_id: name, page: text, section: text, quotes: list(mapping), note: optional(text)}  # verbatim, WP5e
   nist_control:
     role: source
     rows: data/sources/nist-800-53.yaml, controls
@@ -64,7 +64,7 @@ tables:
     role: source
     rows: data/sources/openssf-security-baseline.yaml, items
     key: [item_id]
-    columns: {item_id: name, stage: fk(stage), when: enum(baseline_when), title: text}
+    columns: {item_id: name, stage: fk(stage), when: enum(baseline_when), title: text, quote: text}
   iso_clause:
     role: source
     rows: data/sources/iso12207-clauses.yaml, clauses (number and title only; WP2 R-12)
