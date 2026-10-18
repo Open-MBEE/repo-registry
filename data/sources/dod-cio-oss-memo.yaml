@@ -12,7 +12,7 @@ source:
 sections:
   2.C:
     page: '4'
-    title: 'Use of open source software: supply chain risk management'
+    title: '2. USE OF OPEN SOURCE SOFTWARE, paragraph C (its heading; the paragraph has no title)'
     text: 'Because of the collaborative nature of OSS development, supply chain risk management has unique challenges for
       OSS components. Program managers, in consultation with support engineers, Authorizing Officials, and agency Chief
       Information Officers (CIOs) must consider these challenges when determining suitability of OSS:'
@@ -60,7 +60,7 @@ sections:
   3.H:
     context: "Bears on the contributing policy, which predates this source; citing it there is a candidate for a later package."
     page: '8'
-    title: 'Use of open source development approach: accepting submissions'
+    title: '3. USE OF OPEN SOURCE DEVELOPMENT APPROACH, paragraph H (its heading; the paragraph has no title)'
     text: Projects releasing code as open source software to the public or mission partners should publish their intention
       and ability to accept submissions of proposed enhancements (patches). If the project team accepts submissions from
       the general public, they must also publish how they will assess, test, and evaluate those submissions for possible

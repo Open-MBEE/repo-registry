@@ -24,8 +24,8 @@ REPO = "https://github.com/Open-MBEE/repo-registry/blob/main"
 GOVERNANCE_NOTE = {  # how a governance kind reads in prose: who holds it (WP4c); data about the kinds, kept here
     "governance/sandbox": "repo-registry today",
     "governance/incubating": "nothing yet",
-    "governance/graduated": "the administration of the Open-MBEE GitHub organization, and repo-registry once it is "
-                            "accepted as the canonical source",
+    "governance/graduated": "the administration of the Open-MBEE GitHub organization and its .github repository "
+                            "(WP5c OD4), and repo-registry once it is accepted as the canonical source",
 }
 
 
