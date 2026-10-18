@@ -157,8 +157,10 @@ Details: [docs/roadmap.md](docs/roadmap.md).
   is next
 - [Status](docs/status.md): where the work packages stand
 - The views: which policies are in effect for each kind, each policy's SOP, and the proposed pilot. They are
-  rendered from the data, never stored here: run `uv run python scripts/render.py` and open `build/demo/` (until the
-  wiki publishes them, WP7). Each pull request's check also shows how its change would alter them.
+  rendered from the data, never stored here: run `uv run python scripts/render.py` and open `build/demo/`. The
+  [wiki](https://github.com/Open-MBEE/repo-registry/wiki) publishes the review pack (WP5d): the taxonomy, the
+  repositories, the policies, their SOPs and their sources, for the maintainers to agree on. WP7 extends it into a
+  compliance dashboard. Each pull request's check also shows how its change would alter them.
 
 The scope of record is [WP0](work-packages/WP0-scope-of-work.md) and the later work-package scopes and decision
 records in [work-packages/](work-packages/). The early design documents below are DRAFT inputs; where they disagree

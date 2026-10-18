@@ -66,4 +66,20 @@ mzargham's.
   last time it took over 30 min. since all we did was write a scope of work, not edit any content i want you to start
   work on my verbal approval so we don't need to wait on a runner"
 - **Outcome:** WP5d's scope (`wp5d-scope`, the content of PR #10) is approved by this statement; execution starts on
-  `wp5d-work`, branched from the scope. PR #10 is merged when its check runs; the delivery PR carries the scope too.
+  `wp5d-work`, branched from the scope. PR #10 was then merged by the supervisor (fa3cf16), the GitHub record of the
+  same approval; `wp5d-work` was rebased onto it.
+
+## WP7 is the compliance dashboard *(raised by the supervisor during execution; documents only)*
+
+- **Supervisor (mzargham, typed by agent):** "i'd also like this PR to include some documentaiton updates in the repo
+  since wp7 was the wiki, that now needs to indicate extending the wiki with dashboard functionality aware of
+  compliance with controls state. the part we're building now describes the policies so the maintainers can agree on
+  what the taxonomy and policies should be. the later wp7 includes status information used to help bring us into
+  demonstrable compliance with our policies. that is different work, though it builds on the glossary since the this
+  wp5d will determine the what and why of compliance. even if it doesn't provide the current snapshot and how to get
+  into compliance we'll have later"
+- **Outcome:** Carried under D-5 (the documents and status). WP7 is described as the compliance dashboard: the wiki
+  extended with each repository's status against the controls and how to come into compliance, built on WP5d's pack
+  (the what and why). Changed: `docs/current-state.md` (the wiki row, the packages table, the architecture row),
+  `docs/status.md` (the breakdown, next step) and the README. The approved scopes, the decision records and the DRAFT
+  design documents are left as they are.
