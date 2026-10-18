@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, with the WP4e delivery. Update this at each acceptance gate.*
+*Updated 2026-10-18, at the WP4e acceptance gate. Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -27,10 +27,9 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     [WP1-amendment-3.md](../work-packages/WP1-amendment-3.md).
   - **WP4d** (the attestations file): accepted in caaca38. Review:
     [WP4d-review.md](../work-packages/WP4d-review.md); the change is recorded in [WP0-amendment-3.md](../work-packages/WP0-amendment-3.md).
-  - **WP4e** (type and stage in the kind list): scope approved in f405aa4
-    ([WP4e-scope-of-work.md](../work-packages/WP4e-scope-of-work.md)); delivered on `wp4e-work`, waiting for
-    acceptance. The change is recorded in [WP1-amendment-4.md](../work-packages/WP1-amendment-4.md).
-  - **WP5** (meta-rule checks in CI, and the move): in progress on `wp5-work`, waiting for WP4e. Nothing has been
+  - **WP4e** (type and stage in the kind list): accepted in 63e270f. Review:
+    [WP4e-review.md](../work-packages/WP4e-review.md); the change is recorded in [WP1-amendment-4.md](../work-packages/WP1-amendment-4.md).
+  - **WP5** (meta-rule checks in CI, and the move): in progress on `wp5-work`, resuming now that WP4e is accepted. Nothing has been
     written to the org.
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Data (all PROVISIONAL until the maintainers approve it):**
@@ -63,7 +62,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 3. WP3, org governance: **accepted**.
 4. WP4, fit analysis and pilot: **accepted**. WP4b, docs sweep and checkpoint: **accepted**. WP4c, the governance
    kinds: **accepted**. WP4d, the attestations file: **accepted**.
-   WP4e, type and stage in the kind list: **delivered**.
+   WP4e, type and stage in the kind list: **accepted**.
 5. **WP5, meta-rule checks in CI, and the move to Open-MBEE.**
 6. WP6, the engine: compare, status, status log, sample issues.
 7. WP7, the wiki.
@@ -71,5 +70,5 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Review **WP4e** and take it to the acceptance gate. Then resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
+Resume **WP5** on `wp5-work`: merge `main` into it, update any WP5 test that uses a governance kind, and give the
 supervisor the move commands (WP5 OD4).
