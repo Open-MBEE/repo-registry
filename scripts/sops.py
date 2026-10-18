@@ -51,7 +51,8 @@ def attest_block(p, org_policy):
             "", "```yaml", "attestations:", entries, "```"]
 
 
-def render(p, in_effect_for):
+def render(p, in_effect_for, table_link="../policy-applicability.md", cite=None):
+    """One SOP. The wiki (scripts/wiki.py) passes its own table link and a `cite(source, ref)` that links each citation."""
     pid = p["id"]
     org_policy = in_effect_for == ["governance/graduated"]
     L = [f"# {p['name']}", "",
@@ -61,7 +62,7 @@ def render(p, in_effect_for):
          f"**Applies to:** {', '.join(kind_phrase(k) for k in in_effect_for) or 'no kind'}. Your repository's type and "
          f"stage are in [registry.yaml]({REPO}/registry.yaml); the stages are explained in "
          f"[lifecycle-stage-map.md]({REPO}/docs/lifecycle-stage-map.md), and the full table is in "
-         "[policy-applicability.md](../policy-applicability.md)."
+         f"[policy-applicability.md]({table_link})."
          + (f" {' '.join(p['applies_note'].split())}" if p.get("applies_note") else ""), ""]
     guidance = p.get("license_guidance")
     if guidance:
@@ -83,15 +84,16 @@ def render(p, in_effect_for):
     else:
         L.append("None.")
     cites = p["cites"]
-    fmt = lambda v: v if v == "none" else ", ".join(v)  # noqa: E731
+    cite = cite or (lambda source, ref: ref)
+    fmt = lambda v, source: v if v == "none" else ", ".join(cite(source, str(r)) for r in v)  # noqa: E731
     L += ["", "## Why", "",
-          f"- CISA: {fmt(cites['cisa'])} (see `data/sources/cisa-practices.yaml`)",
-          f"- NIST SP 800-53: {fmt(cites['nist'])} (see `data/sources/nist-800-53.yaml`)"]
+          f"- CISA: {fmt(cites['cisa'], 'cisa')} (see `data/sources/cisa-practices.yaml`)",
+          f"- NIST SP 800-53: {fmt(cites['nist'], 'nist')} (see `data/sources/nist-800-53.yaml`)"]
     if cites.get("openssf"):
-        L.append(f"- OpenSSF security baseline: {', '.join(cites['openssf'])} "
+        L.append(f"- OpenSSF security baseline: {fmt(cites['openssf'], 'openssf')} "
                  "(see `data/sources/openssf-security-baseline.yaml`)")
     for clause in cites.get("iso12207") or []:
-        L.append(f"- ISO/IEC/IEEE 12207:2026 clause {clause} (cited by reference)")
+        L.append(f"- ISO/IEC/IEEE 12207:2026 clause {cite('iso12207', str(clause))} (cited by reference)")
     if p.get("secondary_notes"):
         L.append(f"- {' '.join(p['secondary_notes'].split())}")
     return "\n".join(L) + "\n"
