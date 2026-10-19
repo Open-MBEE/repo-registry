@@ -75,7 +75,7 @@ demonstrative: drawn from data with the intent to be realistic, but not a decisi
 | WP5c | Taxonomy refinements from WP4's fit analysis | accepted 42ecec0 ([#9](https://github.com/Open-MBEE/repo-registry/pull/9)) |
 | WP5d | The maintainer review pack, published to the wiki: the what and why of compliance | accepted c0d8979 ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)); first published from 5bb4b61 |
 | WP5e | Verified code owners for high-tier repositories; every source quoted verbatim | accepted 5bb4b61 ([#12](https://github.com/Open-MBEE/repo-registry/pull/12)) |
-| **WP5f** | Owners and maintainers first (critical path): the co-founders decide who the owners (2 or 3) and maintainers are, and the supervisor records it; carrying out the changes of control is later work | **in delivery** ([WP5f-scope-of-work](../work-packages/WP5f-scope-of-work.md)); the decision itself is recorded later |
+| WP5f | Owners and maintainers first (critical path): the co-founders decide who the owners (2 or 3) and maintainers are, and the supervisor records it; carrying out the changes of control is later work | accepted 580102b ([#14](https://github.com/Open-MBEE/repo-registry/pull/14)); the decision itself is recorded later |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | The compliance dashboard: the wiki extended with each repository's status against the controls, and how to come into compliance (builds on WP5d and WP6); and publishing the wiki automatically from CI after each merge (until then an owner runs live mode by hand) | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
