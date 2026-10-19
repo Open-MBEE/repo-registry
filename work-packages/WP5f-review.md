@@ -52,16 +52,19 @@ on `main`).
 
 ## Open decisions (for the supervisor)
 
-OPEN
+None. Every item was resolved through the decision loop: 1 decided (the observations), 0 deferred, 0 raised.
 
 ## Gap dispositions
 
 | Gap | Disposition | Reason or follow-up |
 |---|---|---|
-| Observations 1 and 2, as one item | DISPOSITION | |
+| Observations 1 and 2, as one item | accept as is | Supervisor: "Accept as is" |
 
 ## Recommendation
 
-RECOMMENDATION
+Recommend acceptance. Every deliverable and requirement is met with evidence (D-3 as amended: the place to record the
+decision, checked, and empty until the co-founders decide). The brief shows its shape with invented people only; no
+concealed member is named and no organization role changes. The supervisor accepted both observations as is. After
+the merge, the co-founders' decision is recorded in its own small pull request.
 
 Acceptance is the supervisor's act, recorded as named above. This report does not accept the work.

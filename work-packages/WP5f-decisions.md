@@ -95,3 +95,10 @@ mzargham's.
 - **Outcome:** Amended: WP5f delivers the brief's shape, the policy record, and the place in the model where the
   decision is recorded (with its checks), still empty. The co-founders' actual decision is recorded later, in its own
   small pull request.
+
+## The review's observations *(the acceptance gate)*
+
+- **Question:** How should the WP5f review's two observations be disposed of, as one item? (Options: accept as is /
+  fix some first / follow-up package.)
+- **Answer (mzargham, typed by agent):** "Accept as is"
+- **Outcome:** Both accepted as is.
