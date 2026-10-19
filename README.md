@@ -110,12 +110,13 @@ rulesets. It never deletes a repository.
 
 ## Roadmap in brief
 
-1. **Agree on the model** (now): the maintainers review the pack and give five approvals: the taxonomy, the policies,
-   the pilot (31 repositories), each pilot repository's kind, and the named maintainers.
-2. **Sense and show status**: read the organization (read-only), show each repository's status against its policies
+1. **Settle who governs** (now): the co-founders choose the first owners and maintainers, who govern everything else.
+2. **Agree on the model**: the maintainers review the pack and approve the taxonomy, the policies, the pilot (31
+   repositories) and each pilot repository's kind.
+3. **Sense and show status**: read the organization (read-only), show each repository's status against its policies
    on the wiki (a compliance dashboard), publish the wiki automatically from CI, and draft the issues it would open.
-3. **Switch on and calibrate**, marked "calibrating, not yet the source of truth", and fix what it gets wrong.
-4. **Make it official**: the first release makes this the source of truth, and its own rules tighten.
+4. **Switch on and calibrate**, marked "calibrating, not yet the source of truth", and fix what it gets wrong.
+5. **Make it official**: the first release makes this the source of truth, and its own rules tighten.
 
 Details: [docs/status.md](docs/status.md) and [docs/roadmap.md](docs/roadmap.md).
 

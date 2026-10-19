@@ -44,7 +44,7 @@ intent to be realistic, but not a decision (OD5).
 |---|---|---|
 | D-1 | The policies that determine who governs: the maintainer policy (`docs/maintainer-policy.md`) and the org policies (`org-few-owners`, `maintainers-match`, `governance-roles-named`, `verified-code-owners`) reviewed and amended as decided, including how owners and maintainers are chosen (OD1) | G1 |
 | D-2 | The shape of a decision brief for the co-founders (OD1): what the policies ask of owners and maintainers, the facts to weigh, and the choices to make, shown with a hypothetical example, labelled as hypothetical and not the proposed decision (OD5); then their decision on the owners (2 or 3), recorded by the supervisor. Owners not kept are to become members (OD2); carrying that out is later work (OD3) | G2 |
-| D-3 | The maintainers: the co-founders' decision recorded by the supervisor in `data/maintainers.yaml` and `data/proposed-codeowners`, replacing the placeholder, each person with consent to be named (OD4) | G3 |
+| D-3 | The place to record the decision: the owners, declared in `data/maintainers.yaml` and checked (2 or 3, each a named maintainer), empty until the co-founders decide. *(Amended during execution: the decision itself, replacing the placeholder list with each person's consent to be named, is recorded later in its own small pull request; [WP5f-decisions.md](WP5f-decisions.md), "D-3's timing".)* | G3 |
 | D-4 | The roadmap: `docs/status.md` and `docs/current-state.md` (this package, critical path, ahead of WP6; the fifth approval first) | G4 |
 | D-5 | Tests and the documents, in the same pull requests | G1–G4 |
 
@@ -53,7 +53,7 @@ intent to be realistic, but not a decision (OD5).
 | ID | Requirement | Checked by |
 |---|---|---|
 | R-1 | The policies say how an owner and a maintainer are chosen, what qualifies them, and how the set changes. | Inspect; the policy meta-rules |
-| R-2 | The recorded owners are 2 or 3 of the named maintainers. | `scripts/validate.py` (a rule) |
+| R-2 | Once recorded, the owners are 2 or 3 of the named maintainers; until then none are recorded. | `scripts/validate.py` (a rule); a test with a recorded set |
 | R-3 | No concealed member is named anywhere in the repository. | The privacy scans |
 | R-4 | The roadmap shows the package as critical path, ahead of WP6, with the fifth approval first. | Inspect `docs/status.md` |
 

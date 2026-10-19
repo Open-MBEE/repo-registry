@@ -86,3 +86,12 @@ mzargham's.
 - **Answer (mzargham, typed by agent):** "Approve it"
 - **Outcome:** WP5f's scope is approved by this answer. #14 carries the scope, its records and the work; its merge is
   the acceptance and brings the scope to `main`.
+
+## D-3's timing *(an amendment during execution)*
+
+- **Question:** WP5f's D-3 (recording the co-founders' decision) can't be built until they decide. How should WP5f
+  handle that? (Options: wait for them / record it later.)
+- **Answer (mzargham, typed by agent):** "Record it later"
+- **Outcome:** Amended: WP5f delivers the brief's shape, the policy record, and the place in the model where the
+  decision is recorded (with its checks), still empty. The co-founders' actual decision is recorded later, in its own
+  small pull request.

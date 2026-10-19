@@ -45,8 +45,10 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     merge of [#12](https://github.com/Open-MBEE/repo-registry/pull/12), 5bb4b61, which also brought its scope to `main`
     ([WP5e-scope-of-work.md](../work-packages/WP5e-scope-of-work.md); approved by his statement,
     [WP5e-decisions.md](../work-packages/WP5e-decisions.md) "Approval"). Review: [WP5e-review.md](../work-packages/WP5e-review.md).
-  - **WP5f** (owners and maintainers first, on the critical path): scope proposed in this pull request
-    ([WP5f-scope-of-work.md](../work-packages/WP5f-scope-of-work.md)); approved by its merge.
+  - **WP5f** (owners and maintainers first, on the critical path): scope approved by the supervisor's answer
+    ([WP5f-decisions.md](../work-packages/WP5f-decisions.md) "Approval"); the scope and the work are delivered together
+    in this pull request ([WP5f-scope-of-work.md](../work-packages/WP5f-scope-of-work.md)). The co-founders' decision
+    is recorded later, in its own small pull request.
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
   [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
@@ -83,7 +85,7 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
    the merge of its delivery pull request. WP5c, the taxonomy refinements: **accepted** by the merge of its delivery pull request. **WP5d, the maintainer
    review pack: accepted ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)) and published. WP5e, verified code owners: accepted
    ([#12](https://github.com/Open-MBEE/repo-registry/pull/12)).**
-6. **WP5f, owners and maintainers first: scoped (critical path).** The owners and maintainers govern every other
+6. **WP5f, owners and maintainers first: in delivery (critical path).** The owners and maintainers govern every other
    policy, so who they are is settled before the rest is approved: the co-founders decide, and the supervisor records
    their decision here; carrying out the changes of control in the organization is later work. The fifth maintainer
    approval (the named maintainers) moves ahead of the other four.
@@ -96,7 +98,8 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
 
 ## Next step
 
-Approve **WP5f** (owners and maintainers first) by merging its scope pull request, then build it: the decision brief
-for the co-founders, and the record of their decision. Meanwhile the review pack is live on the
-[wiki](https://github.com/Open-MBEE/repo-registry/wiki) for the maintainers to read and discuss; everything in it is
-demonstrative until approved. An owner republishes it after each merge (CI publishing waits for WP7). WP6 follows.
+Accept **WP5f** by merging its pull request (scope and work together). Then the co-founders choose the first owners
+and maintainers, using the brief's shape ([WP5f-decision-brief.md](../work-packages/WP5f-decision-brief.md)), and the
+supervisor records their decision in `data/maintainers.yaml` in its own small pull request. Meanwhile the review pack
+is live on the [wiki](https://github.com/Open-MBEE/repo-registry/wiki); everything in it is demonstrative until
+approved. An owner republishes it after each merge (CI publishing waits for WP7). WP6 follows.

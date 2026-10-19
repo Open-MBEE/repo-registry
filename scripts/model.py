@@ -180,7 +180,7 @@ def rows(table, root=ROOT):
         return [{"user_id": uid, **r} for uid, m in load("data/maintainers.yaml", root)["maintainers"].items()
                 for r in m.get("release_authority") or []]
     if table == "maintainer_set":
-        return _one(load("data/maintainers.yaml", root), "target_size", "other_powers")
+        return _one(load("data/maintainers.yaml", root), "target_size", "other_powers", "owners")
     if table == "proposed_codeowner":
         import re
         text = (root / "data/proposed-codeowners").read_text()
