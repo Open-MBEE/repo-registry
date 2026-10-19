@@ -228,7 +228,7 @@ tables:
   maintainer_set:
     role: model
     rows: data/maintainers.yaml (one row)
-    columns: {target_size: int, other_powers: list(mapping)}
+    columns: {target_size: int, other_powers: list(mapping), owners: list(fk(maintainer))}   # owners: WP5f D-3
   proposed_codeowner:
     role: model
     rows: data/proposed-codeowners, each @login

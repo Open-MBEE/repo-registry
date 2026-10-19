@@ -211,6 +211,13 @@ def check_rules(tables):
                        "(WP5c OD1)")
     for s in sorted(tables.keys("signal") - tables.keys("signal_explanation")):
         out.append(f"data/taxonomy/kinds.yaml: signal {s} has no explanation in `explain` (WP5d D-1)")
+    for r in tables.rows("maintainer_set"):
+        owners = r.get("owners") or []
+        if owners and not 2 <= len(owners) <= 3:
+            out.append(f"data/maintainers.yaml: owners must be empty (not decided yet) or 2 or 3 maintainers, got "
+                       f"{len(owners)} (maintainer policy 2; WP5f)")
+        if len(set(owners)) != len(owners):
+            out.append("data/maintainers.yaml: an owner is listed twice")
     for r in tables.rows("maintainer_verification"):
         if r.get("verified_by") == r.get("user_id"):
             out.append(f"data/maintainers.yaml: {r.get('user_id')}: a maintainer can't verify themself (WP5e)")

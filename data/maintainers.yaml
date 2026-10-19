@@ -1,5 +1,9 @@
 # PROVISIONAL until the maintainers approve the named maintainers (WP0, maintainer approval 5). WP3 D-3.
 #
+# A PLACEHOLDER (WP5f): the list below is demonstrative, not a decision. The co-founders choose the first owners and
+# maintainers, and the supervisor records their decision here (docs/maintainer-policy.md, "How the first owners and
+# maintainers are chosen"); `owners` is empty until then.
+#
 # Provenance: drawn from a mix of current public GitHub data and the supervisor's experience as part of the org's
 # current leadership (WP3 decisions, "Provenance of the list"). Neither is verified. This whole list is provisional.
 #
@@ -33,3 +37,7 @@ maintainers:                           # keyed by GitHub's numeric user ID, with
 # Admin power over OpenMBEE held outside GitHub's owner role (installed apps, other platforms, the fiscal-sponsor
 # relationship), declared by a pull request that an owner merges (policy maintainers-match). None declared yet.
 other_powers: []
+
+# The owners: 2 or 3 of the maintainers above, by GitHub user ID (maintainer policy 2; org-few-owners). Empty until
+# the co-founders' decision is recorded (WP5f D-3); scripts/validate.py checks it.
+owners: []

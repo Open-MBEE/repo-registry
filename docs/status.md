@@ -1,6 +1,6 @@
 # Status
 
-*Updated 2026-10-18, after WP5d's and WP5e's acceptance and the wiki's first publish (status updates ride with each package's PRs). Update this at each acceptance gate.*
+*Updated 2026-10-18, with the WP5f scope (status updates ride with each package's PRs). Update this at each acceptance gate.*
 
 Start with [current-state.md](current-state.md): what is decided, where it is recorded, and what is next.
 
@@ -45,6 +45,10 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
     merge of [#12](https://github.com/Open-MBEE/repo-registry/pull/12), 5bb4b61, which also brought its scope to `main`
     ([WP5e-scope-of-work.md](../work-packages/WP5e-scope-of-work.md); approved by his statement,
     [WP5e-decisions.md](../work-packages/WP5e-decisions.md) "Approval"). Review: [WP5e-review.md](../work-packages/WP5e-review.md).
+  - **WP5f** (owners and maintainers first, on the critical path): scope approved by the supervisor's answer
+    ([WP5f-decisions.md](../work-packages/WP5f-decisions.md) "Approval"); the scope and the work are delivered together
+    in this pull request ([WP5f-scope-of-work.md](../work-packages/WP5f-scope-of-work.md)). The co-founders' decision
+    is recorded later, in its own small pull request.
   - **WP6 to WP8:** planned (see the breakdown below), not yet scoped.
 - **Model (all PROVISIONAL until the maintainers approve it):** the repository's records, declared as tables in
   [data/schema/model.yaml](../data/schema/model.yaml) (WP5b): the stored snapshot of the org's public repositories
@@ -81,16 +85,21 @@ Start with [current-state.md](current-state.md): what is decided, where it is re
    the merge of its delivery pull request. WP5c, the taxonomy refinements: **accepted** by the merge of its delivery pull request. **WP5d, the maintainer
    review pack: accepted ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)) and published. WP5e, verified code owners: accepted
    ([#12](https://github.com/Open-MBEE/repo-registry/pull/12)).**
-6. WP6, the engine: compare, status, status log, sample issues.
-7. WP7, the compliance dashboard: the wiki that WP5d publishes, extended with status, aware of each repository's
+6. **WP5f, owners and maintainers first: in delivery (critical path).** The owners and maintainers govern every other
+   policy, so who they are is settled before the rest is approved: the co-founders decide, and the supervisor records
+   their decision here; carrying out the changes of control in the organization is later work. The fifth maintainer
+   approval (the named maintainers) moves ahead of the other four.
+7. WP6, the engine: compare, status, status log, sample issues.
+8. WP7, the compliance dashboard: the wiki that WP5d publishes, extended with status, aware of each repository's
    state against the controls (from WP6's sensing), and how to come into demonstrable compliance. WP5d gives the
    what and why of compliance; WP7 gives the current snapshot and the way there. WP7 also publishes the wiki
    automatically from CI after each merge; until then an owner runs live mode by hand.
-8. WP8, demonstrations and the five maintainer approvals.
+9. WP8, demonstrations and the five maintainer approvals (the named maintainers' approval comes first, in WP5f).
 
 ## Next step
 
-The review pack is live on the [wiki](https://github.com/Open-MBEE/repo-registry/wiki): the maintainers review it and
-propose changes by pull request. After each merge, an owner republishes it from `main`
-(`python3.10 scripts/render.py --mode live`, or with `uv run` once uv is upgraded); publishing from CI waits for WP7.
-The owners record the first maintainer verifications (XF-3). WP6 (the engine) follows, to be scoped.
+Accept **WP5f** by merging its pull request (scope and work together). Then the co-founders choose the first owners
+and maintainers, using the brief's shape ([WP5f-decision-brief.md](../work-packages/WP5f-decision-brief.md)), and the
+supervisor records their decision in `data/maintainers.yaml` in its own small pull request. Meanwhile the review pack
+is live on the [wiki](https://github.com/Open-MBEE/repo-registry/wiki); everything in it is demonstrative until
+approved. An owner republishes it after each merge (CI publishing waits for WP7). WP6 follows.

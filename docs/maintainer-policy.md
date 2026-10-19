@@ -33,6 +33,21 @@
 8. **Review:** once a year, the owners review the list of maintainers, the powers each holds, and how many
    organizations the maintainers come from.
 
+## How the first owners and maintainers are chosen *(a record, WP5f)*
+
+Provisions 5 to 8 govern how the list changes once it exists. The first list is chosen once, outside them, because
+the group that will approve everything else doesn't exist yet:
+
+- **Who decides:** the co-founders, Chris Delp and Robert Karban, likely from a loose consensus of the most active
+  contributors and the informally defined leadership group. The supervisor of this repository records their decision
+  here, in `data/maintainers.yaml` ([WP5f-decisions.md](../work-packages/WP5f-decisions.md), "OD1").
+- **What qualifies:** this policy as written (OD4).
+- **The owners:** 2 or 3 of the maintainers, recorded under `owners` in `data/maintainers.yaml`. Owners who are not
+  kept become members of the organization, and maintainers where chosen, keeping their access through teams (OD2).
+- **Carrying it out:** how and when the organization's roles change is decided later, in its own package (OD3).
+- **Until then:** the list in `data/maintainers.yaml` is a placeholder, demonstrative like everything else in this
+  repository, and `owners` is empty.
+
 ## What powers maintainers get
 
 9. **Least privilege.** Each maintainer gets only the powers their responsibilities need, granted through GitHub teams

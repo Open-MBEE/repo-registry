@@ -40,7 +40,7 @@
 | Org governance | Owners are the root authority, 2 to 3 of them, a subset of the maintainers; maintainers can be more and are checked by the owners | [WP3-decisions](../work-packages/WP3-decisions.md); [maintainer-policy](maintainer-policy.md) |
 | Who merges what | A kind change: any maintainer. The maintainer list and maintainers' powers: an owner. An accepted exception (`data/deviations.yaml`): an owner | [WP4b-decisions](../work-packages/WP4b-decisions.md) "OD3" |
 | Operators | A repository's operators are its CODEOWNERS, sensed from the repo; every repo in a tier that needs an owner (high, medium, low) needs one, and only a code owner's attestation counts | WP0 R-17; [WP0-decisions](../work-packages/WP0-decisions.md) "Sweep gap 1" |
-| Named maintainers | `aftimg` (Chris Delp), `mzargham` (Michael Zargham), `rkarban` (Robert Karban), `HuiJun` (Jason Han; OpenSysML release authority); a starting target of 5 | `data/maintainers.yaml` |
+| Named maintainers | A placeholder (WP5f): four people named for demonstration, not a decision. The co-founders choose the first owners (2 or 3, recorded under `owners`, empty until then) and maintainers; the supervisor records their decision. See the maintainer policy, "How the first owners and maintainers are chosen" | `data/maintainers.yaml`; [WP5f](../work-packages/WP5f-scope-of-work.md) |
 | Verified code owners | High tier only: a code owner of a high-tier repository must be a named maintainer whom an org owner (another person) has verified out of band in the last 12 months: identity; not a sanctioned party, nor located or ordinarily resident in a comprehensively sanctioned jurisdiction; no affiliation with an organization of concern. Not nationality. The record in `data/maintainers.yaml` publishes legal name, country of residence and affiliation, with the maintainer's consent; absence is non-conformance (the error signal, XF-3). Contributors: nothing more now | [WP5e](../work-packages/WP5e-scope-of-work.md); [WP5e-decisions](../work-packages/WP5e-decisions.md) |
 | Privacy | Concealed org members are counted, never named; the match check never reveals a concealed role | [WP3-decisions](../work-packages/WP3-decisions.md) "OD1"; `scripts/privacy_check.py` |
 | Wiki | Two layers on one wiki, both views. **The review pack (WP5d):** the what and why of compliance, so the maintainers can agree on the taxonomy and the policies: the taxonomy in plain words, every repository's kind, tier and source, every policy with where it is in effect and its SOP, and the sources each policy comes from; every row links to its model file, and a change is a pull request to it. Published by the supervisor from a validated `main` (`scripts/render.py --mode live`). **The compliance dashboard (WP7):** extends the pack with status, aware of each repository's state against the controls (colors per repository and policy, from WP6's sensing), and how to come into demonstrable compliance; it builds on the pack's definitions. Pages per kind, tier and policy, with views by each; no page per repo | [WP0-decisions](../work-packages/WP0-decisions.md) "Wiki downscope"; [WP5d-decisions](../work-packages/WP5d-decisions.md) |
@@ -51,6 +51,10 @@
 1. The taxonomy (`data/taxonomy/`). 2. The policies (`data/policies/`). 3. The pilot subset (`data/pilot.yaml`).
 4. Each pilot repository's kind (`registry.yaml`). 5. The named maintainers
 (`data/maintainers.yaml`), who become this repository's CODEOWNERS (`data/proposed-codeowners`, not live yet).
+
+**The fifth comes first** (WP5f): the owners and maintainers govern every other policy, so who they are is settled
+before the other four. Until then `data/maintainers.yaml` is a placeholder, and everything in the repository is
+demonstrative: drawn from data with the intent to be realistic, but not a decision.
 
 ## Packages
 
@@ -71,6 +75,7 @@
 | WP5c | Taxonomy refinements from WP4's fit analysis | accepted 42ecec0 ([#9](https://github.com/Open-MBEE/repo-registry/pull/9)) |
 | WP5d | The maintainer review pack, published to the wiki: the what and why of compliance | accepted c0d8979 ([#11](https://github.com/Open-MBEE/repo-registry/pull/11)); first published from 5bb4b61 |
 | WP5e | Verified code owners for high-tier repositories; every source quoted verbatim | accepted 5bb4b61 ([#12](https://github.com/Open-MBEE/repo-registry/pull/12)) |
+| **WP5f** | Owners and maintainers first (critical path): the co-founders decide who the owners (2 or 3) and maintainers are, and the supervisor records it; carrying out the changes of control is later work | **in delivery** ([WP5f-scope-of-work](../work-packages/WP5f-scope-of-work.md)); the decision itself is recorded later |
 | WP6 | Engine: sensing (credential set up here, WP5 OD6), status, status log, sample issues | planned |
 | WP7 | The compliance dashboard: the wiki extended with each repository's status against the controls, and how to come into compliance (builds on WP5d and WP6); and publishing the wiki automatically from CI after each merge (until then an owner runs live mode by hand) | planned |
 | WP8 | Demonstrations and the five maintainer approvals | planned |
