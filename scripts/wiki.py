@@ -209,10 +209,12 @@ class Pack:
               "| [Sources](Sources) | The cited sources, and for each item the policies that adopt it, or why we "
               "depart from it |", "",
               "## What we ask of you", "",
-              "Read the pack, and either agree or propose a change. The OpenMBEE maintainers approve, in turn: the "
-              "taxonomy ([Taxonomy](Taxonomy)), the policies ([Policies](Policies) and their SOPs), the pilot "
-              "(marked on [Repositories](Repositories)), each pilot repository's kind, and the named maintainers. "
-              "Until then everything here is PROVISIONAL.", "",
+              "Read the pack, and either agree or propose a change. First, the co-founders choose OpenMBEE's first "
+              "owners and maintainers, because that group governs everything else; until then the named maintainers "
+              f"are a placeholder ([maintainer-policy.md]({BLOB}/docs/maintainer-policy.md)). Then the maintainers "
+              "approve, in turn: the taxonomy ([Taxonomy](Taxonomy)), the policies ([Policies](Policies) and their "
+              "SOPs), the pilot (marked on [Repositories](Repositories)), and each pilot repository's kind. Until "
+              "then everything here is PROVISIONAL and demonstrative: drawn from real data, but not a decision.", "",
               "## How the model fits together", "",
               "A repository has a **type** and a **stage** in its lifecycle. Together they name its **kind**, and the "
               "kind gives its **tier**, which says how strict the controls are. Each policy says, with a rule over "
